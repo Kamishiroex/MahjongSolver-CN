@@ -73,7 +73,7 @@ public sealed partial class Plugin
             {
                 ratingRefresh!.Tick(context,Identity.Error is null,CanRefreshRating(),now,
                     ()=>ratingReader.Observe(context,Identity.Error is null,DateTimeOffset.UtcNow));
-                if(ratingRefresh.Result is { } value)CurrentRating=value;
+                if(ratingRefresh.Result is { } value) { CurrentRating=value;RecordReviewRating(value); }
             }
             catch(Exception ex)
             {
@@ -84,6 +84,6 @@ public sealed partial class Plugin
         }
         // Passive observation never opens a window; preserve the successful read's timestamp.
         var observed=ratingReader.Observe(context,Identity.Error is null,DateTimeOffset.UtcNow);
-        if(observed.Freshness==RatingFreshness.Fresh)CurrentRating=observed;
+        if(observed.Freshness==RatingFreshness.Fresh) { CurrentRating=observed;RecordReviewRating(observed); }
     }
 }

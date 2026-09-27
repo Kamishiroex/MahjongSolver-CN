@@ -859,6 +859,8 @@ public sealed partial class Plugin : IDalamudPlugin
             PlayRuntime.SnapshotObserved -= RecordRuntimeSnapshot;
             PlayRuntime.ObservationInvalidated -= RecordObservationGap;
             PlayRuntime.ActionSubmissionRecorded -= RecordActionSubmission;
+            PlayRuntime.ReviewRecorded -= RecordReviewEvent;
+            PlayRuntime.DecisionReviewIdProvider = null;
         }
         PlayRuntime?.Dispose();
         var stoppedRuntime = PlayRuntime;

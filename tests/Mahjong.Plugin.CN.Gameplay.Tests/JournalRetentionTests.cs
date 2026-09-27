@@ -21,6 +21,11 @@ public sealed class JournalRetentionTests : IDisposable
     public void Count_policy_keeps_newest_matches_and_does_not_touch_exports(int keep)
     {
         var paths = Enumerable.Range(0, keep + 7).Select(Session).ToArray();
+        foreach(string path in paths)
+        {
+            File.WriteAllText(Path.Combine(path,"match-summary.json"),"{}");
+            File.WriteAllText(Path.Combine(path,"rating-after.json"),"{}");
+        }
         string export = Path.Combine(home, "my-export.zip"); File.WriteAllText(export, "keep");
         var result = JournalRetention.Maintain(Root, keep);
         Assert.Equal(7, result.Removed); Assert.Equal(keep, result.Retained);

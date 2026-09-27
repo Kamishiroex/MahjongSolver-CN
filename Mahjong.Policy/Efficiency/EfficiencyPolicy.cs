@@ -8,6 +8,8 @@ namespace Mahjong.Policy.Efficiency;
 
 public sealed class EfficiencyPolicy : IPolicy
 {
+    /// <summary>Optional local review observer; never participates in action selection.</summary>
+    public event Action<ScoredDiscard[]>? CandidatesScored;
     private readonly IOpponentModel opponentModel;
     private readonly IDiscardPolicy discard;
     private readonly ICallPolicy call;
@@ -98,6 +100,9 @@ public sealed class EfficiencyPolicy : IPolicy
         }
         if (scored.Length == 0)
             return ActionChoice.Pass("no legal discards found");
+
+        try { CandidatesScored?.Invoke(scored.ToArray()); }
+        catch { /* An optional observer cannot change strategy behavior. */ }
 
         var best = ApplyPushFold(state, scored, steps);
 

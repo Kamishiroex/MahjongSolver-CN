@@ -1,5 +1,13 @@
 # 日志无损重放与分卷验证
 
+只读核对已有整场摘要（含旧归档，不修改原始日志）：
+
+```powershell
+.work/dotnet/dotnet.exe run --project tools/Mahjong.Cn.JournalReplay -- --summaries '<插件 logs 目录>' '.work/match-summary-check.json'
+```
+
+输出只有记录数、有效来源样本数及未知情况，不包含角色标识、路径或完整牌局；旧日志缺失的配置、名次和评分不会被补造。
+
 ```powershell
 .work/dotnet/dotnet.exe run --project tools/Mahjong.Cn.JournalReplay/Mahjong.Cn.JournalReplay.csproj -- '<原始 events.jsonl>' '.work/journal-replay-new'
 python scripts/analyze-game-logs.py .work/journal-replay-new/verified-export.zip --output .work/journal-replay-summary.json

@@ -27,6 +27,8 @@ internal sealed record GameplayActionSubmission(DateTimeOffset Utc, Guid Observa
 {
     public string Source => "InputDispatcher/submission";
     public bool ActionConfirmed => false;
+    public Guid SubmissionId { get; init; }
+    public Guid? DecisionId { get; init; }
 }
 
 /// <summary>
@@ -112,14 +114,20 @@ internal sealed class Plugin : IDisposable
     internal event Action<StateSnapshot>? SnapshotObserved;
     internal event Action<string>? ObservationInvalidated;
     internal event Action<GameplayActionSubmission>? ActionSubmissionRecorded;
+    internal event Action<string,object>? ReviewRecorded;
+    internal Func<StateSnapshot,Guid?>? DecisionReviewIdProvider;
+    internal Guid? ReviewDecisionId(StateSnapshot state)
+    { try { return DecisionReviewIdProvider?.Invoke(state); } catch { return null; } }
+    internal void RecordReview(string kind,object value)
+    { try { ReviewRecorded?.Invoke(kind,value); } catch { /* Observation must not alter input. */ } }
     internal Guid ObservationSessionId { get; private set; } = Guid.NewGuid();
     internal long ObservationSequence { get; private set; }
     internal StateSnapshot? RecoverySnapshot { get; private set; }
     internal bool IsObservingPaused => pausedObservation && reader is not null && !disposed;
     internal MeldTrackerCheckpoint? ExportMeldCheckpoint() => MeldTracker.ExportCheckpoint();
 
-    internal void RecordActionSubmission(string label, InputDispatcher.DispatchResult result, int? option = null,
-        Tile? tile = null, int? slot = null, int? state = null, string? route = null)
+    internal Guid RecordActionSubmission(string label, InputDispatcher.DispatchResult result, int? option = null,
+        Tile? tile = null, int? slot = null, int? state = null, string? route = null, Guid? decisionId = null)
     {
         // A native call may synchronously tear down this runtime before returning.
         // Preserve its managed submission result even then; this method never reads
@@ -127,13 +135,14 @@ internal sealed class Plugin : IDisposable
         static string Bounded(string? value, int limit) => string.IsNullOrEmpty(value) ? "(unknown)" : value.Length <= limit ? value : value[..limit];
         var entry = new GameplayActionSubmission(DateTimeOffset.UtcNow, ObservationSessionId, ObservationSequence,
             Bounded(label, 120), result.ToString(), option, tile is { Id: < 34 } knownTile ? knownTile.Id : null,
-            slot, state, Bounded(route, 160));
+            slot, state, Bounded(route, 160)) { SubmissionId=Guid.NewGuid(),DecisionId=decisionId };
         try { ActionSubmissionRecorded?.Invoke(entry); }
         catch (Exception ex)
         {
             try { log.Error($"[MahjongCN] Submission journal listener failed: {ex.GetType().Name}"); }
             catch { /* Host logging may already be disposed too. */ }
         }
+        return entry.SubmissionId;
     }
 
     /// <summary>Applies reconciled CURRENT public state only; never resumes a mode.</summary>

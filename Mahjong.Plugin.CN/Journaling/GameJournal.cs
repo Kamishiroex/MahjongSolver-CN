@@ -72,6 +72,7 @@ internal sealed class GameJournal
     }
 
     internal string DirectoryPath => directory;
+    internal Guid SessionId => sessionId;
     internal string? Fault { get { lock (gate) return fault; } }
     internal Task Completion { get { lock (gate) return completion; } }
 
@@ -382,7 +383,8 @@ internal sealed class GameJournal
                 var exportedLengths = new Dictionary<string, long>();
                 foreach (string file in StreamFiles(directory, "events.jsonl").Concat(StreamFiles(directory, "errors.jsonl"))
                     .Concat(new[] { Path.Combine(directory, "journal-index.json"), Path.Combine(directory, "recovery-latest.jsonl"),
-                        Path.Combine(directory, "diagnostic-fault.jsonl"), Path.Combine(root, "last-stop.json") }).Where(File.Exists))
+                        Path.Combine(directory, "diagnostic-fault.jsonl"), Path.Combine(directory,"match-summary.json"),
+                        Path.Combine(directory,"rating-after.json"), Path.Combine(root, "last-stop.json") }).Where(File.Exists))
                 {
                     RejectLinks(file);
                     using var input = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);

@@ -52,6 +52,7 @@ def infer(engine, snapshot):
     def applied():
         complete = bool(snapshot.get("HistoryComplete", False))
         return dict(json.loads(state.mjcn_summary()), feature_schema=FEATURE_SCHEMA, match_context=context,
+                    selection_origin="game-offered-win-priority" if flags & 12 else "model-ranked",
                     feature_coverage={"complete_recorded_history": complete,
                         "approximate_channels": [] if complete else ["discard-turn-padding", "call-before-discard",
                             "dora-at-discard", "riichi-declaration-cache", "draw-count"],

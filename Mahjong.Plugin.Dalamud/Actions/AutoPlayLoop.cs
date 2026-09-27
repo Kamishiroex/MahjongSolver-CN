@@ -54,6 +54,7 @@ public sealed class AutoPlayLoop : IDisposable
     private MeldCandidate? pendingAiChiVariant;
     private bool? riichiDiscardRed;
     private bool? riichiDiscardTsumogiri;
+    private Guid? reviewDecision;
 
     public string LastActionDescription { get; private set; } = "(none)";
 
@@ -305,6 +306,9 @@ public sealed class AutoPlayLoop : IDisposable
 
     private void EmitDecisionFinding(string source, StateSnapshot snap, ActionChoice choice)
     {
+#if MAHJONG_CN
+        reviewDecision=plugin.ReviewDecisionId(snap);
+#endif
         plugin.FindingsLog?.Record("decision", new Dictionary<string, object?>
         {
             ["source"] = source,
@@ -325,13 +329,15 @@ public sealed class AutoPlayLoop : IDisposable
         int? option = null, Tile? tile = null, int? slot = null, int? state = null,
         StateSnapshot? snap = null, bool callInput = false)
     {
+        Guid? reviewSubmission=null;
 #if MAHJONG_CN
         // A callback can synchronously tear down the addon. Preserve its managed submission result.
         string recordedPath = (callInput ? plugin.ActiveCallDispatch?.Route : plugin.ActiveDiscardPath)
             ?? "(dispatch-route-unavailable-after-teardown)";
         var actualCall = callInput ? plugin.ActiveCallDispatch ?? plugin.LastStoppedDispatch : null;
         if (actualCall is not null) { option = actualCall.Option; state = actualCall.StateCode; }
-        plugin.RecordActionSubmission(label, result, option, tile, slot, state, recordedPath);
+        reviewSubmission=plugin.RecordActionSubmission(label, result, option, tile, slot, state, recordedPath, reviewDecision);
+        reviewDecision=null;
 #endif
         // Native input can synchronously close the addon and dispose this loop.
         if (disposed || !IsAutomationArmed()) return;
@@ -371,7 +377,7 @@ public sealed class AutoPlayLoop : IDisposable
                 LegalAtDispatch: snap.Legal.Flags,
                 LastDispatchPath: dispatchPath,
                 ClosedHandAtDispatch: snap.Hand.ToArray(),
-                WallAtDispatch: snap.WallRemaining);
+                WallAtDispatch: snap.WallRemaining) { ReviewSubmission=reviewSubmission };
         }
     }
 
@@ -388,7 +394,8 @@ public sealed class AutoPlayLoop : IDisposable
         ActionFlags LegalAtDispatch,
         string LastDispatchPath,
         IReadOnlyList<Tile> ClosedHandAtDispatch,
-        int WallAtDispatch);
+        int WallAtDispatch)
+    { internal Guid? ReviewSubmission { get; init; } }
 
     private static readonly TimeSpan StuckStateThreshold = TimeSpan.FromSeconds(10);
 
@@ -499,6 +506,12 @@ public sealed class AutoPlayLoop : IDisposable
 
         if (stateChanged || passPromptClosed || skippedDrawTransition)
         {
+#if MAHJONG_CN
+            plugin.RecordReview("review_action_observation", new { SubmissionId=pending.ReviewSubmission,
+                pending.Label,StateTransitionObserved=true,PassPromptClosed=passPromptClosed,
+                LaterDrawObserved=skippedDrawTransition,ActionConfirmed=false,
+                ElapsedMs=(int)(DateTime.UtcNow-pending.DispatchedAt).TotalMilliseconds });
+#endif
             plugin.FindingsLog?.Record("dispatch_outcome", new Dictionary<string, object?>
             {
                 ["label"] = pending.Label,
@@ -519,6 +532,10 @@ public sealed class AutoPlayLoop : IDisposable
         }
         else if (windowExpired)
         {
+#if MAHJONG_CN
+            plugin.RecordReview("review_action_observation", new { SubmissionId=pending.ReviewSubmission,
+                pending.Label,StateTransitionObserved=false,ActionConfirmed=false,TimedOut=true });
+#endif
             plugin.FindingsLog?.Record("dispatch_outcome", new Dictionary<string, object?>
             {
                 ["label"] = pending.Label,
@@ -748,6 +765,7 @@ public sealed class AutoPlayLoop : IDisposable
 
     private void ScheduleAction(string label, DispatchContext context, int medianDelayMs, Action body)
     {
+        reviewDecision=null;
         if (!IsAutomationArmed()) return;
         if (!TryReadQueuedContext(context, out var expectedAddress, out var expectedIdentity))
         {
@@ -771,6 +789,10 @@ public sealed class AutoPlayLoop : IDisposable
                     }
                     if (address != expectedAddress || identity != expectedIdentity)
                     {
+#if MAHJONG_CN
+                        plugin.RecordReview("review_window_cancelled",new { WindowId=Guid.NewGuid(),Label=label,
+                            Reason="PUBLIC_STATE_CHANGED_DURING_DELAY",RequiredActionMissed=(bool?)null });
+#endif
                         LastActionDescription = $"{label} canceled: public state changed during delay";
                         fsm.ClearContext();
                         return false;

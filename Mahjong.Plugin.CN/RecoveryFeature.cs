@@ -17,7 +17,7 @@ public sealed partial class Plugin
             () => readObservationAllowed && !disposed && Identity.Error is null && Client.IsLoggedIn,
             accessError: () => null,
             inputGate: () => SelectedSourceAccessValid && gameplayAllowed && (taskRun?.Plan is null || taskRun.AllowsGameplay),
-            policyFactory: CreateDecisionPolicy,
+            policyFactory: () => CreateReviewedPolicy(CreateDecisionPolicy()),
             identityError: () => disposed ? "PLUGIN_DISPOSED：插件正在卸载" :
                 Identity.Error is { } error ? "IDENTITY_MISMATCH：" + error :
                 !Client.IsLoggedIn ? "CLIENT_NOT_LOGGED_IN：客户端已退出登录或连接状态改变" :
@@ -27,6 +27,8 @@ public sealed partial class Plugin
         PlayRuntime.SnapshotObserved += RecordRuntimeSnapshot;
         PlayRuntime.ObservationInvalidated += RecordObservationGap;
         PlayRuntime.ActionSubmissionRecorded += RecordActionSubmission;
+        PlayRuntime.ReviewRecorded += RecordReviewEvent;
+        PlayRuntime.DecisionReviewIdProvider = ReviewDecisionFor;
     }
 
     internal void StartLogRecovery()

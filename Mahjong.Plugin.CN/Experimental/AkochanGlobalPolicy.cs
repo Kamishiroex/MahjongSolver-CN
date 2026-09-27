@@ -4,7 +4,11 @@ using Mahjong.Cn.Engines;
 namespace Mahjong.Plugin.CN.Experimental;
 
 internal sealed record GlobalAiTrace(string Phase, string? InputSha256,
-    AkochanGlobalSnapshot? Input, AkochanGlobalDecision? Decision, ActionChoice? Choice, string? Error);
+    AkochanGlobalSnapshot? Input, AkochanGlobalDecision? Decision, ActionChoice? Choice, string? Error)
+{
+    public ImmutableArray<CandidateReview> CandidateReviews { get; init; } = [];
+}
+internal sealed record CandidateReview(int Index, string Disposition, string Reason);
 
 /// <summary>
 /// Real akochan decisions from the current public table. No legacy policy picks wins,
@@ -156,14 +160,18 @@ internal sealed class AkochanGlobalPolicy : IIndependentPublicStatePolicy, IDisp
             if (result.InputSha256 != inputHash || result.EngineCommit != expectedCommit)
                 return completed = Block("GLOBAL_AI_RESPONSE_IDENTITY_MISMATCH", current);
             bool winOffered = legalState.Legal.Can(ActionFlags.Ron) || legalState.Legal.Can(ActionFlags.Tsumo);
-            foreach (var candidate in result.Candidates.OrderByDescending(c => c.Score))
+            var reviews=ImmutableArray.CreateBuilder<CandidateReview>();
+            var ordered=result.Candidates.Select((candidate,index)=>(candidate,index)).OrderByDescending(x=>x.candidate.Score).ToArray();
+            foreach (var (candidate,index) in ordered)
             {
                 var mapped = AkochanGlobalActionMapper.Map(candidate.Moves, legalState, current);
-                if (mapped.Reasoning.StartsWith("AKOCHAN_BLOCKED:", StringComparison.Ordinal)) continue;
+                if (mapped.Reasoning.StartsWith("AKOCHAN_BLOCKED:", StringComparison.Ordinal))
+                { reviews.Add(new(index,"filtered",mapped.Reasoning)); continue; }
                 // Never silently discard/pass/call over a currently legal win. Require
                 // an actual native hora candidate with matching target/tile; an engine
                 // disagreement is recorded, not disguised as an AI choice to pass.
-                if (winOffered && mapped.Kind is not (ActionKind.Ron or ActionKind.Tsumo)) continue;
+                if (winOffered && mapped.Kind is not (ActionKind.Ron or ActionKind.Tsumo))
+                { reviews.Add(new(index,"filtered","AVAILABLE_WIN_GUARD")); continue; }
                 completed = mapped with
                 {
                     Reasoning = $"AKOCHAN_GLOBAL: {engineLabel}；引擎评分 {candidate.Score:F2}，" +
@@ -171,21 +179,26 @@ internal sealed class AkochanGlobalPolicy : IIndependentPublicStatePolicy, IDisp
                 };
                 report($"{engineLabel} 已返回 {mapped.Kind}（{result.StartToResponseMilliseconds:F0}毫秒）；" +
                     "已分析四家公开牌局。");
-                trace(new("decision", inputHash, current, result, completed, null));
+                reviews.Add(new(index,"selected","LEGAL_MAPPING_ACCEPTED"));
+                foreach(var remaining in ordered.Skip(reviews.Count))
+                    reviews.Add(new(remaining.index,"not_evaluated","AFTER_SELECTED_CANDIDATE"));
+                trace(new("decision", inputHash, current, result, completed, null) { CandidateReviews=reviews.ToImmutable() });
                 return completed;
             }
-            return completed = Block(winOffered ? "GLOBAL_AI_WIN_OPTION_MISSING" : "GLOBAL_AI_NO_MATCHING_LEGAL_ACTION", current, result);
+            return completed = Block(winOffered ? "GLOBAL_AI_WIN_OPTION_MISSING" : "GLOBAL_AI_NO_MATCHING_LEGAL_ACTION", current, result, reviews.ToImmutable());
         }
         catch (Exception ex) { return completed = Block(ErrorCode(ex), current); }
     }
 
-    private ActionChoice Block(string code, AkochanGlobalSnapshot? input, AkochanGlobalDecision? decision = null)
+    private ActionChoice Block(string code, AkochanGlobalSnapshot? input, AkochanGlobalDecision? decision = null,
+        ImmutableArray<CandidateReview> reviews=default)
     {
         string detail = code == "GLOBAL_AI_WIN_OPTION_MISSING"
             ? "；游戏提供和牌，但引擎未返回匹配的和牌候选，已阻止放弃和其他操作。" : "；未切回上游策略。";
         report("全局 AI 已暂停：" + code + detail);
         var choice = ActionChoice.Pass("AKOCHAN_BLOCKED: " + code);
-        if (lastErrorCode != code) trace(new("error", inputHash, input, decision, choice, code));
+        if (lastErrorCode != code) trace(new("error", inputHash, input, decision, choice, code)
+            { CandidateReviews=reviews.IsDefault?[]:reviews });
         lastErrorCode = code;
         return choice;
     }

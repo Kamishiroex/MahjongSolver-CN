@@ -137,7 +137,11 @@ public sealed partial class Plugin
             lock (gate)
             {
                 if (!disposed && territory == 831 && MahjongDuties.Find(dutyId) is not null && journalActive)
+                {
                     RecordJournalEvent("match_result", new { DutyId = dutyId, Source = "IDutyState.DutyCompleted" });
+                    if(journal is not null && reviewRatingPending is null)
+                        reviewRatingPending=(journal,observedMatch??journal.SessionId,observedRatingContext,DateTimeOffset.UtcNow);
+                }
                 if (disposed || territory != 831 || !Client.IsLoggedIn || Identity.Error is not null) return;
                 if (ratingReadingEnabled && observedRatingContext.Length > 0 &&
                     observedRatingContext == CurrentCharacterContext() && MahjongDuties.Find(dutyId) is not null)

@@ -56,6 +56,10 @@ public sealed class AkochanGlobalPolicyTests
         await h.Complete(request,request.Result() with { Candidates=[new([new("none",0,null,null,[],null)],100),
             new([new("hora",0,tsumo ? 0 : 3,trigger.Tile,[],null)],50)] });
         Assert.Equal(tsumo ? ActionKind.Tsumo : ActionKind.Ron,h.Choose().Kind);
+        var reviews=h.Traces.Last().CandidateReviews;
+        Assert.Equal("AVAILABLE_WIN_GUARD",reviews.Single(r=>r.Index==0).Reason);
+        Assert.Equal("filtered",reviews.Single(r=>r.Index==0).Disposition);
+        Assert.Equal("selected",reviews.Single(r=>r.Index==1).Disposition);
     }
 
     [Theory]

@@ -82,6 +82,7 @@ def checks(root, repository, protocol_inputs=None):
         assert applied["river_counts"] == [len(p["River"]) for p in s["Players"]]
         assert applied["meld_counts"] == [len(p["Melds"]) for p in s["Players"]]
         assert applied["wall"] == s["WallRemaining"]
+        assert applied["selection_origin"] == ("game-offered-win-priority" if s["LegalActions"] & 12 else "model-ranked")
         if name == "riichi-forced-draw": assert all(c["moves"][0].get("pai") == "P" for c in cs)
         if expected == {"hora"}: assert len(cs)==1
         results.append({"case":name,"result":"pass","candidate_types":sorted(kinds)})

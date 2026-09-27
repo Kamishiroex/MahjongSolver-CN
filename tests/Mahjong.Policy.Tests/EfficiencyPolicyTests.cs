@@ -10,6 +10,18 @@ public class EfficiencyPolicyTests
     private static readonly EfficiencyPolicy Policy = new();
 
     [Fact]
+    public void Raw_candidate_observer_is_optional_and_failure_never_changes_choice()
+    {
+        var state=Snapshots.Closed14("123m456p789s11234z",ActionFlags.Discard);
+        var policy=new EfficiencyPolicy(new DomanRuleSet());
+        var expected=policy.Choose(state);ScoredDiscard[]? candidates=null;
+        policy.CandidatesScored+=value=>{candidates=value;throw new IOException("synthetic observer failure");};
+        var actual=policy.Choose(state);
+        Assert.Equal(System.Text.Json.JsonSerializer.Serialize(expected),System.Text.Json.JsonSerializer.Serialize(actual));
+        Assert.NotNull(candidates);Assert.NotEmpty(candidates);
+    }
+
+    [Fact]
     public void Tsumo_accepted_when_hand_clears_min_han()
     {
         var s = Snapshots.Closed14("123m456p789s11123p", ActionFlags.Tsumo | ActionFlags.Discard);

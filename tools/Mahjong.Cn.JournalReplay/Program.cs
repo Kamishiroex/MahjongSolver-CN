@@ -3,6 +3,24 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using Mahjong.Plugin.CN.Journaling;
 
+if(args.Length==3 && args[0]=="--summaries")
+{
+    if(File.Exists(args[2]) || Directory.Exists(args[2]))throw new IOException("Output must not exist.");
+    var records=new List<MatchSummary>();int unreadable=0;
+    foreach(string path in JournalReviewStore.Recent(args[1],200))
+    {
+        try{records.AddRange(await JournalReviewStore.SummariesAsync(path));}
+        catch(Exception ex) when(ex is IOException or UnauthorizedAccessException or JsonException){unreadable++;}
+    }
+    var rows=records.DistinctBy(r=>r.Id).ToArray();
+    var summaryReport=new {Schema=1,Mode="Read-only existing journal summaries; no game input or private identifiers",
+        Records=rows.Length,Unreadable=unreadable,IntegrityVerified=rows.Count(r=>r.IntegrityVerified),
+        Completed=rows.Count(r=>r.CompletedUtc.HasValue),ComparableConfiguration=rows.Count(r=>r.ConfigurationFingerprint is not null),
+        PlacementSamples=rows.Count(r=>r.Placement.HasValue),RatingDeltaSamples=rows.Count(r=>r.RatingDelta.HasValue),
+        NewReviewRecords=rows.Count(r=>r.RecordedTakeovers.HasValue),GameCallbacksSubmitted=false};
+    string text=JsonSerializer.Serialize(summaryReport,new JsonSerializerOptions {WriteIndented=true});
+    File.WriteAllText(args[2],text);Console.WriteLine(text);return;
+}
 if (args.Length != 2) throw new ArgumentException("JournalReplay <original events.jsonl> <new output directory>");
 if (Directory.Exists(args[1]) || File.Exists(args[1])) throw new IOException("Output must not exist.");
 var source = await GameJournal.ReadAsync(args[0]);

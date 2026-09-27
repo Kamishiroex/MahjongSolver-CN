@@ -59,6 +59,25 @@ unsafe class Program
             Raster.Save(ImGui.GetDrawData(),pixels,tw,th,width,height,Path.Combine(output,$"page-{page}-{logicalWidth}-{scale*100:0}.png"));
         }
         if(plugin.TestAccessUnlocked || plugin.ExperimentalHandAiEnabled || plugin.PlayRuntime is not null) throw new InvalidOperationException("Drawing changed access or started play");
+        // Deliberately synthetic review row, rendered by the real production history page.
+        Set(plugin,"history",new Plugin.HistoryState([new Mahjong.Plugin.CN.Journaling.MatchSummary(Guid.NewGuid(),DateTimeOffset.UnixEpoch,
+            DateTimeOffset.UnixEpoch.AddMinutes(30),766,"upstream-efficiency","fixture","完成","TEST_FIXTURE", "synthetic")
+            {IntegrityVerified=true,ConfigurationFingerprint=new string('a',64),RecordedTakeovers=0,Submissions=10,ObservedTransitions=9,ObservationTimeouts=1}],
+            "纯合成测试样例，非真实战绩。最终名次与评分未知。"));
+        Set(plugin,"review",new Plugin.ReviewState(null,new([],"合成测试宿主。")));
+        foreach(float scale in new[]{1f,1.5f,2f})
+        foreach(int logicalWidth in new[]{980,620})
+        {
+            int width=(int)(logicalWidth*scale),height=(int)(760*scale);io.DisplaySize=new(width,height);io.FontGlobalScale=scale;
+            Set(window,"compact",false);Set(window,"page",2);
+            for(int frame=0;frame<3;frame++)
+            {
+                ImGui.NewFrame();window.PreDraw();ImGui.SetNextWindowPos(Vector2.Zero);ImGui.SetNextWindowSize(new(width,height));
+                ImGui.Begin("SYNTHETIC REVIEW FIXTURE - NOT LIVE GAME",ImGuiWindowFlags.NoMove|ImGuiWindowFlags.NoResize);
+                window.Draw();ImGui.End();window.PostDraw();ImGui.Render();
+            }
+            Raster.Save(ImGui.GetDrawData(),pixels,tw,th,width,height,Path.Combine(output,$"review-fixture-{logicalWidth}-{scale*100:0}.png"));
+        }
         Set(window,"compact",false);Set(window,"page",0);io.FontGlobalScale=1;io.DisplaySize=new(980,680);
         var appearance=(GlassTheme.Appearance)typeof(GlassTheme).GetField("options",BindingFlags.Static|BindingFlags.NonPublic)!.GetValue(null)!;
         var measurements=new List<object>();

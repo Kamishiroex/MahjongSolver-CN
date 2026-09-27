@@ -53,6 +53,7 @@ public sealed partial class Plugin
         journal = new GameJournal(logsDirectory);
         ScheduleJournalMaintenance();
         journalActive = true;
+        reviewTableStarted=false;reviewDuty=null;reviewDecisionId=null;reviewDecisionHash=null;
         journalReportedFault = runtimeJournalHash = tableJournalHash = previousRuntimeJournalHash = null;
         recordedAutomationStatus = null;
         runtimeJournalSequence = 0;
@@ -81,6 +82,7 @@ public sealed partial class Plugin
             Scope = "Public observations only; source quality is retained. Submitted actions are not game events.",
             FullHistoryVerified = false,
         });
+        if(reviewConfigurationMetadata is not null) RecordJournalEvent("review_configuration",reviewConfigurationMetadata);
     }
 
     private void RecordJournalEvent<T>(string type, T payload)
@@ -118,6 +120,7 @@ public sealed partial class Plugin
         {
             ending.Event("session_stopped", new { Reason = reason, RuntimeSequence = endSequence });
             await ending.CompleteAsync().ConfigureAwait(false);
+            await MatchSummaryBuilder.SaveAsync(ending.DirectoryPath).ConfigureAwait(false);
         }
     }
 
@@ -271,6 +274,16 @@ public sealed partial class Plugin
             var addon = reader.Probe("Emj", true, captureLowerHand: true, capturePublicLayout: false,
                 capturePublicFaces: true, capturePublicStatus: true);
             addon = AttachCurrentMatchRules(addon, ReadCurrentMatchRules);
+            if(addon is {Present:true,Visible:true,Ready:true,Error:null})
+            {
+                BeginReviewTable(false);
+                if(addon.PublicMatchRules is { } rules && reviewDuty!=rules.DutyId)
+                {
+                    reviewDuty=rules.DutyId;
+                    RecordJournalEvent("review_table_context",new {rules.DutyId,rules.MatchType,rules.OpenTanyao,
+                        Source=rules.Code,OpponentEnvironment="unknown"});
+                }
+            }
             var frame = new DiagnosticFrame(++sequence, DateTimeOffset.UtcNow, "自动事件记录", "只读公开桌面", [addon]);
             RecordPublicTable(frame);
         }

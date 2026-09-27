@@ -88,5 +88,6 @@ public sealed partial class Plugin
             journalContinueAfterTable = false;
             EnsureJournalCore("next_table");
         }
+        if(type==AddonEvent.PostSetup) { reviewRatingPending=null; BeginReviewTable(true); }
     }
 }

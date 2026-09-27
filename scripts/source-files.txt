@@ -693,3 +693,9 @@ tools/test-extract-fixture.mjs
 tools/UiRenderHost/packages.lock.json
 tools/UiRenderHost/Program.cs
 tools/UiRenderHost/UiRenderHost.csproj
+Mahjong.Plugin.CN/Journaling/DecisionReviewBuilder.cs
+Mahjong.Plugin.CN/Journaling/DecisionReviewPolicy.cs
+Mahjong.Plugin.CN/Journaling/JournalReviewStore.cs
+Mahjong.Plugin.CN/Journaling/MatchTrends.cs
+Mahjong.Plugin.CN/ReviewFeature.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/MatchReviewTests.cs
