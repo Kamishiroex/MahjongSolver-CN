@@ -87,7 +87,24 @@ public sealed partial class Plugin
     { lock(gate){ if(taskRun.HasUnfinishedRun){taskRun.RequestStopAfterMatch();UpdateTaskCore();} } }
     internal void EndTask()
     { PausePlay();lock(gate){taskRun.End(AutomationNow);Status=TaskSummary;} }
-    internal void ResumeTask()
+    internal void StartAutomaticFromToolbar()
+    {
+        lock(gate)
+        {
+            if(disposed || !RequireSelectedSourceAccess())return;
+            if(taskRun?.HasUnfinishedRun!=true) { ActivatePlay(true); return; }
+            if(taskRun.Phase is TaskRunPhase.Problem or TaskRunPhase.WaitingForData)
+            { Status="请先处理当前任务的数据问题："+TaskSummary; return; }
+            if(gameplayAllowed && PlayRuntime?.Mode==PlayMode.Automatic && taskRun.Plan?.Automatic==true)return;
+            // Explicit mode change: preserve the same run, rules, elapsed time and match counts.
+            PausePlay();
+            // Resume supersedes the queued pause, so invalidate the old policy now too.
+            PlayRuntime?.PauseAutomation("用户切换为自动打牌，正在重新预检。");
+            ResumeTaskCore(true);
+        }
+    }
+    internal void ResumeTask() => ResumeTaskCore(null);
+    private void ResumeTaskCore(bool? automatic)
     {
         RevokeUiIntents();
         int request=Interlocked.Increment(ref modeRequestVersion);
@@ -102,7 +119,7 @@ public sealed partial class Plugin
                 {Status="继续预检未通过：请检查版本、登录和模型状态。";return;}
                 if(plan.Continuous && taskAutomationSnapshot!=AutomationOptions)
                 {Status="配置与本次任务快照不同；请还原配置后继续，或结束旧任务后创建新任务，计数未重置。";return;}
-                taskRun.ConfirmEngineForResume(TaskEngineIdentity);
+                taskRun.ConfirmEngineForResume(TaskEngineIdentity,automatic);
                 if(!CheckLowerHandResource() || !taskRun.Resume(AutomationNow,DateTimeOffset.UtcNow,CurrentCharacterContext(),CurrentRating))
                 {Status=TaskSummary;return;}
                 resumingTask=true;
@@ -110,8 +127,8 @@ public sealed partial class Plugin
                 RecordJournalEvent("task_resumed",new {taskRun.RunId,Engine=TaskEngineIdentity,taskRun.CompletedMatches,taskRun.ActiveSeconds});
                 try
                 {
-                    if(plan.Continuous) tableAutomation.Resume(AutomationNow);
-                    if(taskRun.InMatch || !plan.Continuous) ActivatePlayCore(plan.Automatic,request);
+                    if(plan.Continuous) tableAutomation.Resume(AutomationNow,automatic);
+                    if(taskRun.InMatch || !plan.Continuous) ActivatePlayCore(automatic??plan.Automatic,request);
                 }
                 finally{resumingTask=false;}
                 lastTaskBlock=null;Status=TaskSummary;

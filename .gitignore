@@ -101,6 +101,8 @@ mjcn-stop-*.json
 mjcn-public-*.json
 test-access.json
 engine-settings.json
+solver-preference.json
+solver-preference.json.tmp
 engine-library.json
 table-automation.json
 task-presets.json

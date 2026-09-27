@@ -80,8 +80,9 @@ internal sealed class TableAutomation
     }
 
     // Explicit same-task resume preserves counters, owned queue evidence and match identity.
-    internal void Resume(double now)
+    internal void Resume(double now, bool? autoStart = null)
     {
+        if (autoStart is { } enabled) Options = Options with { AutoStart = enabled };
         Armed = Options.AutoQueue || Options.AutoStart;
         readySince = double.NaN;
         earliestQueue = Math.Max(earliestQueue, now + 3);

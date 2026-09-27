@@ -2,7 +2,7 @@ namespace Mahjong.Plugin.CN;
 
 public sealed partial class Plugin
 {
-    private const string BetaExpired = "BETA_ACCESS_EXPIRED：测试版验证失效，已暂停，请接管。";
+    private const string BetaExpired = "BETA_ACCESS_EXPIRED：测试版验证失效，已暂停；请在设置 → 测试版重新验证，原模型选择已保留。";
     private int betaGeneration;
     private bool betaExpiryHandled;
     internal bool SelectedSourceAccessValid => !ExperimentalHandAiEnabled || TestAccessUnlocked;
@@ -24,7 +24,6 @@ public sealed partial class Plugin
         aiProbe?.Stop("测试版验证失效，自检已取消。");
         if (!ExperimentalHandAiEnabled || betaExpiryHandled) return;
         betaExpiryHandled = true;
-        bool hadAuthority = gameplayAllowed || tableAutomation.Armed || taskRun?.AllowsGameplay == true;
         var previousMode = PlayRuntime?.Mode ?? Mahjong.Plugin.Dalamud.PlayMode.Off;
         gameplayAllowed = false;
         Interlocked.Increment(ref betaGeneration);
@@ -34,13 +33,13 @@ public sealed partial class Plugin
         PlayRuntime?.PauseAutomation(BetaExpired); // Invalidate policy and queued input; keep read-only observation.
         mortalSession?.Dispose(); mortalSession = null;
         BetaAccessStatus = BetaExpired;
-        if (hadAuthority)
+        // A restored preference can expire while the plugin was unloaded. Notify even
+        // before a task starts; keep the choice so renewal never changes the model.
+        Status = BetaExpired;
+        if (PendingStopAlert is null)
         {
-            Status = BetaExpired;
-            // Queue-only tasks have no gameplay runtime to publish a takeover alert.
-            if (PendingStopAlert is null)
-                AlertUnexpectedStop(new(DateTimeOffset.UtcNow, BetaExpired, previousMode,
-                    null, null, null, null, null, null, null));
+            AlertUnexpectedStop(new(DateTimeOffset.UtcNow, BetaExpired, previousMode,
+                null, null, null, null, null, null, null));
         }
         // No source switch or resume here.
     }

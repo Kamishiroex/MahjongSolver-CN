@@ -13,7 +13,7 @@ internal static class DisplayCopy
     internal static string Summary(string? text)
     {
         if (string.IsNullOrWhiteSpace(text)) return "等待状态更新。";
-        if (text.Contains("BETA_ACCESS", StringComparison.Ordinal)) return "测试版验证失效，已暂停，请接管。";
+        if (text.Contains("BETA_ACCESS", StringComparison.Ordinal)) return "测试版验证失效，已暂停。请在设置 → 测试版续期，原模型选择已保留。";
         if (text.Contains("AKOCHAN_PENDING", StringComparison.Ordinal)) return "测试版等待计算或当前操作窗口。";
         if (text.Contains("AKOCHAN_BLOCKED", StringComparison.Ordinal)) return "测试版已暂停；请查看本地技术详情。";
         if (text.Contains("Mortal", StringComparison.OrdinalIgnoreCase) || text.Contains("akochan", StringComparison.OrdinalIgnoreCase)) return "测试版状态已更新；具体原因见本地技术详情。";

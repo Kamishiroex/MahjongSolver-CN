@@ -73,8 +73,8 @@ public sealed class TaskRun
         else waitingSince=null;
     }
     public void RequestStopAfterMatch() { StopLatched=true; latchedCode??="USER_AFTER_MATCH"; Code=latchedCode; Generation++; }
-    public void ConfirmEngineForResume(string engine)
-    { if(Phase==TaskRunPhase.Paused && Plan is not null) Plan=Plan with {EngineIdentity=engine}; }
+    public void ConfirmEngineForResume(string engine, bool? automatic = null)
+    { if(Phase==TaskRunPhase.Paused && Plan is not null) Plan=Plan with {EngineIdentity=engine, Automatic=automatic??Plan.Automatic}; }
     public void Pause(double now)
     { Advance(now); if(HasUnfinishedRun) { Phase=TaskRunPhase.Paused; Code="PAUSED"; Generation++; } }
     public bool Resume(double now, DateTimeOffset utc, string context, RatingObservation? rating)

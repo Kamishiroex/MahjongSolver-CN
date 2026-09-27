@@ -7,7 +7,7 @@ internal sealed partial class MainWindow
     private void DrawSolverSettings()
     {
         ImGui.TextWrapped("当前来源：" + plugin.DecisionSourceLabel);
-        ImGui.TextWrapped("默认采用上游求解器。切换来源会暂停，继续任务保留已有计数与停止规则。");
+        ImGui.TextWrapped("首次采用上游求解器，以后记住主动选择的来源和模型。重载不自动启动；切换来源会暂停，继续任务保留已有计数与停止规则。");
         if (plugin.ExperimentalHandAiEnabled && ImGui.Button("选择标准求解器（保持暂停）"))
             plugin.DispatchUi(() => plugin.SetExperimentalHandAiEnabled(false));
     }

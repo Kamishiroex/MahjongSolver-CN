@@ -61,7 +61,16 @@ public sealed partial class Plugin
                 new Mahjong.Cn.VisibleTile(t.Kind34, t.RedFive))));
     }
 
-    // Stored models and leases never select a backend or authorize a new session.
+    // Only a previously explicit source choice is restored; models/leases alone never select it.
+    private Access.SolverPreferenceStore? solverPreference;
+    private void RestoreSolverPreference()
+    {
+        if (solverPreference?.Error is { } error) { BetaAccessStatus = error; return; }
+        if (solverPreference?.PreferBeta != true) return;
+        Interlocked.Exchange(ref experimentalHandAiEnabled, 1);
+        BetaAccessStatus = TestAccessUnlocked ? "已沿用上次的测试版来源与模型；尚未启动。" :
+            "上次选择的测试版需要重新验证，模型选择已保留；不会切换来源或开始打牌。";
+    }
     private int experimentalHandAiEnabled;
     private string experimentalHandAiStatus = "测试版未启用。";
 
@@ -101,7 +110,11 @@ public sealed partial class Plugin
         {
             if (disposed) return;
             if (enabled && !RequireTestAccessCore()) return;
-            if (ExperimentalHandAiEnabled == enabled) return;
+            if (ExperimentalHandAiEnabled == enabled)
+            {
+                if (solverPreference?.Save(enabled) == false) BetaAccessStatus = solverPreference.Error!;
+                return;
+            }
             Interlocked.Increment(ref betaGeneration);
             betaExpiryHandled = false;
             SuspendTableAutomation("决策来源已切换，请重新启动自动排队 / 进桌开打。");
@@ -113,6 +126,7 @@ public sealed partial class Plugin
             string reason = $"决策来源已切换为{selected}；打牌已暂停，请继续原任务或明确开始新任务。";
             PlayRuntime?.PauseAutomation(reason);
             Interlocked.Exchange(ref experimentalHandAiEnabled, enabled ? 1 : 0);
+            if (solverPreference?.Save(enabled) == false) BetaAccessStatus = solverPreference.Error!;
             if (!enabled) { mortalSession?.Dispose(); mortalSession = null; }
             Volatile.Write(ref experimentalHandAiStatus, enabled
                 ? $"已选择 {GlobalBackendLabel}；选择手动或自动后，等待本次引擎结果。"

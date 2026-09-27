@@ -652,12 +652,88 @@ public sealed class TestAccessEntryTests
         Assert.True(host.Entry.ExperimentalHandAiEnabled);
         Assert.Contains("BETA_ACCESS_EXPIRED", host.Entry.PendingStopAlert!.Reason);
         host.Entry.VerifyTestCode(Host.Code);
+        Assert.Null(host.Entry.PendingStopAlert);
+        Assert.True(host.Entry.ExperimentalHandAiEnabled);
+        Assert.True(new SolverPreferenceStore(host.PreferencePath).PreferBeta);
+        Assert.False(auto.Armed);
+        Assert.False(Host.Get<bool>(host.Entry, "gameplayAllowed"));
         Assert.Equal(Mahjong.Cn.Tasks.TaskRunPhase.Paused, task.Phase);
         Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off, runtime.Runtime.Mode);
         host.Entry.SetExperimentalHandAiEnabled(false);
         Assert.Equal(id, task.RunId); Assert.Equal(1, task.CompletedMatches);
         Assert.False(host.Entry.ExperimentalHandAiEnabled);
+        Assert.False(new SolverPreferenceStore(host.PreferencePath).PreferBeta);
         Assert.False(Host.Get<bool>(host.Entry, "gameplayAllowed"));
+    }
+
+    [Theory]
+    [InlineData(false)] [InlineData(true)]
+    public void Restoring_beta_choice_keeps_backend_cold_and_expiry_never_changes_the_source(bool expired)
+    {
+        using var host = new Host();
+        Assert.True(host.Access.TryUnlock(Host.Code));
+        var preference = new SolverPreferenceStore(host.PreferencePath);
+        Assert.True(preference.Save(true));
+        Host.Set(host.Entry, "solverPreference", new SolverPreferenceStore(host.PreferencePath));
+        Host.Set(host.Entry, "<MortalSelected>k__BackingField", true);
+        Host.Set(host.Entry, "<SelectedEngineId>k__BackingField", "synthetic-personal-model");
+        Host.Set(host.Entry, "stopAlert", new GameplayStopAlert());
+        if (expired) host.Now = host.Access.ExpiresAtUtc!.Value;
+        typeof(Plugin).GetMethod("RestoreSolverPreference", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(host.Entry, null);
+        Assert.True(host.Entry.ExperimentalHandAiEnabled);
+        Assert.Equal("synthetic-personal-model", host.Entry.SelectedEngineId);
+        Assert.Null(host.Entry.PlayRuntime);
+        Assert.Null(Host.Get<object?>(host.Entry, "mortalSession"));
+        Assert.Null(Host.Get<object?>(host.Entry, "aiProbe"));
+        Assert.False(Host.Get<bool>(host.Entry, "gameplayAllowed"));
+        Assert.False(Host.Get<Mahjong.Plugin.CN.Automation.TableAutomation>(host.Entry, "tableAutomation").Armed);
+        Assert.Empty(host.Queued);
+        typeof(Plugin).GetMethod("EnforceBetaAccess", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(host.Entry, null);
+        if (expired)
+        {
+            Assert.Contains("BETA_ACCESS_EXPIRED", host.Entry.PendingStopAlert!.Reason);
+            host.Entry.VerifyTestCode(Host.Code);
+            Assert.Null(host.Entry.PendingStopAlert);
+        }
+        Assert.True(host.Entry.TestAccessUnlocked);
+        Assert.True(host.Entry.ExperimentalHandAiEnabled);
+        Assert.Equal("synthetic-personal-model", host.Entry.SelectedEngineId);
+        Assert.Null(host.Entry.PlayRuntime); Assert.Null(Host.Get<object?>(host.Entry, "mortalSession"));
+        Assert.False(Host.Get<bool>(host.Entry, "gameplayAllowed")); Assert.Empty(host.Queued);
+    }
+
+    [Fact]
+    public void Toolbar_auto_obeys_beta_access_and_does_not_silently_start_standard()
+    {
+        using var host = new Host();
+        Host.Set(host.Entry, "experimentalHandAiEnabled", 1);
+        host.Entry.StartAutomaticFromToolbar();
+        Assert.True(host.Entry.ExperimentalHandAiEnabled);
+        Assert.Empty(host.Queued); Assert.Null(host.Entry.PlayRuntime);
+        Assert.False(Host.Get<bool>(host.Entry, "gameplayAllowed"));
+    }
+
+    [Fact]
+    public void Pausing_after_toolbar_auto_cancels_the_pending_mode_change_and_keeps_task_progress()
+    {
+        using var host = new Host();
+        using var runtime = new RuntimeModeLifecycleTests.Host(policyFactory: host.Entry.CreateDecisionPolicy);
+        runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Manual);
+        Host.Set(host.Entry, "<PlayRuntime>k__BackingField", runtime.Runtime);
+        Host.Set(host.Entry, "gameplayAllowed", true);
+        var run = new Mahjong.Cn.Tasks.TaskRun();
+        run.Start(new(false, true, 766, "synthetic", new(MatchLimit: 5), "synthetic"), "local-test", null, 0, host.Now);
+        run.ObserveTable(true); run.CompleteMatch(run.MatchId!.Value);
+        Host.Set(host.Entry, "taskRun", run); var id = run.RunId;
+        host.Entry.StartAutomaticFromToolbar();
+        Assert.False(Host.Get<bool>(host.Entry, "gameplayAllowed"));
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off, runtime.Runtime.Mode);
+        host.Entry.PausePlay(); host.Drain();
+        Assert.Equal(Mahjong.Cn.Tasks.TaskRunPhase.Paused, run.Phase);
+        Assert.Equal(id, run.RunId); Assert.Equal(1, run.CompletedMatches);
+        Assert.Equal(5, run.Plan!.Rules.MatchLimit); Assert.False(run.Plan.Automatic);
+        Assert.False(Host.Get<bool>(host.Entry, "gameplayAllowed"));
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off, runtime.Runtime.Mode);
     }
 
     private sealed class Host : IDisposable
@@ -671,6 +747,7 @@ public sealed class TestAccessEntryTests
         internal TestCodeAccess Access { get; }
         internal Queue<Action> Queued { get; } = new();
         internal string LogTestDirectory => Path.Combine(directory, "logs");
+        internal string PreferencePath => Path.Combine(directory, "solver-preference.json");
 
         internal Host()
         {
@@ -685,6 +762,7 @@ public sealed class TestAccessEntryTests
             Set(Entry, "tableAutomation", new Mahjong.Plugin.CN.Automation.TableAutomation());
             Set(Entry, "<AutomationOptions>k__BackingField", new Mahjong.Plugin.CN.Automation.TableAutomationOptions());
             Set(Entry, "testAccess", Access);
+            Set(Entry, "solverPreference", new SolverPreferenceStore(PreferencePath));
             Set(Entry, "<Session>k__BackingField", new CnSession(new("test", 15), "test", 15));
             Set(Entry, "<Actions>k__BackingField", new DisabledActionAdapter());
             Set(Entry, "lowerHandTracker", new LowerHandTracker());

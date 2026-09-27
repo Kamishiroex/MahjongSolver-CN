@@ -142,6 +142,7 @@ Mahjong.Engine/Scorer.cs
 Mahjong.Engine/Shanten.cs
 Mahjong.Engine/Ukeire.cs
 Mahjong.Plugin.CN/Access/TestCodeAccess.cs
+Mahjong.Plugin.CN/Access/SolverPreferenceStore.cs
 Mahjong.Plugin.CN/AiEngineView.cs
 Mahjong.Plugin.CN/AiProbeController.cs
 Mahjong.Plugin.CN/Automation/CnCallMenuResolver.cs
@@ -547,6 +548,7 @@ tests/Mahjong.Plugin.CN.Gameplay.Tests/StateCacheBoundaryTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/TableAutomationTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/TaskQueueBoundaryTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/TestAccessEntryTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/SolverPreferenceStoreTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/TestCodeAccessTests.cs
 tests/Mahjong.Plugin.CN.Tests/ChineseActionLabelsTests.cs
 tests/Mahjong.Plugin.CN.Tests/DiagnosticBufferTests.cs

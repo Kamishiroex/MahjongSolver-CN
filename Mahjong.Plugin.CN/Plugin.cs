@@ -115,6 +115,8 @@ public sealed partial class Plugin : IDalamudPlugin
         LoadEngineSettings();
         stopRecorder = new GameplayStopRecorder(diagnosticsDirectory);
         testAccess = new(Path.Combine(Interface.GetPluginConfigDirectory(), "test-access.json"));
+        solverPreference = new(Path.Combine(Interface.GetPluginConfigDirectory(), "solver-preference.json"));
+        RestoreSolverPreference();
         reader = new(name => GameGui.GetAddonByName(name).Address,
             (address, count) => global::Dalamud.SafeMemory.ReadBytes(address, count, out var data) ? data : null);
         Ui.GlassTheme.Initialize(Interface.GetPluginConfigDirectory());
@@ -420,6 +422,11 @@ public sealed partial class Plugin : IDalamudPlugin
             EnforceBetaAccess();
             testAccess.TryUnlock(input);
             BetaAccessStatus = testAccess.StatusMessage;
+            if (TestAccessUnlocked && PendingStopAlert?.Reason.StartsWith("BETA_ACCESS_EXPIRED", StringComparison.Ordinal) == true)
+            {
+                AcknowledgeStopAlert();
+                Status = "测试版已重新验证，原模型选择已保留；点击自动打牌或继续任务恢复，尚未自动启动。";
+            }
         }
     }
 

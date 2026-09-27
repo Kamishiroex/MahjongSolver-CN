@@ -62,7 +62,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         {
             if (ImGui.Button("手动提醒", modeSize)) plugin.DispatchUi(()=>plugin.ActivatePlay(false));
             SameLineIfFits(modeWidth);
-            if (ImGui.Button("自动打牌", modeSize)) plugin.DispatchUi(()=>plugin.ActivatePlay(true));
+            if (ImGui.Button("自动打牌", modeSize)) plugin.DispatchUi(plugin.StartAutomaticFromToolbar);
         }
         finally { ImGui.PopStyleColor(3); }
         ImGui.EndDisabled();

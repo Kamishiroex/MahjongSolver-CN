@@ -5,6 +5,29 @@ namespace Mahjong.Plugin.CN.Gameplay.Tests;
 public sealed class TableAutomationTests
 {
     [Fact]
+    public void Resume_as_automatic_keeps_completed_matches_queue_ownership_and_limit()
+    {
+        var c = new TableAutomation();
+        c.Arm(new(true, false, MatchLimit: 2), 0);
+        var table = Idle with { TableVisible = true, InDuty = true };
+        Assert.Equal(TableAutomationAction.None, c.Tick(1, table));
+        Assert.True(c.ObserveMatchCompleted(766, 3));
+        c.Tick(4, Idle); c.Tick(10, Idle);
+        Assert.Equal(TableAutomationAction.Queue, c.Tick(15, Idle));
+        c.Disarm("user pause"); c.Resume(16, true);
+        Assert.Equal(1, c.CompletedMatches); Assert.Equal(2, c.Options.MatchLimit);
+        Assert.True(c.Options.AutoStart);
+        Assert.Equal(TableAutomationAction.Accept, c.Tick(17, Idle with
+        { Queue = QueuePhase.Ready, QueueMatches = true, PopMatches = true, AcceptAvailable = true }));
+        Assert.Equal(TableAutomationAction.None, c.Tick(20, table));
+        Assert.Equal(TableAutomationAction.StartPlay, c.Tick(22, table));
+        Assert.True(c.ObserveMatchCompleted(766, 23));
+        c.Tick(24, Idle); c.Tick(30, Idle);
+        Assert.False(c.Armed); Assert.Equal(2, c.CompletedMatches);
+        Assert.Equal(TableAutomationAction.None, c.Tick(40, Idle));
+    }
+
+    [Fact]
     public void Busy_table_must_be_continuously_ready_before_autostart()
     {
         var c = Start(false, true);

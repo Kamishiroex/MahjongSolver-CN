@@ -6,6 +6,40 @@ namespace Mahjong.Cn.Tests;
 
 public sealed class TaskRuleTests
 {
+    [Fact]
+    public void Explicit_manual_to_auto_resume_keeps_counts_time_rules_and_stop_after_match()
+    {
+        var run = new TaskRun();
+        var rules = new StopRuleSet(MatchLimit: 5, ActiveSecondsLimit: 900);
+        run.Start(new(false, true, 766, "fixture", rules, "profile"), "local-fixture", null, 0, Now);
+        run.ObserveTable(true); run.CompleteMatch(run.MatchId!.Value); run.ObserveTable(false); run.ObserveTable(true);
+        var runId = run.RunId; var matchId = run.MatchId;
+        run.RequestStopAfterMatch(); run.Pause(20);
+        run.ConfirmEngineForResume("fixture", true);
+        Assert.True(run.Resume(50, Now, "local-fixture", null));
+        Assert.Equal(runId, run.RunId); Assert.Equal(matchId, run.MatchId);
+        Assert.Equal(1, run.CompletedMatches); Assert.Equal(20, run.ActiveSeconds);
+        Assert.Equal(rules, run.Plan!.Rules); Assert.True(run.Plan.Automatic);
+        Assert.True(run.AllowsGameplay); Assert.False(run.AllowsNextMatch);
+        Assert.Equal(TaskRunPhase.StopAfterMatch, run.Phase);
+        run.CompleteMatch(matchId!.Value); run.Tick(51, Now, "local-fixture", null);
+        Assert.Equal(TaskRunPhase.Completed, run.Phase);
+    }
+
+    [Fact]
+    public void Changing_mode_does_not_bypass_a_reached_limit_or_modify_a_running_plan()
+    {
+        var run = new TaskRun();
+        run.Start(new(false, true, 766, "fixture", new(MatchLimit: 1), "profile"), "local-fixture", null, 0, Now);
+        run.ConfirmEngineForResume("other", true);
+        Assert.False(run.Plan!.Automatic); Assert.Equal("fixture", run.Plan.EngineIdentity);
+        run.ObserveTable(true); run.Pause(1); run.CompleteMatch(run.MatchId!.Value);
+        run.ConfirmEngineForResume("fixture", true);
+        Assert.False(run.Resume(2, Now, "local-fixture", null));
+        Assert.Equal(1, run.CompletedMatches); Assert.Equal(TaskRunPhase.Completed, run.Phase);
+        Assert.False(run.AllowsGameplay); Assert.False(run.AllowsNextMatch);
+    }
+
     [Fact]public void Completion_while_paused_keeps_count_without_reauthorizing_actions()
     {var r=new TaskRun();r.Start(new(true,true,766,"fixture",new(MatchLimit:1),"profile"),"local-fixture",null,0,Now);r.ObserveTable(true);r.Pause(1);Assert.True(r.CompleteMatch(r.MatchId!.Value));Assert.Equal(1,r.CompletedMatches);Assert.False(r.AllowsGameplay);Assert.False(r.AllowsNextMatch);Assert.False(r.Resume(2,Now,"local-fixture",null));Assert.Equal(TaskRunPhase.Completed,r.Phase);}
     [Fact]public void Required_data_timeout_cannot_rearm_and_new_engine_keeps_budget()

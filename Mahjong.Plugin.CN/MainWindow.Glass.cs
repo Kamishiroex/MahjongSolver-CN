@@ -91,7 +91,7 @@ internal sealed partial class MainWindow
     }
     private void DrawPersistentControls()
     {
-        var buttonSize = new Vector2(Math.Max(100 * GlassTheme.Scale,
+        var buttonSize = new Vector2(Math.Max(92 * GlassTheme.Scale,
             ImGui.CalcTextSize("更多操作").X + ImGui.GetStyle().FramePadding.X * 2), ImGui.GetFrameHeight());
         float right = ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - buttonSize.X;
         ImGui.AlignTextToFramePadding();
@@ -100,6 +100,12 @@ internal sealed partial class MainWindow
         if (ImGui.Button(compact ? "展开###layout-toggle" : "紧凑###layout-toggle", buttonSize)) SetCompact(!compact);
         ImGui.TextWrapped(Brand.ProductSubtitle);
         ImGui.TextDisabled($"{view.ModeLabel} · {view.Engine} · {LocalCaptureRecorder.PluginVersion}");
+        bool automatic = view.Mode == Mahjong.Plugin.Dalamud.PlayMode.Automatic && !view.Paused;
+        ImGui.BeginDisabled(automatic);
+        if (ImGui.Button(automatic ? "自动运行###toolbar-auto" : "自动打牌###toolbar-auto", buttonSize))
+            plugin.DispatchUi(plugin.StartAutomaticFromToolbar);
+        ImGui.EndDisabled();
+        SameLineIfFits(buttonSize.X);
         using (var danger = new GlassTheme.StyleScope())
         {
             danger.Color(ImGuiCol.Button, new Vector4(.50f,.14f,.14f,1));
@@ -122,6 +128,13 @@ internal sealed partial class MainWindow
             finally { ImGui.EndPopup(); }
         }
         ImGui.TextWrapped(view.TaskStatus);
+        if(!plugin.SelectedSourceAccessValid)
+        {
+            using (var warning = new GlassTheme.StyleScope())
+            { warning.Color(ImGuiCol.Text, GlassTheme.Warning); ImGui.TextWrapped("测试版验证已失效，原模型选择已保留。"); }
+            if(ImGui.SmallButton("前往测试版续期"))
+            { if(compact)SetCompact(false);page=3;betaSettingsOpen=true; }
+        }
     }
     private static void DrawAboutPopup()
     {
@@ -139,7 +152,7 @@ internal sealed partial class MainWindow
                     ImGui.TextWrapped("当前来源：" + view.Engine);
                     if (ImGui.Button("手动提醒")) plugin.DispatchUi(() => plugin.ActivatePlay(false));
                     SameLineIfFits(120 * GlassTheme.Scale);
-                    if (ImGui.Button("自动打牌")) plugin.DispatchUi(() => plugin.ActivatePlay(true));
+                    if (ImGui.Button("自动打牌")) plugin.DispatchUi(plugin.StartAutomaticFromToolbar);
                     SameLineIfFits(140 * GlassTheme.Scale);
                     if (ImGui.Button("配置连续任务")) page = 1;
                 });
