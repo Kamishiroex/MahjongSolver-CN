@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 from runtime import load_engine
 from prepare import LOCK
+from rules import FEATURE_SCHEMA, encode_public_obs, match_context
 
 
 def tile(face):
@@ -44,7 +45,17 @@ def infer(engine, snapshot):
     import numpy as np
     # C# validates the full public inventory before transport; Rust independently checks
     # limits/counts and rejects physical fifth copies. No session state survives a request.
+    context = match_context(snapshot)
+    if not hasattr(PlayerState, "mjcn_feature_schema") or PlayerState.mjcn_feature_schema() != FEATURE_SCHEMA:
+        raise ValueError("MORTAL_FEATURE_BRIDGE_V2_REQUIRED")
     state = PlayerState.mjcn_from_public(json.dumps(snapshot, separators=(",", ":")))
+    def applied():
+        complete = bool(snapshot.get("HistoryComplete", False))
+        return dict(json.loads(state.mjcn_summary()), feature_schema=FEATURE_SCHEMA, match_context=context,
+                    feature_coverage={"complete_recorded_history": complete,
+                        "approximate_channels": [] if complete else ["discard-turn-padding", "call-before-discard",
+                            "dora-at-discard", "riichi-declaration-cache", "draw-count"],
+                        "unknown_tsumogiri": any(d.get("Tsumogiri") is None for p in snapshot["Players"] for d in p["River"])})
     flags = snapshot["LegalActions"]
     hand = [tile(t) for t in snapshot["Hand"]]
     trigger = snapshot["Trigger"]
@@ -55,13 +66,16 @@ def infer(engine, snapshot):
         warnings.append("凡夫使用当前公开桌面；缺失事件顺序不补造，历史特征采用不完整输入，可能影响棋力。")
     if any(d.get("Tsumogiri") is None for p in snapshot["Players"] for d in p["River"]):
         warnings.append("部分摸切未知：凡夫模型无未知通道，未确认手切特征留空。")
-    warnings.append("模型按天凤四人半庄训练；国服东风战终局名次估值尚未专门训练。")
+    warnings.append(("已按实际赛程调整剩余局数特征" if context["confirmed_length"] else "赛程特征暂用未确认的兼容值") +
+                    "，场风保持原值；原权重仍未针对多玛终局规则和评分目标重新训练。")
+    if not context["confirmed_length"]:
+        warnings.append("实际赛程来源未确认；兼容字段只用于旧输入，不作为已验证桌型。")
     # The network ranks current legal actions; available wins have explicit MJCN priority.
     # Bypass encoding on a finished hand so model yaku assumptions never veto game-offered wins.
     if flags & 12:
         move = {"type": "hora", "actor": 0, "target": 0 if flags & 4 else target, "pai": claim}
-        return [{"moves": [move], "score": 0.0}], json.loads(state.mjcn_summary()), warnings
-    obs, mask = state.encode_obs(4, False)
+        return [{"moves": [move], "score": 0.0}], applied(), warnings
+    obs, mask = encode_public_obs(state, snapshot)
     mask = np.array(mask, copy=True)
     mask[:37] &= bool(flags & 1)
     mask[37] &= bool(flags & 2)
@@ -70,7 +84,7 @@ def infer(engine, snapshot):
     mask[45] = bool(flags & 512) and trigger["Type"] != "tsumo"
     if not mask.any():
         if flags & 512:
-            return [{"moves": [{"type": "none"}], "score": 0.0}], json.loads(state.mjcn_summary()), warnings
+            return [{"moves": [{"type": "none"}], "score": 0.0}], applied(), warnings
         raise ValueError("MORTAL_NO_LEGAL_MASK")
     _, qs, _, _ = engine.react_batch([obs], [mask], None)
     candidates = []
@@ -84,7 +98,7 @@ def infer(engine, snapshot):
             move.update(type="dahai", pai=action_tile(i), tsumogiri=trigger["Type"] == "tsumo" and claim == action_tile(i))
         elif i == 37:
             declared = state.mjcn_for_riichi()
-            robs, rmask = declared.encode_obs(4, False)
+            robs, rmask = encode_public_obs(declared, snapshot)
             rmask[37:] = False
             if not rmask.any():
                 continue
@@ -106,7 +120,7 @@ def infer(engine, snapshot):
             if trigger["Type"] == "dahai" and flags & 128:
                 move.update(type="daiminkan", target=target, pai=claim, consumed=choose_consumed(hand, [tile_id(claim)] * 3))
             else:
-                kobs, kmask = state.encode_obs(4, True)
+                kobs, kmask = encode_public_obs(state, snapshot, True)
                 _, kqs, _, _ = engine.react_batch([kobs], [kmask], None)
                 for k in sorted(np.flatnonzero(kmask[:34]), key=lambda k: -kqs[0][k]):
                     consumed = choose_consumed(hand, [int(k)] * 4)
@@ -128,7 +142,7 @@ def infer(engine, snapshot):
         candidates.append({"moves": [move], "score": score})
     if not candidates:
         raise ValueError("MORTAL_NO_CANDIDATES")
-    return sorted(candidates, key=lambda c: -c["score"]), json.loads(state.mjcn_summary()), warnings
+    return sorted(candidates, key=lambda c: -c["score"]), applied(), warnings
 
 
 def main():

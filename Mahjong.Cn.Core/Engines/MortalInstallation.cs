@@ -7,6 +7,8 @@ public sealed record MortalInstallation(string Directory)
 {
     public const string Commit = "0cff2b52982be5b1163aa9a62fb01f03ce91e0d2";
     public const string Bridge = "mjcn-mortal-public-v1";
+    public const string FeatureBridge = "mjcn-mortal-public-v2";
+    public bool HasRuleAwareFeatures { get; init; }
     public const string ModelHash = "738e0d6e3c0ce9671629554ad39abd147d2ffbac676e80b194c83f2acc0fea20";
     public static async Task<MortalInstallation> LoadAsync(string directory, CancellationToken token = default)
     {
@@ -16,7 +18,8 @@ public sealed record MortalInstallation(string Directory)
             throw new AkochanException("MORTAL_INSTALLATION_MISSING");
         using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(file, token).ConfigureAwait(false));
         var m = manifest.RootElement;
-        if (m.GetProperty("bridge").GetString() != Bridge || m.GetProperty("source_commit").GetString() != Commit ||
+        string? bridge = m.GetProperty("bridge").GetString();
+        if (bridge is not (Bridge or FeatureBridge) || m.GetProperty("source_commit").GetString() != Commit ||
             m.GetProperty("model_sha256").GetString() != ModelHash)
             throw new AkochanException("MORTAL_INSTALLATION_VERSION");
         var files = m.GetProperty("files").EnumerateObject().ToArray();
@@ -48,7 +51,9 @@ public sealed record MortalInstallation(string Directory)
             string name = Path.GetRelativePath(root, path).Replace('\\', '/');
             if (name != "mortal-installation.json" && !names.Contains(name)) throw new AkochanException("MORTAL_UNEXPECTED_FILE:" + name);
         }
-        return new(root);
+        if (bridge == FeatureBridge && !names.Contains("rules.py"))
+            throw new AkochanException("MORTAL_REQUIRED_FILE:rules.py");
+        return new(root) { HasRuleAwareFeatures = bridge == FeatureBridge };
     }
 
     public static async Task<MortalInstallation> ImportAsync(string archive, string enginesRoot, CancellationToken token = default)

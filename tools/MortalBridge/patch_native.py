@@ -15,8 +15,12 @@ def patch(source):
     new = original + "\nmod mjcn_public;\n"
     if mod.read_text() not in (original, new):
         raise ValueError("MORTAL_SOURCE_ALREADY_MODIFIED")
-    mod.write_text(new, encoding="utf-8")
-    shutil.copy2(HERE / "native/mjcn_public.rs", mod.with_name("mjcn_public.rs"))
+    if mod.read_text() != new:
+        mod.write_text(new, encoding="utf-8")
+    target = mod.with_name("mjcn_public.rs")
+    extension = HERE / "native/mjcn_public.rs"
+    if not target.exists() or target.read_bytes() != extension.read_bytes():
+        shutil.copy2(extension, target)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

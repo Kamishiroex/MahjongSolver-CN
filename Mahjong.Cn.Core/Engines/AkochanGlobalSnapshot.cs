@@ -18,6 +18,7 @@ public sealed record AkochanGlobalSnapshot(int OurPlayerId, int RoundWind, int H
     public DateTimeOffset Utc { get; init; }
     public ActionFlags LegalActions { get; init; }
     public int MatchFirstRound { get; init; } = 0;
+    public DomanMatchRules? MatchRules { get; init; }
     public bool HistoryComplete { get; init; }
     public string? OwnDrawKind { get; init; }
     public bool? OwnTemporaryFuriten { get; init; }
@@ -50,4 +51,8 @@ public sealed record AkochanGlobalTrigger(string Type, int Actor, VisibleTile? T
 
 /// <summary>Only observed public transitions; a partial list is never a complete mjai replay.</summary>
 public sealed record AkochanGlobalEvent(long Sequence, string Type, int Actor, int? Target,
-    VisibleTile? Tile, ImmutableArray<VisibleTile> Consumed);
+    VisibleTile? Tile, ImmutableArray<VisibleTile> Consumed)
+{
+    // An observed stable river slot, not a search by tile face (which may repeat).
+    public int? RiverIndex { get; init; }
+}

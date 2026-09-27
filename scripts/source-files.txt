@@ -89,6 +89,7 @@ Mahjong.Cn.Core/Engines/AkochanReplay.cs
 Mahjong.Cn.Core/Engines/AkochanSamples.cs
 Mahjong.Cn.Core/Engines/AkochanTransfer.cs
 Mahjong.Cn.Core/Engines/DecisionCoordinator.cs
+Mahjong.Cn.Core/Engines/DomanMatchRules.cs
 Mahjong.Cn.Core/Engines/EngineLibrary.cs
 Mahjong.Cn.Core/Engines/EngineProcessHost.cs
 Mahjong.Cn.Core/Engines/Fixtures/akochan-parameter-files.json
@@ -441,6 +442,7 @@ tests/Mahjong.Cn.Core.Tests/HandShapeAdvisorTests.cs
 tests/Mahjong.Cn.Core.Tests/Mahjong.Cn.Core.Tests.csproj
 tests/Mahjong.Cn.Core.Tests/MjaiTileCodecTests.cs
 tests/Mahjong.Cn.Core.Tests/MortalInstallationTests.cs
+tests/Mahjong.Cn.Core.Tests/MortalMatchRulesTests.cs
 tests/Mahjong.Cn.Core.Tests/MortalMoveProtocolTests.cs
 tests/Mahjong.Cn.Core.Tests/packages.lock.json
 tests/Mahjong.Cn.Core.Tests/PublicEventLedgerTests.cs
@@ -673,12 +675,14 @@ tools/Mahjong.Cn.PonResponseProbe/packages.lock.json
 tools/Mahjong.Cn.PonResponseProbe/Program.cs
 tools/Mahjong.Cn.PonResponseProbe/README.md
 tools/MortalBridge/check_snapshot.py
+tools/MortalBridge/feature_replay.py
 tools/MortalBridge/model-lock.json
 tools/MortalBridge/native/mjcn_public.rs
 tools/MortalBridge/package.py
 tools/MortalBridge/patch_native.py
 tools/MortalBridge/prepare.py
 tools/MortalBridge/probe.py
+tools/MortalBridge/rules.py
 tools/MortalBridge/runtime.py
 tools/MortalBridge/session.py
 tools/MortalBridge/snapshot.py

@@ -198,6 +198,9 @@ internal sealed class AkochanGlobalObservationProjector
                 ContextKey = contextKey + ":" + boundary + ":epoch=" + (trackingEpoch ?? "unbound"),
                 Utc = observation.ObservedAtUtc, LegalActions = legal,
                 MatchFirstRound = matchFirstRound,
+                MatchRules = DomanMatchRules.FromObservedMatch(
+                    current.Rules.MatchType.IsConfirmed ? current.Rules.MatchType.Value : null,
+                    current.Rules.OpenTanyao.IsConfirmed ? current.Rules.OpenTanyao.Value : null),
                 OwnTemporaryFuriten = Fresh(current.OurTemporaryFuriten,observation) ? current.OurTemporaryFuriten.Value : null,
                 OwnRiichiFuriten = Fresh(current.OurRiichiFuriten,observation) ? current.OurRiichiFuriten.Value : null,
                 // UI stick/called-mark changes and candidate hand transitions are not
@@ -206,7 +209,13 @@ internal sealed class AkochanGlobalObservationProjector
                 OwnDrawKind = trigger.Type == "tsumo" && current.OwnDrawKind.IsConfirmed &&
                     current.OwnDrawKind.Observation?.Sequence == current.Observation?.Sequence &&
                     current.OwnDrawKind.Observation?.ObservedAtUtc == current.Observation?.ObservedAtUtc ? current.OwnDrawKind.Value : null,
-                HistoryComplete = false, KnownEvents = events.Values.Select(x => x.Action).Where(x =>
+                HistoryComplete = false, KnownEvents = events.Values.Select(x => x.Action with
+                {
+                    RiverIndex = x.Action.Type == "dahai" && x.Action.Actor is >= 0 and < 4
+                        ? players[x.Action.Actor].River.Select((tile, index) => (tile, index))
+                            .Where(t => t.tile.SlotPath == x.Slot && t.tile.Tile == x.Action.Tile)
+                            .Select(t => (int?)t.index).SingleOrDefault() : null,
+                }).Where(x =>
                     x.Type is "dahai" or "chi" or "pon" or "daiminkan" or "ankan" or "kakan")
                     .OrderBy(x => x.Sequence).ToImmutableArray(),
             };

@@ -30,6 +30,9 @@ public sealed class AkochanGlobalEngine
         var state = new
         {
             schema = 1, context_key = snapshot.ContextKey, our_player = snapshot.OurPlayerId,
+            match_rules = snapshot.MatchRules,
+            history_slots = snapshot.KnownEvents.Where(e => e.RiverIndex is not null)
+                .Select(e => new { sequence = e.Sequence, actor = e.Actor, river_index = e.RiverIndex }),
             round_wind = snapshot.RoundWind, hand_number = snapshot.HandNumber,
             honba = snapshot.Honba, riichi_sticks = snapshot.RiichiSticks,
             dealer = snapshot.DealerPlayerId, wall_remaining = snapshot.WallRemaining,
@@ -69,6 +72,7 @@ public sealed class AkochanGlobalEngine
             if (ReferenceEquals(e, known.LastOrDefault()) && e.Type == snapshot.Trigger.Type &&
                 e.Actor == snapshot.Trigger.Actor && e.Tile == snapshot.Trigger.Tile) continue;
             records.Add(new { type = e.Type, actor = e.Actor, target = e.Target,
+                river_index = e.RiverIndex,
                 pai = e.Tile is { } tile ? Tile(tile) : null,
                 consumed = e.Consumed.Select(Tile), can_act = false });
         }

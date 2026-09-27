@@ -82,6 +82,7 @@ public sealed class MortalGlobalEngine : IDisposable, IAsyncDisposable
         if (root.GetProperty("engine_commit").GetString() != MortalInstallation.Commit)
             throw new AkochanException("MORTAL_ENGINE_IDENTITY");
         var applied = root.GetProperty("applied");
+        if (install.HasRuleAwareFeatures) ValidateAppliedContext(applied, input);
         var counts = Enumerable.Range(0, 34).Select(i => input.Hand.Count(t => t.Id == i));
         if (!applied.GetProperty("hand").EnumerateArray().Select(x => x.GetInt32()).SequenceEqual(counts) ||
             !applied.GetProperty("scores").EnumerateArray().Select(x => x.GetInt32()).SequenceEqual(input.Players.Select(p => p.Score)) ||
@@ -99,9 +100,36 @@ public sealed class MortalGlobalEngine : IDisposable, IAsyncDisposable
             result.Add(new(AkochanReplay.ParseGlobalMoves(c.GetProperty("moves").GetRawText(), input,
                 mortalSingleAction: true), score));
         }
-        return new(result.ToImmutable(), hash, root.GetProperty("assumptions").EnumerateArray().Select(x => x.GetString()!).ToImmutableArray(),
+        var assumptions = root.GetProperty("assumptions").EnumerateArray().Select(x => x.GetString()!).ToImmutableArray();
+        if (!install.HasRuleAwareFeatures)
+            assumptions = assumptions.Add("当前个人运行包仍为旧版公开输入桥；尚未应用赛程进度、同分顺位和历史特征修正。");
+        return new(result.ToImmutable(), hash, assumptions,
             MortalInstallation.Commit, watch.Elapsed.TotalMilliseconds, applied.GetRawText())
             { EngineName = "凡夫 Mortal V4 582500", HistoryComplete = false };
+    }
+
+    public static void ValidateAppliedContext(JsonElement applied, AkochanGlobalSnapshot input)
+    {
+        int first = input.MatchFirstRound;
+        double progress = Math.Clamp(first + input.RoundWind * 4 + input.HandNumber - 1, 0, 7) / 7.0;
+        bool allLast = first + input.RoundWind * 4 + input.HandNumber >= 8;
+        int ourInitialSeat = (input.HandNumber - 1 + 4 - input.DealerPlayerId) % 4;
+        int rank = input.Players.Count(p => p.Score > input.Players[0].Score ||
+            p.Score == input.Players[0].Score && (p.PlayerId + ourInitialSeat) % 4 < ourInitialSeat);
+        if (!applied.TryGetProperty("feature_schema", out var schema) || schema.GetInt32() != 2 ||
+            !applied.TryGetProperty("match_context", out var context) ||
+            context.GetProperty("actual_round_wind").GetInt32() != input.RoundWind ||
+            context.GetProperty("actual_hand_number").GetInt32() != input.HandNumber ||
+            Math.Abs(context.GetProperty("progress").GetDouble() - progress) > 1e-6 ||
+            context.GetProperty("progress_row").GetInt32() != 27 ||
+            applied.GetProperty("round_wind").GetInt32() != input.RoundWind ||
+            applied.GetProperty("all_last").GetBoolean() != allLast || applied.GetProperty("rank").GetInt32() != rank)
+            throw new AkochanException("MORTAL_APPLIED_RULES_MISMATCH");
+        if (input.MatchRules is { MatchType: not null } rules &&
+            (!context.GetProperty("confirmed_length").GetBoolean() ||
+             context.GetProperty("match_type").GetString() != rules.MatchType ||
+             context.GetProperty("scheduled_hands").GetInt32() != rules.ScheduledHands))
+            throw new AkochanException("MORTAL_APPLIED_RULES_MISMATCH");
     }
 
     public void Dispose() => _ = DisposeAsync();

@@ -131,6 +131,9 @@ public sealed class AkochanGlobalObservationProjectorTests
         var input = Projector(Snapshot() with { Rules = new() { MatchType = Known(match) } })
             .Project(Runtime(), "match-test").Snapshot;
         Assert.NotNull(input); Assert.Equal(first, input.MatchFirstRound);
+        Assert.Equal(match, input.MatchRules!.MatchType);
+        Assert.Equal(8 - first, input.MatchRules.ScheduledHands);
+        Assert.Equal("observed-current-duty", input.MatchRules.MatchEvidence);
         Assert.DoesNotContain(input.Assumptions, a => a.Contains("暂按东南战"));
     }
 
@@ -300,6 +303,7 @@ public sealed class AkochanGlobalObservationProjectorTests
         projector.Observe(source, Probe(), history, null);
         var first = projector.Project(Runtime(), "turn").Snapshot!;
         Assert.Equal(12, Assert.Single(first.Players[1].River).Tile.Id); Assert.Single(first.KnownEvents);
+        Assert.Equal(0, first.KnownEvents[0].RiverIndex);
         projector.Observe(source with { Observation = Ref with { Sequence = 11 }, Honba = Known(2), RoundId = Known("round2") },
             Probe(), history, null);
         var next = projector.Project(Runtime(), "turn2").Snapshot!;
@@ -362,7 +366,9 @@ public sealed class AkochanGlobalObservationProjectorTests
         next = next with { Players = next.Players.SetItem(2, next.Players[2] with
         { RiverImages = Known(Inventory(Image(12, ResponseSlot), Image(12, "Emj/1240001/4", order: 2))) }) };
         projector.Observe(next, ResponseProbe(), ResponseHistory(Discard(13, slot: "Emj/1240001/4")), null);
-        Assert.Null(projector.Project(ResponseRuntime(), "new-discard").Error);
+        var projection = projector.Project(ResponseRuntime(), "new-discard");
+        Assert.Null(projection.Error);
+        Assert.Equal(1, projection.Snapshot!.KnownEvents.Single(e => e.Sequence == 13 && e.Type == "dahai").RiverIndex);
     }
 
     [Fact]
