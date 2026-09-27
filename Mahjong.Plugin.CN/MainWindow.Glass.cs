@@ -92,7 +92,7 @@ internal sealed partial class MainWindow
     private void DrawPersistentControls()
     {
         var buttonSize = new Vector2(Math.Max(92 * GlassTheme.Scale,
-            ImGui.CalcTextSize("更多操作").X + ImGui.GetStyle().FramePadding.X * 2), ImGui.GetFrameHeight());
+            ImGui.CalcTextSize("自动打牌").X + ImGui.GetStyle().FramePadding.X * 2), ImGui.GetFrameHeight());
         float right = ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - buttonSize.X;
         ImGui.AlignTextToFramePadding();
         ImGui.TextColored(GlassTheme.Accent, Brand.ProductName);
@@ -105,6 +105,7 @@ internal sealed partial class MainWindow
         if (ImGui.Button(automatic ? "自动运行###toolbar-auto" : "自动打牌###toolbar-auto", buttonSize))
             plugin.DispatchUi(plugin.StartAutomaticFromToolbar);
         ImGui.EndDisabled();
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("按当前求解来源开启自动打牌。\n继续已有任务，保留场数与停止条件。");
         SameLineIfFits(buttonSize.X);
         using (var danger = new GlassTheme.StyleScope())
         {
@@ -113,20 +114,14 @@ internal sealed partial class MainWindow
             danger.Color(ImGuiCol.Text, Vector4.One);
             // Immediate revocation, never queued behind other UI intentions.
             if (ImGui.Button("暂停自动", buttonSize)) plugin.PausePlay();
+            if (ImGui.IsItemHovered()) ImGui.SetTooltip("暂停提醒、自动打牌与排队，继续只读记牌。\n保留任务进度；需主动点击自动打牌或继续任务恢复。");
         }
         SameLineIfFits(buttonSize.X);
         if (ImGui.Button("本场后停", buttonSize)) plugin.DispatchUi(plugin.StopAfterCurrentMatch);
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("打完当前整场东风战或半庄后停止，不再排下一场。\n不是在当前小局结束后停。");
         SameLineIfFits(buttonSize.X);
-        if (ImGui.Button("更多操作", buttonSize)) ImGui.OpenPopup("global-actions");
-        if (ImGui.BeginPopup("global-actions"))
-        {
-            try
-            {
-                if (ImGui.Button("停止全部读取与操作")) plugin.Stop("用户停止全部读取、提醒与自动操作。");
-                ImGui.TextWrapped("不会强退牌局；已提交的报名需在游戏内取消。关闭窗口不等于暂停。");
-            }
-            finally { ImGui.EndPopup(); }
-        }
+        if (ImGui.Button("停止全部", buttonSize)) plugin.Stop("用户停止全部读取、提醒与自动操作。");
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("停止全部读取、提醒、自动打牌和排队。\n不会强退牌局；已提交的报名需在游戏内取消。\n关闭窗口不等于暂停。");
         ImGui.TextWrapped(view.TaskStatus);
         if(!plugin.SelectedSourceAccessValid)
         {
