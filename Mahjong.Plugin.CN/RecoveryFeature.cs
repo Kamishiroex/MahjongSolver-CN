@@ -16,7 +16,7 @@ public sealed partial class Plugin
         PlayRuntime = new Mahjong.Plugin.Dalamud.Plugin(Interface, Framework, Log, GameGui, Lifecycle,
             () => readObservationAllowed && !disposed && Identity.Error is null && Client.IsLoggedIn,
             accessError: () => null,
-            inputGate: () => SelectedSourceAccessValid && gameplayAllowed && (taskRun?.Plan is null || taskRun.AllowsGameplay),
+            inputGate: () => SelectedSourceAccessValid && GameOperationsAuthorized && gameplayAllowed && taskRun.AllowsGameplay,
             policyFactory: () => CreateReviewedPolicy(CreateDecisionPolicy()),
             identityError: () => disposed ? "PLUGIN_DISPOSED：插件正在卸载" :
                 Identity.Error is { } error ? "IDENTITY_MISMATCH：" + error :

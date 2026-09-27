@@ -12,8 +12,8 @@ internal interface IRatingProfileAccess
     void ForgetOwnership();
 }
 
-/// <summary>A bounded, framework-ticked refresh, independent of gameplay and test access.</summary>
-internal sealed class RatingRefresh(IRatingProfileAccess profile)
+/// <summary>Bounded navigation with a live permission check, distinct from passive reading.</summary>
+internal sealed class RatingRefresh(IRatingProfileAccess profile, Func<bool> operationAllowed)
 {
     private string context = "";
     private double requested, openedAt;
@@ -35,6 +35,8 @@ internal sealed class RatingRefresh(IRatingProfileAccess profile)
         Func<RatingObservation> observe)
     {
         if (!Busy) return;
+        if(!operationAllowed())
+        { Cancel("评分窗口操作授权已失效，未继续切页或关闭。",false);return; }
         if (!identityValid || character.Length == 0 || context != character)
         { Cancel("评分刷新已取消：版本或角色上下文已改变。", false); return; }
         if (now - requested > (automatic ? 120 : 10) || attemptedOpen && now - openedAt > 5)
@@ -61,6 +63,8 @@ internal sealed class RatingRefresh(IRatingProfileAccess profile)
             return; // Wait for the selected page to finish loading on a later frame.
         }
         var value = observe();
+        if(!operationAllowed())
+        { Cancel("评分窗口操作授权已失效，未接受迟到结果。",false);return; }
         if (value.Freshness != RatingFreshness.Fresh || value.CurrentRating is null ||
             value.LocalCharacterContext != context)
         { candidate = null; return; }
@@ -78,6 +82,6 @@ internal sealed class RatingRefresh(IRatingProfileAccess profile)
     internal void Cancel(string reason, bool canClose)
     {
         Busy = false; candidate = null; Result = null; Status = reason;
-        if (canClose) profile.CloseOwned(); else profile.ForgetOwnership();
+        if (canClose && operationAllowed()) profile.CloseOwned(); else profile.ForgetOwnership();
     }
 }

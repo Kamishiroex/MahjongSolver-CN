@@ -15,23 +15,40 @@ public sealed partial class Plugin
     private bool ratingReadingEnabled;
     private RatingRefresh? ratingRefresh;
     private CnRatingProfileAccess? ratingProfile;
+    private int ratingOperationGeneration=-1;
+    private string ratingOperationContext="";
+    private string passiveRatingStatus="请手动打开金碟／方城战资料页，标准模式只读取已显示的评分。";
     internal RatingObservation? CurrentRating { get; private set; }
     internal bool RatingRefreshBusy => ratingRefresh?.Busy == true;
-    internal string RatingRefreshStatus => ratingRefresh?.Status ?? "";
+    internal string RatingRefreshStatus => ratingRefresh?.Status is {Length:>0} status ? status : passiveRatingStatus;
     internal void ReadOwnRating()
     {
         Identity=RuntimeIdentity.Read(Interface,Client);
-        RequestRatingRefresh(false);
+        ratingReadingEnabled=true;
+        passiveRatingStatus="标准模式不执行游戏操作，仅提供提示。请手动打开金碟／方城战资料页。";
         lastRatingPoll=0; UpdateRatingCore();
     }
-    private void RequestRatingRefresh(bool afterMatch)
+    internal void ReadOwnRatingWithNavigation()
     {
+        if(disposed || !RequireOperationCapability())return;
+        Identity=RuntimeIdentity.Read(Interface,Client);
+        RequestRatingRefresh(false,explicitRequest:true);
+    }
+    private bool RatingOperationsAuthorized => GameOperationsAvailable && ratingOperationGeneration==Volatile.Read(ref operationGeneration) &&
+        ratingOperationContext.Length>0 && ratingOperationContext==CurrentCharacterContext();
+    private void RequestRatingRefresh(bool afterMatch,bool explicitRequest=false)
+    {
+        if(!GameOperationsAvailable || !(explicitRequest || afterMatch && GameOperationsAuthorized))return;
         string context=CurrentCharacterContext();
         if(disposed || Identity.Error is not null || context.Length==0)return;
         ratingReadingEnabled=true;
-        ratingProfile??=new(name=>GameGui.GetAddonByName(name).Address);
-        ratingRefresh??=new(ratingProfile);
+        ratingOperationGeneration=Volatile.Read(ref operationGeneration);
+        ratingOperationContext=context;
+        ratingProfile??=new(name=>GameGui.GetAddonByName(name).Address,()=>RatingOperationsAuthorized);
+        ratingRefresh??=new(ratingProfile,()=>RatingOperationsAuthorized);
         ratingRefresh.Request(context,AutomationNow,afterMatch);
+        RecordJournalEvent("profile_operation_authorized",new {Scope="rating-page-only",AfterMatch=afterMatch,
+            Source=explicitRequest?"explicit-user-click":"authorized-task-after-match"});
     }
     private bool CanRefreshRating() => Client.IsLoggedIn &&
         !Conditions[ConditionFlag.BetweenAreas] && !Conditions[ConditionFlag.BetweenAreas51] &&
@@ -43,8 +60,8 @@ public sealed partial class Plugin
         !Conditions[ConditionFlag.ExecutingCraftingAction] && !Conditions[ConditionFlag.ExecutingGatheringAction];
     private void CancelRatingRefresh()
     {
-        ratingRefresh?.Cancel("全部读取已停止。", !disposed && Framework.IsInFrameworkUpdateThread &&
-            Identity.Error is null && CanRefreshRating());
+        ratingOperationGeneration=-1;
+        ratingRefresh?.Cancel("全部读取已停止；已打开的窗口留给玩家处理。",false);
     }
     private string CurrentCharacterContext()
     {

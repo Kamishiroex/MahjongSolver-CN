@@ -61,20 +61,26 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         try
         {
             if (ImGui.Button("手动提醒", modeSize)) plugin.DispatchUi(()=>plugin.ActivatePlay(false));
-            SameLineIfFits(modeWidth);
-            if (ImGui.Button("自动打牌", modeSize)) plugin.DispatchUi(plugin.StartAutomaticFromToolbar);
+            if(plugin.GameOperationsAvailable)
+            { SameLineIfFits(modeWidth);if (ImGui.Button("授权自动打牌", modeSize)) plugin.DispatchUi(plugin.StartAutomaticFromToolbar); }
         }
         finally { ImGui.PopStyleColor(3); }
         ImGui.EndDisabled();
         SameLineIfFits(modeWidth);
-        if (ImGui.Button("暂停全部自动功能", modeSize)) plugin.PausePlay();
+        if (ImGui.Button("暂停", modeSize)) plugin.PausePlay();
         if (ImGui.IsItemHovered()) ImGui.SetTooltip("停止提醒、自动打牌和自动排队，继续只读记牌。/mjcn stop 停止全部读取。");
+        if(plugin.GameOperationsAvailable)
+        {
         bool keepBetweenHands = plugin.AutomationOptions.KeepAutomaticBetweenHands;
         if (ImGui.Checkbox("局间持续在线（等待其他玩家确认）", ref keepBetweenHands))
             QueueAutomationOptions(plugin.AutomationOptions with { KeepAutomaticBetweenHands = keepBetweenHands });
         if (ImGui.IsItemHovered()) ImGui.SetTooltip("已观察到小局结算时持续等待，新手牌可读后自动继续。不会重复点击，也不会自动恢复读取错误、退出牌桌或手动暂停。设置立即生效并保存。");
         if (ImGui.Button("自动排队设置 / 进桌开打")) ShowQueue();
-        if (plugin.TableAutomationArmed) ImGui.TextWrapped(plugin.TableAutomationStatus);
+        }
+        if(plugin.RatingRefreshBusy)ImGui.TextWrapped("测试版游戏操作 · 本次评分窗口刷新已授权。");
+        if(!plugin.ExperimentalHandAiEnabled && plugin.PlayRuntime?.Mode!=PlayMode.Automatic && !plugin.TableAutomationArmed && !plugin.RatingRefreshBusy)
+            ImGui.TextWrapped("标准模式不执行游戏操作，仅提供提示。");
+        if (plugin.TableAutomationArmed) ImGui.TextWrapped("测试版游戏操作 · 连续任务已授权："+plugin.TableAutomationStatus);
         ImGui.TextWrapped(Presentation.DisplayCopy.Summary(plugin.Monitoring ? plugin.PublicMonitor.Status :
             plugin.PlayRuntime is { } activeRuntime && (activeRuntime.Mode != PlayMode.Off || activeRuntime.IsObservingPaused)
                 ? activeRuntime.Status : plugin.Status));
@@ -83,7 +89,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         if (ImGui.BeginTabBar("mjcn-tabs"))
         {
             if (ImGui.BeginTabItem("对局")) { DrawPlay(); ImGui.EndTabItem(); }
-            if (ImGui.BeginTabItem("自动排队", selectQueue ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None))
+            if (plugin.GameOperationsAvailable && ImGui.BeginTabItem("自动排队", selectQueue ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None))
             {
                 selectQueue = false;
                 DrawTableAutomation();
@@ -121,7 +127,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         ImGui.TextColored(Jade, Brand.ProductName);
         ImGui.TextWrapped(Brand.ProductSubtitle);
         ImGui.Spacing();
-        ImGui.TextWrapped("面向 FFXIV 国服的本地牌局工具：手动提醒、自动打牌、任务管理、自动排队，以及本地事件日志和恢复核对。建议质量与实际操作效果需分别实测，不保证胜率或段位提升。");
+        ImGui.TextWrapped("标准模式不执行游戏操作，仅提供提示。保留目标提醒、评分展示、记录、设置与诊断；实验求解器和游戏自动操作分别属于可选测试版能力，操作还需本次任务授权。不保证胜率或段位提升。");
         ImGui.Separator();
         ImGui.TextUnformatted("项目维护与来源");
         ImGui.TextWrapped("国服维护仓库：Kamishiroex/MahjongSolver-CN；贡献者见仓库记录。");
@@ -137,6 +143,8 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
 
     private void DrawTableAutomation()
     {
+        if(!plugin.GameOperationsAvailable)
+        { ImGui.TextWrapped("自动任务属于测试版游戏操作；在设置 → 测试版验证并主动启用后，可配置和授权本次任务。");return; }
         ImGui.TextUnformatted("自动排队与进桌开打");
         var options = plugin.AutomationOptions;
         bool queue = options.AutoQueue, start = options.AutoStart;
@@ -200,13 +208,13 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
             plugin.DispatchUi(() => plugin.SetJournalKeepMatches(counts[selectedCount]));
         ImGui.TextWrapped("每整场一份；历史记录另有 1 GiB 预算，超过时先清理最早记录。当前场、最新恢复记录及手动导出的 ZIP 不清理。");
         ImGui.TextWrapped(plugin.JournalMaintenanceStatus);
-        if (plugin.PlayRuntime is { } runtime)
+        if (plugin.GameOperationsAvailable && plugin.PlayRuntime is { } runtime)
         {
             int delay = runtime.Configuration.HumanizedDelayMs;
             if (ImGui.SliderInt("操作间隔（毫秒）", ref delay, 500, 3000))
                 runtime.ConfigService.Update(c => c with { HumanizedDelayMs = delay });
         }
-        else ImGui.TextWrapped("启动提醒或自动打牌后，可调整操作间隔。");
+        if(!plugin.GameOperationsAvailable)return;
         bool advance = plugin.AutomationOptions.AutoAdvanceAfterHand;
         if (ImGui.Checkbox("自动点击结算后的下一局", ref advance))
             QueueAutomationOptions(plugin.AutomationOptions with { AutoAdvanceAfterHand = advance });
@@ -241,7 +249,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         if (plugin.ExperimentalHandAiEnabled) ImGui.TextWrapped("当前求解来源：测试版。技术状态见设置 → 测试版。");
         if (runtime is null || runtime.Mode == PlayMode.Off)
         {
-            ImGui.TextWrapped("进入多玛方城后，点击上方模式按钮即可使用。也可输入 /mjcn manual 或 /mjcn auto；/mjcn stop 随时停止。");
+            ImGui.TextWrapped("进入多玛方城后点击手动提醒，或输入 /mjcn manual；/mjcn stop 随时停止。可选测试能力见设置 → 测试版。");
             return;
         }
         var aggregate = runtime.ActiveAggregator;
@@ -288,7 +296,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
     private string CurrentMode() => plugin.PlayRuntime?.Mode switch
     {
         PlayMode.Manual => "手动提醒",
-        PlayMode.Automatic => "自动打牌",
+        PlayMode.Automatic => "测试版自动操作",
         _ => plugin.PlayRuntime?.IsObservingPaused == true ? "已暂停（继续只读记牌）" : "已停止",
     };
 

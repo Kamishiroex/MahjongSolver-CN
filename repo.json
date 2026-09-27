@@ -1,29 +1,29 @@
 [
-    {
-        "Author":  "XeldarAlz; CN adaptation contributors",
-        "Name":  "MahjongSolver · 多玛方城战求解器（国服优化版）",
-        "InternalName":  "Mahjong.Plugin.CN",
-        "RepoUrl":  "https://github.com/Kamishiroex/MahjongSolver-CN",
-        "AssemblyVersion":  "4.1.4.0",
-        "DalamudApiLevel":  15,
-        "ApplicableVersion":  "2026.09.15.0000.0000",
-        "MinimumDalamudVersion":  "15.0.3.5",
-        "Punchline":  "默认采用上游求解器，提供国服对局辅助与任务管理。",
-        "Description":  "MahjongSolver，多玛方城战求解器（国服优化版）。使用 /mjcn 打开完整主界面，标准功能无需测试验证。提供手动提醒、自动打牌、任务暂停与继续、整场场数/时长/截止停止规则、自动排队和进桌开打，以及本人资料页评分、本地记录、诊断与恢复核对。评分目标因整场刷新证据尚缺而暂未开放。自动操作默认关闭，保留版本、读牌与动作检查。另提供测试版功能，验证后可用，仍需主动选择和启动。只使用正常可见信息，不补造缺失历史，不保证获胜或上分。基于 XeldarAlz/FFXIV-AutoMahjongSolver，遵循 AGPL-3.0-or-later；第三方组件的许可与来源见 NOTICE。",
-        "Tags":  [
-                     "mahjong",
-                     "麻将",
-                     "国服",
-                     "自动"
-                 ],
-        "LoadRequiredState":  0,
-        "LoadSync":  false,
-        "CanUnloadAsync":  false,
-        "IsTestingExclusive":  false,
-        "DownloadLinkInstall":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
-        "DownloadLinkUpdate":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
-        "DownloadLinkTesting":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
-        "AcceptsFeedback":  false,
-        "LastUpdate":  1790488270
-    }
+  {
+    "Author": "XeldarAlz; CN adaptation contributors",
+    "Name": "MahjongSolver · 多玛方城战求解器（国服优化版）",
+    "InternalName": "Mahjong.Plugin.CN",
+    "RepoUrl": "https://github.com/Kamishiroex/MahjongSolver-CN",
+    "AssemblyVersion": "4.1.4.0",
+    "DalamudApiLevel": 15,
+    "ApplicableVersion": "2026.09.15.0000.0000",
+    "MinimumDalamudVersion": "15.0.3.5",
+    "Punchline": "标准模式不执行游戏操作，仅提供提示。",
+    "Description": "MahjongSolver，多玛方城战求解器（国服优化版）。使用 /mjcn 打开完整主界面，默认上游求解器。标准模式不执行游戏操作，仅提供提示。无需测试码，保留主题、提示任务、时长与截止目标、评分展示、本地记录、设置和诊断。实验求解器与游戏操作为独立的可选测试版能力；验证后需主动选择，任何代替玩家的操作还需明确授权本次任务，使用上游时也一样。验证、重载和续期不自动启动；失效暂停相关操作，不静默换源。评分目标因整场刷新证据不足暂未开放。只使用正常可见信息，不保证获胜或上分。基于 XeldarAlz/FFXIV-AutoMahjongSolver，遵循 AGPL-3.0-or-later；第三方许可与来源见 NOTICE。",
+    "Tags": [
+      "mahjong",
+      "麻将",
+      "国服",
+      "提示"
+    ],
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkInstall": "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
+    "DownloadLinkUpdate": "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
+    "DownloadLinkTesting": "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
+    "AcceptsFeedback": false,
+    "LastUpdate": 1790495172
+  }
 ]

@@ -260,15 +260,17 @@ public sealed partial class Plugin : IDalamudPlugin
     {
         lock (gate)
         {
+            if(disposed || !RequireSelectedSourceAccess() || automatic && !RequireOperationCapability())return;
             // Re-selecting a running mode is not a request to stop the table coordinator.
             // A queued pause has already revoked gameplayAllowed, so it is never hidden here.
             var requested = automatic ? Mahjong.Plugin.Dalamud.PlayMode.Automatic : Mahjong.Plugin.Dalamud.PlayMode.Manual;
-            if (!disposed && gameplayAllowed && SelectedSourceAccessValid && PlayRuntime?.Mode == requested &&
+            if (!disposed && gameplayAllowed && SelectedSourceAccessValid && (!automatic || GameOperationsAuthorized) && PlayRuntime?.Mode == requested &&
                 Identity is { Error: null }) return;
         }
         if (taskRun?.HasUnfinishedRun == true) { Status = "现有任务尚未结束，请使用继续任务或结束任务。"; return; }
         SuspendTableAutomation("已主动选择打牌模式；排队及进桌自动开打已暂停。");
         int request = Interlocked.Increment(ref modeRequestVersion);
+        if(automatic) { pendingOperationRequest=request; pendingOperationGeneration=Volatile.Read(ref operationGeneration); }
         _ = Framework.RunOnFrameworkThread(() =>
         {
             if (request == Volatile.Read(ref modeRequestVersion)) ActivatePlayCore(automatic, request);
@@ -281,6 +283,9 @@ public sealed partial class Plugin : IDalamudPlugin
         {
             if (disposed || request != Volatile.Read(ref modeRequestVersion)) return;
             if (!RequireSelectedSourceAccess()) return;
+            if(automatic && (!RequireOperationCapability() || !GameOperationsAuthorized &&
+                (pendingOperationRequest!=request || pendingOperationGeneration!=Volatile.Read(ref operationGeneration))))
+            { Status="自动操作缺少有效的本次任务授权，请重新主动启动。";return; }
             if (ExperimentalHandAiEnabled && EngineMaintenanceBusy) { Status = "测试版文件处理尚未完成，请稍候再启动。"; return; }
             if (ExperimentalHandAiEnabled && EngineActivationError is { } engineError)
             {
@@ -309,6 +314,8 @@ public sealed partial class Plugin : IDalamudPlugin
                 return;
             }
             if (!startingFromTableAutomation && !BeginManagedTask(automatic, false)) return;
+            if(automatic && !GameOperationsAuthorized && !GrantTaskOperations(pendingOperationGeneration))return;
+            pendingOperationRequest=-1;
             ratingReadingEnabled = true;
             if (Monitoring)
             {
@@ -425,7 +432,7 @@ public sealed partial class Plugin : IDalamudPlugin
             if (TestAccessUnlocked && PendingStopAlert?.Reason.StartsWith("BETA_ACCESS_EXPIRED", StringComparison.Ordinal) == true)
             {
                 AcknowledgeStopAlert();
-                Status = "测试版已重新验证，原模型选择已保留；点击自动打牌或继续任务恢复，尚未自动启动。";
+                Status = "测试版已重新验证，原选择与任务进度已保留；请主动开始提示或授权继续任务，尚未自动启动。";
             }
         }
     }

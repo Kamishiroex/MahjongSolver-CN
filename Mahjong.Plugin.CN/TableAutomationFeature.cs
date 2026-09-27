@@ -71,12 +71,15 @@ public sealed partial class Plugin
 
     internal void ArmTableAutomation()
     {
+        if(disposed || !RequireSelectedSourceAccess() || !RequireOperationCapability())return;
+        int operationEpoch=Volatile.Read(ref operationGeneration);
         int request = Interlocked.Increment(ref automationRequestVersion);
         _ = Framework.RunOnFrameworkThread(() =>
         {
             lock (gate)
             {
-                if (disposed || request != Volatile.Read(ref automationRequestVersion) || !RequireSelectedSourceAccess()) return;
+                if (disposed || request != Volatile.Read(ref automationRequestVersion) || operationEpoch!=Volatile.Read(ref operationGeneration) ||
+                    !RequireSelectedSourceAccess() || !RequireOperationCapability()) return;
                 Identity = RuntimeIdentity.Read(Interface, Client);
                 if (Identity.Error is not null || !Client.IsLoggedIn)
                 { tableAutomation.Disarm(Identity.Error ?? "请先登录游戏。"); return; }
@@ -102,6 +105,7 @@ public sealed partial class Plugin
                         if (CnMatchmakingAdapter.ReadQueue(duty.Id).Phase != QueuePhase.None) throw new InvalidOperationException("已有报名，不能作为新任务接管；请先在游戏内取消。");
                     }
                     if (!BeginManagedTask(AutomationOptions.AutoStart, true)) { tableAutomation.Disarm(Status); return; }
+                    if(!GrantTaskOperations(operationEpoch))return;
                     tableAutomation.Arm(AutomationOptions with { MatchLimit = 0 }, AutomationNow);
                 }
                 catch (Exception ex) { tableAutomation.Disarm("自动功能未启动：" + ex.Message); }
@@ -112,6 +116,7 @@ public sealed partial class Plugin
 
     private void SuspendTableAutomation(string reason)
     {
+        RevokeGameOperations();
         Interlocked.Increment(ref automationRequestVersion);
         lock (gate)
         {
@@ -130,7 +135,8 @@ public sealed partial class Plugin
         int request = Volatile.Read(ref automationRequestVersion);
         Guid? observedRun, observedMatch;
         string observedRatingContext;
-        lock(gate) { observedRun=taskRun?.RunId; observedMatch=taskRun?.MatchId; observedRatingContext=ratingContext; }
+        int observedOperationEpoch;
+        lock(gate) { observedRun=taskRun?.RunId; observedMatch=taskRun?.MatchId; observedRatingContext=ratingContext; observedOperationEpoch=operationGeneration; }
         // Events may originate in the network handler. Input/cleanup stays on the framework.
         _ = Framework.RunOnFrameworkThread(() =>
         {
@@ -143,7 +149,8 @@ public sealed partial class Plugin
                         reviewRatingPending=(journal,observedMatch??journal.SessionId,observedRatingContext,DateTimeOffset.UtcNow);
                 }
                 if (disposed || territory != 831 || !Client.IsLoggedIn || Identity.Error is not null) return;
-                if (ratingReadingEnabled && observedRatingContext.Length > 0 &&
+                if (GameOperationsAuthorized && observedOperationEpoch==operationGeneration && observedRun==taskRun?.RunId &&
+                    ratingReadingEnabled && observedRatingContext.Length > 0 &&
                     observedRatingContext == CurrentCharacterContext() && MahjongDuties.Find(dutyId) is not null)
                     RequestRatingRefresh(true);
                 if (journalActive && journal?.Fault is not null) return;
@@ -184,7 +191,7 @@ public sealed partial class Plugin
         double now = AutomationNow;
         if (now - lastAutomationPoll < 0.25) return;
         lastAutomationPoll = now;
-        string? unavailable = !SelectedSourceAccessValid ? BetaExpired : Identity.Error ??
+        string? unavailable = !SelectedSourceAccessValid ? BetaExpired : !GameOperationsAuthorized ? "本次自动任务授权已失效。" : Identity.Error ??
             (!Client.IsLoggedIn ? "已登出游戏。" : journalActive && journal?.Fault is { } fault ? "日志错误：" + fault : null);
         if (unavailable is not null)
         {
@@ -214,7 +221,7 @@ public sealed partial class Plugin
                 visible || tableAutomation.MatchCompleted ? tableBusy : queueBusy,
                 PlayRuntime?.Mode is PlayMode.Manual or PlayMode.Automatic, q.Item1, q.Item2, q.Item3,
                 confirm != 0 && CnMatchmakingAdapter.CanAccept(confirm), currentDuty, canLeave));
-            if (!SelectedSourceAccessValid) { EnforceBetaAccess(); return; }
+            if (!SelectedSourceAccessValid || !GameOperationsAuthorized) { EnforceBetaAccess(); return; }
             if (action == TableAutomationAction.Queue)
             {
                 if (taskRun?.Plan is not null && !taskRun.AllowsNextMatch) return;

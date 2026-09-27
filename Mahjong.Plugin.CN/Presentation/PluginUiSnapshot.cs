@@ -18,5 +18,5 @@ internal sealed record PluginUiSnapshot(DateTimeOffset CapturedUtc, long Observa
     internal static PluginUiSnapshot Empty { get; } = new(default, 0, PlayMode.Off, false,
         "等待状态更新。", "标准求解器", "任务未启动。", null, null, []);
     internal string ModeLabel => Mode switch
-    { PlayMode.Manual => "手动提醒", PlayMode.Automatic => "自动打牌", _ => Paused ? "已暂停" : "未启动 / 已停止" };
+    { PlayMode.Manual => "仅提示 · 玩家操作", PlayMode.Automatic => "测试版自动操作", _ => Paused ? "已暂停" : "未启动 / 已停止" };
 }

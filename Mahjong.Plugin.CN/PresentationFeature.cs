@@ -40,7 +40,7 @@ public sealed partial class Plugin
             UiEngines=InstalledEngines.Select(p=>new EngineUiItem(p.Id,p.Name,p.IsInstalled)).ToArray();
         }
         var runtime = PlayRuntime;
-        bool active = SelectedSourceAccessValid && Identity.Error is null && PendingStopAlert is null &&
+        bool active = SelectedSourceAccessValid && (runtime?.Mode!=PlayMode.Automatic || GameOperationsAuthorized) && Identity.Error is null && PendingStopAlert is null &&
             runtime?.Mode is PlayMode.Manual or PlayMode.Automatic;
         var now = DateTimeOffset.UtcNow;
         var hand = active && journalLower is { Stable: true } lower && now - journalLowerUtc < TimeSpan.FromSeconds(2)

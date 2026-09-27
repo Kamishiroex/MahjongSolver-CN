@@ -58,7 +58,9 @@ unsafe class Program
             }
             Raster.Save(ImGui.GetDrawData(),pixels,tw,th,width,height,Path.Combine(output,$"page-{page}-{logicalWidth}-{scale*100:0}.png"));
         }
-        if(plugin.TestAccessUnlocked || plugin.ExperimentalHandAiEnabled || plugin.PlayRuntime is not null) throw new InvalidOperationException("Drawing changed access or started play");
+        if(plugin.TestAccessUnlocked || plugin.ExperimentalHandAiEnabled || plugin.PlayRuntime is not null ||
+            plugin.GameOperationsEnabled || plugin.GameOperationsAuthorized || plugin.TableAutomationArmed || plugin.RatingRefreshBusy)
+            throw new InvalidOperationException("Unverified rendering changed access or started play/operations");
         // Deliberately synthetic review row, rendered by the real production history page.
         Set(plugin,"history",new Plugin.HistoryState([new Mahjong.Plugin.CN.Journaling.MatchSummary(Guid.NewGuid(),DateTimeOffset.UnixEpoch,
             DateTimeOffset.UnixEpoch.AddMinutes(30),766,"upstream-efficiency","fixture","完成","TEST_FIXTURE", "synthetic")

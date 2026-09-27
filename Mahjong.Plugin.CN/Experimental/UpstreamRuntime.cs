@@ -287,6 +287,8 @@ internal sealed class Plugin : IDisposable
     public void SetMode(PlayMode mode)
     {
         if (disposed) return;
+        if(mode==PlayMode.Automatic && !InputGateAllows())
+        { PauseAutomation("AUTO_AUTHORIZATION_REQUIRED：本次自动操作授权不可用。");return; }
         if (mode == PlayMode.Off)
         {
             PauseAutomation("已停止提醒与自动打牌；继续只读记牌，可重新选择模式。");
@@ -560,7 +562,7 @@ internal sealed class Plugin : IDisposable
 
     private bool InputGateAllows()
     {
-        try { return inputGate?.Invoke() ?? true; }
+        try { return inputGate?.Invoke() ?? false; }
         catch { return false; }
     }
 

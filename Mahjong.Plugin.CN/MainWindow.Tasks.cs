@@ -25,9 +25,12 @@ internal sealed partial class MainWindow
     }
     private void DrawTaskRules()
     {
-        bool keep=plugin.AutomationOptions.KeepAutomaticBetweenHands;
-        if(ImGui.Checkbox("局间持续等待其他玩家确认",ref keep))QueueAutomationOptions(plugin.AutomationOptions with {KeepAutomaticBetweenHands=keep});
-        ImGui.TextWrapped("修改对局选项会暂停任务，需预检后继续或结束后新建；不会覆盖读取错误与安全停止。");
+        if(plugin.GameOperationsAvailable)
+        {
+            bool keep=plugin.AutomationOptions.KeepAutomaticBetweenHands;
+            if(ImGui.Checkbox("局间持续等待其他玩家确认",ref keep))QueueAutomationOptions(plugin.AutomationOptions with {KeepAutomaticBetweenHands=keep});
+        }
+        ImGui.TextWrapped("标准任务只提示并跟踪目标；到达已支持的时长或截止目标后停止提示。修改规则会暂停任务，需主动继续或新建。");
         if(!taskEditorLoaded)
         {
             var rules=plugin.TaskRules; taskEditorLoaded=true;
@@ -41,7 +44,7 @@ internal sealed partial class MainWindow
         ImGui.Checkbox("截止日期时间",ref deadlineEnabled);
         if(deadlineEnabled)
         { ImGui.SetNextItemWidth(-1); ImGui.InputText("##task-deadline",ref deadlineText,64); ImGui.TextWrapped("格式 yyyy-MM-dd HH:mm +08:00；明确日期和 UTC 时差，保存后不会随系统时区改变。"); }
-        ImGui.TextWrapped("场数在上方统一设置；0 表示不限场。时长与截止时间只约束连续任务，单场按钮完成当前一整场后结束。");
+        ImGui.TextWrapped("提示任务跟踪当前整场；测试版连续任务另有场数设置。暂停不计入有效运行时长。");
         if(ImGui.Button("保存任务规则（不启动）"))
         {
             taskEditorError=""; DateTimeOffset? deadline=null;
@@ -71,12 +74,12 @@ internal sealed partial class MainWindow
             ImGui.TextWrapped($"{rating.ReadAtUtc.ToLocalTime():yyyy-MM-dd HH:mm:ss} · {rating.Source} · {(fresh?"页面读取":"保留读数")}");
             if(rating.FailureReason is { } error)ImGui.TextWrapped(error);
         }
-        else ImGui.TextWrapped(view.Rating?.FailureReason??"尚未读取。点击刷新即可自动打开本人金碟／麻将资料页，读完关闭。");
+        else ImGui.TextWrapped(view.Rating?.FailureReason??"尚未读取。请手动打开金碟／方城战资料页，再点击读取。");
         ImGui.BeginDisabled(view.RatingRefreshing);
-        if(ImGui.Button(view.RatingRefreshing?"正在刷新…###refresh-rating":"刷新本人评分###refresh-rating")) plugin.DispatchUi(plugin.ReadOwnRating);
+        if(ImGui.Button(view.RatingRefreshing?"正在刷新…###refresh-rating":"读取已打开页面###refresh-rating")) plugin.DispatchUi(plugin.ReadOwnRating);
         ImGui.EndDisabled();
         if(!string.IsNullOrEmpty(view.RatingStatus))ImGui.TextWrapped(view.RatingStatus);
-        ImGui.TextWrapped("整场结算退桌后自动刷新；只关闭插件自己打开的资料页，失败不阻塞排队。");
+        ImGui.TextWrapped("标准模式只读已显示的资料页。窗口自动刷新位于设置 → 测试版，需要单独授权；自动任务中的整场后刷新遵守同一操作权限。");
         ImGui.TextWrapped("评分不同于本场点数；资料页读数不证明上一整场结算已经刷新，目标停止尚未开放。");
     }
 }

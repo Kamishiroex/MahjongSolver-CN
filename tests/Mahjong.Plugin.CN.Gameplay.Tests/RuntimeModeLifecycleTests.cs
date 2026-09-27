@@ -608,7 +608,8 @@ public sealed class RuntimeModeLifecycleTests
         public int AddonLookups { get; private set; }
 
         public Host(Configuration? initial = null, IPluginLog? pluginLog = null, Func<string?>? accessError = null,
-            Func<IPolicy>? policyFactory = null, Func<bool>? identityGate = null, Func<string?>? identityError = null)
+            Func<IPolicy>? policyFactory = null, Func<bool>? identityGate = null, Func<string?>? identityError = null,
+            Func<bool>? inputGate = null)
         {
             var pi = ServiceProxy.Create<IDalamudPluginInterface>((method, args) => method.Name switch
             {
@@ -645,7 +646,7 @@ public sealed class RuntimeModeLifecycleTests
                 _ => throw new NotSupportedException(method.Name),
             });
             Runtime = new RuntimePlugin(pi, Framework, pluginLog ?? new StubPluginLog(), gui, lifecycle,
-                identityGate ?? (() => true), accessError, policyFactory: policyFactory, identityError: identityError);
+                identityGate ?? (() => true), accessError, inputGate: inputGate ?? (() => true), policyFactory: policyFactory, identityError: identityError);
         }
 
         private object? Save(Configuration config)

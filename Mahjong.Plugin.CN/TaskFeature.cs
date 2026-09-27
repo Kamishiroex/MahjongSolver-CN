@@ -65,11 +65,12 @@ public sealed partial class Plugin
     }
     private bool BeginManagedTask(bool automatic,bool continuous)
     {
+        if((automatic || continuous) && !RequireOperationCapability())return false;
         if(taskRun is null || resumingTask)return true; // Existing isolated runtime fixtures have no plugin coordinator.
         if(taskRun.HasUnfinishedRun){Status="现有任务尚未结束，请继续同一任务，或明确结束后新建。";return false;}
         string context=CurrentCharacterContext();
         if(context.Length==0){Status="预检未通过：本人角色上下文未就绪。";return false;}
-        var rules=continuous ? TaskRules with {MatchLimit=AutomationOptions.MatchLimit} : new StopRuleSet(MatchLimit:1);
+        var rules=continuous ? TaskRules with {MatchLimit=AutomationOptions.MatchLimit} : !automatic ? TaskRules with {MatchLimit=1} : new StopRuleSet(MatchLimit:1);
         if(rules.NeedsRating && !MahjongRatingReader.MatchRefreshVerified)
         {Status="评分目标暂不可用：资料页字段已核对，但整场后刷新关联尚未实机验证。";return false;}
         if(rules.ConsecutiveFourthLimit is not null){Status="连续第四名规则暂不可用：最终名次读取尚未验证。";return false;}
@@ -91,7 +92,7 @@ public sealed partial class Plugin
     {
         lock(gate)
         {
-            if(disposed || !RequireSelectedSourceAccess())return;
+            if(disposed || !RequireSelectedSourceAccess() || !RequireOperationCapability())return;
             if(taskRun?.HasUnfinishedRun!=true) { ActivatePlay(true); return; }
             if(taskRun.Phase is TaskRunPhase.Problem or TaskRunPhase.WaitingForData)
             { Status="请先处理当前任务的数据问题："+TaskSummary; return; }
@@ -106,6 +107,10 @@ public sealed partial class Plugin
     internal void ResumeTask() => ResumeTaskCore(null);
     private void ResumeTaskCore(bool? automatic)
     {
+        if(disposed || !RequireSelectedSourceAccess())return;
+        bool needsOperations=automatic==true || taskRun?.Plan is { } requestedPlan && (requestedPlan.Automatic || requestedPlan.Continuous);
+        if(needsOperations && !RequireOperationCapability())return;
+        int operationEpoch=Volatile.Read(ref operationGeneration);
         RevokeUiIntents();
         int request=Interlocked.Increment(ref modeRequestVersion);
         _=Framework.RunOnFrameworkThread(()=>
@@ -113,15 +118,17 @@ public sealed partial class Plugin
             lock(gate)
             {
                 if(disposed || request!=Volatile.Read(ref modeRequestVersion) || !RequireSelectedSourceAccess())return;
+                if(needsOperations && (operationEpoch!=Volatile.Read(ref operationGeneration) || !RequireOperationCapability()))return;
                 Identity=RuntimeIdentity.Read(Interface,Client);
                 if(Identity.Error is not null || !Client.IsLoggedIn || (ExperimentalHandAiEnabled && EngineMaintenanceBusy) ||
-                    (ExperimentalHandAiEnabled && EngineActivationError is not null) || taskRun.Plan is not { } plan)
+                    (ExperimentalHandAiEnabled && EngineActivationError is not null) || taskRun?.Plan is not { } plan)
                 {Status="继续预检未通过：请检查版本、登录和模型状态。";return;}
                 if(plan.Continuous && taskAutomationSnapshot!=AutomationOptions)
                 {Status="配置与本次任务快照不同；请还原配置后继续，或结束旧任务后创建新任务，计数未重置。";return;}
                 taskRun.ConfirmEngineForResume(TaskEngineIdentity,automatic);
                 if(!CheckLowerHandResource() || !taskRun.Resume(AutomationNow,DateTimeOffset.UtcNow,CurrentCharacterContext(),CurrentRating))
                 {Status=TaskSummary;return;}
+                if(needsOperations && !GrantTaskOperations(operationEpoch))return;
                 resumingTask=true;
                 ratingReadingEnabled=true;
                 RecordJournalEvent("task_resumed",new {taskRun.RunId,Engine=TaskEngineIdentity,taskRun.CompletedMatches,taskRun.ActiveSeconds});

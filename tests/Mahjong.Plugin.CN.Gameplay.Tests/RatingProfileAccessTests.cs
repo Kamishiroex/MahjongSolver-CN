@@ -7,6 +7,12 @@ namespace Mahjong.Plugin.CN.Gameplay.Tests;
 
 public sealed unsafe class RatingProfileAccessTests
 {
+    [Theory] [InlineData(false)] [InlineData(true)]
+    public void No_permission_never_accesses_game_native_operations(bool supplied)
+    {
+        var access=new CnRatingProfileAccess(_=>throw new InvalidOperationException("No lookup may occur"),supplied?()=>false:null);
+        Assert.False(access.Open());Assert.False(access.SelectMahjong());access.CloseOwned();
+    }
     // CN 2026.09.15 observed navigation: GoldSaucerInfo, radio node 8, text 方城战,
     // ButtonClick, root listener and node target. Personal profile values are excluded.
     [Fact] public void Uses_live_root_name_and_label_instead_of_guessed_GSInfo_and_long_label()

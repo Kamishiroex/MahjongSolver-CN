@@ -6,7 +6,7 @@ namespace Mahjong.Plugin.CN.Readers;
 
 /// <summary>CN 2026.09.15 / ClientStructs 243dc41e4. Framework thread only.
 /// Uses the GoldSaucer agent and the actual labelled radio button; no guessed tab callback.</summary>
-internal sealed unsafe class CnRatingProfileAccess(Func<string, nint> lookup) : IRatingProfileAccess
+internal sealed unsafe class CnRatingProfileAccess(Func<string, nint> lookup, Func<bool>? operationAllowed=null) : IRatingProfileAccess
 {
     internal const string RootAddonName = "GoldSaucerInfo";
     private bool ownsWindow;
@@ -31,6 +31,7 @@ internal sealed unsafe class CnRatingProfileAccess(Func<string, nint> lookup) : 
     }
     public bool Open()
     {
+        if(operationAllowed?.Invoke()!=true)return false;
         ForgetOwnership();
         var agent = AgentGoldSaucer.Instance();
         if (agent == null || IsOpen || agent->IsAgentActive() || !agent->IsActivatable()) return false;
@@ -49,6 +50,7 @@ internal sealed unsafe class CnRatingProfileAccess(Func<string, nint> lookup) : 
     }
     public bool SelectMahjong()
     {
+        if(operationAllowed?.Invoke()!=true)return false;
         RememberWindow();
         var root = Root;
         var tab = FindMahjongTab(root);
@@ -64,6 +66,7 @@ internal sealed unsafe class CnRatingProfileAccess(Func<string, nint> lookup) : 
     }
     public void CloseOwned()
     {
+        if(operationAllowed?.Invoke()!=true){ForgetOwnership();return;}
         var root = Root; var agent = AgentGoldSaucer.Instance();
         bool close = ownsWindow && ownedAddress != 0 && root != null && (nint)root == ownedAddress &&
             root->Id == ownedId && root->IsVisible && agent != null && agent->AddonId == ownedId &&

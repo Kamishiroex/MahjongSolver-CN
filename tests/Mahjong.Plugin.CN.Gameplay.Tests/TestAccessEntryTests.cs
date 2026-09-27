@@ -27,6 +27,7 @@ public sealed class TestAccessEntryTests
         using var host = new Host();
         using var runtime = new RuntimeModeLifecycleTests.Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        if (automatic) host.AuthorizeSyntheticTask();
         var mode = automatic ? Mahjong.Plugin.Dalamud.PlayMode.Automatic : Mahjong.Plugin.Dalamud.PlayMode.Manual;
         runtime.Runtime.SetMode(mode);
         Host.Set(host.Entry, "<PlayRuntime>k__BackingField", runtime.Runtime);
@@ -57,6 +58,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         Directory.CreateDirectory(host.LogTestDirectory);
         var service = typeof(Plugin).GetField("<Interface>k__BackingField", BindingFlags.NonPublic | BindingFlags.Static)!;
         var old = service.GetValue(null);
@@ -98,6 +100,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.PausePlay();
         int pauseRequest = Host.Get<int>(host.Entry, "modeRequestVersion");
         host.Entry.ArmTableAutomation();
@@ -117,6 +120,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.ArmTableAutomation();
         if (control == "pause") host.Entry.PausePlay();
         else if (control == "stop") host.Entry.Stop("stop");
@@ -168,6 +172,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         Host.Set(host.Entry, "experimentalHandAiEnabled", enabled ? 0 : 1);
         host.Entry.ActivatePlay(true);
         Assert.Single(host.Queued);
@@ -248,7 +253,7 @@ public sealed class TestAccessEntryTests
     }
 
     [Fact]
-    public void Locked_entry_rejects_test_operations_but_schedules_standard_modes()
+    public void Locked_entry_rejects_operations_but_schedules_standard_hints()
     {
         using var host = new Host();
         host.Entry.StartAiProbe("irrelevant");
@@ -258,7 +263,7 @@ public sealed class TestAccessEntryTests
         Assert.False(host.Entry.AiProbe.Busy);
         host.Entry.ActivatePlay(false);
         host.Entry.ActivatePlay(true);
-        Assert.Equal(2, host.Queued.Count); // Standard requests reach normal deferred preflight.
+        Assert.Single(host.Queued); // Only standard hints reach the deferred preflight.
         host.Entry.PausePlay(); host.Drain();
         Assert.Null(host.Entry.PlayRuntime);
         Assert.False(host.Entry.TestAccessUnlocked);
@@ -269,6 +274,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.SetExperimentalHandAiEnabled(true);
         host.Entry.ActivatePlay(true);
         Assert.Single(host.Queued);
@@ -285,7 +291,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.ActivatePlay(true);
+        host.Entry.ActivatePlay(false);
         int request = Host.Get<int>(host.Entry, "modeRequestVersion");
         host.Entry.VerifyTestCode(Host.Code);
         Assert.True(host.Entry.TestAccessUnlocked);
@@ -379,6 +385,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.ActivatePlay(true);
         Assert.Single(host.Queued);
         var validate = typeof(Plugin).GetMethod("CheckLowerHandResource", BindingFlags.NonPublic | BindingFlags.Instance)!;
@@ -448,6 +455,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.PausePlay();
         var delayedPause = host.Queued.Dequeue();
         host.Entry.ActivatePlay(true); // A newer request supersedes the paused callback.
@@ -469,6 +477,7 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         var journal = new GameJournal(Path.Combine(Path.GetTempPath(), "mjcn-fault-entry-" + Guid.NewGuid().ToString("N")));
         Assert.False(journal.Event("invalid-kind!", new { Synthetic = true }));
         Assert.Equal("JOURNAL_KIND_INVALID", journal.Fault);
@@ -560,18 +569,18 @@ public sealed class TestAccessEntryTests
         Assert.False(host.Entry.CurrentPublicTable!.Stable);
     }
 
-    [Theory]
-    [InlineData(false)] [InlineData(true)]
-    public void Standard_runtime_runs_without_lease_or_models_and_never_calls_beta_factory(bool automatic)
+    [Fact]
+    public void Standard_runtime_runs_without_lease_or_models_and_never_calls_beta_factory()
     {
         using var host = new Host();
         int betaFactories = 0;
         using var runtime = new RuntimeModeLifecycleTests.Host(
+            inputGate: () => host.Entry.GameOperationsAuthorized,
             policyFactory: () => host.Entry.CreateDecisionPolicy(() => { betaFactories++; throw new Exception("Beta must stay cold"); }));
         // Retained backend preference does not change the effective startup source.
         Host.Set(host.Entry, "<MortalSelected>k__BackingField", true);
-        runtime.Runtime.SetMode(automatic ? Mahjong.Plugin.Dalamud.PlayMode.Automatic : Mahjong.Plugin.Dalamud.PlayMode.Manual);
-        Assert.Equal(automatic ? Mahjong.Plugin.Dalamud.PlayMode.Automatic : Mahjong.Plugin.Dalamud.PlayMode.Manual, runtime.Runtime.Mode);
+        runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Manual);
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Manual, runtime.Runtime.Mode);
         var policy = Assert.IsType<EfficiencyPolicy>(runtime.Runtime.Policy);
         var hand = new[] { 0, 1, 2, 3, 4, 5, 9, 10, 11, 18, 19, 20, 27, 33 }.Select(Mahjong.Core.Tile.FromId).ToArray();
         var state = Mahjong.Core.StateSnapshot.Empty with { Hand = hand,
@@ -579,6 +588,8 @@ public sealed class TestAccessEntryTests
         var choice = policy.Choose(state);
         Assert.Equal(Mahjong.Policy.Abstractions.ActionKind.Discard, choice.Kind);
         Assert.Contains(choice.DiscardTile!.Value, hand);
+        Assert.Null(runtime.Runtime.AutoPlay);
+        Assert.False(runtime.Runtime.CanOperate);
         Assert.Equal(0, betaFactories);
         Assert.Null(Host.Get<object?>(host.Entry, "mortalSession"));
         Assert.Null(Host.Get<object?>(host.Entry, "aiProbe"));
@@ -592,13 +603,13 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         using var runtime = new RuntimeModeLifecycleTests.Host(policyFactory: host.Entry.CreateDecisionPolicy);
-        runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Automatic);
+        runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Manual);
         Host.Set(host.Entry, "<PlayRuntime>k__BackingField", runtime.Runtime);
         Host.Set(host.Entry, "gameplayAllowed", true);
         host.Entry.VerifyTestCode(valid ? Host.Code : "wrong-synthetic-value");
         Assert.Equal(valid, host.Entry.TestAccessUnlocked);
         Assert.True(Host.Get<bool>(host.Entry, "gameplayAllowed"));
-        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Automatic, runtime.Runtime.Mode);
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Manual, runtime.Runtime.Mode);
         Assert.IsType<EfficiencyPolicy>(runtime.Runtime.Policy);
         Assert.False(host.Entry.ExperimentalHandAiEnabled);
         Assert.Empty(host.Queued);
@@ -717,6 +728,8 @@ public sealed class TestAccessEntryTests
     public void Pausing_after_toolbar_auto_cancels_the_pending_mode_change_and_keeps_task_progress()
     {
         using var host = new Host();
+        Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
         using var runtime = new RuntimeModeLifecycleTests.Host(policyFactory: host.Entry.CreateDecisionPolicy);
         runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Manual);
         Host.Set(host.Entry, "<PlayRuntime>k__BackingField", runtime.Runtime);
@@ -736,12 +749,152 @@ public sealed class TestAccessEntryTests
         Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off, runtime.Runtime.Mode);
     }
 
+    [Theory]
+    [InlineData(false)] [InlineData(true)]
+    public void Qualification_alone_never_enables_operations_or_starts_backend(bool valid)
+    {
+        using var host = new Host();
+        host.Entry.VerifyTestCode(valid ? Host.Code : "synthetic-invalid");
+        host.Entry.ActivatePlay(true);
+        host.Entry.StartAutomaticFromToolbar();
+        host.Entry.ArmTableAutomation();
+        host.Entry.ReadOwnRatingWithNavigation();
+        Assert.Empty(host.Queued);
+        Assert.False(host.Entry.GameOperationsEnabled);
+        Assert.False(host.Entry.GameOperationsAuthorized);
+        Assert.False(host.Entry.ExperimentalHandAiEnabled);
+        Assert.False(host.Entry.RatingRefreshBusy);
+        Assert.Null(host.Entry.PlayRuntime);
+        Assert.Null(Host.Get<object?>(host.Entry, "mortalSession"));
+    }
+
+    [Fact]
+    public void Enabling_operations_does_not_grant_task_or_warm_selected_beta_solver()
+    {
+        using var host = new Host();
+        Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetExperimentalHandAiEnabled(true);
+        host.Entry.SetGameOperationsEnabled(true);
+        Assert.True(host.Entry.GameOperationsAvailable);
+        Assert.False(host.Entry.GameOperationsAuthorized);
+        Assert.Empty(host.Queued);
+        Assert.Null(host.Entry.PlayRuntime);
+        Assert.Null(Host.Get<object?>(host.Entry, "mortalSession"));
+        Assert.False(host.Entry.TableAutomationArmed);
+        Assert.False(host.Entry.RatingRefreshBusy);
+    }
+
+    [Theory]
+    [InlineData(false)] [InlineData(true)]
+    public void Revocation_and_reenable_never_revive_queued_start(bool queue)
+    {
+        using var host = new Host();
+        Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
+        if(queue)host.Entry.ArmTableAutomation(); else host.Entry.ActivatePlay(true);
+        Assert.Single(host.Queued);
+        host.Entry.SetGameOperationsEnabled(false);
+        host.Entry.SetGameOperationsEnabled(true);
+        host.Drain(); // Stale requests must return before client/resource access.
+        Assert.Null(host.Entry.PlayRuntime);
+        Assert.False(host.Entry.GameOperationsAuthorized);
+        Assert.False(host.Entry.TableAutomationArmed);
+    }
+
+    [Fact]
+    public void Old_ui_intent_cannot_create_new_task_authority_after_capability_reenabled()
+    {
+        using var host=new Host();
+        Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
+        host.Entry.DispatchUi(()=>host.Entry.ActivatePlay(true));
+        host.Entry.SetGameOperationsEnabled(false);
+        host.Entry.SetGameOperationsEnabled(true);
+        typeof(Plugin).GetMethod("DrainUiIntents",BindingFlags.NonPublic|BindingFlags.Instance)!.Invoke(host.Entry,null);
+        Assert.Empty(host.Queued);Assert.False(host.Entry.GameOperationsAuthorized);
+    }
+
+    [Fact]
+    public void Direct_runtime_automatic_request_cannot_bypass_production_operation_gate()
+    {
+        using var host = new Host();
+        int calls=0;
+        using var runtime = new RuntimeModeLifecycleTests.Host(inputGate: () => host.Entry.GameOperationsAuthorized,
+            policyFactory: () => host.Entry.CreateDecisionPolicy(() => {calls++;throw new Exception("Must stay cold");}));
+        runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Automatic);
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off,runtime.Runtime.Mode);
+        Assert.False(runtime.Runtime.CanOperate);
+        Assert.Null(runtime.Runtime.AutoPlay);
+        Assert.Equal(0,calls);
+        Assert.All(runtime.Saved,c => Assert.False(c.AutomationArmed));
+    }
+
+    [Fact]
+    public void Upstream_automatic_task_also_pauses_on_expiry_and_renewal_does_not_resume()
+    {
+        using var host = new Host();
+        host.AuthorizeSyntheticTask();
+        Host.Set(host.Entry,"stopAlert",new GameplayStopAlert());
+        using var runtime = new RuntimeModeLifecycleTests.Host(inputGate: () => host.Entry.GameOperationsAuthorized);
+        runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Automatic);
+        Host.Set(host.Entry,"<PlayRuntime>k__BackingField",runtime.Runtime);
+        Host.Set(host.Entry,"gameplayAllowed",true);
+        Assert.True(host.Entry.GameOperationsAuthorized);
+        var id=host.Entry.TaskRun.RunId;
+        host.Now=host.Access.ExpiresAtUtc!.Value;
+        Assert.False(host.Entry.GameOperationsAuthorized); // Even before the next framework tick.
+        Host.Enforce(host.Entry);
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off,runtime.Runtime.Mode);
+        Assert.Equal(Mahjong.Cn.Tasks.TaskRunPhase.Paused,host.Entry.TaskRun.Phase);
+        Assert.Contains("BETA_ACCESS_EXPIRED",host.Entry.PendingStopAlert!.Reason);
+        host.Entry.VerifyTestCode(Host.Code);
+        Assert.Equal(id,host.Entry.TaskRun.RunId);
+        Assert.False(host.Entry.ExperimentalHandAiEnabled);
+        Assert.False(host.Entry.GameOperationsAuthorized);
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off,runtime.Runtime.Mode);
+        Assert.Empty(host.Queued);
+    }
+
+    [Fact]
+    public void Expired_pending_window_operation_does_not_stop_standard_hints()
+    {
+        using var host = new Host();
+        Assert.True(host.Access.TryUnlock(Host.Code));
+        host.Entry.SetGameOperationsEnabled(true);
+        using var runtime = new RuntimeModeLifecycleTests.Host(inputGate: () => host.Entry.GameOperationsAuthorized);
+        runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Manual);
+        Host.Set(host.Entry,"<PlayRuntime>k__BackingField",runtime.Runtime);
+        Host.Set(host.Entry,"gameplayAllowed",true);
+        host.Now=host.Access.ExpiresAtUtc!.Value;
+        // Cancellation only forgets ownership; it cannot invoke a game operation.
+        Host.Set(host.Entry,"ratingRefresh",new Mahjong.Plugin.CN.Readers.RatingRefresh(new InertProfile(),()=>host.Entry.GameOperationsAvailable));
+        var pending=Host.Get<Mahjong.Plugin.CN.Readers.RatingRefresh>(host.Entry,"ratingRefresh");
+        pending.Request("synthetic",0,true);
+        Host.Enforce(host.Entry);
+        Assert.False(pending.Busy);
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Manual,runtime.Runtime.Mode);
+        Assert.True(Host.Get<bool>(host.Entry,"gameplayAllowed"));
+        Assert.Null(host.Entry.PendingStopAlert);
+    }
+
+    private sealed class InertProfile : Mahjong.Plugin.CN.Readers.IRatingProfileAccess
+    {
+        public bool IsOpen=>false;
+        public bool IsMahjongSelected=>false;
+        public bool Open()=>throw new InvalidOperationException();
+        public bool SelectMahjong()=>throw new InvalidOperationException();
+        public void CloseOwned()=>throw new InvalidOperationException();
+        public void ForgetOwnership() { }
+    }
+
     private sealed class Host : IDisposable
     {
         internal const string Code = "synthetic-entry-test-code";
         private readonly string directory = Path.Combine(Path.GetTempPath(), "mjcn-access-entry-" + Guid.NewGuid().ToString("N"));
         private readonly object? oldFramework;
         private readonly object? oldDataManager;
+        private readonly object? oldClient;
+        private readonly object? oldPlayerState;
         internal DateTimeOffset Now = new(2026, 9, 23, 0, 0, 0, TimeSpan.Zero);
         internal Plugin Entry { get; }
         internal TestCodeAccess Access { get; }
@@ -751,6 +904,8 @@ public sealed class TestAccessEntryTests
 
         internal Host()
         {
+            oldClient=typeof(Plugin).GetField("<Client>k__BackingField",BindingFlags.NonPublic|BindingFlags.Static)!.GetValue(null);
+            oldPlayerState=typeof(Plugin).GetField("<PlayerState>k__BackingField",BindingFlags.NonPublic|BindingFlags.Static)!.GetValue(null);
             Access = new(Path.Combine(directory, "test-access.json"), () => Now,
                 SHA256.HashData(Encoding.UTF8.GetBytes(Code)));
             Entry = (Plugin)RuntimeHelpers.GetUninitializedObject(typeof(Plugin));
@@ -759,9 +914,11 @@ public sealed class TestAccessEntryTests
             Set(Entry, "selectedEngineDirectory", Path.Combine(directory, "engines", "akochan-global-v5"));
             Set(Entry, "engineMaintenanceCancellation", new CancellationTokenSource());
             Set(Entry, "gate", new object());
+            Set(Entry, "uiIntents", new System.Collections.Concurrent.ConcurrentQueue<(int,Action)>());
             Set(Entry, "tableAutomation", new Mahjong.Plugin.CN.Automation.TableAutomation());
             Set(Entry, "<AutomationOptions>k__BackingField", new Mahjong.Plugin.CN.Automation.TableAutomationOptions());
             Set(Entry, "testAccess", Access);
+            Set(Entry, "pendingOperationRequest", -1);
             Set(Entry, "solverPreference", new SolverPreferenceStore(PreferencePath));
             Set(Entry, "<Session>k__BackingField", new CnSession(new("test", 15), "test", 15));
             Set(Entry, "<Actions>k__BackingField", new DisabledActionAdapter());
@@ -795,10 +952,30 @@ public sealed class TestAccessEntryTests
 
         internal void Drain() { while (Queued.TryDequeue(out var callback)) callback(); }
 
+        internal static void Enforce(Plugin entry)=>typeof(Plugin).GetMethod("EnforceBetaAccess",BindingFlags.NonPublic|BindingFlags.Instance)!.Invoke(entry,null);
+        internal void AuthorizeSyntheticTask()
+        {
+            Assert.True(Access.TryUnlock(Code));
+            Entry.SetGameOperationsEnabled(true);
+            typeof(Plugin).GetField("<Client>k__BackingField",BindingFlags.NonPublic|BindingFlags.Static)!.SetValue(null,
+                RuntimeModeLifecycleTests.ServiceProxy.Create<IClientState>((m,_)=>m.Name=="get_IsLoggedIn"?true:throw new InvalidOperationException(m.Name)));
+            typeof(Plugin).GetField("<PlayerState>k__BackingField",BindingFlags.NonPublic|BindingFlags.Static)!.SetValue(null,
+                RuntimeModeLifecycleTests.ServiceProxy.Create<IPlayerState>((m,_)=>m.Name switch {
+                    "get_IsLoaded"=>true,"get_ContentId"=>1UL,_=>throw new InvalidOperationException(m.Name)}));
+            Set(Entry,"ratingContentId",1UL);Set(Entry,"ratingContext","synthetic");
+            var run=new Mahjong.Cn.Tasks.TaskRun();
+            run.Start(new(true,false,0,"upstream",new(MatchLimit:1),"synthetic"),"synthetic",null,0,Now);
+            Set(Entry,"taskRun",run);
+            Assert.True((bool)typeof(Plugin).GetMethod("GrantTaskOperations",BindingFlags.NonPublic|BindingFlags.Instance)!
+                .Invoke(Entry,[Get<int>(Entry,"operationGeneration")])!);
+        }
+
         public void Dispose()
         {
             typeof(Plugin).GetField("<Framework>k__BackingField", BindingFlags.NonPublic | BindingFlags.Static)!.SetValue(null, oldFramework);
             typeof(Plugin).GetField("<DataManager>k__BackingField", BindingFlags.NonPublic | BindingFlags.Static)!.SetValue(null, oldDataManager);
+            typeof(Plugin).GetField("<Client>k__BackingField", BindingFlags.NonPublic | BindingFlags.Static)!.SetValue(null, oldClient);
+            typeof(Plugin).GetField("<PlayerState>k__BackingField", BindingFlags.NonPublic | BindingFlags.Static)!.SetValue(null, oldPlayerState);
             if (Directory.Exists(directory)) Directory.Delete(directory, true);
         }
     }

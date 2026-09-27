@@ -7,7 +7,7 @@
     <Version>4.1.4</Version>
     <AssemblyName>Mahjong.Plugin.CN</AssemblyName>
     <RootNamespace>Mahjong.Plugin.CN</RootNamespace>
-    <Description>默认采用上游求解器，提供国服对局辅助与任务管理。</Description>
+    <Description>标准模式不执行游戏操作，仅提供提示。</Description>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-09-25-01</DalamudLibPath>
   </PropertyGroup>
