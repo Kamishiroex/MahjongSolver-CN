@@ -135,18 +135,23 @@ public sealed partial class Plugin
         int request = Volatile.Read(ref automationRequestVersion);
         Guid? observedRun, observedMatch;
         string observedRatingContext;
+        Journaling.GameJournal? observedJournal;
         int observedOperationEpoch;
-        lock(gate) { observedRun=taskRun?.RunId; observedMatch=taskRun?.MatchId; observedRatingContext=ratingContext; observedOperationEpoch=operationGeneration; }
+        lock(gate) { observedRun=taskRun?.RunId; observedMatch=taskRun?.MatchId; observedRatingContext=ratingContext; observedOperationEpoch=operationGeneration; observedJournal=journal; }
         // Events may originate in the network handler. Input/cleanup stays on the framework.
         _ = Framework.RunOnFrameworkThread(() =>
         {
             lock (gate)
             {
-                if (!disposed && territory == 831 && MahjongDuties.Find(dutyId) is not null && journalActive)
+                if (!disposed && territory == 831 && MahjongDuties.Find(dutyId) is not null && journalActive && ReferenceEquals(journal,observedJournal))
                 {
-                    RecordJournalEvent("match_result", new { DutyId = dutyId, Source = "IDutyState.DutyCompleted" });
-                    if(journal is not null && reviewRatingPending is null)
-                        reviewRatingPending=(journal,observedMatch??journal.SessionId,observedRatingContext,DateTimeOffset.UtcNow);
+                    if(!reviewDutyCompleted)
+                    {
+                        RecordJournalEvent("match_result", new { DutyId = dutyId, MatchId=journal!.SessionId, Source = "IDutyState.DutyCompleted" });
+                        reviewRatingPending=(journal!,journal!.SessionId,observedRatingContext,DateTimeOffset.UtcNow);
+                        finalResultPending=reviewRatingPending;
+                        reviewDutyCompleted=true;
+                    }
                 }
                 if (disposed || territory != 831 || !Client.IsLoggedIn || Identity.Error is not null) return;
                 if (GameOperationsAuthorized && observedOperationEpoch==operationGeneration && observedRun==taskRun?.RunId &&
@@ -159,7 +164,7 @@ public sealed partial class Plugin
                     taskRun.RunId==observedRun && match==observedMatch && taskRun.CharacterContext==CurrentCharacterContext() &&
                     (taskPlan.DutyId == 0 || taskPlan.DutyId == dutyId) && taskRun.CompleteMatch(match))
                 {
-                    RecordJournalEvent("task_match_completed",new {taskRun.RunId,MatchId=match,taskRun.CompletedMatches,DutyId=dutyId,Engine=TaskEngineIdentity});
+                    RecordJournalEvent("task_match_completed",new {taskRun.RunId,MatchId=match,ReviewMatchId=journal?.SessionId,taskRun.CompletedMatches,DutyId=dutyId,Engine=TaskEngineIdentity});
                     UpdateTaskCore();
                 }
                 if(!ownedAutomation)return; // Completion observations survive pause; old action authority does not.

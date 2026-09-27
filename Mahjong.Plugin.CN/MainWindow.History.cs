@@ -13,7 +13,7 @@ internal sealed partial class MainWindow
         if(ImGui.Button("刷新本机整场摘要"))plugin.DispatchUi(plugin.RefreshHistory);
         ImGui.EndDisabled();
         ImGui.TextWrapped(history.Status);
-        ImGui.TextWrapped("最终名次、逐局和牌/放铳结果及整场评分关联尚无已验证读取来源；未知项不进入统计分母。记录完成也不等于全程自动完成。");
+        ImGui.TextWrapped("名次取自本人整场结算；逐局结果需公开结算提示与四家付款相符；评分差值需赛前、赛后总场数恰好增加 1。未知项不进入分母，记录完成也不等于全程自动完成。");
         if(ImGui.CollapsingHeader("趋势与程序可靠性",ImGuiTreeNodeFlags.DefaultOpen))
         foreach(var trend in MatchTrends.Build(history.Items))
         {
@@ -43,10 +43,19 @@ internal sealed partial class MainWindow
                 ImGui.TextWrapped($"记录始于 {row.StartedUtc.ToLocalTime():yyyy-MM-dd HH:mm} · {row.Outcome}");
                 ImGui.TextWrapped($"桌型：{(row.DutyId is {} id?Automation.MahjongDuties.Find(id)?.Name:null)??"未知"} · 来源：{Presentation.DisplayCopy.Source(row.Engine)} · 插件 {row.PluginVersion}");
                 ImGui.TextWrapped($"最终名次：{row.Placement?.ToString()??"未知"}；资料页评分观察：赛前 {row.RatingBefore?.ToString()??"未知"} / 赛后 {row.RatingAfter?.ToString()??"未知"}；整场差值：{row.RatingDelta?.ToString()??"关联未验证"}。");
+                ImGui.TextWrapped($"小局：已核对 {row.HandsWithVerifiedOutcome??0} / 已观察 {row.ObservedHands} · 和牌 {row.Wins?.ToString()??"未知"} · 放铳 {row.DealIns?.ToString()??"未知"}");
+                if(row.Hands.Length>0 && ImGui.TreeNode("逐局结果"))
+                {
+                    int handIndex=0;
+                    foreach(var hand in row.Hands)
+                        ImGui.TextWrapped($"小局记录 {++handIndex} · {HandResultKind(hand.Kind)} · 和牌 {(hand.SelfWon.HasValue?hand.SelfWon.Value?"是":"否":"未知")} / 放铳 {(hand.SelfDealtIn.HasValue?hand.SelfDealtIn.Value?"是":"否":"未知")} · {HandResultReason(hand.Code)}");
+                    ImGui.TreePop();
+                }
                 ImGui.TextWrapped("接管 / 停止："+Presentation.DisplayCopy.Summary(row.StopReason));
-                if(ImGui.SmallButton("复制普通摘要")) ImGui.SetClipboardText($"{Brand.ProductName} · {row.Outcome} · {Presentation.DisplayCopy.Source(row.Engine)} · 最终名次/评分变化未知");
+                if(ImGui.SmallButton("复制普通摘要")) ImGui.SetClipboardText($"{Brand.ProductName} · {row.Outcome} · {Presentation.DisplayCopy.Source(row.Engine)} · 名次 {row.Placement?.ToString()??"未知"} · 评分变化 {row.RatingDelta?.ToString("+0;-0;0")??"未知"} · 和牌 {row.Wins?.ToString()??"未知"} / 放铳 {row.DealIns?.ToString()??"未知"}");
                 if(ImGui.CollapsingHeader("本地技术详情"))
                 {
+                    ImGui.TextWrapped($"名次依据：{row.PlacementEvidence}；评分关联：{row.RatingAssociation}");
                     ImGui.TextWrapped($"后端 {row.Engine} · 桥 {row.Bridge??"未知"} · 模型 SHA256 {row.ModelSha256??"未知"}");
                     ImGui.TextWrapped($"配置 {row.ConfigurationFingerprint??(row.MixedConfiguration?"混合配置":"未知")} · 设置 SHA256 {row.SettingsSha256??"未知"}");
                     ImGui.TextWrapped(row.StopReason);
@@ -61,6 +70,14 @@ internal sealed partial class MainWindow
             finally{ImGui.PopID();}
         }
     }
+    private static string HandResultKind(string kind)=>kind switch {"Ron"=>"荣和","Tsumo"=>"自摸","Draw"=>"流局",_=>"待判定"};
+    private static string HandResultReason(string code)=>code switch
+    {
+        "RESULT_CONFIRMED"=>"结算已核对", "RESULT_BANNER_MISSING"=>"缺少结算提示",
+        "RESULT_PAYMENTS_INCOMPLETE"=>"缺少完整结算前后点数", "RESULT_SCORE_ANIMATION"=>"点数仍在动画变化",
+        "SPECIAL_DRAW_UNVERIFIED"=>"特殊流局付款待核验", "RESULT_WIN_PAYER_AMBIGUOUS"=>"和牌/付款归属不唯一",
+        "RESULT_CONTRADICTORY" or "RESULT_PAYMENTS_CONTRADICTORY"=>"结算读数矛盾",_=>"结算依据不完整",
+    };
     private static string ShortReviewHash(string? value)=>value is null?"未知 / 不可比较":value[..Math.Min(10,value.Length)];
     private static string ReviewNumber(double? value)=>value?.ToString("0.00")??"未知";
     private static string ReviewPercent(double? value)=>value?.ToString("P1")??"未知";

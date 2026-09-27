@@ -10,6 +10,17 @@ internal sealed class JournalPrivacyExport
     private readonly JournalPayloadCodec decoder = new(), encoder = new();
     private string previous = new('0',64);
     private string sourcePrevious = new('0',64);
+    internal JsonElement SanitizeBoundSupplement(JsonElement value)
+    {
+        var safe=DiagnosticPrivacy.Sanitize(value);
+        // Rebind only a supplement already bound to the source we just verified.
+        // An unrelated/stale tail must remain invalid in the derived export.
+        if(value.ValueKind!=JsonValueKind.Object || !value.TryGetProperty("JournalTailSha256",out var tail) ||
+            tail.ValueKind!=JsonValueKind.String || tail.GetString()!=sourcePrevious)return safe;
+        var node=System.Text.Json.Nodes.JsonNode.Parse(safe.GetRawText())!;
+        node["JournalTailSha256"]=previous;
+        return JsonSerializer.SerializeToElement(node);
+    }
     internal async Task<long> CopyAsync(Stream source, Stream destination, bool lines)
     {
         using var reader = new StreamReader(source, new UTF8Encoding(false, true), false, 4096, true);

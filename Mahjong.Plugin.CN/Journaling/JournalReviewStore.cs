@@ -35,7 +35,7 @@ internal static class JournalReviewStore
             foreach(var entry in archive.Entries)
             {
                 token.ThrowIfCancellationRequested();
-                if(!Regex.IsMatch(entry.FullName,@"\Aevents(\.[0-9]{4})?\.jsonl\z") && entry.FullName!="rating-after.json")continue;
+                if(!Regex.IsMatch(entry.FullName,@"\Aevents(\.[0-9]{4})?\.jsonl\z") && entry.FullName is not ("rating-after.json" or "final-result.json"))continue;
                 if(!names.Add(entry.FullName) || entry.Length>GameJournal.MaximumFileBytes || (total+=entry.Length)>256L*1024*1024)
                     throw new IOException("REVIEW_ARCHIVE_EXPANSION_LIMIT");
                 string file=Path.Combine(temp,entry.FullName);GameJournal.RejectLinks(file);

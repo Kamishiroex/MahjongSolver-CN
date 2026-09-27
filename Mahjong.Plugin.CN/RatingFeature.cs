@@ -46,7 +46,7 @@ public sealed partial class Plugin
         ratingOperationContext=context;
         ratingProfile??=new(name=>GameGui.GetAddonByName(name).Address,()=>RatingOperationsAuthorized);
         ratingRefresh??=new(ratingProfile,()=>RatingOperationsAuthorized);
-        ratingRefresh.Request(context,AutomationNow,afterMatch);
+        ratingRefresh.Request(context,AutomationNow,afterMatch,reviewRatingAnchor?.Before.MatchesPlayed);
         RecordJournalEvent("profile_operation_authorized",new {Scope="rating-page-only",AfterMatch=afterMatch,
             Source=explicitRequest?"explicit-user-click":"authorized-task-after-match"});
     }

@@ -1,0 +1,79 @@
+{
+  "Schema": 1,
+  "GameVersion": "2026.09.15.0000.0000",
+  "Source": "Local read-only CN capture on 2026-09-27; final own rank and after-match profile readings confirmed by the user. Four displayed ranks and exact in-memory own-name comparison only; no names or character IDs retained.",
+  "ExpectedPlacement": 1,
+  "FinalSample": {
+    "Addon": "EmjTotalResult",
+    "Profile": "CN-2026.09.15-result-uld-r1",
+    "Visible": true,
+    "Values": [
+      {
+        "Path": "EmjTotalResult/23/10",
+        "Number": 4,
+        "Token": null,
+        "IsSelf": false,
+        "IconId": null,
+        "TexturePathHash": null,
+        "U": null,
+        "V": null,
+        "Width": null,
+        "Height": null
+      },
+      {
+        "Path": "EmjTotalResult/22/10",
+        "Number": 3,
+        "Token": null,
+        "IsSelf": false,
+        "IconId": null,
+        "TexturePathHash": null,
+        "U": null,
+        "V": null,
+        "Width": null,
+        "Height": null
+      },
+      {
+        "Path": "EmjTotalResult/21/10",
+        "Number": 2,
+        "Token": null,
+        "IsSelf": false,
+        "IconId": null,
+        "TexturePathHash": null,
+        "U": null,
+        "V": null,
+        "Width": null,
+        "Height": null
+      },
+      {
+        "Path": "EmjTotalResult/20/15",
+        "Number": null,
+        "Token": null,
+        "IsSelf": true,
+        "IconId": null,
+        "TexturePathHash": null,
+        "U": null,
+        "V": null,
+        "Width": null,
+        "Height": null
+      },
+      {
+        "Path": "EmjTotalResult/20/10",
+        "Number": 1,
+        "Token": null,
+        "IsSelf": false,
+        "IconId": null,
+        "TexturePathHash": null,
+        "U": null,
+        "V": null,
+        "Width": null,
+        "Height": null
+      }
+    ],
+    "Error": null
+  },
+  "RatingNormalization": "Rating baseline and match count translated; deltas and order retained. Test times are synthetic for the association contract, not raw game timestamps.",
+  "BeforeRating": 1800,
+  "AfterRating": 1825,
+  "BeforeMatches": 42,
+  "AfterMatches": 43
+}

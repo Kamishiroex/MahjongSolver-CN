@@ -79,7 +79,8 @@ internal static class JournalRetention
     private static bool OwnedFile(string name) => GameJournal.IsJournalFile(name) || name is
         ".active" or "journal-index.json" or "journal-index.tmp" or "recovery-latest.jsonl" or
         "recovery-latest.jsonl.tmp" or "diagnostic-fault.jsonl" or "diagnostic-fault.jsonl.tmp" or "record-closed.json" or
-        "match-summary.json" or "match-summary.json.tmp" or "rating-after.json" or "rating-after.json.tmp";
+        "match-summary.json" or "match-summary.json.tmp" or "rating-after.json" or "rating-after.json.tmp" or
+        "final-result.json" or "final-result.json.tmp";
 
     private static void DeleteOwned(string root, string archives, string path, bool zip)
     {

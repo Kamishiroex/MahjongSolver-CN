@@ -26,6 +26,7 @@ public sealed unsafe class RatingReaderTests
             Text(nameof(AddonGSInfoEmj.CurrentRating),23,"1940",0x1000);
             Text(nameof(AddonGSInfoEmj.HighestRating),24,"2100",0x2000);
             Text(nameof(AddonGSInfoEmj.Rank),7,"初段",0x3000);
+            Text(nameof(AddonGSInfoEmj.MatchesPlayed),16,"42战",0x4000);
         }
         internal void Store<T>(int offset,T value)where T:unmanaged=>MemoryMarshal.Write(Memory.AsSpan(offset),in value);
         internal void Text(string field,uint id,string value,int offset)
@@ -39,7 +40,10 @@ public sealed unsafe class RatingReaderTests
     }
     private static int Offset<T>(string name)=>typeof(T).GetField(name)!.GetCustomAttribute<FieldOffsetAttribute>()!.Value;
     [Fact]public void Named_fields_keep_current_highest_separate_and_do_not_claim_match_refresh()
-    {var f=new Fixture();var r=f.Reader.Observe("fixture",true,Now);Assert.Equal(1940,r.CurrentRating);Assert.Equal(2100,r.HighestRating);Assert.Equal("初段",r.Rank);Assert.Equal(RatingFreshness.Fresh,r.Freshness);Assert.Null(r.MatchAssociation);}
+    {var f=new Fixture();var r=f.Reader.Observe("fixture",true,Now);Assert.Equal(1940,r.CurrentRating);Assert.Equal(2100,r.HighestRating);Assert.Equal("初段",r.Rank);Assert.Equal(42,r.MatchesPlayed);Assert.Equal(RatingFreshness.Fresh,r.Freshness);Assert.Null(r.MatchAssociation);}
+    [Theory][InlineData("unknown",16)][InlineData("43",17)][InlineData("100000",16)]
+    public void Missing_or_unrecognized_counter_does_not_hide_valid_rating(string text,uint id)
+    {var f=new Fixture();f.Text(nameof(AddonGSInfoEmj.MatchesPlayed),id,text,0x4000);var r=f.Reader.Observe("fixture",true,Now);Assert.Equal(1940,r.CurrentRating);Assert.Null(r.MatchesPlayed);}
     [Fact]public void Closed_page_keeps_old_timestamp_and_context_switch_drops_cache()
     {var f=new Fixture();f.Reader.Observe("fixture",true,Now);f.Address=0;var cache=f.Reader.Observe("fixture",true,Now.AddMinutes(1));Assert.Equal(Now,cache.ReadAtUtc);Assert.Equal(RatingFreshness.Cached,cache.Freshness);Assert.Null(f.Reader.Observe("other",true,Now).CurrentRating);}
     [Fact]public void Invalid_identity_does_not_read_any_memory_or_retain_rating()

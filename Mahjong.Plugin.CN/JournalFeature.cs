@@ -54,6 +54,7 @@ public sealed partial class Plugin
         ScheduleJournalMaintenance();
         journalActive = true;
         reviewTableStarted=false;reviewDuty=null;reviewDecisionId=null;reviewDecisionHash=null;
+        reviewDutyCompleted=false;ResetResults();
         journalReportedFault = runtimeJournalHash = tableJournalHash = previousRuntimeJournalHash = null;
         recordedAutomationStatus = null;
         runtimeJournalSequence = 0;

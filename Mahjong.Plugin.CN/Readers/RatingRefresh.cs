@@ -19,15 +19,17 @@ internal sealed class RatingRefresh(IRatingProfileAccess profile, Func<bool> ope
     private double requested, openedAt;
     private bool automatic, attemptedOpen, selected;
     private RatingObservation? candidate;
+    private int? previousMatches;
     internal bool Busy { get; private set; }
     internal string Status { get; private set; } = "";
     internal RatingObservation? Result { get; private set; }
 
-    internal void Request(string character, double now, bool afterMatch)
+    internal void Request(string character, double now, bool afterMatch, int? beforeMatches = null)
     {
         if (Busy) return; // Repeated clicks/events never reopen or extend the deadline.
         context = character; requested = now; openedAt = 0;
         automatic = afterMatch; attemptedOpen = selected = false; candidate = Result = null;
+        previousMatches = afterMatch ? beforeMatches : null;
         Busy = true; Status = afterMatch ? "整场已结束，等待退桌后刷新评分…" : "正在读取本人评分…";
     }
 
@@ -68,15 +70,21 @@ internal sealed class RatingRefresh(IRatingProfileAccess profile, Func<bool> ope
         if (value.Freshness != RatingFreshness.Fresh || value.CurrentRating is null ||
             value.LocalCharacterContext != context)
         { candidate = null; return; }
+        if (automatic && previousMatches is { } before && value.MatchesPlayed == before)
+        {
+            candidate = null; Status = "等待资料页总场数更新，尚未确认本场评分…";
+            return; // Keep the existing bounded deadline; never reopen or extend it.
+        }
         if (candidate is { } previous && previous.CurrentRating == value.CurrentRating &&
             previous.HighestRating == value.HighestRating && previous.Rank == value.Rank &&
+            previous.MatchesPlayed == value.MatchesPlayed &&
             value.ReadAtUtc - previous.ReadAtUtc >= TimeSpan.FromMilliseconds(150))
         {
             Result = value; Busy = false; Status = automatic ? "整场后已读取资料页评分。" : "本人评分已刷新。";
             profile.CloseOwned();
         }
         else if (candidate is null || candidate.CurrentRating != value.CurrentRating ||
-            candidate.HighestRating != value.HighestRating || candidate.Rank != value.Rank) candidate = value;
+            candidate.HighestRating != value.HighestRating || candidate.Rank != value.Rank || candidate.MatchesPlayed != value.MatchesPlayed) candidate = value;
     }
 
     internal void Cancel(string reason, bool canClose)

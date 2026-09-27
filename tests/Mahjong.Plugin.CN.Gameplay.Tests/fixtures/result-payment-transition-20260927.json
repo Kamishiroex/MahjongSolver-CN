@@ -1,0 +1,118 @@
+{
+  "Schema": 1,
+  "GameVersion": "2026.09.15.0000.0000",
+  "Source": "Read-only local changed-frame capture on 2026-09-27. Names, addresses and absolute timestamps omitted. Scores ordered bottom/right/top/left; both animation text nodes agree.",
+  "Scope": "Real public UI values; no addon state-code capture. Regression for classification and animation rejection, not a complete runtime acceptance replay.",
+  "Frames": [
+    {
+      "ElapsedSeconds": 0.0,
+      "Scores": [
+        31200,
+        24500,
+        17900,
+        26400
+      ],
+      "ResultIcons": [
+        {
+          "Path": "Emj/51/2",
+          "Number": null,
+          "Token": null,
+          "IsSelf": false,
+          "IconId": 121488,
+          "TexturePathHash": 1953514463,
+          "U": 0,
+          "V": 0,
+          "Width": 640,
+          "Height": 80
+        }
+      ],
+      "HandDetailPoints": null
+    },
+    {
+      "ElapsedSeconds": 1.54,
+      "Scores": [
+        31200,
+        24500,
+        17900,
+        26400
+      ],
+      "ResultIcons": [],
+      "HandDetailPoints": null
+    },
+    {
+      "ElapsedSeconds": 6.668,
+      "Scores": [
+        31200,
+        24500,
+        17900,
+        26400
+      ],
+      "ResultIcons": [],
+      "HandDetailPoints": 2000
+    },
+    {
+      "ElapsedSeconds": 13.334,
+      "Scores": [
+        32210,
+        24500,
+        16890,
+        26400
+      ],
+      "ResultIcons": [],
+      "HandDetailPoints": null
+    },
+    {
+      "ElapsedSeconds": 13.848,
+      "Scores": [
+        33375,
+        24500,
+        15725,
+        26400
+      ],
+      "ResultIcons": [],
+      "HandDetailPoints": null
+    },
+    {
+      "ElapsedSeconds": 14.362,
+      "Scores": [
+        33500,
+        24500,
+        15600,
+        26400
+      ],
+      "ResultIcons": [],
+      "HandDetailPoints": null
+    },
+    {
+      "ElapsedSeconds": 14.874,
+      "Scores": [
+        33500,
+        24500,
+        15600,
+        26400
+      ],
+      "ResultIcons": [],
+      "HandDetailPoints": null
+    },
+    {
+      "ElapsedSeconds": 15.9,
+      "Scores": [
+        33500,
+        24500,
+        15600,
+        26400
+      ],
+      "ResultIcons": [],
+      "HandDetailPoints": null
+    }
+  ],
+  "ExpectedKind": "Ron",
+  "ExpectedPayments": [
+    2300,
+    0,
+    -2300,
+    0
+  ],
+  "ExpectedSelfWon": true,
+  "ExpectedSelfDealtIn": false
+}

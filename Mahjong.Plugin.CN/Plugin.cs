@@ -488,6 +488,7 @@ public sealed partial class Plugin : IDalamudPlugin
         UpdateTaskCore();
         PollJournalMaintenance();
         UpdateJournalCore();
+        UpdateResultsCore();
         UpdateTableAutomationCore();
         if (aiProbe?.Busy == true && (Identity.Error is not null || !Client.IsLoggedIn))
             StopCore(Identity.Error ?? "SCENE_EXIT：已登出，本地 AI 自检已取消。");

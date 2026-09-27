@@ -86,6 +86,33 @@ public sealed class RatingRefreshTests
         r.Tick("synthetic", true, true, .2, () => Value(.2, 1810)); Assert.True(r.Busy);
         r.Tick("synthetic", true, true, .4, () => Value(.4, 1810)); Assert.Equal(1810, r.Result!.CurrentRating);
     }
+    [Fact] public void Changed_match_counter_requires_its_own_stable_pair_even_when_rating_is_unchanged()
+    {
+        var p = new Profile { IsOpen = true, IsMahjongSelected = true }; var r = new RatingRefresh(p,()=>true);
+        r.Request("synthetic", 0, false);
+        r.Tick("synthetic",true,true,0,()=>Value(0) with {MatchesPlayed=42});
+        r.Tick("synthetic",true,true,.2,()=>Value(.2) with {MatchesPlayed=43});
+        Assert.True(r.Busy);
+        r.Tick("synthetic",true,true,.4,()=>Value(.4) with {MatchesPlayed=43});
+        Assert.Equal(43,r.Result!.MatchesPlayed);
+    }
+    [Theory] [InlineData(false)] [InlineData(true)]
+    public void After_match_waits_for_counter_advance_or_times_out_without_accepting_stale_rating(bool advance)
+    {
+        var p=new Profile();var r=new RatingRefresh(p,()=>true);r.Request("synthetic",0,true,42);
+        Tick(r,3);p.IsMahjongSelected=true;
+        r.Tick("synthetic",true,true,3.2,()=>Value(3.2) with {MatchesPlayed=42});
+        r.Tick("synthetic",true,true,3.4,()=>Value(3.4) with {MatchesPlayed=42});
+        Assert.True(r.Busy);Assert.Null(r.Result);Assert.Equal(0,p.Closes);
+        if(advance)
+        {
+            r.Tick("synthetic",true,true,4,()=>Value(4) with {MatchesPlayed=43});
+            r.Tick("synthetic",true,true,4.2,()=>Value(4.2) with {MatchesPlayed=43});
+            Assert.Equal(43,r.Result!.MatchesPlayed);
+        }
+        else { Tick(r,9);Assert.Null(r.Result); }
+        Assert.False(r.Busy);Assert.Equal(1,p.Closes);Assert.Equal(1,p.Opens);
+    }
     [Fact] public void Stop_cancels_late_reads_and_closes_own_page()
     {
         var p = new Profile(); var r = new RatingRefresh(p,()=>true); r.Request("synthetic", 0, false); Tick(r, 0);

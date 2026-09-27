@@ -47,6 +47,7 @@ internal sealed class GameJournal
     private readonly Dictionary<string, (long Sequence, string Hash)> heads = new()
         { ["events.jsonl"] = (0, new string('0', 64)), ["errors.jsonl"] = (0, new string('0', 64)) };
     private Task completion = Task.CompletedTask;
+    private readonly TaskCompletionSource finalized = new(TaskCreationOptions.RunContinuationsAsynchronously);
     private int pending;
     private bool closed;
     private bool initialized;
@@ -75,6 +76,9 @@ internal sealed class GameJournal
     internal Guid SessionId => sessionId;
     internal string? Fault { get { lock (gate) return fault; } }
     internal Task Completion { get { lock (gate) return completion; } }
+    // Unlike Completion (pending writes), this cannot complete before the stream
+    // has been sealed. Post-match evidence must bind the actual final hash.
+    internal Task Finalized => finalized.Task;
 
     internal bool Event<T>(string kind, T data) => Append("events.jsonl", kind, data);
     internal bool AppendRecorded(string kind, JsonElement data, DateTimeOffset utc) => Append("events.jsonl", kind, data, utc);
@@ -219,7 +223,7 @@ internal sealed class GameJournal
                         { Schema = 1, SessionId = sessionId, ClosedUtc = DateTimeOffset.UtcNow, Fault })).ConfigureAwait(false);
                     }
                 }
-                finally { sessionLease?.Dispose(); sessionLease = null; }
+                finally { sessionLease?.Dispose(); sessionLease = null; finalized.TrySetResult(); }
             });
         }
     }
@@ -384,13 +388,21 @@ internal sealed class GameJournal
                 foreach (string file in StreamFiles(directory, "events.jsonl").Concat(StreamFiles(directory, "errors.jsonl"))
                     .Concat(new[] { Path.Combine(directory, "journal-index.json"), Path.Combine(directory, "recovery-latest.jsonl"),
                         Path.Combine(directory, "diagnostic-fault.jsonl"), Path.Combine(directory,"match-summary.json"),
-                        Path.Combine(directory,"rating-after.json"), Path.Combine(root, "last-stop.json") }).Where(File.Exists))
+                        Path.Combine(directory,"rating-after.json"), Path.Combine(directory,"final-result.json"), Path.Combine(root, "last-stop.json") }).Where(File.Exists))
                 {
                     RejectLinks(file);
                     using var input = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
                     if (input.Length > MaximumFileBytes) throw new IOException("JOURNAL_FILE_LIMIT");
                     using var entry = zip.CreateEntry(Path.GetFileName(file), CompressionLevel.Optimal).Open();
                     string name = Path.GetFileName(file);
+                    if(name is "rating-after.json" or "final-result.json" && privacyStreams.TryGetValue("events",out var eventsPrivacy))
+                    {
+                        using var supplement=await JsonDocument.ParseAsync(input).ConfigureAwait(false);
+                        byte[] safe=JsonSerializer.SerializeToUtf8Bytes(eventsPrivacy.SanitizeBoundSupplement(supplement.RootElement));
+                        await entry.WriteAsync(safe).ConfigureAwait(false);
+                        exportedLengths[name]=safe.Length;
+                        continue;
+                    }
                     if (name == "journal-index.json")
                     {
                         using var sourceIndex = await JsonDocument.ParseAsync(input).ConfigureAwait(false);
@@ -411,6 +423,7 @@ internal sealed class GameJournal
                     }
                 using (var entry = zip.CreateEntry("export-privacy.json", CompressionLevel.Optimal).Open())
                     JsonSerializer.Serialize(entry, new { SchemaVersion = 1, DerivedSanitizedChain = true, OriginalFilesChanged = false,
+                        BoundSupplementsRebasedToDerivedChain = true,
                         Provenance = "Actual backend and version retained. Export hashes bind sanitized data, not original disk bytes.",
                         Redacted = "credential fields, player/account identifiers, personal absolute paths and recognizable credential strings" });
                 return destination;

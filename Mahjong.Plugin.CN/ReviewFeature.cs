@@ -32,6 +32,8 @@ public sealed partial class Plugin
     private bool reviewTableStarted;
     private uint? reviewDuty;
     private (GameJournal Journal, Guid Match, string Context, DateTimeOffset End)? reviewRatingPending;
+    private MatchRatingAnchor? reviewRatingAnchor;
+    private bool reviewDutyCompleted;
 
     private IPolicy CreateReviewedPolicy(IPolicy policy)
     {
@@ -111,35 +113,55 @@ public sealed partial class Plugin
     {
         if(!journalActive||reviewTableStarted)return;
         reviewTableStarted=true;
+        reviewRatingAnchor=null;
+        // Queue time can exceed the UI freshness interval. The match-counter
+        // increment, not the age alone, proves that only this match is in the span.
+        var before=RatingPageEvidence.From(CurrentRating,CurrentCharacterContext(),DateTimeOffset.UtcNow,beforeQueue:true);
+        if(sawSetup && before is not null && journal is not null)
+        {
+            reviewRatingAnchor=new(journal.SessionId,Guid.NewGuid(),DateTimeOffset.UtcNow,before);
+            RecordJournalEvent("review_rating_anchor",reviewRatingAnchor);
+        }
         RecordJournalEvent("review_match_started",new {SawTableSetup=sawSetup,Mode=PlayRuntime?.Mode.ToString(),
             RatingBefore=RatingEvidence(CurrentRating),OpponentEnvironment="unknown"});
     }
     private object? RatingEvidence(RatingObservation? value) => value is not null &&
         value.Trusted(CurrentCharacterContext(),MahjongRatingReader.Profile,DateTimeOffset.UtcNow)
-        ? new {value.CurrentRating,value.ReadAtUtc,value.ProfileVersion,value.EvidenceRevision,Mapping="Verified"}:null;
+        ? new {value.CurrentRating,value.ReadAtUtc,value.ProfileVersion,value.EvidenceRevision,value.MatchesPlayed,Mapping="Verified"}:null;
 
     private void RecordReviewRating(RatingObservation value)
     {
         if(reviewRatingPending is not { } pending || value.ReadAtUtc<=pending.End || value.ReadAtUtc>pending.End.AddMinutes(5) ||
             value.LocalCharacterContext!=pending.Context || !value.Trusted(pending.Context,MahjongRatingReader.Profile,DateTimeOffset.UtcNow))return;
+        var anchor=reviewRatingAnchor;
+        var after=RatingPageEvidence.From(value,pending.Context,DateTimeOffset.UtcNow);
+        // A visible page can still contain the pre-result server data. Wait for
+        // its counter to advance; never finalize a zero delta just because it opened.
+        if(anchor is not null && after is not null && after.MatchesPlayed==anchor.Before.MatchesPlayed)return;
         reviewRatingPending=null;
         // Rating refresh normally finishes after the match journal has closed. This is
         // a bounded supplement in that same record, never a new unrelated game session.
         _=Task.Run(async()=>
         {
-            await pending.Journal.Completion.ConfigureAwait(false);
             try
             {
+                await pending.Journal.Finalized.WaitAsync(TimeSpan.FromMinutes(5)).ConfigureAwait(false);
                 string path=Path.Combine(pending.Journal.DirectoryPath,"rating-after.json");
                 GameJournal.RejectLinks(path);
-                byte[] data=JsonSerializer.SerializeToUtf8Bytes(new {Schema=1,MatchId=pending.Match,
-                    RatingAfter=value.CurrentRating,value.ReadAtUtc,value.ProfileVersion,value.EvidenceRevision,
-                    AssociationVerified=false,Reason="资料页字段已验证；整场结算刷新关联尚未实机验证。"});
+                var source=await GameJournal.ReadAsync(Path.Combine(pending.Journal.DirectoryPath,"events.jsonl"),summaryOnly:true);
+                bool bound=anchor is not null && after is not null && anchor.MatchId==pending.Match &&
+                    source.IntegrityPassed && !source.IncompleteTail && !source.Lines.IsEmpty &&
+                    source.Lines.Any(l=>l.Entry.Kind=="session_stopped");
+                byte[] data=bound
+                    ? JsonSerializer.SerializeToUtf8Bytes(new MatchRatingSupplement(2,pending.Match,anchor!.ContextToken,source.Lines[^1].Sha256,after!))
+                    : JsonSerializer.SerializeToUtf8Bytes(new {Schema=1,MatchId=pending.Match,
+                        RatingAfter=value.CurrentRating,value.ReadAtUtc,value.ProfileVersion,value.EvidenceRevision,
+                        AssociationVerified=false,Reason="缺少本场开局前的评分及总场数观察。"});
                 string temp=path+".tmp";GameJournal.RejectLinks(temp);
                 await File.WriteAllBytesAsync(temp,data);GameJournal.ReplaceAtomically(temp,path);
                 await MatchSummaryBuilder.SaveAsync(pending.Journal.DirectoryPath);
             }
-            catch(Exception ex) when(ex is IOException or UnauthorizedAccessException) { /* Optional summary never stops play. */ }
+            catch(Exception ex) when(ex is IOException or UnauthorizedAccessException or TimeoutException) { /* Optional summary never stops play. */ }
         });
     }
 }

@@ -1,0 +1,74 @@
+{
+  "Schema": 1,
+  "GameVersion": "2026.09.15.0000.0000",
+  "StructsCommit": "243dc41e4d71f350cd80aa5eba8c75517f3d5154",
+  "EmjUldSha256": "DA6B6A98B5E1ECDD01EF7A37F3851A0BC90A8935F163CA6B0EEDCF2DA23F2E5F",
+  "Method": "Local fixed-client texture decoding and visual label inspection; live visible resource IDs also captured. Texture pixels are not redistributed.",
+  "Labels": {
+    "121486": "流局",
+    "121488": "荣和",
+    "121489": "自摸"
+  },
+  "Resources": [
+    {
+      "IconId": 121486,
+      "Path": "ui/icon/121000/chs/121486.tex",
+      "Width": 640,
+      "Height": 80,
+      "Bytes": 204880,
+      "Sha256": "74EDF5D8FA0ED894E1AC5C73CF570FC524E9DA0C86B8DEA3D9025468803FCA3F",
+      "LuminaCrc32": "4A806A16",
+      "ClientTexturePathHash": "B57F95E9"
+    },
+    {
+      "IconId": 121486,
+      "Path": "ui/icon/121000/chs/121486_hr1.tex",
+      "Width": 1280,
+      "Height": 160,
+      "Bytes": 204880,
+      "Sha256": "28AEA93BA371FCC87B0579A62368C65ED3EA585F9C6E5986BC95580AB8C1ED97",
+      "LuminaCrc32": "434D67B2",
+      "ClientTexturePathHash": "BCB2984D"
+    },
+    {
+      "IconId": 121488,
+      "Path": "ui/icon/121000/chs/121488.tex",
+      "Width": 640,
+      "Height": 80,
+      "Bytes": 204880,
+      "Sha256": "FD0812719CB6C832DBDFEB9AC2BCE329A7AD77A71185546B8951E270B7550E5E",
+      "LuminaCrc32": "F5B0D477",
+      "ClientTexturePathHash": "0A4F2B88"
+    },
+    {
+      "IconId": 121488,
+      "Path": "ui/icon/121000/chs/121488_hr1.tex",
+      "Width": 1280,
+      "Height": 160,
+      "Bytes": 204880,
+      "Sha256": "D3F09F094E09D39788D298D7EE9FCB8301608313E0F39ABA57F78356707E49D7",
+      "LuminaCrc32": "8B8FBC20",
+      "ClientTexturePathHash": "747043DF"
+    },
+    {
+      "IconId": 121489,
+      "Path": "ui/icon/121000/chs/121489.tex",
+      "Width": 640,
+      "Height": 80,
+      "Bytes": 204880,
+      "Sha256": "0CD10836514479EE246E81117FCCEB68956D5CC1B024798F2A98467842B6C244",
+      "LuminaCrc32": "C8D0FDC7",
+      "ClientTexturePathHash": "372F0238"
+    },
+    {
+      "IconId": 121489,
+      "Path": "ui/icon/121000/chs/121489_hr1.tex",
+      "Width": 1280,
+      "Height": 160,
+      "Bytes": 204880,
+      "Sha256": "2174DC97BCD4C582D9F8D19D7C0BBA931BEE675FAA8CA5D3AE432300C758001B",
+      "LuminaCrc32": "9CF4A863",
+      "ClientTexturePathHash": "630B579C"
+    }
+  ]
+}

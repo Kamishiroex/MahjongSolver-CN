@@ -25,6 +25,7 @@ public sealed class JournalRetentionTests : IDisposable
         {
             File.WriteAllText(Path.Combine(path,"match-summary.json"),"{}");
             File.WriteAllText(Path.Combine(path,"rating-after.json"),"{}");
+            File.WriteAllText(Path.Combine(path,"final-result.json"),"{}");
         }
         string export = Path.Combine(home, "my-export.zip"); File.WriteAllText(export, "keep");
         var result = JournalRetention.Maintain(Root, keep);

@@ -14,7 +14,9 @@ internal sealed class MahjongRatingReader(Func<string,nint> lookup, Func<nint,in
 {
     internal const string Profile = "CN-2026.09.15-GSInfoEmj-243dc41e4-r1";
     // Profile-page mapping was read locally and confirmed by the user, 2026-09-27.
-    // The after-match server refresh association has NOT yet been proven.
+    // Final/profile fields and a +1 match counter span were read locally. The new
+    // in-plugin refresh/association lifecycle still needs end-to-end acceptance
+    // before enabling rating-driven task stops.
     internal const bool MatchRefreshVerified = false;
     private long revision;
     private RatingObservation? last;
@@ -48,6 +50,9 @@ internal sealed class MahjongRatingReader(Func<string,nint> lookup, Func<nint,in
             int Number(string field,uint id)
             {
                 string text=Text(field,id);
+                // CN GoldSaucerEmj node 16 was read locally as "<digits>战".
+                // The suffix belongs only to MatchesPlayed, never to rating fields.
+                if(field==nameof(AddonGSInfoEmj.MatchesPlayed) && text.EndsWith('战'))text=text[..^1];
                 if(text.Any(c=>c is <'0' or >'9') || !int.TryParse(text,NumberStyles.None,CultureInfo.InvariantCulture,out int value) || value>99999)
                     throw new InvalidDataException("RATING_NUMBER_REJECTED");
                 return value;
@@ -58,8 +63,13 @@ internal sealed class MahjongRatingReader(Func<string,nint> lookup, Func<nint,in
             if(rank.Length>12 || rank.Any(c=>!(char.IsDigit(c) || "初段级級十百一二三四五六七八九天凤鳳位士聖圣".Contains(c))))
                 rank="段位文本待核验";
             if(highest<current) throw new InvalidDataException("RATING_CONTRADICTION");
+            // Named field 0x238 + GoldSaucerEmj.uld node 16 under the 总场数
+            // label (Addon row 12372). Missing counter must not hide a valid rating.
+            int? matches=null;
+            try { matches=Number(nameof(AddonGSInfoEmj.MatchesPlayed),16); }
+            catch(InvalidDataException) { }
             last=new(current,highest,rank,context,now,"本人金碟／麻将资料页",RatingMapping.Verified,
-                RatingFreshness.Fresh,Profile,null,++revision,null);
+                RatingFreshness.Fresh,Profile,null,++revision,null,matches);
             return last;
         }
         catch(Exception ex) when(ex is InvalidDataException or ArgumentException or OverflowException)

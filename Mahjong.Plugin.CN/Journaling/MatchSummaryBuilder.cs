@@ -15,9 +15,13 @@ internal sealed record MatchSummary(Guid Id, DateTimeOffset StartedUtc, DateTime
     public string? ModelSha256 { get; init; }
     public string? SettingsSha256 { get; init; }
     public int? Placement { get; init; }
+    public string PlacementEvidence { get; init; } = "未获取完整本人名次结算";
+    public ImmutableArray<HandResultReading> Hands { get; init; } = [];
+    public int ObservedHands { get; init; }
     public int? RatingBefore { get; init; }
     public int? RatingAfter { get; init; }
     public int? RatingDelta { get; init; }
+    public string RatingAssociation { get; init; } = "缺少可对应本场的赛前/赛后评分及总场数";
     public int? HandsWithVerifiedOutcome { get; init; }
     public int? Wins { get; init; }
     public int? DealIns { get; init; }
@@ -38,7 +42,7 @@ internal static class MatchSummaryBuilder
     internal static bool Retains(string kind) => kind is "session_started" or "session_stopped" or "mode_selected" or
         "task_started" or "task_resumed" or "task_match_completed" or "match_result" or "play_paused" or "play_stopped" or
         "table_automation_action" or "review_configuration" or "review_match_started" or "review_table_context" or
-        "action_submission" or "review_action_observation" or "review_window_cancelled" or "review_decision";
+        "action_submission" or "review_action_observation" or "review_window_cancelled" or "review_decision" or "review_rating_anchor" or "review_hand_started" or "review_hand_result";
 
     internal static ImmutableArray<MatchSummary> Build(JournalReadResult read, string path)
     {
@@ -51,6 +55,8 @@ internal static class MatchSummaryBuilder
             var completed = entries.FirstOrDefault(e => e.Kind == "match_result" && Text(e.Data,"Source") == "IDutyState.DutyCompleted");
             return [One(entries, read, path, entries[0].SessionId, completed?.Utc)];
         }
+        if(completions.Length==1 && Text(completions[0].Data,"ReviewMatchId")==entries[0].SessionId.ToString())
+            return [One(entries,read,path,entries[0].SessionId,completions[0].Utc)];
         // Older journals can contain multiple matches. Do not attribute all their pauses/actions to every match.
         var rows = ImmutableArray.CreateBuilder<MatchSummary>();
         long start = 0;
@@ -112,6 +118,23 @@ internal static class MatchSummaryBuilder
         var submissions=entries.Where(e=>e.Kind=="action_submission" && Text(e.Data,"Result")=="Submitted").ToArray();
         var submissionIds=submissions.Select(e=>Text(e.Data,"SubmissionId")).Where(x=>x is not null).ToHashSet();
         var observations=entries.Where(e=>e.Kind=="review_action_observation" && submissionIds.Contains(Text(e.Data,"SubmissionId")));
+        var handReadings=new List<HandResultReading>();
+        foreach(var e in entries.Where(e=>e.Kind=="review_hand_result" && Text(e.Data,"MatchId")==id.ToString()))
+        {
+            try { if(e.Data.TryGetProperty("Result",out var data) && data.Deserialize<HandResultReading>() is { } hand &&
+                hand.RoundId is {Length:>0 and <=128} && hand.Source==Readers.ResultUiReader.Profile)
+                handReadings.Add(hand.Complete && !HandResultTracker.Valid(hand)?hand with {SelfWon=null,SelfDealtIn=null,Code="RESULT_EVIDENCE_INVALID"}:hand); }
+            catch(JsonException) { }
+        }
+        var hands=handReadings.GroupBy(h=>h.RoundId).Select(g=>
+        {
+            var last=g.Last();
+            bool conflict=g.Where(h=>h.Complete).Select(h=>(h.Kind,h.SelfWon,h.SelfDealtIn)).Distinct().Count()>1;
+            return conflict?last with {SelfWon=null,SelfDealtIn=null,Code="RESULT_CONTRADICTORY"}:last;
+        }).ToImmutableArray();
+        var known=hands.Where(h=>h.Complete && h.Code=="RESULT_CONFIRMED").ToArray();
+        int observed=entries.Where(e=>e.Kind=="review_hand_started" && Text(e.Data,"MatchId")==id.ToString())
+            .Select(e=>Text(e.Data,"RoundId")).Where(x=>x is not null).Distinct().Count();
         return new(id,entries[0].Utc,trusted?completed:null,duty,engine,version,
             !trusted?"未知（记录不完整）":completed is not null?"完成":entries.Any(e=>e.Kind=="session_stopped")?"中断 / 未确认完成":"未知 / 记录中",reason,path)
         {
@@ -125,7 +148,10 @@ internal static class MatchSummaryBuilder
             ObservedTransitions=trusted?observations.Where(e=>Flag(e.Data,"StateTransitionObserved")).DistinctBy(e=>Text(e.Data,"SubmissionId")).Count():0,
             ObservationTimeouts=trusted?observations.Where(e=>Flag(e.Data,"TimedOut")).DistinctBy(e=>Text(e.Data,"SubmissionId")).Count():0,
             CancelledWindows=trusted?entries.Count(e=>e.Kind=="review_window_cancelled"):0,
-            // No verified final placement, per-hand outcome or match-rating association reader exists yet.
+            Hands=trusted?hands:[],ObservedHands=trusted?Math.Max(observed,hands.Length):0,
+            HandsWithVerifiedOutcome=trusted && known.Length>0?known.Length:null,
+            Wins=trusted && known.Length>0?known.Count(h=>h.SelfWon==true):null,
+            DealIns=trusted && known.Length>0?known.Count(h=>h.SelfDealtIn==true):null,
         };
     }
 
@@ -133,12 +159,24 @@ internal static class MatchSummaryBuilder
     {
         var read=await GameJournal.ReadAsync(Path.Combine(directory,"events.jsonl"),cancellation,summaryOnly:true);
         var rows=Build(read,directory);
-        // Unchained supplement is display-only; never turn it into a trusted rating delta.
+        string final=Path.Combine(directory,"final-result.json"); GameJournal.RejectLinks(final);
+        if(File.Exists(final) && new FileInfo(final).Length<=32768)
+        {
+            try
+            {
+                var evidence=JsonSerializer.Deserialize<FinalResultSupplement>(await File.ReadAllBytesAsync(final,cancellation));
+                if(evidence is not null)rows=FinalResultEvidence.Apply(read,rows,evidence);
+            }
+            catch(JsonException) { }
+        }
+        // Schema 1 is display-only; schema 2 binds the sealed journal and counter.
         string after=Path.Combine(directory,"rating-after.json"); GameJournal.RejectLinks(after);
         if (!File.Exists(after) || new FileInfo(after).Length>16384) return rows;
         try
         {
             using var doc=JsonDocument.Parse(await File.ReadAllBytesAsync(after,cancellation)); var r=doc.RootElement;
+            if(Number(r,"Schema")==2 && r.Deserialize<MatchRatingSupplement>() is { } supplement)
+                return MatchRatingEvidence.Apply(read,rows,supplement);
             if (Number(r,"Schema")!=1 || !Guid.TryParse(Text(r,"MatchId"),out var match)) return rows;
             return rows.Select(row=>row.IntegrityVerified && row.CompletedUtc is not null && row.Id==match
                 ? row with {RatingAfter=Number(r,"RatingAfter")} : row).ToImmutableArray();
