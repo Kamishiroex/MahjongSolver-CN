@@ -31,6 +31,10 @@ unsafe class Program
         Set(plugin,"stopRecorder",new Mahjong.Plugin.CN.Diagnostics.GameplayStopRecorder(output));
         Property(plugin,"ExportStatus","测试宿主：未导出。");Property(plugin,"JournalKeepMatches",50);Set(plugin,"journalMaintenanceStatus","测试宿主：不修改日志。");
         Set(plugin,"history",new Plugin.HistoryState([],"测试宿主：无真实记录。"));
+        Property(plugin,"ResultsStatus","测试宿主：暂无待保存结果。");
+        Property(plugin,"QuickRecoveryStatus","短暂读取中断后重新核对同桌；原任务权限有效才继续。");
+        Property(plugin,"RetryTransientErrors",true);
+        Property(plugin,"CorpusExportStatus","测试宿主：固定样本只在本机导出。");
         Set(plugin,"networkPreferences",new Plugin.NetworkPreferences());Set(plugin,"community",new Plugin.CommunityState(new(null,null,null),null,null,"测试宿主：联网关闭。"));
         Property(plugin,"Identity",new RuntimeIdentity("synthetic",15,"synthetic","","","Chinese","host",null));
         Property(plugin,"Status","测试宿主：未连接游戏，所有读数均未知。");

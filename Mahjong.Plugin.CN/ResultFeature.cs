@@ -18,11 +18,13 @@ public sealed partial class Plugin
     private (GameJournal Journal,Guid Match,string Context,DateTimeOffset End)? finalResultPending;
     private int resultSamplesInRound;
     private string? resultReadFault;
+    private string? pendingHandHash;
 
     private void ResetResults()
     {
         handResults.Reset();resultRound=resultCandidateHash=finalCandidateHash=null;
         resultMatchId=Guid.Empty;resultSamplesInRound=0;
+        pendingHandHash=null;resultReader?.ClearSeatNames();
     }
 
     private void UpdateResultsCore()
@@ -60,6 +62,12 @@ public sealed partial class Plugin
                 }
                 if(handResults.Observe(id,resultSurface,sample,now) is { } hand)
                     RecordJournalEvent("review_hand_result",new {MatchId=resultMatchId,Result=hand});
+                if(handResults.Evidence is {} evidence)
+                {
+                    string hash=JsonSerializer.Serialize(evidence);
+                    if(hash!=pendingHandHash)
+                    {pendingHandHash=hash;RecordJournalEvent("review_hand_pending",new {MatchId=resultMatchId,Evidence=evidence});}
+                }
             }
             if(finalResultPending is not { } pending)return;
             if(now>pending.End.AddMinutes(5) || pending.Context!=CurrentCharacterContext())
@@ -75,7 +83,7 @@ public sealed partial class Plugin
             if(finalCandidateHash!=candidate) { finalCandidateHash=candidate;finalCandidateSince=now;return; }
             if(now-finalCandidateSince<TimeSpan.FromMilliseconds(600) || FinalResultEvidence.Read(final).Placement is null)return;
             finalResultPending=null;
-            _=SaveFinalResultAsync(pending.Journal,pending.Match,now,final);
+            QueueResultEvidence(pending.Journal,new(1,"final",pending.Match,now,Final:final));
         }
         catch(Exception ex)
         {
@@ -85,19 +93,4 @@ public sealed partial class Plugin
         }
     }
 
-    private static async Task SaveFinalResultAsync(GameJournal source,Guid match,DateTimeOffset utc,ResultUiSample sample)
-    {
-        try
-        {
-            await source.Finalized.WaitAsync(TimeSpan.FromMinutes(5));
-            var read=await GameJournal.ReadAsync(Path.Combine(source.DirectoryPath,"events.jsonl"),summaryOnly:true);
-            if(!read.IntegrityPassed || read.IncompleteTail || read.Lines.IsEmpty)return;
-            string file=Path.Combine(source.DirectoryPath,"final-result.json"),temp=file+".tmp";
-            GameJournal.RejectLinks(file);GameJournal.RejectLinks(temp);
-            await File.WriteAllBytesAsync(temp,JsonSerializer.SerializeToUtf8Bytes(new FinalResultSupplement(1,match,read.Lines[^1].Sha256,utc,sample)));
-            GameJournal.ReplaceAtomically(temp,file);
-            await MatchSummaryBuilder.SaveAsync(source.DirectoryPath);
-        }
-        catch(Exception ex) when(ex is IOException or UnauthorizedAccessException or TimeoutException) { /* Optional evidence never stops play. */ }
-    }
 }

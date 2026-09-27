@@ -6,16 +6,44 @@ namespace Mahjong.Plugin.CN;
 internal sealed partial class MainWindow
 {
     private int historyPage;
+    private int historyDays;
+    private uint? historyDuty;
+    private string? historyBackend;
+    private bool historyGapsOnly;
     private void DrawHistory()
     {
         var history=plugin.History;
         ImGui.BeginDisabled(history.Busy);
         if(ImGui.Button("刷新本机整场摘要"))plugin.DispatchUi(plugin.RefreshHistory);
         ImGui.EndDisabled();
+        SameLineIfFits(150*GlassTheme.Scale);
+        if(ImGui.Button("重建摘要并重试保存"))plugin.DispatchUi(plugin.RepairResultRecords);
+        if(ImGui.IsItemHovered())ImGui.SetTooltip("重新校验原始日志及已暂存的结算数据。\n不执行游戏操作，不把中途退出记为整场完成。");
+        ImGui.TextWrapped(plugin.ResultsStatus);
         ImGui.TextWrapped(history.Status);
+        if(ImGui.Combo("时间范围",ref historyDays,["全部记录","最近 7 天","最近 30 天","最近 90 天"],4))historyPage=0;
+        if(ImGui.BeginCombo("桌型",historyDuty is {} selected?Automation.MahjongDuties.Find(selected)?.Name??selected.ToString():"全部桌型"))
+        {
+            if(ImGui.Selectable("全部桌型",historyDuty is null)){historyDuty=null;historyPage=0;}
+            foreach(uint duty in history.Items.Where(r=>r.DutyId.HasValue).Select(r=>r.DutyId!.Value).Distinct().Order())
+                if(ImGui.Selectable(Automation.MahjongDuties.Find(duty)?.Name??duty.ToString(),historyDuty==duty)){historyDuty=duty;historyPage=0;}
+            ImGui.EndCombo();
+        }
+        if(ImGui.BeginCombo("求解来源",historyBackend is null?"全部来源":Presentation.DisplayCopy.Source(historyBackend)))
+        {
+            if(ImGui.Selectable("全部来源",historyBackend is null)){historyBackend=null;historyPage=0;}
+            foreach(string backend in history.Items.Select(r=>r.Engine).Distinct().Order())
+                if(ImGui.Selectable(Presentation.DisplayCopy.Source(backend)+"###filter-"+backend,historyBackend==backend)){historyBackend=backend;historyPage=0;}
+            ImGui.EndCombo();
+        }
+        if(ImGui.Checkbox("只看信息缺失的记录",ref historyGapsOnly))historyPage=0;
+        var rows=HistoryQuery.Filter(history.Items,DateTimeOffset.UtcNow,new[]{0,7,30,90}[historyDays],historyDuty,historyBackend,historyGapsOnly);
+        var coverage=HistoryQuery.Coverage(rows);
+        ImGui.TextWrapped($"当前筛选 {coverage.Records} 份 · 确认完成 {coverage.Completed} · 名次 {coverage.Ranked} / 评分变化 {coverage.Rated} 份 · 逐局已核对 {coverage.VerifiedHands}/{coverage.Hands}");
+        ImGui.TextWrapped($"校验未通过 {coverage.Untrusted} · 混合配置 {coverage.Mixed} · 有异常中断 {coverage.Interrupted}。缺失项不会记成 0；全量覆盖也不代表棋力更强。");
         ImGui.TextWrapped("名次取自本人整场结算；逐局结果需公开结算提示与四家付款相符；评分差值需赛前、赛后总场数恰好增加 1。未知项不进入分母，记录完成也不等于全程自动完成。");
         if(ImGui.CollapsingHeader("趋势与程序可靠性",ImGuiTreeNodeFlags.DefaultOpen))
-        foreach(var trend in MatchTrends.Build(history.Items))
+        foreach(var trend in MatchTrends.Build(rows))
         {
             ImGui.PushID(trend.Key);
             try
@@ -30,11 +58,11 @@ internal sealed partial class MainWindow
             }
             finally{ImGui.PopID();}
         }
-        int pageCount=Math.Max(1,(history.Items.Length+9)/10);historyPage=Math.Clamp(historyPage,0,pageCount-1);
+        int pageCount=Math.Max(1,(rows.Length+9)/10);historyPage=Math.Clamp(historyPage,0,pageCount-1);
         if(ImGui.SmallButton("上一页"))historyPage=Math.Max(0,historyPage-1);
         SameLineIfFits(90*GlassTheme.Scale);ImGui.TextUnformatted($"{historyPage+1} / {pageCount}");
         SameLineIfFits(100*GlassTheme.Scale);if(ImGui.SmallButton("下一页"))historyPage=Math.Min(pageCount-1,historyPage+1);
-        foreach(var row in history.Items.Skip(historyPage*10).Take(10))
+        foreach(var row in rows.Skip(historyPage*10).Take(10))
         {
             ImGui.PushID(row.Id.ToString());
             try
@@ -44,6 +72,9 @@ internal sealed partial class MainWindow
                 ImGui.TextWrapped($"桌型：{(row.DutyId is {} id?Automation.MahjongDuties.Find(id)?.Name:null)??"未知"} · 来源：{Presentation.DisplayCopy.Source(row.Engine)} · 插件 {row.PluginVersion}");
                 ImGui.TextWrapped($"最终名次：{row.Placement?.ToString()??"未知"}；资料页评分观察：赛前 {row.RatingBefore?.ToString()??"未知"} / 赛后 {row.RatingAfter?.ToString()??"未知"}；整场差值：{row.RatingDelta?.ToString()??"关联未验证"}。");
                 ImGui.TextWrapped($"小局：已核对 {row.HandsWithVerifiedOutcome??0} / 已观察 {row.ObservedHands} · 和牌 {row.Wins?.ToString()??"未知"} · 放铳 {row.DealIns?.ToString()??"未知"}");
+                if(row.Placement is null)ImGui.TextWrapped("名次缺口："+row.PlacementEvidence);
+                if(row.RatingDelta is null)ImGui.TextWrapped("评分缺口："+row.RatingAssociation);
+                if(row.CompletedUtc is null)ImGui.TextWrapped("未观察到整场完成事件；退桌、断线或日志结束均不代替结算。");
                 if(row.Hands.Length>0 && ImGui.TreeNode("逐局结果"))
                 {
                     int handIndex=0;
@@ -64,6 +95,8 @@ internal sealed partial class MainWindow
                     if(ImGui.SmallButton("读取决策复盘"))plugin.DispatchUi(()=>plugin.RefreshDecisionReview(row.JournalPath));
                     ImGui.EndDisabled();
                     if(plugin.Review.Path==row.JournalPath)DrawDecisionReview();
+                    if(ImGui.SmallButton("导出固定决策样本"))plugin.DispatchUi(()=>plugin.ExportDecisionCorpus(row.JournalPath));
+                    ImGui.TextWrapped(plugin.CorpusExportStatus);
                 }
                 if(ImGui.SmallButton("复制对应日志位置"))ImGui.SetClipboardText(row.JournalPath);
             }
@@ -92,6 +125,7 @@ internal sealed partial class MainWindow
             {
                 ImGui.TextWrapped($"实际后端 {decision.Backend} · 输入 {decision.Input}");
                 ImGui.TextWrapped("最终决策："+decision.Choice);
+                ImGui.TextWrapped($"本次策略调用 {decision.ChooseMilliseconds?.ToString("F1")??"未知"} ms · 后端请求至返回 {decision.EngineMilliseconds?.ToString("F1")??"未知"} ms（不等于提交耗时）");
                 ImGui.TextWrapped("原始候选："+decision.Candidates);
                 ImGui.TextWrapped("过滤 / 选中 / 未继续评估："+decision.Filters);
                 ImGui.TextWrapped("后端保护覆盖："+decision.Override);

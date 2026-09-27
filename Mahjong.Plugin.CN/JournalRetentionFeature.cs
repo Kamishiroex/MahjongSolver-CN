@@ -24,6 +24,8 @@ public sealed partial class Plugin
                 using var json = JsonDocument.Parse(File.ReadAllText(JournalSettingsPath));
                 int keep = json.RootElement.GetProperty("KeepMatches").GetInt32();
                 if (keep is >= 20 and <= 500) JournalKeepMatches = keep;
+                if(json.RootElement.TryGetProperty("RetryTransientErrors",out var retry) && retry.ValueKind is JsonValueKind.True or JsonValueKind.False)
+                    RetryTransientErrors=retry.GetBoolean();
             }
         }
         catch (Exception ex) { journalMaintenanceStatus = "日志设置读取失败，使用默认 50 场：" + ex.GetType().Name; }
@@ -39,7 +41,7 @@ public sealed partial class Plugin
             {
                 string temp = JournalSettingsPath + ".tmp";
                 GameJournal.RejectLinks(temp); GameJournal.RejectLinks(JournalSettingsPath);
-                File.WriteAllText(temp, JsonSerializer.Serialize(new { KeepMatches = keep }));
+                File.WriteAllText(temp, JsonSerializer.Serialize(new { KeepMatches = keep, RetryTransientErrors }));
                 GameJournal.ReplaceAtomically(temp, JournalSettingsPath);
                 JournalKeepMatches = keep;
                 ScheduleJournalMaintenance();

@@ -711,3 +711,15 @@ tests/Mahjong.Plugin.CN.Gameplay.Tests/fixtures/result-payment-transition-202609
 tests/Mahjong.Plugin.CN.Gameplay.Tests/ResultEvidenceTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/ResultUiReaderTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/fixtures/final-result-rating-20260927.json
+Mahjong.Plugin.CN/Automation/TransientRecoveryGate.cs
+Mahjong.Plugin.CN/Journaling/DecisionCorpus.cs
+Mahjong.Plugin.CN/Journaling/HistoryQuery.cs
+Mahjong.Plugin.CN/Journaling/OutcomeEvidenceStore.cs
+Mahjong.Plugin.CN/ResultPersistenceFeature.cs
+Mahjong.Plugin.CN/TransientRecoveryFeature.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/DecisionCorpusTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/HistoryQueryTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/ResultPersistenceTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/TransientRecoveryTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/fixtures/result-final-tsumo-20260927.json
+tools/Mahjong.Cn.JournalReplay/CorpusFixtures.cs

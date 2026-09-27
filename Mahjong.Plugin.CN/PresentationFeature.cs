@@ -46,7 +46,7 @@ public sealed partial class Plugin
         var hand = active && journalLower is { Stable: true } lower && now - journalLowerUtc < TimeSpan.FromSeconds(2)
             ? lower.Tiles : [];
         Volatile.Write(ref uiSnapshot, new(now, runtimeJournalSequence, runtime?.Mode ?? PlayMode.Off,
-            runtime?.IsObservingPaused == true, runtime?.Status ?? Status, DecisionSourceLabel,
+            runtime?.IsObservingPaused == true, QuickRecoveryPending ? QuickRecoveryStatus : runtime?.Status ?? Status, DecisionSourceLabel,
             TaskSummary, active ? runtime?.ActiveAggregator?.Latest : null,
             active && !hand.IsDefaultOrEmpty ? runtime?.ActiveAggregator?.LastChoice : null, hand, CurrentRating,
             active && CurrentJournalPublicSnapshot?.Observation is { } observation && now-observation.ObservedAtUtc<TimeSpan.FromSeconds(2)

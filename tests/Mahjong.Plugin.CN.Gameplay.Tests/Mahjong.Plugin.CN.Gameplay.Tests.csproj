@@ -41,6 +41,7 @@
     <Error Condition="!Exists('$(DalamudLibPath)\Dalamud.dll')" Text="Requires fixed CN Dalamud API 15 libraries from 26-09-25-01, or an explicit DalamudLibPath." />
   </Target>
   <ItemGroup>
+    <None Update="fixtures\result-final-tsumo-20260927.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="fixtures\final-result-rating-20260927.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="fixtures\result-payment-transition-20260927.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="fixtures\riichi-menu-closed-20260926.json" CopyToOutputDirectory="PreserveNewest" />

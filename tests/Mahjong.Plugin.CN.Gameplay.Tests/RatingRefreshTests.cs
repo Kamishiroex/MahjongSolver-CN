@@ -118,6 +118,15 @@ public sealed class RatingRefreshTests
         var p = new Profile(); var r = new RatingRefresh(p,()=>true); r.Request("synthetic", 0, false); Tick(r, 0);
         r.Cancel("stopped", true); Tick(r, 1); Assert.Null(r.Result); Assert.Equal(1, p.Closes);
     }
+    [Fact] public void Missing_counter_does_not_finish_after_match_refresh_before_valid_counter_arrives()
+    {
+        var p=new Profile {IsOpen=true,IsMahjongSelected=true};var r=new RatingRefresh(p,()=>true);
+        r.Request("synthetic",0,true,42);
+        Tick(r,3);Tick(r,3.2);Assert.True(r.Busy);Assert.Null(r.Result);
+        r.Tick("synthetic",true,true,3.4,()=>Value(3.4) with {MatchesPlayed=43});
+        r.Tick("synthetic",true,true,3.6,()=>Value(3.6) with {MatchesPlayed=43});
+        Assert.Equal(43,r.Result!.MatchesPlayed);Assert.True(p.IsOpen);
+    }
     [Theory] [InlineData(false)] [InlineData(true)]
     public void Permission_revocation_prevents_open_selection_close_and_late_results(bool initiallyAllowed)
     {

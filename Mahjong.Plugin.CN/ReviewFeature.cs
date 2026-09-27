@@ -78,6 +78,7 @@ public sealed partial class Plugin
                 }
             }
         });
+        double chooseMilliseconds=0;
         return DecisionReviewPolicy.Wrap(policy,(hash,state,choice,candidates)=>
         {
             if(!journalActive)return;
@@ -97,9 +98,11 @@ public sealed partial class Plugin
                 Mode=PlayRuntime?.Mode.ToString(),ObservationSessionId=PlayRuntime?.ObservationSessionId,
                 ObservationSequence=PlayRuntime?.ObservationSequence,
                 BackendOverride=correlated?BackendOverride(trace!.Decision?.AppliedSnapshotJson):null,
+                ChooseMilliseconds=chooseMilliseconds,EngineMilliseconds=correlated?trace!.Decision?.StartToResponseMilliseconds:null,
+                ReplaySnapshot=state with {UraDoraIndicators=[]},
                 Snapshot=new {Hand=state.Hand.Select(t=>t.Id).ToArray(),state.WallRemaining,state.AddonStateCode,
                     LegalActions=(int)state.Legal.Flags}, ActionConfirmed=false});
-        });
+        },elapsed=>chooseMilliseconds=elapsed);
     }
     private static string? BackendOverride(string? json)
     {
@@ -137,8 +140,13 @@ public sealed partial class Plugin
         var after=RatingPageEvidence.From(value,pending.Context,DateTimeOffset.UtcNow);
         // A visible page can still contain the pre-result server data. Wait for
         // its counter to advance; never finalize a zero delta just because it opened.
-        if(anchor is not null && after is not null && after.MatchesPlayed==anchor.Before.MatchesPlayed)return;
+        if(anchor is not null && (after is null || after.MatchesPlayed==anchor.Before.MatchesPlayed))return;
         reviewRatingPending=null;
+        if(anchor is not null && after is not null && anchor.MatchId==pending.Match)
+        {
+            QueueResultEvidence(pending.Journal,new(1,"rating",pending.Match,value.ReadAtUtc,Rating:after,ContextToken:anchor.ContextToken));
+            return;
+        }
         // Rating refresh normally finishes after the match journal has closed. This is
         // a bounded supplement in that same record, never a new unrelated game session.
         _=Task.Run(async()=>

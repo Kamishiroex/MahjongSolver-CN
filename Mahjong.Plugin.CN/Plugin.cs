@@ -126,6 +126,7 @@ public sealed partial class Plugin : IDalamudPlugin
         LoadTaskRules();
         LoadNetworkPreferences();
         LoadJournalSettings();
+        RepairResultRecords();
         // Saved preferences alone never authorize queueing or game input after reload.
         if (!Commands.AddHandler("/mjcn", new CommandInfo(OnCommand) { HelpMessage = Brand.ProductName + "：queue 自动排队设置；manual 提醒；auto 自动打牌；pause 暂停；recover 核对恢复；logs 导出日志；stop 全停；monitor 只读牌局；ai 测试版设置。" }))
             throw new InvalidOperationException("/mjcn 已被占用，未注册插件命令。");
@@ -489,6 +490,8 @@ public sealed partial class Plugin : IDalamudPlugin
         PollJournalMaintenance();
         UpdateJournalCore();
         UpdateResultsCore();
+        PollResultWrites();
+        UpdateQuickRecovery();
         UpdateTableAutomationCore();
         if (aiProbe?.Busy == true && (Identity.Error is not null || !Client.IsLoggedIn))
             StopCore(Identity.Error ?? "SCENE_EXIT：已登出，本地 AI 自检已取消。");
@@ -695,8 +698,9 @@ public sealed partial class Plugin : IDalamudPlugin
     {
         bool completed = (tableAutomation.MatchCompleted && stop.Reason == MatchCompletedStop) ||
             (normalTaskStopReason is not null && stop.Reason == normalTaskStopReason);
-        if (!completed) AlertUnexpectedStop(stop);
-        if (!completed && !startingFromTableAutomation && !stop.Reason.StartsWith("SCENE_EXIT：", StringComparison.Ordinal))
+        bool recovering=!completed && TryBeginQuickRecovery(stop);
+        if (!completed && !recovering) AlertUnexpectedStop(stop);
+        if (!completed && !recovering && !startingFromTableAutomation && !stop.Reason.StartsWith("SCENE_EXIT：", StringComparison.Ordinal))
             SuspendTableAutomation("打牌已停止，自动排队与进桌开打同步暂停：" + stop.Reason);
         if (RecordStopInJournal(stop)) return;
         var payload = new
@@ -849,6 +853,7 @@ public sealed partial class Plugin : IDalamudPlugin
 
     private void DisposeCore()
     {
+        StageRemainingResultsOnUnload();
         if (disposed) return;
         disposed = true;
         historyCancellation?.Cancel();

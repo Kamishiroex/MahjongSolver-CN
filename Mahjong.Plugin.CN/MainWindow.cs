@@ -208,6 +208,10 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
             plugin.DispatchUi(() => plugin.SetJournalKeepMatches(counts[selectedCount]));
         ImGui.TextWrapped("每整场一份；历史记录另有 1 GiB 预算，超过时先清理最早记录。当前场、最新恢复记录及手动导出的 ZIP 不清理。");
         ImGui.TextWrapped(plugin.JournalMaintenanceStatus);
+        bool retry = plugin.RetryTransientErrors;
+        if(ImGui.Checkbox("短暂读取或计算异常后立即尝试恢复", ref retry))plugin.DispatchUi(()=>plugin.SetTransientRecovery(retry));
+        if(ImGui.IsItemHovered())ImGui.SetTooltip("重新核对同一牌桌，最多等待 8 秒、每分钟最多 3 次。\n沿用原任务授权；手动暂停、资格失效、版本变化或操作结果不明时不恢复。");
+        ImGui.TextWrapped(plugin.QuickRecoveryStatus);
         if (plugin.GameOperationsAvailable && plugin.PlayRuntime is { } runtime)
         {
             int delay = runtime.Configuration.HumanizedDelayMs;

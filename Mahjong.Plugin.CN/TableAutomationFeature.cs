@@ -192,7 +192,7 @@ public sealed partial class Plugin
 
     private unsafe void UpdateTableAutomationCore()
     {
-        if (!tableAutomation.Armed) return;
+        if (!tableAutomation.Armed || QuickRecoveryPending) return;
         double now = AutomationNow;
         if (now - lastAutomationPoll < 0.25) return;
         lastAutomationPoll = now;

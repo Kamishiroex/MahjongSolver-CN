@@ -14,13 +14,17 @@ internal class DecisionReviewPolicy : IPolicy, IRefreshablePolicy, IDisposable
     private readonly Action<string, StateSnapshot, ActionChoice, ScoredDiscard[]?> observe;
     private ScoredDiscard[]? candidates;
     private string? previous;
+    private Action<double>? timing;
     internal DecisionReviewPolicy(IPolicy inner, Action<string, StateSnapshot, ActionChoice, ScoredDiscard[]?> observe)
     {
         this.inner=inner; this.observe=observe;
         if(inner is EfficiencyPolicy efficiency) efficiency.CandidatesScored += Capture;
     }
-    internal static IPolicy Wrap(IPolicy inner, Action<string, StateSnapshot, ActionChoice, ScoredDiscard[]?> observe) =>
-        inner is IIndependentPublicStatePolicy ? new Independent(inner,observe) : new DecisionReviewPolicy(inner,observe);
+    internal static IPolicy Wrap(IPolicy inner, Action<string, StateSnapshot, ActionChoice, ScoredDiscard[]?> observe,Action<double>? timing=null)
+    {
+        DecisionReviewPolicy policy=inner is IIndependentPublicStatePolicy ? new Independent(inner,observe) : new DecisionReviewPolicy(inner,observe);
+        policy.timing=timing;return policy;
+    }
     private sealed class Independent(IPolicy inner, Action<string,StateSnapshot,ActionChoice,ScoredDiscard[]?> observe)
         : DecisionReviewPolicy(inner,observe), IIndependentPublicStatePolicy;
     private void Capture(ScoredDiscard[] value) => candidates=value.ToArray();
@@ -28,11 +32,14 @@ internal class DecisionReviewPolicy : IPolicy, IRefreshablePolicy, IDisposable
     public ActionChoice Choose(StateSnapshot state)
     {
         candidates=null;
+        long started=System.Diagnostics.Stopwatch.GetTimestamp();
         var choice=inner.Choose(state);
+        double elapsed=System.Diagnostics.Stopwatch.GetElapsedTime(started).TotalMilliseconds;
         // Pending is already represented by the engine request; do not add a per-frame trace.
         if(choice.Reasoning?.StartsWith("AKOCHAN_PENDING:",StringComparison.Ordinal)==true)return choice;
         try
         {
+            timing?.Invoke(elapsed);
             string input=InputHash(state);
             string key=input+JsonSerializer.Serialize(choice);
             if(key!=previous) { previous=key; observe(input,state,choice,candidates); }

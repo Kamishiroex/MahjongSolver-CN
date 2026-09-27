@@ -39,6 +39,7 @@ internal static class JournalArchiveStore
             !SessionName.IsMatch(Path.GetFileName(source)))throw new IOException("JOURNAL_ARCHIVE_PATH_INVALID");
         CheckPath(source);
         if(Directory.EnumerateDirectories(source).Any())return false;
+        if(Directory.EnumerateFiles(source,"outcome-pending-*.json").Any())return false;
         string archiveRoot=Path.Combine(Path.GetDirectoryName(root)!,Path.GetFileName(root)+"-archive");
         CheckPath(archiveRoot);Directory.CreateDirectory(archiveRoot);
         string final=Path.Combine(archiveRoot,Path.GetFileName(source)+".zip");CheckPath(final);

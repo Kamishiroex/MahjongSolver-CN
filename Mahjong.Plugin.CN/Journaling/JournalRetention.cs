@@ -80,7 +80,8 @@ internal static class JournalRetention
         ".active" or "journal-index.json" or "journal-index.tmp" or "recovery-latest.jsonl" or
         "recovery-latest.jsonl.tmp" or "diagnostic-fault.jsonl" or "diagnostic-fault.jsonl.tmp" or "record-closed.json" or
         "match-summary.json" or "match-summary.json.tmp" or "rating-after.json" or "rating-after.json.tmp" or
-        "final-result.json" or "final-result.json.tmp";
+        "final-result.json" or "final-result.json.tmp" or "outcome-pending-final.json" or "outcome-pending-final.json.tmp" or
+        "outcome-pending-rating.json" or "outcome-pending-rating.json.tmp";
 
     private static void DeleteOwned(string root, string archives, string path, bool zip)
     {

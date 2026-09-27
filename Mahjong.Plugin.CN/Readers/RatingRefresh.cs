@@ -70,7 +70,7 @@ internal sealed class RatingRefresh(IRatingProfileAccess profile, Func<bool> ope
         if (value.Freshness != RatingFreshness.Fresh || value.CurrentRating is null ||
             value.LocalCharacterContext != context)
         { candidate = null; return; }
-        if (automatic && previousMatches is { } before && value.MatchesPlayed == before)
+        if (automatic && previousMatches is { } before && (value.MatchesPlayed is null || value.MatchesPlayed == before))
         {
             candidate = null; Status = "等待资料页总场数更新，尚未确认本场评分…";
             return; // Keep the existing bounded deadline; never reopen or extend it.

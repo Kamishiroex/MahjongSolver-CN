@@ -11,6 +11,28 @@ public sealed partial class Plugin
     private ReviewState review=new(null,new([],"选择一场查看本地决策复盘。"));
     internal ReviewState Review=>Volatile.Read(ref review);
     private readonly CancellationTokenSource historyCancellation=new();
+    internal string CorpusExportStatus {get;private set;}="固定样本仅在本机导出；不会执行操作或更改求解来源。";
+    private bool corpusExportBusy;
+    internal void ExportDecisionCorpus(string path)
+    {
+        if(corpusExportBusy || logsDirectory is null)return;
+        corpusExportBusy=true;CorpusExportStatus="正在校验并导出公开输入…";
+        _=Task.Run(async()=>
+        {
+            try
+            {
+                var read=await JournalReviewStore.EventsAsync(path,historyCancellation.Token);
+                var corpus=DecisionCorpus.Export(read);
+                if(corpus.Cases.Length==0){CorpusExportStatus=$"没有完整可重放的输入，已跳过 {corpus.Skipped} 条；旧记录不会补造缺失字段。";return;}
+                string destination=Path.Combine(logsDirectory,$"decision-corpus-{DateTime.UtcNow:yyyyMMdd-HHmmss}-{Guid.NewGuid():N}.json");
+                await DecisionCorpus.WriteNewAsync(destination,corpus);
+                CorpusExportStatus=$"已导出 {corpus.Cases.Length} 份固定输入，跳过 {corpus.Skipped} 份："+destination;
+            }
+            catch(OperationCanceledException){CorpusExportStatus="导出已取消。";}
+            catch(Exception ex){CorpusExportStatus="导出失败："+ex.GetType().Name;}
+            finally{corpusExportBusy=false;}
+        });
+    }
     internal void RefreshHistory()
     {
         if(History.Busy || logsDirectory is null)return;

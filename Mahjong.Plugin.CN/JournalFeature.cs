@@ -199,6 +199,7 @@ public sealed partial class Plugin
     {
         lock (gate)
         {
+            TrackRecoverySubmission(submission);
             NoteUiEvent("操作请求："+submission.Result+"（提交结果不等于游戏已接受）");
             RecordJournalEvent("action_submission", submission);
             if (submission.Result != "Submitted") journal?.Error("ACTION_SUBMISSION_REJECTED", submission);

@@ -40,6 +40,7 @@ public sealed partial class Plugin
     }
     private void RevokeGameOperations()
     {
+        CancelQuickRecovery();
         RevokeUiIntents();
         Interlocked.Increment(ref operationGeneration);
         Volatile.Write(ref taskOperationGrant,null);

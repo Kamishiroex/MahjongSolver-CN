@@ -3,6 +3,35 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using Mahjong.Plugin.CN.Journaling;
 
+if(args.Length==2 && args[0]=="--corpus-fixture")
+{
+    await DecisionCorpus.WriteNewAsync(args[1],CorpusFixtures.Create());
+    Console.WriteLine("Created constructed offline rule fixtures; not live evidence.");return;
+}
+if(args.Length>=3 && args[0] is "--corpus-export" or "--corpus-run" or "--corpus-compare")
+{
+    if(args[0]=="--corpus-export" && args.Length==3)
+    {
+        var input=await JournalReviewStore.EventsAsync(args[1],default);
+        var corpus=DecisionCorpus.Export(input);await DecisionCorpus.WriteNewAsync(args[2],corpus);
+        Console.WriteLine($"Exported {corpus.Cases.Length} fixed inputs; skipped {corpus.Skipped}; no game operations.");return;
+    }
+    if(args[0]=="--corpus-run" && args.Length is 4 or 5)
+    {
+        var corpus=await DecisionCorpus.ReadAsync<DecisionCorpusFile>(args[1]);
+        var run=await DecisionCorpus.ReplayAsync(corpus,args[3],args.Length==5?args[4]:null);
+        await DecisionCorpus.WriteNewAsync(args[2],run);
+        Console.WriteLine($"Replayed {run.Cases.Length}; errors {run.Cases.Count(c=>c.Error is not null)}; no game operations.");
+        if(run.Cases.Any(c=>c.Error is not null))Environment.ExitCode=1;return;
+    }
+    if(args[0]=="--corpus-compare" && args.Length==4)
+    {
+        var a=await DecisionCorpus.ReadAsync<CorpusRun>(args[1]);var b=await DecisionCorpus.ReadAsync<CorpusRun>(args[2]);
+        await DecisionCorpus.WriteNewAsync(args[3],DecisionCorpus.Compare(a,b));
+        Console.WriteLine("Compared identical corpus; changes are not evidence of improved playing strength.");return;
+    }
+    throw new ArgumentException("--corpus-export <journal directory|zip> <new corpus.json>; --corpus-run <corpus.json> <new run.json> upstream|mortal|akochan [engine-directory]; --corpus-compare <before.json> <after.json> <new comparison.json>");
+}
 if(args.Length==3 && args[0]=="--summaries")
 {
     if(File.Exists(args[2]) || Directory.Exists(args[2]))throw new IOException("Output must not exist.");

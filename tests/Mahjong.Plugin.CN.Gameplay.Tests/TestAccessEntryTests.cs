@@ -19,6 +19,20 @@ public sealed class EntryServicesCollection { }
 [Collection("CN entry services")]
 public sealed class TestAccessEntryTests
 {
+    [Theory][InlineData("pause")][InlineData("expiry")][InlineData("disable")]
+    public void Recovery_cannot_survive_manual_pause_expiry_or_capability_revocation(string action)
+    {
+        using var host=new Host();host.AuthorizeSyntheticTask();
+        var retry=new Automation.TransientRecoveryGate();
+        Host.Set(host.Entry,"transientRecovery",retry);
+        Assert.True(retry.Begin("AUTO_SNAPSHOT_UNAVAILABLE","fixture-original-grant",0));
+        Assert.True(host.Entry.GameOperationsAuthorized);
+        if(action=="pause")host.Entry.PausePlay();
+        else if(action=="disable")host.Entry.SetGameOperationsEnabled(false);
+        else {host.Now=host.Now.AddDays(8);Host.Enforce(host.Entry);}
+        Assert.False(retry.Pending);Assert.False(host.Entry.GameOperationsAuthorized);
+        Assert.Equal(Automation.RecoveryCheck.Abandon,retry.Observe("fixture-original-grant","new",1,true,false));
+    }
     [Theory]
     [InlineData(false)]
     [InlineData(true)]

@@ -42,7 +42,7 @@ internal static class MatchSummaryBuilder
     internal static bool Retains(string kind) => kind is "session_started" or "session_stopped" or "mode_selected" or
         "task_started" or "task_resumed" or "task_match_completed" or "match_result" or "play_paused" or "play_stopped" or
         "table_automation_action" or "review_configuration" or "review_match_started" or "review_table_context" or
-        "action_submission" or "review_action_observation" or "review_window_cancelled" or "review_decision" or "review_rating_anchor" or "review_hand_started" or "review_hand_result";
+        "action_submission" or "review_action_observation" or "review_window_cancelled" or "review_decision" or "review_rating_anchor" or "review_hand_started" or "review_hand_result" or "review_hand_pending";
 
     internal static ImmutableArray<MatchSummary> Build(JournalReadResult read, string path)
     {

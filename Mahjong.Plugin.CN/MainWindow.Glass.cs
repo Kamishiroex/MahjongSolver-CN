@@ -128,7 +128,9 @@ internal sealed partial class MainWindow
         if (ImGui.Button("停止全部", buttonSize)) plugin.Stop("用户停止全部读取、提醒与自动操作。");
         if (ImGui.IsItemHovered()) ImGui.SetTooltip("停止全部读取、提醒、自动打牌和排队。\n不会强退牌局；已提交的报名需在游戏内取消。\n关闭窗口不等于暂停。");
         ImGui.TextWrapped(view.TaskStatus);
-        if(plugin.TableAutomationArmed)ImGui.TextWrapped("测试版游戏操作 · 连续任务已授权："+plugin.TableAutomationStatus);
+        if(plugin.QuickRecoveryPending)ImGui.TextColored(GlassTheme.Warning,"正在恢复原任务；当前不提交操作。");
+        if(plugin.QuickRecoveryPending)ImGui.TextWrapped(plugin.QuickRecoveryStatus);
+        else if(plugin.TableAutomationArmed)ImGui.TextWrapped("测试版游戏操作 · 连续任务已授权："+plugin.TableAutomationStatus);
         else if(plugin.RatingRefreshBusy)ImGui.TextWrapped("测试版游戏操作 · 本次评分窗口刷新已授权。");
         else if(!plugin.ExperimentalHandAiEnabled && !automatic)ImGui.TextWrapped("标准模式不执行游戏操作，仅提供提示。");
         if(!plugin.SelectedSourceAccessValid)

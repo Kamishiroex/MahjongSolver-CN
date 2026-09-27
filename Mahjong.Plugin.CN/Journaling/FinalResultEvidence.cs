@@ -39,6 +39,40 @@ internal static class FinalResultEvidence
             value.ReadAtUtc<completions[0].Utc.AddSeconds(-5) || value.ReadAtUtc>completions[0].Utc.AddMinutes(5))return rows;
         var result=Read(value.Sample);
         return rows.Select(row=>row.Id==value.MatchId && row.IntegrityVerified && row.CompletedUtc is not null
-            ? row with {Placement=result.Placement,PlacementEvidence=result.Code}:row).ToImmutableArray();
+            ? CompleteLastHand(read,row with {Placement=result.Placement,PlacementEvidence=result.Code},value.Sample):row).ToImmutableArray();
+    }
+    private static MatchSummary CompleteLastHand(JournalReadResult read,MatchSummary row,ResultUiSample sample)
+    {
+        // Match four final names to the four actually visible table names in memory.
+        // Never infer seat order from rank or points (ties and seat rotations exist).
+        var scores=sample.Values.Where(v=>v.RelativeSeat.HasValue && v.Path.EndsWith("/4",StringComparison.Ordinal)).ToArray();
+        if(scores.Length!=4 || scores.Any(v=>v.Number is null || v.RelativeSeat is <0 or >3) ||
+            scores.Select(v=>v.RelativeSeat).Distinct().Count()!=4)return row;
+        var start=read.Lines.LastOrDefault(l=>l.Entry.Kind=="review_hand_started" &&
+            MatchSummaryBuilder.Text(l.Entry.Data,"MatchId")==row.Id.ToString());
+        string? round=start is null?null:MatchSummaryBuilder.Text(start.Entry.Data,"RoundId");
+        if(round is null)return row;
+        var proofs=new List<PendingHandResult>();
+        foreach(var line in read.Lines.Where(l=>l.Entry.Kind=="review_hand_pending" && l.Entry.Sequence>=start!.Entry.Sequence &&
+            MatchSummaryBuilder.Text(l.Entry.Data,"MatchId")==row.Id.ToString()))
+        {
+            try {if(line.Entry.Data.TryGetProperty("Evidence",out var e) && e.Deserialize<PendingHandResult>() is {} p && p.RoundId==round)proofs.Add(p);}
+            catch(JsonException){return row;}
+        }
+        if(proofs.Count==0 || proofs.Select(p=>JsonSerializer.Serialize(p)).Distinct().Count()!=1)return row;
+        var proof=proofs[0];
+        if(proof.Banner is null)return row;
+        string? kind=ResultResourceCatalog.Banner(proof.Banner);
+        var hand=HandResultTracker.Read(round,kind,new("Emj",ResultUiReader.Profile,true,[],null),proof.ScoresBefore,
+            scores.OrderBy(v=>v.RelativeSeat).Select(v=>v.Number!.Value).ToArray());
+        if(!hand.Complete)return row;
+        var existing=row.Hands.FirstOrDefault(h=>h.RoundId==round);
+        if(existing?.Complete==true && (existing.Kind!=hand.Kind || existing.SelfWon!=hand.SelfWon || existing.SelfDealtIn!=hand.SelfDealtIn))
+            hand=hand with {SelfWon=null,SelfDealtIn=null,Code="RESULT_CONTRADICTORY"};
+        var hands=row.Hands.Where(h=>h.RoundId!=round).Append(hand).ToImmutableArray();
+        var known=hands.Where(h=>h.Complete && HandResultTracker.Valid(h)).ToArray();
+        return row with {Hands=hands,ObservedHands=Math.Max(row.ObservedHands,hands.Length),
+            HandsWithVerifiedOutcome=known.Length>0?known.Length:null,Wins=known.Length>0?known.Count(h=>h.SelfWon==true):null,
+            DealIns=known.Length>0?known.Count(h=>h.SelfDealtIn==true):null};
     }
 }

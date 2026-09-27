@@ -1,0 +1,300 @@
+{
+  "Schema": 1,
+  "Source": "Read-only production ResultUiReader with pinned CN game and client structs; no game callbacks",
+  "GameVersion": "2026.09.15.0000.0000",
+  "ClientStructsCommit": "243dc41e4d71f350cd80aa5eba8c75517f3d5154",
+  "CaptureSha256": "37f552f4aecbb45a948bc6bf2cb4ddfad7e6903f01c1c08c89cb4ecb63ad1777",
+  "Privacy": "Only public numbers, paths, icon metadata and exact in-memory identity equality; no names, account IDs or profile rating.",
+  "PluginEndToEndVerified": false,
+  "Before": {
+    "Addon": "Emj",
+    "Profile": "CN-2026.09.15-result-uld-r1",
+    "Visible": true,
+    "Values": [
+      {
+        "Path": "Emj/44/13/3",
+        "Number": 35000
+      },
+      {
+        "Path": "Emj/44/13/2",
+        "Number": 35000
+      },
+      {
+        "Path": "Emj/44/12/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/44/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/42/13/3",
+        "Number": 13000
+      },
+      {
+        "Path": "Emj/42/13/2",
+        "Number": 13000
+      },
+      {
+        "Path": "Emj/42/12/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/42/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/40/13/3",
+        "Number": 23700
+      },
+      {
+        "Path": "Emj/40/13/2",
+        "Number": 23700
+      },
+      {
+        "Path": "Emj/40/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/38/12/3",
+        "Number": 28300
+      },
+      {
+        "Path": "Emj/38/12/2",
+        "Number": 28300
+      },
+      {
+        "Path": "Emj/38/11/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/38/11/2",
+        "Token": "unrecognized-number"
+      }
+    ],
+    "Error": null
+  },
+  "Banner": {
+    "Addon": "Emj",
+    "Profile": "CN-2026.09.15-result-uld-r1",
+    "Visible": true,
+    "Values": [
+      {
+        "Path": "Emj/51/2",
+        "IconId": 121489,
+        "TexturePathHash": 1661687708,
+        "U": 0,
+        "V": 0,
+        "Width": 640,
+        "Height": 80
+      },
+      {
+        "Path": "Emj/44/13/3",
+        "Number": 35000
+      },
+      {
+        "Path": "Emj/44/13/2",
+        "Number": 35000
+      },
+      {
+        "Path": "Emj/44/12/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/44/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/42/13/3",
+        "Number": 13000
+      },
+      {
+        "Path": "Emj/42/13/2",
+        "Number": 13000
+      },
+      {
+        "Path": "Emj/42/12/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/42/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/40/13/3",
+        "Number": 23700
+      },
+      {
+        "Path": "Emj/40/13/2",
+        "Number": 23700
+      },
+      {
+        "Path": "Emj/40/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/38/12/3",
+        "Number": 28300
+      },
+      {
+        "Path": "Emj/38/12/2",
+        "Number": 28300
+      },
+      {
+        "Path": "Emj/38/11/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/38/11/2",
+        "Token": "unrecognized-number"
+      }
+    ],
+    "Error": null
+  },
+  "Animation": {
+    "Addon": "Emj",
+    "Profile": "CN-2026.09.15-result-uld-r1",
+    "Visible": true,
+    "Values": [
+      {
+        "Path": "Emj/44/13/3",
+        "Number": 34829
+      },
+      {
+        "Path": "Emj/44/13/2",
+        "Number": 34829
+      },
+      {
+        "Path": "Emj/44/12/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/44/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/42/13/3",
+        "Number": 12829
+      },
+      {
+        "Path": "Emj/42/13/2",
+        "Number": 12829
+      },
+      {
+        "Path": "Emj/42/12/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/42/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/40/13/3",
+        "Number": 23529
+      },
+      {
+        "Path": "Emj/40/13/2",
+        "Number": 23529
+      },
+      {
+        "Path": "Emj/40/12/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/38/12/3",
+        "Number": 28815
+      },
+      {
+        "Path": "Emj/38/12/2",
+        "Number": 28815
+      },
+      {
+        "Path": "Emj/38/11/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "Emj/38/11/2",
+        "Token": "unrecognized-number"
+      }
+    ],
+    "Error": null
+  },
+  "Final": {
+    "Addon": "EmjTotalResult",
+    "Profile": "CN-2026.09.15-result-uld-r1",
+    "Visible": true,
+    "Values": [
+      {
+        "Path": "EmjTotalResult/23/10",
+        "Number": 4
+      },
+      {
+        "Path": "EmjTotalResult/23/4",
+        "Number": 10400,
+        "RelativeSeat": 2
+      },
+      {
+        "Path": "EmjTotalResult/23/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "EmjTotalResult/22/10",
+        "Number": 3
+      },
+      {
+        "Path": "EmjTotalResult/22/4",
+        "Number": 21100,
+        "RelativeSeat": 1
+      },
+      {
+        "Path": "EmjTotalResult/22/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "EmjTotalResult/21/10",
+        "Number": 2
+      },
+      {
+        "Path": "EmjTotalResult/21/4",
+        "Number": 32400,
+        "RelativeSeat": 3
+      },
+      {
+        "Path": "EmjTotalResult/21/2",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "EmjTotalResult/20/15",
+        "IsSelf": true
+      },
+      {
+        "Path": "EmjTotalResult/20/10",
+        "Number": 1
+      },
+      {
+        "Path": "EmjTotalResult/20/8",
+        "Number": 1868
+      },
+      {
+        "Path": "EmjTotalResult/20/5",
+        "Number": 1842
+      },
+      {
+        "Path": "EmjTotalResult/20/4",
+        "Number": 36100,
+        "RelativeSeat": 0
+      },
+      {
+        "Path": "EmjTotalResult/20/3",
+        "Token": "unrecognized-number"
+      },
+      {
+        "Path": "EmjTotalResult/20/2",
+        "Token": "unrecognized-number"
+      }
+    ],
+    "Error": null
+  },
+  "CaptureBytes": 124373,
+  "CaptureScope": "SHA256 of the complete read-only capture prefix at extraction; unrelated observations are omitted from this fixture"
+}

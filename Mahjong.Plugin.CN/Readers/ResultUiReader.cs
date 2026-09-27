@@ -10,7 +10,8 @@ namespace Mahjong.Plugin.CN.Readers;
 // Only finite tokens, numbers and an in-memory comparison with the local name leave
 // this reader. Unknown strings (including names/worlds) are never retained or hashed.
 internal sealed record ResultUiValue(string Path, int? Number, string? Token, bool IsSelf,
-    uint? IconId=null,uint? TexturePathHash=null,ushort? U=null,ushort? V=null,ushort? Width=null,ushort? Height=null);
+    uint? IconId=null,uint? TexturePathHash=null,ushort? U=null,ushort? V=null,ushort? Width=null,ushort? Height=null,
+    int? RelativeSeat=null);
 internal sealed record ResultUiSample(string Addon, string Profile, bool Visible,
     IReadOnlyList<ResultUiValue> Values, string? Error);
 
@@ -22,6 +23,12 @@ internal sealed unsafe class ResultUiReader(Func<string,nint> lookup, Func<nint,
     private int budget;
     private readonly HashSet<nint> seen = [];
     private static readonly UTF8Encoding Utf8 = new(false,true);
+    // Ephemeral equality bridge only. Names are never emitted, hashed or persisted.
+    private string[]? tableNames;
+    private string? tableSelf;
+    private DateTimeOffset namesAt;
+    private nint nameTable;
+    internal void ClearSeatNames(){tableNames=null;tableSelf=null;nameTable=0;}
 
     internal ResultUiSample Observe(string addonName, bool identityValid, string ownName)
     {
@@ -41,6 +48,7 @@ internal sealed unsafe class ResultUiReader(Func<string,nint> lookup, Func<nint,
             var rn=Read<AtkResNode>(root);
             if(addonName=="EmjTotalResult" && (rn.Width!=460 || rn.Height!=512))
                 throw new InvalidDataException("RESULT_LAYOUT_UNVERIFIED");
+            if(addonName=="Emj")CaptureSeatNames(addon,roots,root,ownName);
             foreach(nint address in roots)
             {
                 var node=Read<AtkResNode>(address);
@@ -50,10 +58,58 @@ internal sealed unsafe class ResultUiReader(Func<string,nint> lookup, Func<nint,
                     : node.NodeId is 2 or 20 or 21 or 22 or 23 or 25;
                 if(allowed && Visible(address,root)) Visit(address,addonName+"/"+node.NodeId,0,root,ownName,values);
             }
+            if(addonName=="EmjTotalResult")MapFinalSeats(roots,root,ownName,values);
             return new(addonName,Profile,true,values,null);
         }
         catch(Exception ex) when(ex is InvalidDataException or ArgumentException or OverflowException or InvalidOperationException)
         { return new(addonName,Profile,false,[],ex is InvalidDataException?ex.Message:"RESULT_READ_FAILED"); }
+    }
+
+    private string? VisibleText(nint address,nint root)
+    {
+        if(address==0 || !Visible(address,root) || Read<AtkResNode>(address).Type!=NodeType.Text)return null;
+        nint str=address+Offset<AtkTextNode>(nameof(AtkTextNode.NodeText));
+        nint buffer=(nint)BitConverter.ToInt64(Bytes(str,8));
+        long used=BitConverter.ToInt64(Bytes(str+Offset<Utf8String>(nameof(Utf8String.BufUsed)),8));
+        if(buffer==0 || used is <2 or >129)return null;
+        var bytes=Bytes(buffer,(int)used);
+        if(bytes[^1]!=0 || bytes[..^1].Any(b=>b<32))return null;
+        return Utf8.GetString(bytes,0,bytes.Length-1);
+    }
+    private nint Child(nint[] roots,uint row,uint child)
+    {
+        nint parent=roots.SingleOrDefault(a=>Read<AtkResNode>(a).NodeId==row);
+        if(parent==0 || (int)Read<AtkResNode>(parent).Type<1000)return 0;
+        nint component=(nint)BitConverter.ToInt64(Bytes(parent+Offset<AtkComponentNode>(nameof(AtkComponentNode.Component)),8));
+        if(component==0)return 0;
+        return Nodes(component+Offset<AtkComponentBase>(nameof(AtkComponentBase.UldManager)))
+            .SingleOrDefault(a=>Read<AtkResNode>(a).NodeId==child);
+    }
+    private void CaptureSeatNames(nint addon,nint[] roots,nint root,string own)
+    {
+        if(nameTable!=addon || tableSelf!=own)ClearSeatNames();
+        var names=new[]{VisibleText(Child(roots,38,5),root),VisibleText(Child(roots,40,6),root),
+            VisibleText(Child(roots,42,6),root),VisibleText(Child(roots,44,6),root)};
+        if(own.Length==0 || names[0]!=own || names.Any(string.IsNullOrEmpty) || names.Distinct(StringComparer.Ordinal).Count()!=4)return;
+        tableNames=names.Select(s=>s!).ToArray();tableSelf=own;nameTable=addon;namesAt=DateTimeOffset.UtcNow;
+    }
+    private void MapFinalSeats(nint[] roots,nint root,string own,List<ResultUiValue> values)
+    {
+        if(tableNames is null || tableSelf!=own || DateTimeOffset.UtcNow-namesAt>TimeSpan.FromMinutes(2))return;
+        var final=Enumerable.Range(20,4).Select(i=>VisibleText(Child(roots,(uint)i,15),root)).ToArray();
+        int[]? seats=MatchSeats(tableNames,final,own);
+        if(seats is null)return;
+        for(int i=0;i<values.Count;i++)
+            for(int row=0;row<4;row++)
+                if(values[i].Path==$"EmjTotalResult/{row+20}/4")values[i]=values[i] with {RelativeSeat=seats[row]};
+    }
+    internal static int[]? MatchSeats(string[] table,string?[] final,string own)
+    {
+        if(table.Length!=4 || final.Length!=4 || string.IsNullOrEmpty(own) || table[0]!=own ||
+            table.Any(string.IsNullOrEmpty) || final.Any(string.IsNullOrEmpty) ||
+            table.Distinct(StringComparer.Ordinal).Count()!=4 || final.Distinct(StringComparer.Ordinal).Count()!=4)return null;
+        var seats=final.Select(s=>Array.IndexOf(table,s)).ToArray();
+        return seats.Any(s=>s<0)?null:seats;
     }
 
     private void Visit(nint address,string path,int depth,nint root,string ownName,List<ResultUiValue> values)

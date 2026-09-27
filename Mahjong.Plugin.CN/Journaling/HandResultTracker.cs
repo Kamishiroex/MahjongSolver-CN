@@ -9,6 +9,7 @@ internal sealed record HandResultReading(string RoundId,string Kind,bool? SelfWo
     public bool Complete => SelfWon.HasValue && SelfDealtIn.HasValue;
     public string Source => ResultUiReader.Profile;
 }
+internal sealed record PendingHandResult(string RoundId,ResultUiValue Banner,int[] ScoresBefore);
 
 /// <summary>Only explicit result banners plus all four displayed settlement payments.
 /// Ordinary score changes, requests to win, and table teardown are not outcomes.</summary>
@@ -19,8 +20,11 @@ internal sealed class HandResultTracker
     private int[]? lastScores,before;
     private DateTimeOffset lastScoresAt;
     private bool sawResult,confirmed;
+    private ResultUiValue? bannerValue;
     internal bool Pending => banner is not null && sawResult;
-    internal void Reset() { round=banner=stableHash=emittedHash=null;bannerTime=resultSurfaceAt=stableSince=default;lastScores=before=null;sawResult=confirmed=false; }
+    internal PendingHandResult? Evidence=>round is not null && sawResult && bannerValue is not null && before is {Length:4}
+        ? new(round,bannerValue,before.ToArray()):null;
+    internal void Reset() { round=banner=stableHash=emittedHash=null;bannerValue=null;bannerTime=resultSurfaceAt=stableSince=default;lastScores=before=null;sawResult=confirmed=false; }
 
     internal HandResultReading? Observe(string? roundId,bool resultSurface,ResultUiSample sample,DateTimeOffset now)
     {
@@ -35,7 +39,7 @@ internal sealed class HandResultTracker
             if(current is not null)
             {
                 if(banner is null && now-lastScoresAt<=TimeSpan.FromSeconds(2))before=lastScores;
-                banner=current;bannerTime=now;
+                banner=current;bannerTime=now;bannerValue=value;
             }
         }
         int[]? scores=Scores(sample);

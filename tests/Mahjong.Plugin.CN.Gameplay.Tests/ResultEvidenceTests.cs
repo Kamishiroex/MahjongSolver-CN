@@ -7,6 +7,22 @@ namespace Mahjong.Plugin.CN.Gameplay.Tests;
 
 public sealed class ResultEvidenceTests
 {
+    [Fact]public void Live_final_tsumo_maps_all_four_rank_rows_to_visible_table_seats_without_storing_names()
+    {
+        using var doc=JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"fixtures","result-final-tsumo-20260927.json")));
+        var sample=doc.RootElement;
+        var before=sample.GetProperty("Before").Deserialize<ResultUiSample>()!;
+        var banner=sample.GetProperty("Banner").Deserialize<ResultUiSample>()!;
+        var final=sample.GetProperty("Final").Deserialize<ResultUiSample>()!;
+        int[] scores=new[]{"Emj/38/12/2","Emj/40/13/2","Emj/42/13/2","Emj/44/13/2"}
+            .Select(p=>before.Values.Single(v=>v.Path==p).Number!.Value).ToArray();
+        Assert.Contains(banner.Values,v=>ResultResourceCatalog.Banner(v)=="Tsumo");
+        var mapped=final.Values.Where(v=>v.RelativeSeat.HasValue).OrderBy(v=>v.RelativeSeat).ToArray();
+        Assert.Equal(new[]{0,1,2,3},mapped.Select(v=>v.RelativeSeat!.Value));
+        Assert.Equal(1,FinalResultEvidence.Read(final).Placement);
+        var hand=HandResultTracker.Read("recorded-final-hand","Tsumo",before,scores,mapped.Select(v=>v.Number!.Value).ToArray());
+        Assert.True(hand.SelfWon);Assert.False(hand.SelfDealtIn);Assert.Equal(new[]{7800,-2600,-2600,-2600},hand.Payments);
+    }
     private static readonly DateTimeOffset Start=new(2026,9,27,0,0,0,TimeSpan.Zero);
     private static readonly Guid Match=Guid.NewGuid();
     private static MatchRatingAnchor Anchor()=>new(Match,Guid.NewGuid(),Start,
@@ -115,6 +131,37 @@ public sealed class ResultEvidenceTests
     private static ResultUiSample Ranking(int ours=3)=>new("EmjTotalResult",ResultUiReader.Profile,true,
         Enumerable.Range(1,4).SelectMany(n=>new[]{new ResultUiValue($"EmjTotalResult/{19+n}/10",n,null,false),
             new ResultUiValue($"EmjTotalResult/{19+n}/15",null,null,n==ours)}).ToArray(),null);
+    [Fact]public void Last_hand_can_use_final_scores_only_when_all_four_names_were_uniquely_matched_to_seats()
+    {
+        Guid match=Guid.NewGuid();var now=DateTimeOffset.UtcNow;
+        var banner=new ResultUiValue("Emj/51/2",null,null,false,121488,~Lumina.Misc.Crc32.Get("ui/icon/121000/chs/121488.tex"),0,0,640,80);
+        var events=new (string,object)[]{("review_hand_started",new {MatchId=match,RoundId="r1"}),
+            ("review_hand_pending",new {MatchId=match,Evidence=new PendingHandResult("r1",banner,[25000,25000,25000,25000])}),
+            ("match_result",new {MatchId=match,Source="IDutyState.DutyCompleted"}),("session_stopped",new {})};
+        var read=new JournalReadResult(events.Select((e,i)=>new JournalLine(new(2,match,i+1,now.AddSeconds(i),e.Item1,
+            JsonSerializer.SerializeToElement(e.Item2),""),"tail")).ToImmutableArray(),false,null);
+        var original=MatchSummaryBuilder.Build(read,"fixture");
+        var rank=Ranking(1);int[] scores=[33000,25000,25000,17000];int[] mapping=[0,2,3,1];
+        var sample=rank with {Values=rank.Values.Concat(Enumerable.Range(0,4).Select(i=>new ResultUiValue(
+            $"EmjTotalResult/{20+i}/4",scores[i],null,false,RelativeSeat:mapping[i]))).ToArray()};
+        var supplement=new FinalResultSupplement(1,match,"tail",now.AddSeconds(4),sample);
+        var row=Assert.Single(FinalResultEvidence.Apply(read,original,supplement));
+        Assert.Equal(1,row.Wins);Assert.Equal(0,row.DealIns);Assert.Equal(1,row.ObservedHands);
+        Assert.Single(row.Hands);Assert.Equal(new[]{8000,-8000,0,0},row.Hands[0].Payments);
+        var twice=Assert.Single(FinalResultEvidence.Apply(read,[row],supplement));Assert.Equal(1,twice.Wins);Assert.Single(twice.Hands);
+        foreach(var missing in new[]{sample with {Values=sample.Values.Select(v=>v with {RelativeSeat=null}).ToArray()},
+            sample with {Values=sample.Values.Select(v=>v.RelativeSeat.HasValue?v with {RelativeSeat=0}:v).ToArray()}})
+            Assert.Null(Assert.Single(FinalResultEvidence.Apply(read,original,supplement with {Sample=missing})).Wins);
+    }
+    [Fact]public void Name_equality_bridge_handles_rank_reorder_but_rejects_duplicates_missing_and_foreign_tables()
+    {
+        string[] names=["fixture-self","fixture-right","fixture-top","fixture-left"];
+        Assert.Equal(new[]{2,0,3,1},ResultUiReader.MatchSeats(names,[names[2],names[0],names[3],names[1]],names[0]));
+        Assert.Null(ResultUiReader.MatchSeats(names,[names[0],names[0],names[2],names[3]],names[0]));
+        Assert.Null(ResultUiReader.MatchSeats(names,[names[0],names[1],null,names[3]],names[0]));
+        Assert.Null(ResultUiReader.MatchSeats(names,[names[0],names[1],"foreign",names[3]],names[0]));
+        Assert.Null(ResultUiReader.MatchSeats(names,names,"foreign-self"));
+    }
     [Fact]public void Final_rank_requires_complete_unique_order_and_exactly_one_self()
     {
         Assert.Equal(3,FinalResultEvidence.Read(Ranking()).Placement);
