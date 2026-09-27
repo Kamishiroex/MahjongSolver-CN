@@ -8,7 +8,15 @@
 
 ## 安装与更新
 
-安装入口以本仓库实际发布的安装索引为准。`repo.json` 为空时尚未开放订阅；不要把旧仓库地址当作本版安装地址。已发布包可在本仓库 Releases 获取，配套提供对应源码和校验文件。
+在 XIVLauncherCN 的 `/xlsettings` → 插件 → 第三方插件仓库中添加并保存：
+
+```text
+https://raw.githubusercontent.com/Kamishiroex/MahjongSolver-CN/repo/repo.json
+```
+
+刷新插件安装器，搜索“MahjongSolver”并安装。订阅使用固定的 `repo` 分支，独立于开发分支名称；当前指向已发布的 4.1.4 候选包。安装包、对应源码和校验文件也可从[发布页](https://github.com/Kamishiroex/MahjongSolver-CN/releases/tag/v4.1.4)获取。
+
+从旧订阅迁移时，先暂停插件，移除旧订阅地址，再在安装器卸载旧插件并从新订阅安装；不要删除插件配置或模型目录。若正在使用开发插件，先停用其开发加载入口。同一内部身份只能加载一份。
 
 首次开发安装可将已校验 ZIP 解压到独立目录，在 Dalamud 开发插件设置中添加 `Mahjong.Plugin.CN.dll`，再在插件安装器的开发插件页启用。内部身份仍是 `Mahjong.Plugin.CN`，与旧版只能加载一份。先停止、禁用旧插件，再启用新包；保留原配置和模型目录。不要将源码包或测试宿主 DLL 当成插件安装。
 

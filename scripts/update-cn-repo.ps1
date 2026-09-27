@@ -1,15 +1,18 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)] [ValidatePattern('^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$')] [string] $Repository,
-    [string] $Tag = 'v4.1.4'
+    [string] $Tag = 'v4.1.4',
+    [string] $ArtifactDirectory = ''
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $root = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+if (-not $ArtifactDirectory) { $ArtifactDirectory = Join-Path $root 'artifacts' }
+$ArtifactDirectory = (Resolve-Path -LiteralPath $ArtifactDirectory -ErrorAction Stop).Path
 $utf8 = New-Object Text.UTF8Encoding($false)
 $plugin = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $root 'Mahjong.Plugin.CN\Mahjong.Plugin.CN.json') | ConvertFrom-Json
-$build = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $root 'artifacts\build-manifest.json') | ConvertFrom-Json
+$build = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $ArtifactDirectory 'build-manifest.json') | ConvertFrom-Json
 if ($build.status -ne 'Completed' -or -not $build.buildPassed -or $build.testsSkipped -or -not $build.sourceArchiveRebuildPassed) {
     throw 'A completed tested build and verified source archive are required.'
 }
@@ -31,7 +34,7 @@ foreach ($name in $expectedAssets) {
     if ($asset.size -le 0 -or $asset.browser_download_url -notlike "https://github.com/$Repository/releases/download/*") {
         throw "Unexpected release asset URL or size: $name"
     }
-    $path = Join-Path $root ('artifacts\' + $name)
+    $path = Join-Path $ArtifactDirectory $name
     if ((Get-Item -LiteralPath $path).Length -ne $asset.size) { throw "Published size mismatch: $name" }
     if ($asset.PSObject.Properties.Name -contains 'digest' -and $asset.digest) {
         $hash = (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant()
