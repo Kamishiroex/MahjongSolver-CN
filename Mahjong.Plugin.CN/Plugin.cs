@@ -151,7 +151,7 @@ public sealed partial class Plugin : IDalamudPlugin
             case "monitor": StartPublicMonitor(); window.ShowPublicMonitor(); break;
             case "ai": window.ShowAi(); break;
             case "queue": window.ShowQueue(); break;
-            case "rating": DispatchUi(ReadOwnRating); Open(); break;
+            case "rating": DispatchUi(RefreshOwnRating); Open(); break;
             case "pause": PausePlay(); Open(); break;
             case "logs": ExportGameLogs(); Open(); break;
             case "recover": StartLogRecovery(); Open(); break;
@@ -428,12 +428,15 @@ public sealed partial class Plugin : IDalamudPlugin
             if (disposed) return;
             // A lease is a capability, never a run intent or a standard-mode gate.
             EnforceBetaAccess();
+            // A queued table/UI request may not have created a task yet. Retire
+            // that lease's generation before renewal can make availability true.
+            if (!TestAccessUnlocked && !QualifiedTaskContinues) RevokeGameOperations();
             testAccess.TryUnlock(input);
             BetaAccessStatus = testAccess.StatusMessage;
             if (TestAccessUnlocked && PendingStopAlert?.Reason.StartsWith("BETA_ACCESS_EXPIRED", StringComparison.Ordinal) == true)
             {
                 AcknowledgeStopAlert();
-                Status = "测试版已重新验证，原选择与任务进度已保留；请主动开始提示或授权继续任务，尚未自动启动。";
+                Status = "全部测试功能已可用，原选择与任务进度已保留；点击开始或继续任务即可，尚未自动启动。";
             }
         }
     }

@@ -7,7 +7,7 @@ public sealed partial class Plugin
 
     private void PrepareSelectedMortal()
     {
-        if (!ExperimentalHandAiEnabled || !TestAccessUnlocked) return;
+        if (!ExperimentalHandAiEnabled || !BetaRuntimeAccessValid) return;
         if (!MortalSelected)
         {
             mortalSession?.Dispose(); mortalSession = null;
@@ -82,14 +82,14 @@ public sealed partial class Plugin
     internal Mahjong.Policy.Abstractions.IPolicy CreateDecisionPolicy(Func<Mahjong.Policy.Abstractions.IPolicy> betaFactory)
     {
         if (!ExperimentalHandAiEnabled) return new Mahjong.Policy.Efficiency.EfficiencyPolicy(new Mahjong.Rules.Rulesets.DomanRuleSet());
-        if (!TestAccessUnlocked) throw new InvalidOperationException("BETA_ACCESS_REQUIRED");
+        if (!BetaRuntimeAccessValid) throw new InvalidOperationException("BETA_ACCESS_REQUIRED");
         return betaFactory();
     }
     private Experimental.AkochanGlobalPolicy CreateGlobalPolicy()
     {
-        if (!ExperimentalHandAiEnabled || !TestAccessUnlocked) throw new InvalidOperationException("BETA_ACCESS_REQUIRED");
+        if (!ExperimentalHandAiEnabled || !BetaRuntimeAccessValid) throw new InvalidOperationException("BETA_ACCESS_REQUIRED");
         int generation = Volatile.Read(ref betaGeneration);
-        bool AccessValid() => !disposed && ExperimentalHandAiEnabled && TestAccessUnlocked && generation == Volatile.Read(ref betaGeneration);
+        bool AccessValid() => !disposed && ExperimentalHandAiEnabled && BetaRuntimeAccessValid && generation == Volatile.Read(ref betaGeneration);
         if (!MortalSelected) return new(DefaultGlobalEngineDirectory, ProjectGlobalAiInput,
             ReportExperimentalHandAiStatus, RecordGlobalAiTrace, AccessValid);
         PrepareSelectedMortal();

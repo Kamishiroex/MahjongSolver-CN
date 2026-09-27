@@ -63,7 +63,7 @@ unsafe class Program
             Raster.Save(ImGui.GetDrawData(),pixels,tw,th,width,height,Path.Combine(output,$"page-{page}-{logicalWidth}-{scale*100:0}.png"));
         }
         if(plugin.TestAccessUnlocked || plugin.ExperimentalHandAiEnabled || plugin.PlayRuntime is not null ||
-            plugin.GameOperationsEnabled || plugin.GameOperationsAuthorized || plugin.TableAutomationArmed || plugin.RatingRefreshBusy)
+            plugin.GameOperationsAvailable || plugin.GameOperationsAuthorized || plugin.TableAutomationArmed || plugin.RatingRefreshBusy)
             throw new InvalidOperationException("Unverified rendering changed access or started play/operations");
         // Deliberately synthetic review row, rendered by the real production history page.
         Set(plugin,"history",new Plugin.HistoryState([new Mahjong.Plugin.CN.Journaling.MatchSummary(Guid.NewGuid(),DateTimeOffset.UnixEpoch,
@@ -84,6 +84,26 @@ unsafe class Program
             }
             Raster.Save(ImGui.GetDrawData(),pixels,tw,th,width,height,Path.Combine(output,$"review-fixture-{logicalWidth}-{scale*100:0}.png"));
         }
+        // Qualification alone exposes all controls but still cannot start a backend/task.
+        if (!access.TryUnlock("synthetic-host")) throw new InvalidOperationException("Synthetic lease failed");
+        Property(plugin,"BetaAccessStatus","测试宿主：资格有效，尚未启动。");
+        foreach(float scale in new[]{1f,1.5f,2f})
+        foreach(int logicalWidth in new[]{980,620})
+        foreach(int qualifiedPage in new[]{0,1,3})
+        {
+            int width=(int)(logicalWidth*scale),height=(int)(760*scale);io.DisplaySize=new(width,height);io.FontGlobalScale=scale;
+            Set(window,"compact",false);Set(window,"page",qualifiedPage);
+            for(int frame=0;frame<3;frame++)
+            {
+                ImGui.NewFrame();window.PreDraw();ImGui.SetNextWindowPos(Vector2.Zero);ImGui.SetNextWindowSize(new(width,height));
+                ImGui.Begin("MahjongSolver · 资格有效 / 无模型 · 测试宿主（非实机）",ImGuiWindowFlags.NoMove|ImGuiWindowFlags.NoResize);
+                window.Draw();ImGui.End();window.PostDraw();ImGui.Render();
+            }
+            Raster.Save(ImGui.GetDrawData(),pixels,tw,th,width,height,Path.Combine(output,$"qualified-{qualifiedPage}-{logicalWidth}-{scale*100:0}.png"));
+        }
+        if (!plugin.GameOperationsAvailable || plugin.ExperimentalHandAiEnabled || plugin.PlayRuntime is not null ||
+            plugin.GameOperationsAuthorized || plugin.TableAutomationArmed || plugin.RatingRefreshBusy)
+            throw new InvalidOperationException("Qualification rendering started a task/backend or hid availability");
         Set(window,"compact",false);Set(window,"page",0);io.FontGlobalScale=1;io.DisplaySize=new(980,680);
         var appearance=(GlassTheme.Appearance)typeof(GlassTheme).GetField("options",BindingFlags.Static|BindingFlags.NonPublic)!.GetValue(null)!;
         var measurements=new List<object>();

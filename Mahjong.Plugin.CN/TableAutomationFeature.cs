@@ -71,7 +71,7 @@ public sealed partial class Plugin
 
     internal void ArmTableAutomation()
     {
-        if(disposed || !RequireSelectedSourceAccess() || !RequireOperationCapability())return;
+        if(disposed || !RequireSelectedSourceAccess() || !RequireTestAccessCore())return;
         int operationEpoch=Volatile.Read(ref operationGeneration);
         int request = Interlocked.Increment(ref automationRequestVersion);
         _ = Framework.RunOnFrameworkThread(() =>
@@ -79,7 +79,7 @@ public sealed partial class Plugin
             lock (gate)
             {
                 if (disposed || request != Volatile.Read(ref automationRequestVersion) || operationEpoch!=Volatile.Read(ref operationGeneration) ||
-                    !RequireSelectedSourceAccess() || !RequireOperationCapability()) return;
+                    !RequireSelectedSourceAccess() || !RequireTestAccessCore()) return;
                 Identity = RuntimeIdentity.Read(Interface, Client);
                 if (Identity.Error is not null || !Client.IsLoggedIn)
                 { tableAutomation.Disarm(Identity.Error ?? "请先登录游戏。"); return; }

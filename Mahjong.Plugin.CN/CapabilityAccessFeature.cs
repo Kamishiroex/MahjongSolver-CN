@@ -5,38 +5,34 @@ public sealed partial class Plugin
     private const string BetaExpired = "BETA_ACCESS_EXPIRED：测试版验证失效，相关操作已暂停；请在设置 → 测试版重新验证，原选择与任务进度已保留。";
     private int betaGeneration;
     private bool betaExpiryHandled;
-    internal bool SelectedSourceAccessValid => !ExperimentalHandAiEnabled || TestAccessUnlocked;
-    private int gameOperationsEnabled;
+    private Access.QualifiedTaskAccess? qualifiedTaskAccess;
+    internal bool QualifiedTaskContinues => (TestAccessUnlocked || testAccess.HasExpired) && Volatile.Read(ref qualifiedTaskAccess)?.Matches(taskRun,
+        TaskEngineIdentity, Volatile.Read(ref betaGeneration)) == true &&
+        (taskRun.HasUnfinishedRun || TableAutomationArmed && tableAutomation.MatchCompleted || RatingRefreshBusy);
+    internal bool BetaRuntimeAccessValid => TestAccessUnlocked || QualifiedTaskContinues;
+    internal bool SelectedSourceAccessValid => !ExperimentalHandAiEnabled || BetaRuntimeAccessValid;
     private int operationGeneration;
     private int pendingOperationRequest = -1;
     private int pendingOperationGeneration;
     private Access.TaskOperationGrant? taskOperationGrant;
-    internal bool GameOperationsEnabled => Volatile.Read(ref gameOperationsEnabled) != 0;
-    internal bool GameOperationsAvailable => GameOperationsEnabled && TestAccessUnlocked;
-    internal bool GameOperationsAuthorized => GameOperationsAvailable && taskRun?.Plan is not null &&
-        Volatile.Read(ref taskOperationGrant)?.Allows(TestAccessUnlocked,GameOperationsEnabled,taskRun.RunId,
+    // A valid lease exposes every beta capability, including after reload.
+    // Availability is not a run intent: ordinary Start/Resume still creates a task grant.
+    internal bool GameOperationsAvailable => TestAccessUnlocked;
+    internal bool TaskOperationsAvailable => GameOperationsAvailable || QualifiedTaskContinues && taskRun.Plan is { } plan && (plan.Automatic || plan.Continuous);
+    internal bool GameOperationsAuthorized => TaskOperationsAvailable && taskRun?.Plan is not null &&
+        Volatile.Read(ref taskOperationGrant)?.Allows(TaskOperationsAvailable,taskRun.RunId,
             CurrentCharacterContext(),Volatile.Read(ref operationGeneration)) == true;
     private bool RequireOperationCapability()
     {
+        if (TaskOperationsAvailable) return true;
         if (!RequireTestAccessCore()) { Status=BetaAccessStatus; return false; }
-        if (GameOperationsEnabled) return true;
-        Status="自动操作未启用：请在设置 → 测试版主动启用游戏操作，再授权本次任务。";
-        return false;
+        return true;
     }
-    internal void SetGameOperationsEnabled(bool enabled)
+    private void PreserveQualifiedTaskAccess()
     {
-        lock(gate)
-        {
-            if(disposed || enabled && !RequireTestAccessCore())return;
-            if(GameOperationsEnabled==enabled)return;
-            bool wasOperating=PlayRuntime?.Mode==Mahjong.Plugin.Dalamud.PlayMode.Automatic || TableAutomationArmed;
-            RevokeGameOperations();
-            Volatile.Write(ref gameOperationsEnabled,enabled?1:0);
-            if(wasOperating)PausePlay();
-            BetaAccessStatus=enabled?"游戏操作能力已启用，尚未授权任务；可主动开始自动打牌或连续任务。":
-                "游戏操作能力已关闭；提示与只读功能仍可使用。";
-            RecordJournalEvent("operation_capability_selected",new {Enabled=enabled,TaskAuthorized=false});
-        }
+        if (TestAccessUnlocked && taskRun?.Plan is { } plan && (plan.Automatic || plan.Continuous || ExperimentalHandAiEnabled))
+            Volatile.Write(ref qualifiedTaskAccess, new(taskRun.RunId, taskRun.CharacterContext,
+                plan, TaskEngineIdentity, Volatile.Read(ref betaGeneration)));
     }
     private void RevokeGameOperations()
     {
@@ -50,7 +46,7 @@ public sealed partial class Plugin
     }
     private bool GrantTaskOperations(int generation)
     {
-        if(!GameOperationsAvailable || generation!=Volatile.Read(ref operationGeneration) || taskRun?.Plan is null)return false;
+        if(!TaskOperationsAvailable || generation!=Volatile.Read(ref operationGeneration) || taskRun?.Plan is null)return false;
         string context=CurrentCharacterContext();
         if(context.Length==0 || context!=taskRun.CharacterContext)return false;
         Volatile.Write(ref taskOperationGrant,new(taskRun.RunId,context,generation));
@@ -68,12 +64,17 @@ public sealed partial class Plugin
         EnforceBetaAccess();
         return false;
     }
-    private bool RequireSelectedSourceAccess() => !ExperimentalHandAiEnabled || RequireTestAccessCore();
+    private bool RequireSelectedSourceAccess() => !ExperimentalHandAiEnabled || BetaRuntimeAccessValid || RequireTestAccessCore();
 
     private void EnforceBetaAccess()
     {
         if (TestAccessUnlocked) { betaExpiryHandled = false; return; }
         aiProbe?.Stop("测试版验证失效，自检已取消。");
+        if (QualifiedTaskContinues)
+        {
+            BetaAccessStatus = "测试资格已到期；本次任务继续有效（含无限循环），结束或重载后新任务需重新验证。";
+            return;
+        }
         bool taskOperations=PlayRuntime?.Mode==Mahjong.Plugin.Dalamud.PlayMode.Automatic || TableAutomationArmed || taskOperationGrant is not null;
         if (!ExperimentalHandAiEnabled && !taskOperations)
         {

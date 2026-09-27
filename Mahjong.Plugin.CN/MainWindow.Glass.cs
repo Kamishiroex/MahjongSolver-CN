@@ -47,7 +47,6 @@ internal sealed partial class MainWindow
         {
             if (compact) SetCompact(false);
             page = selectPublicMonitor ? 4 : selectAi ? 3 : 1;
-            if (selectAi) betaSettingsOpen = true;
             selectQueue = selectAi = selectPublicMonitor = false;
         }
         DrawPersistentControls();
@@ -102,14 +101,14 @@ internal sealed partial class MainWindow
         ImGui.TextDisabled($"{view.ModeLabel} · {view.Engine} · {LocalCaptureRecorder.PluginVersion}");
         bool automatic = view.Mode == Mahjong.Plugin.Dalamud.PlayMode.Automatic && !view.Paused;
         if(ImGui.Button("开始提示",buttonSize))plugin.DispatchUi(()=>plugin.ActivatePlay(false));
-        if(plugin.GameOperationsAvailable)
+        if(plugin.TaskOperationsAvailable)
         {
         SameLineIfFits(buttonSize.X);
         ImGui.BeginDisabled(automatic);
         if (ImGui.Button(automatic ? "自动运行###toolbar-auto" : "自动打牌###toolbar-auto", buttonSize))
             plugin.DispatchUi(plugin.StartAutomaticFromToolbar);
         ImGui.EndDisabled();
-        if (ImGui.IsItemHovered()) ImGui.SetTooltip("测试版游戏操作：授权本次自动出牌、鸣牌、和牌及结算。\n继续已有任务，保留场数与停止条件。");
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("开始自动出牌、鸣牌、和牌及结算，无需另行启用。\n继续已有任务，保留场数与停止条件。");
         }
         SameLineIfFits(buttonSize.X);
         using (var danger = new GlassTheme.StyleScope())
@@ -133,12 +132,14 @@ internal sealed partial class MainWindow
         else if(plugin.TableAutomationArmed)ImGui.TextWrapped("测试版游戏操作 · 连续任务已授权："+plugin.TableAutomationStatus);
         else if(plugin.RatingRefreshBusy)ImGui.TextWrapped("测试版游戏操作 · 本次评分窗口刷新已授权。");
         else if(!plugin.ExperimentalHandAiEnabled && !automatic)ImGui.TextWrapped("标准模式不执行游戏操作，仅提供提示。");
+        if(!plugin.TestAccessUnlocked && plugin.QualifiedTaskContinues)
+            ImGui.TextWrapped("测试资格已到期，本次任务继续有效；结束或重载后新任务需重新验证。");
         if(!plugin.SelectedSourceAccessValid)
         {
             using (var warning = new GlassTheme.StyleScope())
             { warning.Color(ImGuiCol.Text, GlassTheme.Warning); ImGui.TextWrapped("测试版验证已失效，原模型选择已保留。"); }
             if(ImGui.SmallButton("前往测试版续期"))
-            { if(compact)SetCompact(false);page=3;betaSettingsOpen=true; }
+            { if(compact)SetCompact(false);page=3; }
         }
     }
     private static void DrawAboutPopup()

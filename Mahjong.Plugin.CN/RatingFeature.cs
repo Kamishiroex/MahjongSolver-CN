@@ -17,10 +17,16 @@ public sealed partial class Plugin
     private CnRatingProfileAccess? ratingProfile;
     private int ratingOperationGeneration=-1;
     private string ratingOperationContext="";
+    private bool ratingOperationForTask;
     private string passiveRatingStatus="请手动打开金碟／方城战资料页，标准模式只读取已显示的评分。";
     internal RatingObservation? CurrentRating { get; private set; }
     internal bool RatingRefreshBusy => ratingRefresh?.Busy == true;
     internal string RatingRefreshStatus => ratingRefresh?.Status is {Length:>0} status ? status : passiveRatingStatus;
+    internal void RefreshOwnRating()
+    {
+        if (GameOperationsAvailable) ReadOwnRatingWithNavigation();
+        else ReadOwnRating();
+    }
     internal void ReadOwnRating()
     {
         Identity=RuntimeIdentity.Read(Interface,Client);
@@ -30,20 +36,21 @@ public sealed partial class Plugin
     }
     internal void ReadOwnRatingWithNavigation()
     {
-        if(disposed || !RequireOperationCapability())return;
+        if(disposed || !RequireTestAccessCore())return;
         Identity=RuntimeIdentity.Read(Interface,Client);
         RequestRatingRefresh(false,explicitRequest:true);
     }
-    private bool RatingOperationsAuthorized => GameOperationsAvailable && ratingOperationGeneration==Volatile.Read(ref operationGeneration) &&
+    private bool RatingOperationsAuthorized => (GameOperationsAvailable || ratingOperationForTask && GameOperationsAuthorized) && ratingOperationGeneration==Volatile.Read(ref operationGeneration) &&
         ratingOperationContext.Length>0 && ratingOperationContext==CurrentCharacterContext();
     private void RequestRatingRefresh(bool afterMatch,bool explicitRequest=false)
     {
-        if(!GameOperationsAvailable || !(explicitRequest || afterMatch && GameOperationsAuthorized))return;
+        if(!(explicitRequest && GameOperationsAvailable || afterMatch && GameOperationsAuthorized))return;
         string context=CurrentCharacterContext();
         if(disposed || Identity.Error is not null || context.Length==0)return;
         ratingReadingEnabled=true;
         ratingOperationGeneration=Volatile.Read(ref operationGeneration);
         ratingOperationContext=context;
+        ratingOperationForTask=afterMatch;
         ratingProfile??=new(name=>GameGui.GetAddonByName(name).Address,()=>RatingOperationsAuthorized);
         ratingRefresh??=new(ratingProfile,()=>RatingOperationsAuthorized);
         ratingRefresh.Request(context,AutomationNow,afterMatch,reviewRatingAnchor?.Before.MatchesPlayed);

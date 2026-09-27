@@ -51,6 +51,11 @@ internal sealed class TestCodeAccess
         get { lock (gate) return lease?.ExpiresAtUtc; }
     }
 
+    internal bool HasExpired
+    {
+        get { lock (gate) return lease is not null && TryGetNow(out var now) && now >= lease.ExpiresAtUtc; }
+    }
+
     internal string StatusMessage
     {
         get

@@ -65,6 +65,7 @@ public sealed partial class Plugin
     }
     private bool BeginManagedTask(bool automatic,bool continuous)
     {
+        if (!resumingTask && (automatic || continuous || ExperimentalHandAiEnabled) && !RequireTestAccessCore()) return false;
         if((automatic || continuous) && !RequireOperationCapability())return false;
         if(taskRun is null || resumingTask)return true; // Existing isolated runtime fixtures have no plugin coordinator.
         if(taskRun.HasUnfinishedRun){Status="现有任务尚未结束，请继续同一任务，或明确结束后新建。";return false;}
@@ -78,6 +79,7 @@ public sealed partial class Plugin
         taskAutomationSnapshot=AutomationOptions;
         ratingReadingEnabled=true;
         taskRun.Start(new(automatic,continuous,continuous?AutomationOptions.DutyId:0,TaskEngineIdentity,rules,MahjongRatingReader.Profile),context,CurrentRating,AutomationNow,DateTimeOffset.UtcNow);
+        PreserveQualifiedTaskAccess();
         lastTaskBlock=null;
         normalTaskStopReason=null;
         RecordJournalEvent("task_started",new { taskRun.RunId,Mode=automatic?"automatic":"manual",Continuous=continuous,Rules=rules,Engine=TechnicalDecisionSource,AutomaticRestored=false });
@@ -109,6 +111,8 @@ public sealed partial class Plugin
     {
         if(disposed || !RequireSelectedSourceAccess())return;
         bool needsOperations=automatic==true || taskRun?.Plan is { } requestedPlan && (requestedPlan.Automatic || requestedPlan.Continuous);
+        if (!TestAccessUnlocked && automatic == true && taskRun?.Plan?.Automatic != true)
+        { Status="测试资格已到期，只可继续原任务模式；改为自动打牌需重新验证。"; return; }
         if(needsOperations && !RequireOperationCapability())return;
         int operationEpoch=Volatile.Read(ref operationGeneration);
         RevokeUiIntents();
@@ -128,6 +132,7 @@ public sealed partial class Plugin
                 taskRun.ConfirmEngineForResume(TaskEngineIdentity,automatic);
                 if(!CheckLowerHandResource() || !taskRun.Resume(AutomationNow,DateTimeOffset.UtcNow,CurrentCharacterContext(),CurrentRating))
                 {Status=TaskSummary;return;}
+                PreserveQualifiedTaskAccess();
                 if(needsOperations && !GrantTaskOperations(operationEpoch))return;
                 resumingTask=true;
                 ratingReadingEnabled=true;

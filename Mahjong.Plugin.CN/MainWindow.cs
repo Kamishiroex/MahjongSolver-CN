@@ -52,6 +52,8 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         }
         ImGui.TextWrapped("求解来源：" + plugin.DecisionSourceLabel);
         ImGui.TextUnformatted($"当前：{CurrentMode()}");
+        if(!plugin.TestAccessUnlocked && plugin.QualifiedTaskContinues)
+            ImGui.TextWrapped("测试资格已到期，本次任务继续有效；结束或重载后新任务需重新验证。");
         float modeWidth = Math.Max(150, ImGui.CalcTextSize("暂停全部自动功能").X + ImGui.GetStyle().FramePadding.X * 2);
         var modeSize = new Vector2(modeWidth, Math.Max(36, ImGui.GetFrameHeight()));
         ImGui.BeginDisabled(plugin.Identity.Error is not null);
@@ -61,8 +63,8 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         try
         {
             if (ImGui.Button("手动提醒", modeSize)) plugin.DispatchUi(()=>plugin.ActivatePlay(false));
-            if(plugin.GameOperationsAvailable)
-            { SameLineIfFits(modeWidth);if (ImGui.Button("授权自动打牌", modeSize)) plugin.DispatchUi(plugin.StartAutomaticFromToolbar); }
+            if(plugin.TaskOperationsAvailable)
+            { SameLineIfFits(modeWidth);if (ImGui.Button("自动打牌", modeSize)) plugin.DispatchUi(plugin.StartAutomaticFromToolbar); }
         }
         finally { ImGui.PopStyleColor(3); }
         ImGui.EndDisabled();
@@ -97,7 +99,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
             }
             if (ImGui.BeginTabItem("设置", selectAi ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None))
             {
-                if (selectAi) { betaSettingsOpen = true; selectAi = false; }
+                selectAi = false;
                 DrawSolverSettings(); DrawSettings(); DrawBetaEntry();
                 ImGui.EndTabItem();
             }
@@ -127,7 +129,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         ImGui.TextColored(Jade, Brand.ProductName);
         ImGui.TextWrapped(Brand.ProductSubtitle);
         ImGui.Spacing();
-        ImGui.TextWrapped("标准模式不执行游戏操作，仅提供提示。保留目标提醒、评分展示、记录、设置与诊断；实验求解器和游戏自动操作分别属于可选测试版能力，操作还需本次任务授权。不保证胜率或段位提升。");
+        ImGui.TextWrapped("标准模式不执行游戏操作，仅提供提示。保留目标提醒、评分展示、记录、设置与诊断；测试资格有效时，实验求解器和游戏自动操作直接可用，无需逐项启用。点击开始才运行，不保证胜率或段位提升。");
         ImGui.Separator();
         ImGui.TextUnformatted("项目维护与来源");
         ImGui.TextWrapped("国服维护仓库：Kamishiroex/MahjongSolver-CN；贡献者见仓库记录。");
@@ -144,7 +146,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
     private void DrawTableAutomation()
     {
         if(!plugin.GameOperationsAvailable)
-        { ImGui.TextWrapped("自动任务属于测试版游戏操作；在设置 → 测试版验证并主动启用后，可配置和授权本次任务。");return; }
+        { ImGui.TextWrapped("自动任务属于测试版功能；在设置 → 测试版验证后即可使用，无需另行启用。");return; }
         ImGui.TextUnformatted("自动排队与进桌开打");
         var options = plugin.AutomationOptions;
         bool queue = options.AutoQueue, start = options.AutoStart;
@@ -210,7 +212,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         ImGui.TextWrapped(plugin.JournalMaintenanceStatus);
         bool retry = plugin.RetryTransientErrors;
         if(ImGui.Checkbox("短暂读取或计算异常后立即尝试恢复", ref retry))plugin.DispatchUi(()=>plugin.SetTransientRecovery(retry));
-        if(ImGui.IsItemHovered())ImGui.SetTooltip("重新核对同一牌桌，最多等待 8 秒、每分钟最多 3 次。\n沿用原任务授权；手动暂停、资格失效、版本变化或操作结果不明时不恢复。");
+        if(ImGui.IsItemHovered())ImGui.SetTooltip("重新核对同一牌桌，最多等待 8 秒、每分钟最多 3 次。\n沿用原任务授权；过期后保留的任务同样可恢复。手动暂停、任务权限失效、版本变化或操作结果不明时不恢复。");
         ImGui.TextWrapped(plugin.QuickRecoveryStatus);
         if (plugin.GameOperationsAvailable && plugin.PlayRuntime is { } runtime)
         {

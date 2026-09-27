@@ -19,8 +19,8 @@ public sealed class EntryServicesCollection { }
 [Collection("CN entry services")]
 public sealed class TestAccessEntryTests
 {
-    [Theory][InlineData("pause")][InlineData("expiry")][InlineData("disable")]
-    public void Recovery_cannot_survive_manual_pause_expiry_or_capability_revocation(string action)
+    [Theory][InlineData("pause")][InlineData("end")][InlineData("stop")]
+    public void Recovery_cannot_survive_manual_pause_end_or_stop(string action)
     {
         using var host=new Host();host.AuthorizeSyntheticTask();
         var retry=new Automation.TransientRecoveryGate();
@@ -28,8 +28,8 @@ public sealed class TestAccessEntryTests
         Assert.True(retry.Begin("AUTO_SNAPSHOT_UNAVAILABLE","fixture-original-grant",0));
         Assert.True(host.Entry.GameOperationsAuthorized);
         if(action=="pause")host.Entry.PausePlay();
-        else if(action=="disable")host.Entry.SetGameOperationsEnabled(false);
-        else {host.Now=host.Now.AddDays(8);Host.Enforce(host.Entry);}
+        else if(action=="stop")host.Entry.Stop("synthetic user stop");
+        else host.Entry.EndTask();
         Assert.False(retry.Pending);Assert.False(host.Entry.GameOperationsAuthorized);
         Assert.Equal(Automation.RecoveryCheck.Abandon,retry.Observe("fixture-original-grant","new",1,true,false));
     }
@@ -72,7 +72,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         Directory.CreateDirectory(host.LogTestDirectory);
         var service = typeof(Plugin).GetField("<Interface>k__BackingField", BindingFlags.NonPublic | BindingFlags.Static)!;
         var old = service.GetValue(null);
@@ -114,7 +113,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.PausePlay();
         int pauseRequest = Host.Get<int>(host.Entry, "modeRequestVersion");
         host.Entry.ArmTableAutomation();
@@ -134,7 +132,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.ArmTableAutomation();
         if (control == "pause") host.Entry.PausePlay();
         else if (control == "stop") host.Entry.Stop("stop");
@@ -186,7 +183,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         Host.Set(host.Entry, "experimentalHandAiEnabled", enabled ? 0 : 1);
         host.Entry.ActivatePlay(true);
         Assert.Single(host.Queued);
@@ -288,7 +284,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.SetExperimentalHandAiEnabled(true);
         host.Entry.ActivatePlay(true);
         Assert.Single(host.Queued);
@@ -399,7 +394,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.ActivatePlay(true);
         Assert.Single(host.Queued);
         var validate = typeof(Plugin).GetMethod("CheckLowerHandResource", BindingFlags.NonPublic | BindingFlags.Instance)!;
@@ -469,7 +463,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.PausePlay();
         var delayedPause = host.Queued.Dequeue();
         host.Entry.ActivatePlay(true); // A newer request supersedes the paused callback.
@@ -491,7 +484,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         var journal = new GameJournal(Path.Combine(Path.GetTempPath(), "mjcn-fault-entry-" + Guid.NewGuid().ToString("N")));
         Assert.False(journal.Event("invalid-kind!", new { Synthetic = true }));
         Assert.Equal("JOURNAL_KIND_INVALID", journal.Fault);
@@ -649,7 +641,7 @@ public sealed class TestAccessEntryTests
     }
 
     [Fact]
-    public void Beta_expiry_pauses_same_task_invalidates_pending_actions_and_keeps_selection()
+    public void Beta_runtime_without_a_qualified_task_receipt_pauses_on_expiry_and_keeps_selection()
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
@@ -743,7 +735,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         using var runtime = new RuntimeModeLifecycleTests.Host(policyFactory: host.Entry.CreateDecisionPolicy);
         runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Manual);
         Host.Set(host.Entry, "<PlayRuntime>k__BackingField", runtime.Runtime);
@@ -765,16 +756,12 @@ public sealed class TestAccessEntryTests
 
     [Theory]
     [InlineData(false)] [InlineData(true)]
-    public void Qualification_alone_never_enables_operations_or_starts_backend(bool valid)
+    public void Qualification_opens_all_capabilities_without_starting_operations_or_backend(bool valid)
     {
         using var host = new Host();
         host.Entry.VerifyTestCode(valid ? Host.Code : "synthetic-invalid");
-        host.Entry.ActivatePlay(true);
-        host.Entry.StartAutomaticFromToolbar();
-        host.Entry.ArmTableAutomation();
-        host.Entry.ReadOwnRatingWithNavigation();
         Assert.Empty(host.Queued);
-        Assert.False(host.Entry.GameOperationsEnabled);
+        Assert.Equal(valid, host.Entry.GameOperationsAvailable);
         Assert.False(host.Entry.GameOperationsAuthorized);
         Assert.False(host.Entry.ExperimentalHandAiEnabled);
         Assert.False(host.Entry.RatingRefreshBusy);
@@ -783,12 +770,11 @@ public sealed class TestAccessEntryTests
     }
 
     [Fact]
-    public void Enabling_operations_does_not_grant_task_or_warm_selected_beta_solver()
+    public void Selecting_beta_solver_requires_no_separate_enable_and_keeps_backend_cold()
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
         host.Entry.SetExperimentalHandAiEnabled(true);
-        host.Entry.SetGameOperationsEnabled(true);
         Assert.True(host.Entry.GameOperationsAvailable);
         Assert.False(host.Entry.GameOperationsAuthorized);
         Assert.Empty(host.Queued);
@@ -800,15 +786,15 @@ public sealed class TestAccessEntryTests
 
     [Theory]
     [InlineData(false)] [InlineData(true)]
-    public void Revocation_and_reenable_never_revive_queued_start(bool queue)
+    public void Expiry_and_renewal_never_revive_queued_start(bool queue)
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         if(queue)host.Entry.ArmTableAutomation(); else host.Entry.ActivatePlay(true);
         Assert.Single(host.Queued);
-        host.Entry.SetGameOperationsEnabled(false);
-        host.Entry.SetGameOperationsEnabled(true);
+        host.Now = host.Access.ExpiresAtUtc!.Value;
+        host.Entry.VerifyTestCode(Host.Code); // Enforces expiry before granting the new lease.
+        Assert.True(host.Entry.GameOperationsAvailable);
         host.Drain(); // Stale requests must return before client/resource access.
         Assert.Null(host.Entry.PlayRuntime);
         Assert.False(host.Entry.GameOperationsAuthorized);
@@ -816,16 +802,70 @@ public sealed class TestAccessEntryTests
     }
 
     [Fact]
-    public void Old_ui_intent_cannot_create_new_task_authority_after_capability_reenabled()
+    public void Paused_ui_intent_cannot_create_new_task_authority_while_qualified()
     {
         using var host=new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         host.Entry.DispatchUi(()=>host.Entry.ActivatePlay(true));
-        host.Entry.SetGameOperationsEnabled(false);
-        host.Entry.SetGameOperationsEnabled(true);
+        host.Entry.PausePlay();
+        host.Entry.VerifyTestCode(Host.Code);
         typeof(Plugin).GetMethod("DrainUiIntents",BindingFlags.NonPublic|BindingFlags.Instance)!.Invoke(host.Entry,null);
+        Assert.Single(host.Queued); // Only the already requested pause remains.
+        host.Drain();
         Assert.Empty(host.Queued);Assert.False(host.Entry.GameOperationsAuthorized);
+    }
+
+    [Theory]
+    [InlineData("auto")] [InlineData("toolbar")] [InlineData("queue")]
+    public void One_normal_start_after_qualification_needs_no_extra_enable_or_authorize_button(string entry)
+    {
+        using var host = new Host();
+        host.Entry.VerifyTestCode(Host.Code);
+        if (entry == "auto") host.Entry.ActivatePlay(true);
+        else if (entry == "toolbar") host.Entry.StartAutomaticFromToolbar();
+        else host.Entry.ArmTableAutomation();
+        Assert.Single(host.Queued);
+        Assert.True(host.Entry.GameOperationsAvailable);
+        Assert.False(host.Entry.GameOperationsAuthorized); // The normal framework preflight still must pass.
+        host.Entry.PausePlay(); host.Drain();
+        Assert.Null(host.Entry.PlayRuntime);
+        Assert.False(host.Entry.TableAutomationArmed);
+    }
+
+    [Theory]
+    [InlineData(false)] [InlineData(true)]
+    public void Unqualified_or_expired_access_blocks_all_operation_entry_points(bool expired)
+    {
+        using var host = new Host();
+        if (expired) { host.Entry.VerifyTestCode(Host.Code); host.Now = host.Access.ExpiresAtUtc!.Value; }
+        host.Entry.ActivatePlay(true);
+        host.Entry.StartAutomaticFromToolbar();
+        host.Entry.ArmTableAutomation();
+        host.Entry.ReadOwnRatingWithNavigation();
+        host.Entry.SetExperimentalHandAiEnabled(true);
+        Assert.Empty(host.Queued);
+        Assert.False(host.Entry.GameOperationsAvailable);
+        Assert.False(host.Entry.GameOperationsAuthorized);
+        Assert.False(host.Entry.ExperimentalHandAiEnabled);
+        Assert.Null(host.Entry.PlayRuntime);
+        Assert.Null(Host.Get<object?>(host.Entry, "mortalSession"));
+    }
+
+    [Theory]
+    [InlineData(false)] [InlineData(true)]
+    public void Reloaded_lease_directly_restores_availability_but_not_running_tasks(bool expired)
+    {
+        using var host = new Host();
+        host.Entry.VerifyTestCode(Host.Code);
+        if (expired) host.Now = host.Access.ExpiresAtUtc!.Value;
+        var reloaded = new TestCodeAccess(host.AccessPath, () => host.Now,
+            SHA256.HashData(Encoding.UTF8.GetBytes(Host.Code)));
+        Host.Set(host.Entry, "testAccess", reloaded);
+        Assert.Equal(!expired, host.Entry.GameOperationsAvailable);
+        Assert.False(host.Entry.GameOperationsAuthorized);
+        Assert.Empty(host.Queued);
+        Assert.Null(host.Entry.PlayRuntime);
+        Assert.False(host.Entry.TableAutomationArmed);
     }
 
     [Fact]
@@ -843,30 +883,86 @@ public sealed class TestAccessEntryTests
         Assert.All(runtime.Saved,c => Assert.False(c.AutomationArmed));
     }
 
-    [Fact]
-    public void Upstream_automatic_task_also_pauses_on_expiry_and_renewal_does_not_resume()
+    [Theory]
+    [InlineData(false,1)] [InlineData(false,0)] [InlineData(true,1)] [InlineData(true,0)]
+    public void Qualified_running_task_survives_expiry_including_unlimited_loops(bool beta, int limit)
     {
         using var host = new Host();
-        host.AuthorizeSyntheticTask();
+        host.AuthorizeSyntheticTask(beta, continuous:true, matchLimit:limit);
         Host.Set(host.Entry,"stopAlert",new GameplayStopAlert());
-        using var runtime = new RuntimeModeLifecycleTests.Host(inputGate: () => host.Entry.GameOperationsAuthorized);
+        int betaCalls = 0;
+        using var runtime = new RuntimeModeLifecycleTests.Host(inputGate: () => host.Entry.GameOperationsAuthorized,
+            policyFactory: () => host.Entry.CreateDecisionPolicy(() => { betaCalls++; return new EfficiencyPolicy(new Mahjong.Rules.Rulesets.DomanRuleSet()); }));
         runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Automatic);
         Host.Set(host.Entry,"<PlayRuntime>k__BackingField",runtime.Runtime);
         Host.Set(host.Entry,"gameplayAllowed",true);
+        var coordinator=Host.Get<Mahjong.Plugin.CN.Automation.TableAutomation>(host.Entry,"tableAutomation");
+        coordinator.Arm(new(true,true,MatchLimit:limit),0);
         Assert.True(host.Entry.GameOperationsAuthorized);
         var id=host.Entry.TaskRun.RunId;
         host.Now=host.Access.ExpiresAtUtc!.Value;
-        Assert.False(host.Entry.GameOperationsAuthorized); // Even before the next framework tick.
+        Assert.False(host.Entry.TestAccessUnlocked);
+        Assert.True(host.Entry.GameOperationsAuthorized);
         Host.Enforce(host.Entry);
-        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off,runtime.Runtime.Mode);
-        Assert.Equal(Mahjong.Cn.Tasks.TaskRunPhase.Paused,host.Entry.TaskRun.Phase);
-        Assert.Contains("BETA_ACCESS_EXPIRED",host.Entry.PendingStopAlert!.Reason);
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Automatic,runtime.Runtime.Mode);
+        Assert.True(coordinator.Armed);
+        Assert.Null(host.Entry.PendingStopAlert);
+        Assert.True(host.Entry.SelectedSourceAccessValid);
+        host.Entry.ArmTableAutomation(); // Cannot replace the retained task with another start.
+        Assert.Empty(host.Queued);Assert.True(coordinator.Armed);
+        // Policies constructed for later hands also inherit only this original task.
+        host.Entry.CreateDecisionPolicy(() => { betaCalls++; return new EfficiencyPolicy(new Mahjong.Rules.Rulesets.DomanRuleSet()); });
+        Assert.Equal(beta ? 2 : 0,betaCalls);
         host.Entry.VerifyTestCode(Host.Code);
         Assert.Equal(id,host.Entry.TaskRun.RunId);
-        Assert.False(host.Entry.ExperimentalHandAiEnabled);
+        Assert.True(host.Entry.GameOperationsAuthorized); // Renewal cannot interrupt a retained task.
+        Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Automatic,runtime.Runtime.Mode);
+        host.Entry.PausePlay();host.Drain();
         Assert.False(host.Entry.GameOperationsAuthorized);
+        Assert.True(host.Entry.QualifiedTaskContinues);
+        Assert.False(coordinator.Armed);
         Assert.Equal(Mahjong.Plugin.Dalamud.PlayMode.Off,runtime.Runtime.Mode);
         Assert.Empty(host.Queued);
+    }
+
+    [Fact]
+    public void Expired_original_task_can_resume_but_cannot_start_new_task_or_replay_paused_work()
+    {
+        using var host = new Host(); host.AuthorizeSyntheticTask();
+        host.Now = host.Access.ExpiresAtUtc!.Value;
+        host.Entry.PausePlay(); host.Drain();
+        Assert.True(host.Entry.QualifiedTaskContinues);
+        Assert.False(host.Entry.GameOperationsAuthorized);
+        host.Entry.ResumeTask();
+        Assert.Single(host.Queued); // No extra enable/verification step for the same paused task.
+        host.Entry.PausePlay(); host.Drain();
+        host.Entry.EndTask(); host.Drain();
+        Assert.False(host.Entry.QualifiedTaskContinues);
+        host.Entry.StartAutomaticFromToolbar();host.Entry.ArmTableAutomation();
+        Assert.Empty(host.Queued);Assert.False(host.Entry.GameOperationsAuthorized);
+    }
+
+    [Fact]
+    public void Expired_running_task_keeps_quick_recovery_but_ending_it_revokes_it()
+    {
+        using var host = new Host(); host.AuthorizeSyntheticTask();
+        var retry = new Automation.TransientRecoveryGate();
+        Host.Set(host.Entry,"transientRecovery",retry);
+        Assert.True(retry.Begin("AUTO_SNAPSHOT_UNAVAILABLE","original",0));
+        host.Now = host.Access.ExpiresAtUtc!.Value;
+        Host.Enforce(host.Entry);
+        Assert.True(retry.Pending);Assert.True(host.Entry.GameOperationsAuthorized);
+        host.Entry.EndTask();
+        Assert.False(retry.Pending);Assert.False(host.Entry.GameOperationsAuthorized);
+    }
+
+    [Fact]
+    public void Retained_task_is_only_an_expiry_exception_not_a_clock_rollback_bypass()
+    {
+        using var host = new Host();host.AuthorizeSyntheticTask();
+        host.Now = host.Now.AddDays(-1);
+        Assert.False(host.Entry.QualifiedTaskContinues);
+        Assert.False(host.Entry.GameOperationsAuthorized);
     }
 
     [Fact]
@@ -874,7 +970,6 @@ public sealed class TestAccessEntryTests
     {
         using var host = new Host();
         Assert.True(host.Access.TryUnlock(Host.Code));
-        host.Entry.SetGameOperationsEnabled(true);
         using var runtime = new RuntimeModeLifecycleTests.Host(inputGate: () => host.Entry.GameOperationsAuthorized);
         runtime.Runtime.SetMode(Mahjong.Plugin.Dalamud.PlayMode.Manual);
         Host.Set(host.Entry,"<PlayRuntime>k__BackingField",runtime.Runtime);
@@ -915,6 +1010,7 @@ public sealed class TestAccessEntryTests
         internal Queue<Action> Queued { get; } = new();
         internal string LogTestDirectory => Path.Combine(directory, "logs");
         internal string PreferencePath => Path.Combine(directory, "solver-preference.json");
+        internal string AccessPath => Path.Combine(directory, "test-access.json");
 
         internal Host()
         {
@@ -967,10 +1063,10 @@ public sealed class TestAccessEntryTests
         internal void Drain() { while (Queued.TryDequeue(out var callback)) callback(); }
 
         internal static void Enforce(Plugin entry)=>typeof(Plugin).GetMethod("EnforceBetaAccess",BindingFlags.NonPublic|BindingFlags.Instance)!.Invoke(entry,null);
-        internal void AuthorizeSyntheticTask()
+        internal void AuthorizeSyntheticTask(bool beta = false, bool continuous = false, int matchLimit = 1)
         {
             Assert.True(Access.TryUnlock(Code));
-            Entry.SetGameOperationsEnabled(true);
+            if (beta) Entry.SetExperimentalHandAiEnabled(true);
             typeof(Plugin).GetField("<Client>k__BackingField",BindingFlags.NonPublic|BindingFlags.Static)!.SetValue(null,
                 RuntimeModeLifecycleTests.ServiceProxy.Create<IClientState>((m,_)=>m.Name=="get_IsLoggedIn"?true:throw new InvalidOperationException(m.Name)));
             typeof(Plugin).GetField("<PlayerState>k__BackingField",BindingFlags.NonPublic|BindingFlags.Static)!.SetValue(null,
@@ -978,8 +1074,9 @@ public sealed class TestAccessEntryTests
                     "get_IsLoaded"=>true,"get_ContentId"=>1UL,_=>throw new InvalidOperationException(m.Name)}));
             Set(Entry,"ratingContentId",1UL);Set(Entry,"ratingContext","synthetic");
             var run=new Mahjong.Cn.Tasks.TaskRun();
-            run.Start(new(true,false,0,"upstream",new(MatchLimit:1),"synthetic"),"synthetic",null,0,Now);
+            run.Start(new(true,continuous,continuous?766u:0u,Entry.DecisionSourceLabel+":"+(beta?Entry.SelectedEngineId:"upstream"),new(MatchLimit:matchLimit),"synthetic"),"synthetic",null,0,Now);
             Set(Entry,"taskRun",run);
+            typeof(Plugin).GetMethod("PreserveQualifiedTaskAccess",BindingFlags.NonPublic|BindingFlags.Instance)!.Invoke(Entry,null);
             Assert.True((bool)typeof(Plugin).GetMethod("GrantTaskOperations",BindingFlags.NonPublic|BindingFlags.Instance)!
                 .Invoke(Entry,[Get<int>(Entry,"operationGeneration")])!);
         }

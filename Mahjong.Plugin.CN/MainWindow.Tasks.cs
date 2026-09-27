@@ -74,12 +74,16 @@ internal sealed partial class MainWindow
             ImGui.TextWrapped($"{rating.ReadAtUtc.ToLocalTime():yyyy-MM-dd HH:mm:ss} · {rating.Source} · {(fresh?"页面读取":"保留读数")}");
             if(rating.FailureReason is { } error)ImGui.TextWrapped(error);
         }
-        else ImGui.TextWrapped(view.Rating?.FailureReason??"尚未读取。请手动打开金碟／方城战资料页，再点击读取。");
+        else ImGui.TextWrapped(view.Rating?.FailureReason??(plugin.GameOperationsAvailable
+            ? "尚未读取。点击刷新本人评分即可。" : "尚未读取。请手动打开金碟／方城战资料页，再点击读取。"));
         ImGui.BeginDisabled(view.RatingRefreshing);
-        if(ImGui.Button(view.RatingRefreshing?"正在刷新…###refresh-rating":"读取已打开页面###refresh-rating")) plugin.DispatchUi(plugin.ReadOwnRating);
+        if(ImGui.Button(view.RatingRefreshing?"正在刷新…###refresh-rating":plugin.GameOperationsAvailable
+            ? "刷新本人评分###refresh-rating" : "读取已打开页面###refresh-rating")) plugin.DispatchUi(plugin.RefreshOwnRating);
         ImGui.EndDisabled();
+        if(ImGui.IsItemHovered())ImGui.SetTooltip(plugin.GameOperationsAvailable
+            ? "自动打开金碟资料、切到方城战并读分；只关闭插件自己打开的窗口。"
+            : "标准模式只读已显示的方城战资料页，不开窗、切页或关窗。");
         if(!string.IsNullOrEmpty(view.RatingStatus))ImGui.TextWrapped(view.RatingStatus);
-        ImGui.TextWrapped("标准模式只读已显示的资料页。窗口自动刷新位于设置 → 测试版，需要单独授权；自动任务中的整场后刷新遵守同一操作权限。");
         ImGui.TextWrapped("评分不同于本场点数；资料页读数不证明上一整场结算已经刷新，目标停止尚未开放。");
     }
 }

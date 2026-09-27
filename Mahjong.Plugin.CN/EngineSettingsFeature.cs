@@ -79,6 +79,7 @@ public sealed partial class Plugin
 
     private void ApplyEngineProfile(EngineProfile profile, bool save)
     {
+        if (save) Volatile.Write(ref qualifiedTaskAccess, null);
         if (save) EngineLibrary.Save(Interface.GetPluginConfigDirectory(), new(profile.Id, InstalledEngines));
         selectedEngineDirectory = profile.Directory; MortalSelected = profile.IsMortal;
         selectedEngineName = profile.Name; SelectedEngineId = profile.Id;
