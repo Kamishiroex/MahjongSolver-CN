@@ -12,7 +12,8 @@ internal sealed record PluginUiSnapshot(DateTimeOffset CapturedUtc, long Observa
     StateSnapshot? Table, ActionChoice? LastChoice, ImmutableArray<DecodedLowerFace> Hand,
     Mahjong.Cn.Rating.RatingObservation? Rating = null,
     Mahjong.Cn.PublicState.PublicSnapshot? PublicTable = null,
-    ImmutableArray<string> RecentEvents = default)
+    ImmutableArray<string> RecentEvents = default,
+    bool RatingRefreshing = false, string RatingStatus = "")
 {
     internal static PluginUiSnapshot Empty { get; } = new(default, 0, PlayMode.Off, false,
         "等待状态更新。", "标准求解器", "任务未启动。", null, null, []);

@@ -68,11 +68,15 @@ internal sealed partial class MainWindow
             bool fresh=rating.Freshness==RatingFreshness.Fresh && DateTimeOffset.UtcNow-rating.ReadAtUtc<TimeSpan.FromSeconds(3);
             ImGui.TextColored(GlassTheme.Accent,$"{(fresh?"当前":"上次读取")}麻将评分：{current}");
             ImGui.TextWrapped($"最高评分：{rating.HighestRating?.ToString()??"未知"} · 段位：{rating.Rank??"未知"}");
-            ImGui.TextWrapped($"{rating.ReadAtUtc.ToLocalTime():yyyy-MM-dd HH:mm:ss} · {rating.Source} · {(fresh?"页面读取":"旧缓存 / 需刷新")}");
+            ImGui.TextWrapped($"{rating.ReadAtUtc.ToLocalTime():yyyy-MM-dd HH:mm:ss} · {rating.Source} · {(fresh?"页面读取":"保留读数")}");
             if(rating.FailureReason is { } error)ImGui.TextWrapped(error);
         }
-        else ImGui.TextWrapped(view.Rating?.FailureReason??"尚未读取。请打开本人金碟／麻将资料页后点击读取。");
-        if(ImGui.Button("读取本人评分（资料页）")) plugin.DispatchUi(plugin.ReadOwnRating);
+        else ImGui.TextWrapped(view.Rating?.FailureReason??"尚未读取。点击刷新即可自动打开本人金碟／麻将资料页，读完关闭。");
+        ImGui.BeginDisabled(view.RatingRefreshing);
+        if(ImGui.Button(view.RatingRefreshing?"正在刷新…###refresh-rating":"刷新本人评分###refresh-rating")) plugin.DispatchUi(plugin.ReadOwnRating);
+        ImGui.EndDisabled();
+        if(!string.IsNullOrEmpty(view.RatingStatus))ImGui.TextWrapped(view.RatingStatus);
+        ImGui.TextWrapped("整场结算退桌后自动刷新；只关闭插件自己打开的资料页，失败不阻塞排队。");
         ImGui.TextWrapped("评分不同于本场点数；资料页读数不证明上一整场结算已经刷新，目标停止尚未开放。");
     }
 }

@@ -148,6 +148,7 @@ public sealed partial class Plugin : IDalamudPlugin
             case "monitor": StartPublicMonitor(); window.ShowPublicMonitor(); break;
             case "ai": window.ShowAi(); break;
             case "queue": window.ShowQueue(); break;
+            case "rating": DispatchUi(ReadOwnRating); Open(); break;
             case "pause": PausePlay(); Open(); break;
             case "logs": ExportGameLogs(); Open(); break;
             case "recover": StartLogRecovery(); Open(); break;
@@ -425,6 +426,7 @@ public sealed partial class Plugin : IDalamudPlugin
     private void StopCore(string reason)
     {
         ratingReadingEnabled = false;
+        CancelRatingRefresh();
         if (CurrentRating is { } rating) CurrentRating = rating with
         { Freshness = Mahjong.Cn.Rating.RatingFreshness.Cached, FailureReason = "全部读取已停止。" };
         journalContinueAfterTable = false;
@@ -595,6 +597,8 @@ public sealed partial class Plugin : IDalamudPlugin
 
     private void OnLifecycleCore(AddonEvent type, AddonArgs args)
     {
+        if (type == AddonEvent.PreFinalize && args.AddonName == "GSInfo")
+            ratingProfile?.ForgetOwnership();
         OnJournalTableLifecycle(type, args.AddonName);
         if (!disposed && aiProbe?.Busy == true && type == AddonEvent.PreFinalize && args.AddonName is "Emj" or "EmjL")
             StopCore("SCENE_EXIT：牌桌退出，本地 AI 自检已取消。");

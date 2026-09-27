@@ -229,7 +229,9 @@ Mahjong.Plugin.CN/PublicState/PublicRoundEventTracker.cs
 Mahjong.Plugin.CN/PublicState/PublicTrackingEpoch.cs
 Mahjong.Plugin.CN/PublicState/PublicWinningShape.cs
 Mahjong.Plugin.CN/RatingFeature.cs
+Mahjong.Plugin.CN/Readers/CnRatingProfileAccess.cs
 Mahjong.Plugin.CN/Readers/MahjongRatingReader.cs
+Mahjong.Plugin.CN/Readers/RatingRefresh.cs
 Mahjong.Plugin.CN/RecoveryFeature.cs
 Mahjong.Plugin.CN/RuntimeIdentity.cs
 Mahjong.Plugin.CN/StopAlertFeature.cs
@@ -532,6 +534,7 @@ tests/Mahjong.Plugin.CN.Gameplay.Tests/PublicRoundEventTrackerTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/PublicShapeFuritenTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/PublicTrackingEpochTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RatingReaderTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/RatingRefreshTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RecoveryJournalTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RuntimeEventDifferTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RuntimeGateReasonTests.cs

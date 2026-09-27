@@ -129,7 +129,8 @@ public sealed partial class Plugin
         uint territory = args.TerritoryType.RowId;
         int request = Volatile.Read(ref automationRequestVersion);
         Guid? observedRun, observedMatch;
-        lock(gate) { observedRun=taskRun?.RunId; observedMatch=taskRun?.MatchId; }
+        string observedRatingContext;
+        lock(gate) { observedRun=taskRun?.RunId; observedMatch=taskRun?.MatchId; observedRatingContext=ratingContext; }
         // Events may originate in the network handler. Input/cleanup stays on the framework.
         _ = Framework.RunOnFrameworkThread(() =>
         {
@@ -137,9 +138,11 @@ public sealed partial class Plugin
             {
                 if (!disposed && territory == 831 && MahjongDuties.Find(dutyId) is not null && journalActive)
                     RecordJournalEvent("match_result", new { DutyId = dutyId, Source = "IDutyState.DutyCompleted" });
-                if (disposed ||
-                    territory != 831 || !Client.IsLoggedIn || Identity.Error is not null ||
-                    (journalActive && journal?.Fault is not null)) return;
+                if (disposed || territory != 831 || !Client.IsLoggedIn || Identity.Error is not null) return;
+                if (ratingReadingEnabled && observedRatingContext.Length > 0 &&
+                    observedRatingContext == CurrentCharacterContext() && MahjongDuties.Find(dutyId) is not null)
+                    RequestRatingRefresh(true);
+                if (journalActive && journal?.Fault is not null) return;
                 bool ownedAutomation=request==Volatile.Read(ref automationRequestVersion);
                 if (taskRun?.Plan is { } taskPlan && taskRun.MatchId is { } match &&
                     taskRun.RunId==observedRun && match==observedMatch && taskRun.CharacterContext==CurrentCharacterContext() &&

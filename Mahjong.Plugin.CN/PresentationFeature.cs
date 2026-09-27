@@ -51,6 +51,6 @@ public sealed partial class Plugin
             active && !hand.IsDefaultOrEmpty ? runtime?.ActiveAggregator?.LastChoice : null, hand, CurrentRating,
             active && CurrentJournalPublicSnapshot?.Observation is { } observation && now-observation.ObservedAtUtc<TimeSpan.FromSeconds(2)
                 ? CurrentJournalPublicSnapshot : null,
-            System.Collections.Immutable.ImmutableArray.CreateRange(recentUiEvents)));
+            System.Collections.Immutable.ImmutableArray.CreateRange(recentUiEvents), RatingRefreshBusy, RatingRefreshStatus));
     }
 }

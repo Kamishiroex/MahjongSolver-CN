@@ -1,0 +1,94 @@
+using Mahjong.Cn.Rating;
+using Mahjong.Plugin.CN.Readers;
+using Xunit;
+
+namespace Mahjong.Plugin.CN.Gameplay.Tests;
+
+public sealed class RatingRefreshTests
+{
+    private static readonly DateTimeOffset Start = new(2026, 9, 27, 0, 0, 0, TimeSpan.Zero);
+    private sealed class Profile : IRatingProfileAccess
+    {
+        public bool IsOpen { get; set; }
+        public bool IsMahjongSelected { get; set; }
+        internal bool Owned, CanOpen = true;
+        internal int Opens, Selections, Closes;
+        public bool Open() { Opens++; if (!CanOpen) return false; IsOpen = Owned = true; return true; }
+        public bool SelectMahjong() { Selections++; return IsOpen; }
+        public void CloseOwned() { if (Owned) { Closes++; IsOpen = IsMahjongSelected = false; } ForgetOwnership(); }
+        public void ForgetOwnership() => Owned = false;
+    }
+    private static RatingObservation Value(double now, int current = 1800, string context = "synthetic") =>
+        new(current, 2000, "初段", context, Start.AddSeconds(now), "fixture",
+            RatingMapping.Verified, RatingFreshness.Fresh, MahjongRatingReader.Profile, null, 1, null);
+    private static void Tick(RatingRefresh refresh, double now, bool available = true, string context = "synthetic", bool valid = true) =>
+        refresh.Tick(context, valid, available, now, () => Value(now));
+
+    [Fact] public void One_click_opens_selects_waits_for_stable_read_then_closes_only_owned_page()
+    {
+        var p = new Profile(); var r = new RatingRefresh(p); r.Request("synthetic", 0, false);
+        Tick(r, 0); Tick(r, .2); // Page still loading: no repeated selection or cancellation.
+        Assert.True(r.Busy); Assert.Equal(1, p.Opens); Assert.Equal(1, p.Selections);
+        p.IsMahjongSelected = true; Tick(r, .4); Assert.True(r.Busy);
+        Tick(r, .6); Assert.False(r.Busy); Assert.Equal(1800, r.Result!.CurrentRating);
+        Assert.Equal(1, p.Closes); Assert.Null(r.Result.MatchAssociation);
+        Tick(r, 1); Assert.Equal(1, p.Opens);
+    }
+    [Fact] public void Existing_user_page_is_never_closed()
+    {
+        var p = new Profile { IsOpen = true, IsMahjongSelected = true }; var r = new RatingRefresh(p);
+        r.Request("synthetic", 0, false); Tick(r, 0); Tick(r, .2);
+        Assert.NotNull(r.Result); Assert.True(p.IsOpen); Assert.Equal(0, p.Opens); Assert.Equal(0, p.Closes);
+    }
+    [Fact] public void Automatic_refresh_waits_for_exit_and_never_navigates_away_from_user_page()
+    {
+        var p = new Profile(); var r = new RatingRefresh(p); r.Request("synthetic", 0, true);
+        Tick(r, 1); Tick(r, 10, false); Assert.Equal(0, p.Opens);
+        p.IsOpen = true; Tick(r, 12); Assert.Equal(0, p.Selections);
+        p.IsOpen = false; Tick(r, 13); Assert.Equal(1, p.Opens);
+        p.IsMahjongSelected = true; Tick(r, 14); Tick(r, 14.2); Assert.NotNull(r.Result);
+    }
+    [Fact] public void Repeated_requests_do_not_extend_deadline_or_reopen()
+    {
+        var p = new Profile(); var r = new RatingRefresh(p); r.Request("synthetic", 0, false);
+        Tick(r, 0); r.Request("synthetic", 4, false); Tick(r, 6);
+        Assert.False(r.Busy); Assert.Null(r.Result); Assert.Equal(1, p.Opens); Assert.Equal(1, p.Closes);
+    }
+    [Fact] public void Busy_game_timeout_does_not_require_or_block_gameplay()
+    {
+        var p = new Profile(); var r = new RatingRefresh(p); r.Request("synthetic", 0, true);
+        Tick(r, 121, false); Assert.False(r.Busy); Assert.Equal(0, p.Opens); Assert.Contains("超时", r.Status);
+    }
+    [Theory] [InlineData("other", true)] [InlineData("", true)] [InlineData("synthetic", false)]
+    public void Changed_context_or_version_discards_pending_without_touching_game(string context, bool valid)
+    {
+        var p = new Profile(); var r = new RatingRefresh(p); r.Request("synthetic", 0, false); Tick(r, 0);
+        Tick(r, .2, context: context, valid: valid); Assert.False(r.Busy); Assert.Null(r.Result); Assert.Equal(0, p.Closes);
+    }
+    [Fact] public void Scene_transition_cancels_and_never_reopens_on_return()
+    {
+        var p = new Profile(); var r = new RatingRefresh(p); r.Request("synthetic", 0, false);
+        Tick(r, 0); Tick(r, .2, false); Tick(r, 1); Assert.False(r.Busy); Assert.Equal(1, p.Opens);
+    }
+    [Fact] public void Stale_or_foreign_read_is_not_accepted()
+    {
+        var p = new Profile { IsOpen = true, IsMahjongSelected = true }; var r = new RatingRefresh(p);
+        r.Request("synthetic", 0, false);
+        r.Tick("synthetic", true, true, 1, () => Value(1) with { Freshness = RatingFreshness.Cached });
+        r.Tick("synthetic", true, true, 2, () => Value(2, context: "other"));
+        Assert.True(r.Busy); Assert.Null(r.Result);
+        Tick(r, 3); Tick(r, 3.2); Assert.NotNull(r.Result);
+    }
+    [Fact] public void Changing_values_require_new_stable_pair()
+    {
+        var p = new Profile { IsOpen = true, IsMahjongSelected = true }; var r = new RatingRefresh(p);
+        r.Request("synthetic", 0, false); Tick(r, 0);
+        r.Tick("synthetic", true, true, .2, () => Value(.2, 1810)); Assert.True(r.Busy);
+        r.Tick("synthetic", true, true, .4, () => Value(.4, 1810)); Assert.Equal(1810, r.Result!.CurrentRating);
+    }
+    [Fact] public void Stop_cancels_late_reads_and_closes_own_page()
+    {
+        var p = new Profile(); var r = new RatingRefresh(p); r.Request("synthetic", 0, false); Tick(r, 0);
+        r.Cancel("stopped", true); Tick(r, 1); Assert.Null(r.Result); Assert.Equal(1, p.Closes);
+    }
+}

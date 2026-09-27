@@ -27,6 +27,8 @@
 
 本人评分来源为锁定版本 `AddonGSInfoEmj` 的 CurrentRating/HighestRating/Rank，偏移 0x240/0x248/0x250、文本节点 23/24/7。资料页三字段曾人工核对；整场后刷新、最终名次与评分目标禁止当作已验证。换角色、退出及不可见页面使用明确未知/缓存状态。
 
+评分刷新使用同一固定提交的 [AgentGoldSaucer](https://github.com/Dalamud-DailyRoutines/FFXIVClientStructs/blob/243dc41e4d71f350cd80aa5eba8c75517f3d5154/FFXIVClientStructs/FFXIV/Client/UI/Agent/AgentGoldSaucer.cs) 与 AgentInterface.Show/Hide，通过实际标签唯一匹配的 [AtkComponentRadioButton.SetActive](https://github.com/Dalamud-DailyRoutines/FFXIVClientStructs/blob/243dc41e4d71f350cd80aa5eba8c75517f3d5154/FFXIVClientStructs/FFXIV/Component/GUI/AtkComponentRadioButton.cs) 选择麻将页，不猜回调或直接写评分内存。只读当前/最高评分与段位，导航只检查金碟页静态按钮标签。请求在框架线程逐帧运行、两次读数稳定才接受；只关闭自有窗口，换场景/角色、全停、超时会取消。整场刷新仅由麻将 `IDutyState.DutyCompleted` 触发，退桌后才尝试打开；不会将刷新本身视为服务器评分已结算的证明。`RatingRefreshTests` 覆盖等待、取消、超时、窗口归属和读数一致性；原生页面操作及整场刷新须按验收步骤实测。
+
 界面支持自然高度卡片、窄窗和紧凑模式；100/150/200%由真实 ImGui 测试宿主演练，宿主不是实机。旧基线曾取得未验证、无模型的国服界面截图，不等于本版完整对局验收。截图、现场记录和个人配置不随源码公开。完整验证以本次 build-manifest.json 和测试结果为准，不能沿用旧次数。
 
 战绩摘要只读取有依据的整场事件，不虚构名次、评分变化或胜率。下载统计与自愿在线客户端默认关闭，失败不影响本地任务；在线服务未部署。普通摘要使用中性来源，真实后端留在本地技术详情。

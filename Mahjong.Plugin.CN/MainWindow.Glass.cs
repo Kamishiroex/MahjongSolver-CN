@@ -79,36 +79,45 @@ internal sealed partial class MainWindow
             });
             ImGui.SameLine();
         }
-        else { ImGui.SetNextItemWidth(-1); ImGui.Combo("##page", ref page, PageNames, PageNames.Length); }
+        else
+        {
+            ImGui.SetNextItemWidth(Math.Max(100 * GlassTheme.Scale, ImGui.GetContentRegionAvail().X - 120 * GlassTheme.Scale));
+            ImGui.Combo("##page", ref page, PageNames, PageNames.Length);
+            ImGui.SameLine();
+            if (ImGui.Button("关于与许可")) ImGui.OpenPopup("about");
+            DrawAboutPopup();
+        }
         Scroll("page-content", Vector2.Zero, DrawPage);
     }
     private void DrawPersistentControls()
     {
+        var buttonSize = new Vector2(Math.Max(100 * GlassTheme.Scale,
+            ImGui.CalcTextSize("更多操作").X + ImGui.GetStyle().FramePadding.X * 2), ImGui.GetFrameHeight());
+        float right = ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - buttonSize.X;
+        ImGui.AlignTextToFramePadding();
         ImGui.TextColored(GlassTheme.Accent, Brand.ProductName);
+        ImGui.SameLine(right);
+        if (ImGui.Button(compact ? "展开###layout-toggle" : "紧凑###layout-toggle", buttonSize)) SetCompact(!compact);
         ImGui.TextWrapped(Brand.ProductSubtitle);
         ImGui.TextDisabled($"{view.ModeLabel} · {view.Engine} · {LocalCaptureRecorder.PluginVersion}");
-        if (ImGui.SmallButton(compact ? "展开" : "紧凑")) SetCompact(!compact);
-        SameLineIfFits(100 * GlassTheme.Scale);
         using (var danger = new GlassTheme.StyleScope())
         {
             danger.Color(ImGuiCol.Button, new Vector4(.50f,.14f,.14f,1));
             danger.Color(ImGuiCol.ButtonHovered, new Vector4(.65f,.20f,.18f,1));
             danger.Color(ImGuiCol.Text, Vector4.One);
             // Immediate revocation, never queued behind other UI intentions.
-            if (ImGui.Button("暂停自动")) plugin.PausePlay();
+            if (ImGui.Button("暂停自动", buttonSize)) plugin.PausePlay();
         }
-        SameLineIfFits(90 * GlassTheme.Scale);
-        if (ImGui.SmallButton("本场后停")) plugin.DispatchUi(plugin.StopAfterCurrentMatch);
-        SameLineIfFits(90 * GlassTheme.Scale);
-        if (ImGui.SmallButton("更多操作")) ImGui.OpenPopup("global-actions");
+        SameLineIfFits(buttonSize.X);
+        if (ImGui.Button("本场后停", buttonSize)) plugin.DispatchUi(plugin.StopAfterCurrentMatch);
+        SameLineIfFits(buttonSize.X);
+        if (ImGui.Button("更多操作", buttonSize)) ImGui.OpenPopup("global-actions");
         if (ImGui.BeginPopup("global-actions"))
         {
             try
             {
                 if (ImGui.Button("停止全部读取与操作")) plugin.Stop("用户停止全部读取、提醒与自动操作。");
                 ImGui.TextWrapped("不会强退牌局；已提交的报名需在游戏内取消。关闭窗口不等于暂停。");
-                if (ImGui.Button("关于与许可")) ImGui.OpenPopup("about");
-                DrawAboutPopup();
             }
             finally { ImGui.EndPopup(); }
         }
