@@ -597,7 +597,7 @@ public sealed partial class Plugin : IDalamudPlugin
 
     private void OnLifecycleCore(AddonEvent type, AddonArgs args)
     {
-        if (type == AddonEvent.PreFinalize && args.AddonName == "GSInfo")
+        if (type == AddonEvent.PreFinalize && args.AddonName == Readers.CnRatingProfileAccess.RootAddonName)
             ratingProfile?.ForgetOwnership();
         OnJournalTableLifecycle(type, args.AddonName);
         if (!disposed && aiProbe?.Busy == true && type == AddonEvent.PreFinalize && args.AddonName is "Emj" or "EmjL")

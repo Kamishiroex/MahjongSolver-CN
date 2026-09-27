@@ -534,6 +534,7 @@ tests/Mahjong.Plugin.CN.Gameplay.Tests/PublicRoundEventTrackerTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/PublicShapeFuritenTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/PublicTrackingEpochTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RatingReaderTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/RatingProfileAccessTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RatingRefreshTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RecoveryJournalTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RuntimeEventDifferTests.cs
