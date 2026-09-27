@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net10.0-windows</TargetFramework><PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>Mahjong.Plugin.CN.Gameplay.Tests</AssemblyName>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-09-25-01</DalamudLibPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../Mahjong.Plugin.CN/Mahjong.Plugin.CN.csproj" />
+    <Reference Include="Dalamud;Dalamud.Common;FFXIVClientStructs;InteropGenerator.Runtime;Lumina;Lumina.Excel;Newtonsoft.Json;Serilog">
+      <HintPath>$(DalamudLibPath)\%(Identity).dll</HintPath><Private>true</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

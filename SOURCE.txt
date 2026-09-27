@@ -1,0 +1,24 @@
+MahjongSolver 4.1.4 - CN adaptation of FFXIV-AutoMahjongSolver
+Upstream author: XeldarAlz
+Upstream: https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver
+Upstream commit: 21ae5ca9aa1fa3785baa540245b51efa346f9d37
+CN source repository: https://github.com/Kamishiroex/MahjongSolver-CN
+Migration baseline: https://github.com/Kamishiroex/FFXIV-AutoMahjongSolver-CN
+Local adaptation baseline commit: 053853da884ff366d039da1ef387a7631d401d4b
+This repository starts with a reviewed source snapshot, without importing old Git history.
+License: AGPL-3.0-or-later; LICENSE.md and NOTICE retained.
+
+CN modifications: version-gated entry, public UI reading and provenance,
+Chinese manual/automatic play, local journal/recovery, guarded action dispatch,
+queue automation, AI adapters/import/selection, Mortal prewarming, regression
+tests and reproducible build scripts. Compilation is not live acceptance.
+
+Corresponding source: Mahjong.Plugin.CN-4.1.4-source.zip (see SHA256SUMS).
+source-file-manifest.json identifies its commit and per-file hashes.
+The archive includes build scripts, locks, required resources, engine patch
+sources, licenses, compatibility evidence and regression tests.
+See README-CN.md and build-manifest.json for reproduction and executed checks.
+
+Separate engine/model licenses and distribution requirements still apply.
+Modified akochan binaries and personal model bundles are not part of the public
+plugin package. See NOTICE and docs/cn/AKOCHAN-LICENSE-BUILD.md in the source.

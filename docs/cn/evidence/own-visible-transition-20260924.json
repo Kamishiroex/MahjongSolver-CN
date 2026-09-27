@@ -1,0 +1,509 @@
+{
+  "Schema": "mjcn-own-visible-transition-v1",
+  "SourceSession": "mjcn-live-20260924-091538",
+  "SourceEventsSha256": "8f3bcf6bf48460141559bd14d37d011e06198698db1040a2481fdeb596cc6fd2",
+  "GameVersion": "2026.09.15.0000.0000",
+  "Note": "Exact stable public face DTOs and own meld region only. Intermediate frames omitted; this establishes a local inventory delta, not complete event history.",
+  "Frames": [
+    {
+      "Sample": 1422,
+      "Utc": "2026-09-24T09:18:14.1072869+00:00",
+      "RoundTitleIcon": 121455,
+      "Addon": {
+        "Name": "Emj",
+        "Present": true,
+        "Visible": true,
+        "Ready": true,
+        "AtkValueCount": 109,
+        "Error": null,
+        "LowerHandReading": {
+          "Code": "STABLE_VISIBLE_FACES",
+          "Reason": "下方牌面连续两次采样一致；仅为可见图像，不能判断完整手牌、摸牌身份或是否可出牌。",
+          "Stable": true,
+          "Tiles": [
+            {
+              "Path": "Emj/134/9/4",
+              "DisplayPosition": 1,
+              "IconId": 76042,
+              "FacePathHash": 1888599768,
+              "Kind34": 1,
+              "RedFive": false,
+              "ChineseName": "2万"
+            },
+            {
+              "Path": "Emj/1340001/9/4",
+              "DisplayPosition": 2,
+              "IconId": 76046,
+              "FacePathHash": 763228116,
+              "Kind34": 5,
+              "RedFive": false,
+              "ChineseName": "6万"
+            },
+            {
+              "Path": "Emj/1340002/9/4",
+              "DisplayPosition": 3,
+              "IconId": 76047,
+              "FacePathHash": 973536151,
+              "Kind34": 6,
+              "RedFive": false,
+              "ChineseName": "7万"
+            },
+            {
+              "Path": "Emj/1340003/9/4",
+              "DisplayPosition": 4,
+              "IconId": 76048,
+              "FacePathHash": 3854513222,
+              "Kind34": 7,
+              "RedFive": false,
+              "ChineseName": "8万"
+            },
+            {
+              "Path": "Emj/1340004/9/4",
+              "DisplayPosition": 5,
+              "IconId": 76049,
+              "FacePathHash": 4072939525,
+              "Kind34": 8,
+              "RedFive": false,
+              "ChineseName": "9万"
+            },
+            {
+              "Path": "Emj/1340005/9/4",
+              "DisplayPosition": 6,
+              "IconId": 76049,
+              "FacePathHash": 4072939525,
+              "Kind34": 8,
+              "RedFive": false,
+              "ChineseName": "9万"
+            },
+            {
+              "Path": "Emj/1340006/9/4",
+              "DisplayPosition": 7,
+              "IconId": 76050,
+              "FacePathHash": 2980445536,
+              "Kind34": 9,
+              "RedFive": false,
+              "ChineseName": "1筒"
+            },
+            {
+              "Path": "Emj/1340007/9/4",
+              "DisplayPosition": 8,
+              "IconId": 76051,
+              "FacePathHash": 2799626531,
+              "Kind34": 10,
+              "RedFive": false,
+              "ChineseName": "2筒"
+            },
+            {
+              "Path": "Emj/1340008/9/4",
+              "DisplayPosition": 9,
+              "IconId": 76051,
+              "FacePathHash": 2799626531,
+              "Kind34": 10,
+              "RedFive": false,
+              "ChineseName": "2筒"
+            },
+            {
+              "Path": "Emj/1340009/9/4",
+              "DisplayPosition": 10,
+              "IconId": 76060,
+              "FacePathHash": 1519535715,
+              "Kind34": 19,
+              "RedFive": false,
+              "ChineseName": "2索"
+            },
+            {
+              "Path": "Emj/1340010/9/4",
+              "DisplayPosition": 11,
+              "IconId": 76066,
+              "FacePathHash": 696795113,
+              "Kind34": 25,
+              "RedFive": false,
+              "ChineseName": "8索"
+            },
+            {
+              "Path": "Emj/1340011/9/4",
+              "DisplayPosition": 12,
+              "IconId": 76067,
+              "FacePathHash": 1056123818,
+              "Kind34": 26,
+              "RedFive": false,
+              "ChineseName": "9索"
+            },
+            {
+              "Path": "Emj/1340012/9/4",
+              "DisplayPosition": 13,
+              "IconId": 76069,
+              "FacePathHash": 4130467896,
+              "Kind34": 28,
+              "RedFive": false,
+              "ChineseName": "南"
+            }
+          ],
+          "CompleteGameState": false
+        },
+        "VisibleNodes": [],
+        "PublicTableReading": {
+          "Code": "PUBLIC_IMAGES_PARTIAL_CANDIDATE",
+          "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+          "Stable": false,
+          "Tiles": [],
+          "Rejections": [],
+          "MeldGroups": [],
+          "Areas": [
+            {
+              "Area": "meld-bottom",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "Sample": 1434,
+      "Utc": "2026-09-24T09:18:15.4182688+00:00",
+      "RoundTitleIcon": 121455,
+      "Addon": {
+        "Name": "Emj",
+        "Present": true,
+        "Visible": true,
+        "Ready": true,
+        "AtkValueCount": 109,
+        "Error": null,
+        "LowerHandReading": {
+          "Code": "STABLE_VISIBLE_FACES",
+          "Reason": "下方牌面连续两次采样一致；仅为可见图像，不能判断完整手牌、摸牌身份或是否可出牌。",
+          "Stable": true,
+          "Tiles": [
+            {
+              "Path": "Emj/134/9/4",
+              "DisplayPosition": 1,
+              "IconId": 76042,
+              "FacePathHash": 1888599768,
+              "Kind34": 1,
+              "RedFive": false,
+              "ChineseName": "2万"
+            },
+            {
+              "Path": "Emj/1340001/9/4",
+              "DisplayPosition": 2,
+              "IconId": 76046,
+              "FacePathHash": 763228116,
+              "Kind34": 5,
+              "RedFive": false,
+              "ChineseName": "6万"
+            },
+            {
+              "Path": "Emj/1340002/9/4",
+              "DisplayPosition": 3,
+              "IconId": 76047,
+              "FacePathHash": 973536151,
+              "Kind34": 6,
+              "RedFive": false,
+              "ChineseName": "7万"
+            },
+            {
+              "Path": "Emj/1340003/9/4",
+              "DisplayPosition": 4,
+              "IconId": 76048,
+              "FacePathHash": 3854513222,
+              "Kind34": 7,
+              "RedFive": false,
+              "ChineseName": "8万"
+            },
+            {
+              "Path": "Emj/1340004/9/4",
+              "DisplayPosition": 5,
+              "IconId": 76049,
+              "FacePathHash": 4072939525,
+              "Kind34": 8,
+              "RedFive": false,
+              "ChineseName": "9万"
+            },
+            {
+              "Path": "Emj/1340005/9/4",
+              "DisplayPosition": 6,
+              "IconId": 76049,
+              "FacePathHash": 4072939525,
+              "Kind34": 8,
+              "RedFive": false,
+              "ChineseName": "9万"
+            },
+            {
+              "Path": "Emj/1340006/9/4",
+              "DisplayPosition": 7,
+              "IconId": 76050,
+              "FacePathHash": 2980445536,
+              "Kind34": 9,
+              "RedFive": false,
+              "ChineseName": "1筒"
+            },
+            {
+              "Path": "Emj/1340007/9/4",
+              "DisplayPosition": 8,
+              "IconId": 76051,
+              "FacePathHash": 2799626531,
+              "Kind34": 10,
+              "RedFive": false,
+              "ChineseName": "2筒"
+            },
+            {
+              "Path": "Emj/1340008/9/4",
+              "DisplayPosition": 9,
+              "IconId": 76051,
+              "FacePathHash": 2799626531,
+              "Kind34": 10,
+              "RedFive": false,
+              "ChineseName": "2筒"
+            },
+            {
+              "Path": "Emj/1340009/9/4",
+              "DisplayPosition": 10,
+              "IconId": 76060,
+              "FacePathHash": 1519535715,
+              "Kind34": 19,
+              "RedFive": false,
+              "ChineseName": "2索"
+            },
+            {
+              "Path": "Emj/1340010/9/4",
+              "DisplayPosition": 11,
+              "IconId": 76066,
+              "FacePathHash": 696795113,
+              "Kind34": 25,
+              "RedFive": false,
+              "ChineseName": "8索"
+            },
+            {
+              "Path": "Emj/1340011/9/4",
+              "DisplayPosition": 12,
+              "IconId": 76067,
+              "FacePathHash": 1056123818,
+              "Kind34": 26,
+              "RedFive": false,
+              "ChineseName": "9索"
+            },
+            {
+              "Path": "Emj/1340012/9/4",
+              "DisplayPosition": 13,
+              "IconId": 76069,
+              "FacePathHash": 4130467896,
+              "Kind34": 28,
+              "RedFive": false,
+              "ChineseName": "南"
+            },
+            {
+              "Path": "Emj/135/9/4",
+              "DisplayPosition": 14,
+              "IconId": 76071,
+              "FacePathHash": 2720741662,
+              "Kind34": 30,
+              "RedFive": false,
+              "ChineseName": "北"
+            }
+          ],
+          "CompleteGameState": false
+        },
+        "VisibleNodes": [],
+        "PublicTableReading": {
+          "Code": "PUBLIC_IMAGES_PARTIAL_CANDIDATE",
+          "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+          "Stable": false,
+          "Tiles": [],
+          "Rejections": [],
+          "MeldGroups": [],
+          "Areas": [
+            {
+              "Area": "meld-bottom",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "Sample": 1442,
+      "Utc": "2026-09-24T09:18:16.2924468+00:00",
+      "RoundTitleIcon": 121455,
+      "Addon": {
+        "Name": "Emj",
+        "Present": true,
+        "Visible": true,
+        "Ready": true,
+        "AtkValueCount": 109,
+        "Error": null,
+        "LowerHandReading": {
+          "Code": "STABLE_VISIBLE_FACES",
+          "Reason": "下方牌面连续两次采样一致；仅为可见图像，不能判断完整手牌、摸牌身份或是否可出牌。",
+          "Stable": true,
+          "Tiles": [
+            {
+              "Path": "Emj/134/9/4",
+              "DisplayPosition": 1,
+              "IconId": 76042,
+              "FacePathHash": 1888599768,
+              "Kind34": 1,
+              "RedFive": false,
+              "ChineseName": "2万"
+            },
+            {
+              "Path": "Emj/1340001/9/4",
+              "DisplayPosition": 2,
+              "IconId": 76046,
+              "FacePathHash": 763228116,
+              "Kind34": 5,
+              "RedFive": false,
+              "ChineseName": "6万"
+            },
+            {
+              "Path": "Emj/1340002/9/4",
+              "DisplayPosition": 3,
+              "IconId": 76047,
+              "FacePathHash": 973536151,
+              "Kind34": 6,
+              "RedFive": false,
+              "ChineseName": "7万"
+            },
+            {
+              "Path": "Emj/1340003/9/4",
+              "DisplayPosition": 4,
+              "IconId": 76048,
+              "FacePathHash": 3854513222,
+              "Kind34": 7,
+              "RedFive": false,
+              "ChineseName": "8万"
+            },
+            {
+              "Path": "Emj/1340004/9/4",
+              "DisplayPosition": 5,
+              "IconId": 76049,
+              "FacePathHash": 4072939525,
+              "Kind34": 8,
+              "RedFive": false,
+              "ChineseName": "9万"
+            },
+            {
+              "Path": "Emj/1340005/9/4",
+              "DisplayPosition": 6,
+              "IconId": 76049,
+              "FacePathHash": 4072939525,
+              "Kind34": 8,
+              "RedFive": false,
+              "ChineseName": "9万"
+            },
+            {
+              "Path": "Emj/1340006/9/4",
+              "DisplayPosition": 7,
+              "IconId": 76050,
+              "FacePathHash": 2980445536,
+              "Kind34": 9,
+              "RedFive": false,
+              "ChineseName": "1筒"
+            },
+            {
+              "Path": "Emj/1340007/9/4",
+              "DisplayPosition": 8,
+              "IconId": 76051,
+              "FacePathHash": 2799626531,
+              "Kind34": 10,
+              "RedFive": false,
+              "ChineseName": "2筒"
+            },
+            {
+              "Path": "Emj/1340008/9/4",
+              "DisplayPosition": 9,
+              "IconId": 76051,
+              "FacePathHash": 2799626531,
+              "Kind34": 10,
+              "RedFive": false,
+              "ChineseName": "2筒"
+            },
+            {
+              "Path": "Emj/1340009/9/4",
+              "DisplayPosition": 10,
+              "IconId": 76060,
+              "FacePathHash": 1519535715,
+              "Kind34": 19,
+              "RedFive": false,
+              "ChineseName": "2索"
+            },
+            {
+              "Path": "Emj/1340010/9/4",
+              "DisplayPosition": 11,
+              "IconId": 76066,
+              "FacePathHash": 696795113,
+              "Kind34": 25,
+              "RedFive": false,
+              "ChineseName": "8索"
+            },
+            {
+              "Path": "Emj/1340011/9/4",
+              "DisplayPosition": 12,
+              "IconId": 76067,
+              "FacePathHash": 1056123818,
+              "Kind34": 26,
+              "RedFive": false,
+              "ChineseName": "9索"
+            },
+            {
+              "Path": "Emj/1340012/9/4",
+              "DisplayPosition": 13,
+              "IconId": 76071,
+              "FacePathHash": 2720741662,
+              "Kind34": 30,
+              "RedFive": false,
+              "ChineseName": "北"
+            }
+          ],
+          "CompleteGameState": false
+        },
+        "VisibleNodes": [],
+        "PublicTableReading": {
+          "Code": "PUBLIC_IMAGES_STABLE_CANDIDATE",
+          "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+          "Stable": true,
+          "Tiles": [],
+          "Rejections": [],
+          "MeldGroups": [],
+          "Areas": [
+            {
+              "Area": "meld-bottom",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 4
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "Expected": {
+    "DrawKind34": 30,
+    "DiscardKind34": 28,
+    "RedFive": false
+  }
+}

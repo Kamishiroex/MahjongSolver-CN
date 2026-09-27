@@ -1,0 +1,25 @@
+name: 国服诊断问题
+description: 反馈国服插件的加载、界面、对局或诊断问题。
+body:
+  - type: markdown
+    attributes:
+      value: 请先检查导出内容，只上传插件生成的脱敏诊断。不要上传账号文件、测试凭据、个人模型包、完整 Dalamud 日志、聊天记录或原始配置目录。
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 操作步骤及实际结果
+      description: 说明发生在加载、入桌、采集、退桌或导出哪个步骤；如有错误，填写窗口中的错误文字。
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 游戏与 Dalamud 版本
+      description: 可直接从插件诊断窗口填写。
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostic
+    attributes:
+      label: 专用诊断 ZIP（可选）
+      description: 附上 /mjcn export 生成的 mjcn-diagnostic-*.zip。

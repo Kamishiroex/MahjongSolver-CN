@@ -1,0 +1,305 @@
+{
+  "Provenance": {
+    "Source": "CN 0.6.4.2 public global_ai_request, 2026-09-25T17:45:37Z / 17:49:58Z",
+    "GameVersion": "2026.09.15.0000.0000",
+    "OpponentConcealedTiles": false
+  },
+  "ActualPublicInput": {
+    "OurPlayerId": 0,
+    "RoundWind": 0,
+    "HandNumber": 1,
+    "Honba": 0,
+    "RiichiSticks": 0,
+    "DealerPlayerId": 1,
+    "WallRemaining": 58,
+    "Hand": [
+      {
+        "Id": 0,
+        "Red": false,
+        "ChineseName": "1万"
+      },
+      {
+        "Id": 1,
+        "Red": false,
+        "ChineseName": "2万"
+      },
+      {
+        "Id": 7,
+        "Red": false,
+        "ChineseName": "8万"
+      },
+      {
+        "Id": 8,
+        "Red": false,
+        "ChineseName": "9万"
+      },
+      {
+        "Id": 10,
+        "Red": false,
+        "ChineseName": "2筒"
+      },
+      {
+        "Id": 14,
+        "Red": false,
+        "ChineseName": "6筒"
+      },
+      {
+        "Id": 15,
+        "Red": false,
+        "ChineseName": "7筒"
+      },
+      {
+        "Id": 15,
+        "Red": false,
+        "ChineseName": "7筒"
+      },
+      {
+        "Id": 17,
+        "Red": false,
+        "ChineseName": "9筒"
+      },
+      {
+        "Id": 21,
+        "Red": false,
+        "ChineseName": "4索"
+      },
+      {
+        "Id": 22,
+        "Red": true,
+        "ChineseName": "赤5索"
+      },
+      {
+        "Id": 26,
+        "Red": false,
+        "ChineseName": "9索"
+      },
+      {
+        "Id": 32,
+        "Red": false,
+        "ChineseName": "发"
+      },
+      {
+        "Id": 19,
+        "Red": false,
+        "ChineseName": "2索"
+      }
+    ],
+    "DoraIndicators": [
+      {
+        "Id": 1,
+        "Red": false,
+        "ChineseName": "2万"
+      }
+    ],
+    "Players": [
+      {
+        "PlayerId": 0,
+        "SeatWind": 3,
+        "Score": 25000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/118/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "北"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180001/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false,
+        "DoubleRiichi": false
+      },
+      {
+        "PlayerId": 1,
+        "SeatWind": 0,
+        "Score": 25000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/121/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "北"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210001/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210002/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false,
+        "DoubleRiichi": false
+      },
+      {
+        "PlayerId": 2,
+        "SeatWind": 1,
+        "Score": 25000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/124/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240001/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240002/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false,
+        "DoubleRiichi": false
+      },
+      {
+        "PlayerId": 3,
+        "SeatWind": 2,
+        "Score": 25000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/127/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270001/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270002/4",
+            "ObservedSequence": 99,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false,
+        "DoubleRiichi": false
+      }
+    ],
+    "Trigger": {
+      "Type": "tsumo",
+      "Actor": 0,
+      "Tile": {
+        "Id": 19,
+        "Red": false,
+        "ChineseName": "2索"
+      }
+    },
+    "Assumptions": [
+      "实验全桌输入；未观测的跨玩家事件顺序、临时振听与首巡状态不视为已知。",
+      "赤五及精确终局计分规则沿用引擎配置；对手暗手保持未知。",
+      "当前实际对局类型未读到，暂按东南战分析；未使用排队设置推定本局类型。",
+      "公开事件历史不完整；以当前公开桌面和同局已记录事件分析，不伪造完整回放。"
+    ],
+    "ContextKey": "8d96ad51751443299b5ea79f9b09f4dc:1:5ef2ee9fb14442d582e29f76a027de44:0:1:0:1:epoch=5ef2ee9fb14442d582e29f76a027de44:observed:1",
+    "Utc": "2026-09-25T17:45:37.8110874+00:00",
+    "LegalActions": 1,
+    "MatchFirstRound": 0,
+    "HistoryComplete": false,
+    "OwnDrawKind": null,
+    "OwnTemporaryFuriten": null,
+    "OwnRiichiFuriten": false,
+    "KnownEvents": []
+  }
+}

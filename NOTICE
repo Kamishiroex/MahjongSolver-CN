@@ -1,0 +1,19 @@
+FFXIV-DomanMahjongSolver
+Copyright (c) 2026 Xeldar Alz
+
+This project is licensed under the GNU Affero General Public License v3.0.
+See the LICENSE.md file for the full license text.
+
+Redistributions and derivative works must preserve existing copyright
+notices and license information as required by the AGPL.
+
+If you create modified versions, please clearly indicate that your
+version is derived from this project and document the changes made.
+
+The CN offline AI adapter supports critter-mj/akochan, pinned at
+53188a0b926fbab38177f88c3cd87d554cf412af. Akochan's code, parameters and
+native binaries are not included in this distribution and are not relicensed
+under the AGPL. Its original custom terms apply to local installation and use;
+see docs/cn/AKOCHAN-LICENSE-BUILD.md. The embedded public opening fixture
+contains only attributed visible factual events from its haifu_log_sample.json,
+with opponents' concealed tiles and names removed.

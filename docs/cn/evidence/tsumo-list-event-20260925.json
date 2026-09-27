@@ -1,0 +1,48 @@
+{
+  "GameVersion": "2026.09.15.0000.0000",
+  "ClientStructsCommit": "243dc41e4d71f350cd80aa5eba8c75517f3d5154",
+  "CaptureDate": "2026-09-25",
+  "ReadOnly": true,
+  "SelectedItemIndex": 0,
+  "ListLength": 2,
+  "Callback": false,
+  "ListRegistration": [
+    {
+      "label": "list",
+      "Event": "ListItemClick",
+      "Param": 0,
+      "Flags": "None",
+      "Listener": "addon",
+      "TargetSelf": true
+    }
+  ],
+  "Rows": [
+    {
+      "Row": 0,
+      "ListItemIndex": 0,
+      "IsDisabled": false,
+      "RendererNodeFlags": "AnchorTop, AnchorLeft, Visible, Enabled, RespondToMouse"
+    },
+    {
+      "Row": 1,
+      "ListItemIndex": 1,
+      "IsDisabled": false,
+      "RendererNodeFlags": "AnchorTop, AnchorLeft, Visible, Enabled, RespondToMouse"
+    }
+  ],
+  "ProbeResultSha256": "d4c5c608a144f6465f4e819ac1754ff765ce7a616851bfc83c56c67daa791f12",
+  "CodeEvidence": [
+    {
+      "VirtualSlot": 31,
+      "Rva": "0x697A90",
+      "ReadBytes": 768,
+      "Sha256": "f94cf10656affeed28aed8aeb4d902f2f10a36a36e33f83a1c1ed1d1a4a855c4",
+      "Finding": "Same SelectedItemIndex returns before notification; changed selection dispatches ListItemHighlight (37), not ListItemClick (35)."
+    }
+  ],
+  "SubmissionRecordedUtc": "2026-09-25T07:12:19.3638224+00:00",
+  "StopRecordedUtc": "2026-09-25T07:12:29.3921544+00:00",
+  "StopCode": "AUTO_OUTCOME_TIMEOUT: tsumo",
+  "OriginalRoute": "list-select",
+  "ExecutedByProbe": false
+}

@@ -1,0 +1,57 @@
+{
+  "collectedOn": "2026-09-23",
+  "source": "Local version files and read-only PE metadata; no game execution",
+  "gameVersion": "2026.09.15.0000.0000",
+  "selectedHooksDirectory": "%APPDATA%/XIVLauncherCN/addon/Hooks/26-09-18-01",
+  "dalamud": {
+    "assemblyVersion": "15.0.3.5",
+    "apiLevel": 15,
+    "informationalVersion": "15.0.3.5+cac6159a2c76e62a4e1f7bc347454c205808bb04",
+    "scmVersion": "26-09-18-01",
+    "gitHash": "cac6159a2c76e62a4e1f7bc347454c205808bb04",
+    "gitHashClientStructs": "f824354f4",
+    "gitCommitCount": "7709",
+    "gitBranch": "master",
+    "repositoryUrlMetadata": "https://github.com/Dalamud-DailyRoutines/Dalamud",
+    "sourceLookupRepository": "https://github.com/ottercorp/Dalamud",
+    "sha256": "599F6581A806443FE7EA8FD03E285695583C500DA1F98473F6D1C74105D0D6E7"
+  },
+  "clientStructs": {
+    "informationalVersion": "1.0.0+f824354f4a6a2b1cd16cc8fcb670c7a66bf64880",
+    "fileVersion": "7.56.2.9263",
+    "gitHash": "f824354f4a6a2b1cd16cc8fcb670c7a66bf64880",
+    "gitSubmoduleRepository": "https://github.com/Dalamud-DailyRoutines/FFXIVClientStructs.git",
+    "sourceLookupRepository": "https://github.com/ottercorp/FFXIVClientStructs",
+    "idaDataVersion": "2026.09.15.0000.0000",
+    "sha256": "EE39ABCC25569BB0DE1A308CC29E236CCD5DF7C4E009FAEAA79B667A016A3C3E"
+  },
+  "runtime": {
+    "tfm": "net10.0",
+    "sourceTargetFramework": "net10.0-windows",
+    "rollForward": "LatestMinor",
+    "frameworks": [
+      { "name": "Microsoft.NETCore.App", "version": "10.0.0" },
+      { "name": "Microsoft.WindowsDesktop.App", "version": "10.0.0" }
+    ]
+  },
+  "otherLocalCopies": [
+    {
+      "directory": "dev",
+      "byteIdenticalSelectedDalamudAndClientStructs": true
+    },
+    {
+      "directory": "26-09-17-01",
+      "dalamudInformationalVersion": "15.0.3.4+7f26792ec8a4f8462aa3a348642d45892078d92f",
+      "clientStructsInformationalVersion": "1.0.0+43742121c5944d5dec6d3ed9e054234ee91bb18f",
+      "dalamudSha256": "3C5F6C792F6BD2D48916AB30A19F33E5EB5DB0EEA0028D574A74CEDCD305F6C2",
+      "clientStructsSha256": "B3F799FFB3C9BA87376922DB220C6249CFBA4B55823B866006DEA44C2486302C",
+      "selected": false
+    }
+  ],
+  "scope": {
+    "sourceAndBinaryIdentityVerified": true,
+    "dalamudLoadTestPerformed": false,
+    "cnMahjongGameStateVerified": false,
+    "cnMahjongCallbacksVerified": false
+  }
+}

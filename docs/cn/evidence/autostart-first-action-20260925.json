@@ -1,0 +1,199 @@
+{
+  "SourcePluginVersion": "0.6.1.2",
+  "SourceSession": "mjcn-game-20260925-042603-d57ff82dc7e0415c8b9cf96c5d1b0294",
+  "Scope": "Public control and diagnostic events only; a submitted action is not a confirmed game event.",
+  "Events": [
+    {
+      "Utc": "2026-09-25T04:26:03.238564+00:00",
+      "Kind": "table_automation_state",
+      "Data": {
+        "Armed": true,
+        "Status": "已启动，等待游戏就绪。",
+        "AutoQueue": false,
+        "AutoStart": true,
+        "DutyId": 766
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:03.2427677+00:00",
+      "Kind": "table_automation_state",
+      "Data": {
+        "Armed": true,
+        "Status": "等待牌桌连续就绪2秒，再自动开打。",
+        "AutoQueue": false,
+        "AutoStart": true,
+        "DutyId": 766
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:05.4212553+00:00",
+      "Kind": "mode_selected",
+      "Data": {
+        "Mode": "automatic",
+        "DecisionSource": "experimental-akochan-global",
+        "AutomaticResumedFromDisk": false
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:05.4220058+00:00",
+      "Kind": "table_automation_action",
+      "Data": {
+        "Action": "StartPlay",
+        "DutyId": 766,
+        "DecisionSourceLabel": "实验全局 AI"
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:05.422016+00:00",
+      "Kind": "table_automation_state",
+      "Data": {
+        "Armed": true,
+        "Status": "正在按所选决策来源启动自动打牌。",
+        "AutoQueue": false,
+        "AutoStart": true,
+        "DutyId": 766
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:05.8545648+00:00",
+      "Kind": "PUBLIC_TABLE_READ_ERROR",
+      "Data": {
+        "Sequence": 1,
+        "Location": "Emj/1340012/9/4.shell.image: BUDGET_EXCEEDED reads/time"
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:05.8545881+00:00",
+      "Kind": "table_automation_state",
+      "Data": {
+        "Armed": true,
+        "Status": "已入桌；保留当前打牌模式。",
+        "AutoQueue": false,
+        "AutoStart": true,
+        "DutyId": 766
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:05.9132316+00:00",
+      "Kind": "global_ai_status",
+      "Data": {
+        "Status": "全局 AI 等待读取：AKOCHAN_PUBLIC_TABLE_UNAVAILABLE",
+        "Scope": "current-public-table",
+        "FullHistoryVerified": false
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:06.1216085+00:00",
+      "Kind": "PUBLIC_TABLE_READ_ERROR",
+      "Data": {
+        "Sequence": 2,
+        "Location": "publicTable.shell.image: BUDGET_EXCEEDED reads/time"
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:06.2364912+00:00",
+      "Kind": "PUBLIC_TABLE_READ_ERROR",
+      "Data": {
+        "Sequence": 3,
+        "Location": "opponent.back.image: BUDGET_EXCEEDED reads/time"
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:06.3400817+00:00",
+      "Kind": "PUBLIC_TABLE_READ_ERROR",
+      "Data": {
+        "Sequence": 4,
+        "Location": "publicDora.resource: BUDGET_EXCEEDED reads/time"
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:06.4512783+00:00",
+      "Kind": "PUBLIC_TABLE_READ_ERROR",
+      "Data": {
+        "Sequence": 5,
+        "Location": "actionMenu.textHeader: BUDGET_EXCEEDED reads/time"
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:06.705408+00:00",
+      "Kind": "READ_RECOVERED",
+      "Data": {
+        "Utc": "2026-09-25T04:26:06.7051299+00:00"
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:06.7054785+00:00",
+      "Kind": "global_ai_status",
+      "Data": {
+        "Status": "全局 AI 等待读取：AKOCHAN_PUBLIC_HAND_UNSTABLE",
+        "Scope": "current-public-table",
+        "FullHistoryVerified": false
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:06.8390595+00:00",
+      "Kind": "global_ai_status",
+      "Data": {
+        "Status": "全局 AI 等待读取：AKOCHAN_PUBLIC_TRIGGER_UNAVAILABLE；新出现的牌河槽位尚未解码，等待确认当前弃牌。",
+        "Scope": "current-public-table",
+        "FullHistoryVerified": false
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:07.0292451+00:00",
+      "Kind": "global_ai_status",
+      "Data": {
+        "Status": "全局 akochan 计算中：牌河 0/1/1/1，副露 0/0/0/0，假设/缺口 10 项。",
+        "Scope": "current-public-table",
+        "FullHistoryVerified": false
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:08.1562303+00:00",
+      "Kind": "global_ai_status",
+      "Data": {
+        "Status": "全局 akochan 已返回 Pass（720毫秒）；使用四家公开牌局，历史缺口/假设 13 项。",
+        "Scope": "current-public-table",
+        "FullHistoryVerified": false
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:09.0560816+00:00",
+      "Kind": "action_submission",
+      "Data": {
+        "Utc": "2026-09-25T04:26:09.0545457+00:00",
+        "ObservationSessionId": "a833e7d6-89ed-40e4-9f02-1380c6c46c52",
+        "ObservationSequence": 2,
+        "Label": "pass",
+        "Result": "Submitted",
+        "Option": 1,
+        "TileId": null,
+        "Slot": null,
+        "AddonStateCode": null,
+        "Route": "classic-opcode11",
+        "Source": "InputDispatcher/submission",
+        "ActionConfirmed": false
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:09.1046321+00:00",
+      "Kind": "table_automation_state",
+      "Data": {
+        "Armed": false,
+        "Status": "已主动选择打牌模式；排队及进桌自动开打已暂停。",
+        "AutoQueue": false,
+        "AutoStart": true,
+        "DutyId": 766
+      }
+    },
+    {
+      "Utc": "2026-09-25T04:26:09.1059372+00:00",
+      "Kind": "mode_selected",
+      "Data": {
+        "Mode": "automatic",
+        "DecisionSource": "experimental-akochan-global",
+        "AutomaticResumedFromDisk": false
+      }
+    }
+  ]
+}

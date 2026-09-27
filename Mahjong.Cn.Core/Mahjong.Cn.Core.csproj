@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Mahjong.Cn</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mahjong.Policy\Mahjong.Policy.csproj" />
+    <EmbeddedResource Include="Engines\Fixtures\akochan-public-opening.json" LogicalName="akochan-public-opening.json" />
+    <EmbeddedResource Include="Engines\Fixtures\akochan-parameter-files.json" LogicalName="akochan-parameter-files.json" />
+    <EmbeddedResource Include="..\tools\MortalBridge\session.py" LogicalName="mortal-session.py" />
+  </ItemGroup>
+</Project>

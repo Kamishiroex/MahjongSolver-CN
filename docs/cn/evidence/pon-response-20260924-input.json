@@ -1,0 +1,5522 @@
+{
+  "Schema": 1,
+  "Purpose": "Actual recorded public pon window; offline projector/native/mapper regression, not a live dispatch claim.",
+  "Source": {
+    "LogFile": "events.jsonl",
+    "LogSha256": "b1f29b91f0b8bfc7e34236c4e0d91377c441f2e5ec91b23478c80f38b5cc8ff7",
+    "LogBytes": 33531541,
+    "SessionId": "2347d61b-f767-45bb-a832-ae20c53ac7c2",
+    "Trigger": {
+      "SourceLine": 208,
+      "JournalSequence": 208,
+      "Utc": "2026-09-24T13:45:36.07048+00:00"
+    }
+  },
+  "ObservationReferences": [
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/LowerHandTracker:Emj",
+      "Evidence": "docs/cn/TILE-RESOURCE-EVIDENCE.md; docs/cn/FOURTH-CAPTURE.md; docs/cn/PUBLIC-MONITOR-EVIDENCE.md",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "PublicRoundEventTracker:current-round-identity",
+      "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+      "DerivationInputs": [
+        "opening-observation:2",
+        "initial-faces-observation:39",
+        "confirmed-opening-observation:39",
+        "current-identity-observation:115"
+      ]
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+      "DerivationInputs": [
+        "Players.Lower.SeatWind",
+        "Players.Right.SeatWind",
+        "Players.Upper.SeatWind",
+        "Players.Left.SeatWind"
+      ]
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/RoundTitleCatalog:Emj/19",
+      "Evidence": "docs/cn/evidence/round-title-resource-catalog.json; cn-emj-round-title-icons-20260924",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/23",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/22",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24",
+      "DerivationInputs": [
+        "Emj/105/2/2",
+        "Emj/105/3/2"
+      ]
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/27",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicDoraReader:Emj",
+      "Evidence": "fixed Emj/28..32/2 public display resource identities; display mode is read separately",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/9",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/12/3,Emj/38/12/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+      "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+      "DerivationInputs": [
+        "public river template Res 3 AddRGB/MultiplyRGB/Style"
+      ]
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+      "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+      "DerivationInputs": [
+        "public river template Res 3 AddRGB/MultiplyRGB/Style"
+      ]
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicTableTracker:Emj",
+      "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/13/3,Emj/40/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/13/3,Emj/42/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 115,
+      "ObservedAtUtc": "2026-09-24T13:45:35.8466971+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/13/3,Emj/44/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/LowerHandTracker:Emj",
+      "Evidence": "docs/cn/TILE-RESOURCE-EVIDENCE.md; docs/cn/FOURTH-CAPTURE.md; docs/cn/PUBLIC-MONITOR-EVIDENCE.md",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "PublicRoundEventTracker:current-round-identity",
+      "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+      "DerivationInputs": [
+        "opening-observation:2",
+        "initial-faces-observation:39",
+        "confirmed-opening-observation:39",
+        "current-identity-observation:116"
+      ]
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+      "DerivationInputs": [
+        "Players.Lower.SeatWind",
+        "Players.Right.SeatWind",
+        "Players.Upper.SeatWind",
+        "Players.Left.SeatWind"
+      ]
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/RoundTitleCatalog:Emj/19",
+      "Evidence": "docs/cn/evidence/round-title-resource-catalog.json; cn-emj-round-title-icons-20260924",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/23",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/22",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24",
+      "DerivationInputs": [
+        "Emj/105/2/2",
+        "Emj/105/3/2"
+      ]
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/27",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicDoraReader:Emj",
+      "Evidence": "fixed Emj/28..32/2 public display resource identities; display mode is read separately",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/9",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/12/3,Emj/38/12/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+      "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+      "DerivationInputs": [
+        "public river template Res 3 AddRGB/MultiplyRGB/Style"
+      ]
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+      "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+      "DerivationInputs": [
+        "public river template Res 3 AddRGB/MultiplyRGB/Style"
+      ]
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicTableTracker:Emj",
+      "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/13/3,Emj/40/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/13/3,Emj/42/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 116,
+      "ObservedAtUtc": "2026-09-24T13:45:35.9578362+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/13/3,Emj/44/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/LowerHandTracker:Emj",
+      "Evidence": "docs/cn/TILE-RESOURCE-EVIDENCE.md; docs/cn/FOURTH-CAPTURE.md; docs/cn/PUBLIC-MONITOR-EVIDENCE.md",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "PublicRoundEventTracker:current-round-identity",
+      "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+      "DerivationInputs": [
+        "opening-observation:2",
+        "initial-faces-observation:39",
+        "confirmed-opening-observation:39",
+        "current-identity-observation:117"
+      ]
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+      "DerivationInputs": [
+        "Players.Lower.SeatWind",
+        "Players.Right.SeatWind",
+        "Players.Upper.SeatWind",
+        "Players.Left.SeatWind"
+      ]
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/RoundTitleCatalog:Emj/19",
+      "Evidence": "docs/cn/evidence/round-title-resource-catalog.json; cn-emj-round-title-icons-20260924",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/23",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/22",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24",
+      "DerivationInputs": [
+        "Emj/105/2/2",
+        "Emj/105/3/2"
+      ]
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/27",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicDoraReader:Emj",
+      "Evidence": "fixed Emj/28..32/2 public display resource identities; display mode is read separately",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/9",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/12/3,Emj/38/12/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+      "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+      "DerivationInputs": [
+        "public river template Res 3 AddRGB/MultiplyRGB/Style"
+      ]
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+      "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+      "DerivationInputs": [
+        "public river template Res 3 AddRGB/MultiplyRGB/Style"
+      ]
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicTableTracker:Emj",
+      "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/13/3,Emj/40/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/13/3,Emj/42/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 117,
+      "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/13/3,Emj/44/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/LowerHandTracker:Emj",
+      "Evidence": "docs/cn/TILE-RESOURCE-EVIDENCE.md; docs/cn/FOURTH-CAPTURE.md; docs/cn/PUBLIC-MONITOR-EVIDENCE.md",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "PublicRoundEventTracker:current-round-identity",
+      "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+      "DerivationInputs": [
+        "opening-observation:2",
+        "initial-faces-observation:39",
+        "confirmed-opening-observation:39",
+        "current-identity-observation:600"
+      ]
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+      "DerivationInputs": [
+        "Players.Lower.SeatWind",
+        "Players.Right.SeatWind",
+        "Players.Upper.SeatWind",
+        "Players.Left.SeatWind"
+      ]
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/RoundTitleCatalog:Emj/19",
+      "Evidence": "docs/cn/evidence/round-title-resource-catalog.json; cn-emj-round-title-icons-20260924",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/23",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/22",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24",
+      "DerivationInputs": [
+        "Emj/105/2/2",
+        "Emj/105/3/2"
+      ]
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/27",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicDoraReader:Emj",
+      "Evidence": "fixed Emj/28..32/2 public display resource identities; display mode is read separately",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/9",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/12/3,Emj/38/12/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+      "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+      "DerivationInputs": [
+        "public river template Res 3 AddRGB/MultiplyRGB/Style"
+      ]
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+      "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+      "DerivationInputs": [
+        "public river template Res 3 AddRGB/MultiplyRGB/Style"
+      ]
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicTableTracker:Emj",
+      "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/13/3,Emj/40/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/13/3,Emj/42/13/2",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/10",
+      "DerivationInputs": []
+    },
+    {
+      "Sequence": 600,
+      "ObservedAtUtc": "2026-09-24T13:46:29.7535991+00:00",
+      "Source": "VisibleUiReader/PublicStatusReader:Emj",
+      "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/13/3,Emj/44/13/2",
+      "DerivationInputs": []
+    }
+  ],
+  "Frames": [
+    {
+      "Sample": 115,
+      "Role": "TrackerWarmup",
+      "PublicRecord": {
+        "SourceLine": 203,
+        "JournalSequence": 203,
+        "Utc": "2026-09-24T13:45:35.8478182+00:00"
+      },
+      "TableRecord": {
+        "SourceLine": 204,
+        "JournalSequence": 204,
+        "Utc": "2026-09-24T13:45:35.848011+00:00"
+      },
+      "Snapshot": {
+        "SchemaVersion": 1,
+        "SessionId": "d73df7ae-b1cb-4d5a-9250-e1e42306941e",
+        "StateRevision": 115,
+        "Observation": {
+          "$observation": 0
+        },
+        "Stability": 2,
+        "Synchronization": 1,
+        "SynchronizationReason": "只有离散可见图像，尚无可信开局、完整实体手牌或连续事件；不能供完整牌局 AI 决策。",
+        "RoundId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": "d73df7aeb1cb4d5a9250e1e42306941e:2",
+          "Observation": {
+            "$observation": 1
+          }
+        },
+        "DealerPlayerId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 3,
+          "Observation": {
+            "$observation": 2
+          }
+        },
+        "RoundWind": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 3
+          }
+        },
+        "HandNumber": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "$observation": 3
+          }
+        },
+        "Honba": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 4
+          }
+        },
+        "RiichiSticks": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 5
+          }
+        },
+        "WallRemaining": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 66,
+          "Observation": {
+            "$observation": 6
+          }
+        },
+        "LowerVisibleFaces": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": [
+            {
+              "Tile": {
+                "Id": 0,
+                "Red": false,
+                "ChineseName": "1万"
+              },
+              "Slot": {
+                "Path": "Emj/134/9/4",
+                "DisplayPosition": 1,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 8,
+                "Red": false,
+                "ChineseName": "9万"
+              },
+              "Slot": {
+                "Path": "Emj/1340001/9/4",
+                "DisplayPosition": 2,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 10,
+                "Red": false,
+                "ChineseName": "2筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340002/9/4",
+                "DisplayPosition": 3,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 12,
+                "Red": false,
+                "ChineseName": "4筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340003/9/4",
+                "DisplayPosition": 4,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 13,
+                "Red": true,
+                "ChineseName": "赤5筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340004/9/4",
+                "DisplayPosition": 5,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 15,
+                "Red": false,
+                "ChineseName": "7筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340005/9/4",
+                "DisplayPosition": 6,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 15,
+                "Red": false,
+                "ChineseName": "7筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340006/9/4",
+                "DisplayPosition": 7,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 16,
+                "Red": false,
+                "ChineseName": "8筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340007/9/4",
+                "DisplayPosition": 8,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 16,
+                "Red": false,
+                "ChineseName": "8筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340008/9/4",
+                "DisplayPosition": 9,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 17,
+                "Red": false,
+                "ChineseName": "9筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340009/9/4",
+                "DisplayPosition": 10,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 23,
+                "Red": false,
+                "ChineseName": "6索"
+              },
+              "Slot": {
+                "Path": "Emj/1340010/9/4",
+                "DisplayPosition": 11,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 23,
+                "Red": false,
+                "ChineseName": "6索"
+              },
+              "Slot": {
+                "Path": "Emj/1340011/9/4",
+                "DisplayPosition": 12,
+                "StateRevision": 115
+              }
+            },
+            {
+              "Tile": {
+                "Id": 33,
+                "Red": false,
+                "ChineseName": "中"
+              },
+              "Slot": {
+                "Path": "Emj/1340012/9/4",
+                "DisplayPosition": 13,
+                "StateRevision": 115
+              }
+            }
+          ],
+          "Observation": {
+            "$observation": 0
+          }
+        },
+        "DoraMode": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "$observation": 7
+          }
+        },
+        "DoraDisplay": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": [
+            {
+              "Id": 8,
+              "Red": false,
+              "ChineseName": "9万"
+            }
+          ],
+          "Observation": {
+            "$observation": 8
+          }
+        },
+        "Players": [
+          {
+            "Position": 0,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 0,
+              "Observation": {
+                "$observation": 2
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 1,
+              "Observation": {
+                "$observation": 9
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 10
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 31,
+                      "Red": false,
+                      "ChineseName": "白"
+                    },
+                    "SlotPath": "Emj/118/4",
+                    "GroupPath": "Emj/118",
+                    "X": 1818.76,
+                    "Y": 750.008,
+                    "Width": 43.679996,
+                    "Height": 56.783997,
+                    "RotationDegrees": 0,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 11
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 12
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 13
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 13
+              }
+            }
+          },
+          {
+            "Position": 1,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 1,
+              "Observation": {
+                "$observation": 2
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 2,
+              "Observation": {
+                "$observation": 14
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 15
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 28,
+                      "Red": false,
+                      "ChineseName": "南"
+                    },
+                    "SlotPath": "Emj/121/4",
+                    "GroupPath": "Emj/121",
+                    "X": 2079.608,
+                    "Y": 700.56,
+                    "Width": 56.784,
+                    "Height": 43.68,
+                    "RotationDegrees": -90,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 11
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 12
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 13
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 13
+              }
+            }
+          },
+          {
+            "Position": 2,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 2,
+              "Observation": {
+                "$observation": 2
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 3,
+              "Observation": {
+                "$observation": 16
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 17
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 23,
+                      "Red": false,
+                      "ChineseName": "6索"
+                    },
+                    "SlotPath": "Emj/124/4",
+                    "GroupPath": "Emj/124",
+                    "X": 2009.16,
+                    "Y": 463.008,
+                    "Width": 43.680004,
+                    "Height": 56.784,
+                    "RotationDegrees": -180,
+                    "Mirrored": false,
+                    "Stable": false,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 35,
+                      "AddGreen": 35,
+                      "AddBlue": 35,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "unclassified",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 0,
+                      "SourceKind": 0,
+                      "MappingStatus": 0,
+                      "Reason": "只有稳定牌河图像可解释摸切颜色；副露和动画不适用。"
+                    },
+                    "WasClaimed": {
+                      "Availability": 0,
+                      "SourceKind": 0,
+                      "MappingStatus": 0,
+                      "Reason": "只有稳定牌河图像可解释被鸣颜色；副露和动画不适用。"
+                    }
+                  }
+                ],
+                "Stable": false,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 13
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 13
+              }
+            }
+          },
+          {
+            "Position": 3,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 3,
+              "Observation": {
+                "$observation": 2
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 0,
+              "Observation": {
+                "$observation": 18
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 19
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 30,
+                      "Red": false,
+                      "ChineseName": "北"
+                    },
+                    "SlotPath": "Emj/127/4",
+                    "GroupPath": "Emj/127",
+                    "X": 1752.0079,
+                    "Y": 525.56,
+                    "Width": 56.784,
+                    "Height": 43.68,
+                    "RotationDegrees": 90,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 11
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 12
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 13
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 13
+              }
+            }
+          }
+        ]
+      },
+      "Table": {
+        "Code": "PUBLIC_IMAGES_PARTIAL_CANDIDATE",
+        "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+        "Stable": false,
+        "Tiles": [
+          {
+            "Area": "river-bottom",
+            "ScreenDirection": "bottom",
+            "SlotPath": "Emj/118/4",
+            "GroupPath": "Emj/118",
+            "X": 1818.76,
+            "Y": 750.008,
+            "Width": 43.679996,
+            "Height": 56.783997,
+            "RotationDegrees": 0,
+            "Mirrored": false,
+            "Kind34": 31,
+            "RedFive": false,
+            "ChineseName": "白",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-right",
+            "ScreenDirection": "right",
+            "SlotPath": "Emj/121/4",
+            "GroupPath": "Emj/121",
+            "X": 2079.608,
+            "Y": 700.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": -90,
+            "Mirrored": false,
+            "Kind34": 28,
+            "RedFive": false,
+            "ChineseName": "南",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-top",
+            "ScreenDirection": "top",
+            "SlotPath": "Emj/124/4",
+            "GroupPath": "Emj/124",
+            "X": 2009.16,
+            "Y": 463.008,
+            "Width": 43.680004,
+            "Height": 56.784,
+            "RotationDegrees": -180,
+            "Mirrored": false,
+            "Kind34": 23,
+            "RedFive": false,
+            "ChineseName": "6索",
+            "Stable": false,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 35,
+              "AddGreen": 35,
+              "AddBlue": 35,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "unclassified",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-left",
+            "ScreenDirection": "left",
+            "SlotPath": "Emj/127/4",
+            "GroupPath": "Emj/127",
+            "X": 1752.0079,
+            "Y": 525.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": 90,
+            "Mirrored": false,
+            "Kind34": 30,
+            "RedFive": false,
+            "ChineseName": "北",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          }
+        ],
+        "Rejections": [],
+        "MeldGroups": [],
+        "Areas": [
+          {
+            "Area": "river-bottom",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-right",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-top",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": false,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-left",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "meld-bottom",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-right",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-top",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-left",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          }
+        ],
+        "HistoryComplete": false,
+        "CurrentDisplayComplete": false
+      },
+      "ActionMenu": {
+        "Code": "ACTION_MENU_VISIBLE_CANDIDATE",
+        "Visible": true,
+        "AllVisibleRowsDecoded": true,
+        "Rows": [
+          {
+            "Path": "Emj/104/3/2",
+            "ScreenY": 914.19995,
+            "Action": "Pon",
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE",
+            "ListItemIndex": 0,
+            "ListItemDisabled": false,
+            "RendererEnabled": true,
+            "ListInteractionEnabled": true
+          },
+          {
+            "Path": "Emj/104/3/21001",
+            "ScreenY": 958.99994,
+            "Action": "Pass",
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE",
+            "ListItemIndex": 1,
+            "ListItemDisabled": false,
+            "RendererEnabled": true,
+            "ListInteractionEnabled": true
+          }
+        ],
+        "ListState": {
+          "ListLength": 2,
+          "AllocatedRendererCount": 2,
+          "FirstVisibleItemIndex": 0,
+          "NumVisibleItems": 5,
+          "IsUpdatePending": false,
+          "IsScrollRefreshPending": false,
+          "IsItemInteractionEnabled": true
+        },
+        "MappingStatus": "Candidate",
+        "CompleteLegalActions": false,
+        "ActionOccurred": false
+      },
+      "Riichi": [
+        {
+          "ScreenDirection": "bottom",
+          "Path": "Emj/100/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "right",
+          "Path": "Emj/101/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "top",
+          "Path": "Emj/102/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "left",
+          "Path": "Emj/103/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        }
+      ]
+    },
+    {
+      "Sample": 116,
+      "Role": "TrackerWarmup",
+      "PublicRecord": {
+        "SourceLine": 205,
+        "JournalSequence": 205,
+        "Utc": "2026-09-24T13:45:35.9609749+00:00"
+      },
+      "TableRecord": {
+        "SourceLine": 206,
+        "JournalSequence": 206,
+        "Utc": "2026-09-24T13:45:35.9611612+00:00"
+      },
+      "Snapshot": {
+        "SchemaVersion": 1,
+        "SessionId": "d73df7ae-b1cb-4d5a-9250-e1e42306941e",
+        "StateRevision": 116,
+        "Observation": {
+          "$observation": 20
+        },
+        "Stability": 2,
+        "Synchronization": 1,
+        "SynchronizationReason": "只有离散可见图像，尚无可信开局、完整实体手牌或连续事件；不能供完整牌局 AI 决策。",
+        "RoundId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": "d73df7aeb1cb4d5a9250e1e42306941e:2",
+          "Observation": {
+            "$observation": 21
+          }
+        },
+        "DealerPlayerId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 3,
+          "Observation": {
+            "$observation": 22
+          }
+        },
+        "RoundWind": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 23
+          }
+        },
+        "HandNumber": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "$observation": 23
+          }
+        },
+        "Honba": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 24
+          }
+        },
+        "RiichiSticks": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 25
+          }
+        },
+        "WallRemaining": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 66,
+          "Observation": {
+            "$observation": 26
+          }
+        },
+        "LowerVisibleFaces": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": [
+            {
+              "Tile": {
+                "Id": 0,
+                "Red": false,
+                "ChineseName": "1万"
+              },
+              "Slot": {
+                "Path": "Emj/134/9/4",
+                "DisplayPosition": 1,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 8,
+                "Red": false,
+                "ChineseName": "9万"
+              },
+              "Slot": {
+                "Path": "Emj/1340001/9/4",
+                "DisplayPosition": 2,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 10,
+                "Red": false,
+                "ChineseName": "2筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340002/9/4",
+                "DisplayPosition": 3,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 12,
+                "Red": false,
+                "ChineseName": "4筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340003/9/4",
+                "DisplayPosition": 4,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 13,
+                "Red": true,
+                "ChineseName": "赤5筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340004/9/4",
+                "DisplayPosition": 5,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 15,
+                "Red": false,
+                "ChineseName": "7筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340005/9/4",
+                "DisplayPosition": 6,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 15,
+                "Red": false,
+                "ChineseName": "7筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340006/9/4",
+                "DisplayPosition": 7,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 16,
+                "Red": false,
+                "ChineseName": "8筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340007/9/4",
+                "DisplayPosition": 8,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 16,
+                "Red": false,
+                "ChineseName": "8筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340008/9/4",
+                "DisplayPosition": 9,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 17,
+                "Red": false,
+                "ChineseName": "9筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340009/9/4",
+                "DisplayPosition": 10,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 23,
+                "Red": false,
+                "ChineseName": "6索"
+              },
+              "Slot": {
+                "Path": "Emj/1340010/9/4",
+                "DisplayPosition": 11,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 23,
+                "Red": false,
+                "ChineseName": "6索"
+              },
+              "Slot": {
+                "Path": "Emj/1340011/9/4",
+                "DisplayPosition": 12,
+                "StateRevision": 116
+              }
+            },
+            {
+              "Tile": {
+                "Id": 33,
+                "Red": false,
+                "ChineseName": "中"
+              },
+              "Slot": {
+                "Path": "Emj/1340012/9/4",
+                "DisplayPosition": 13,
+                "StateRevision": 116
+              }
+            }
+          ],
+          "Observation": {
+            "$observation": 20
+          }
+        },
+        "DoraMode": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "$observation": 27
+          }
+        },
+        "DoraDisplay": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": [
+            {
+              "Id": 8,
+              "Red": false,
+              "ChineseName": "9万"
+            }
+          ],
+          "Observation": {
+            "$observation": 28
+          }
+        },
+        "Players": [
+          {
+            "Position": 0,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 0,
+              "Observation": {
+                "$observation": 22
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 1,
+              "Observation": {
+                "$observation": 29
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 30
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 31,
+                      "Red": false,
+                      "ChineseName": "白"
+                    },
+                    "SlotPath": "Emj/118/4",
+                    "GroupPath": "Emj/118",
+                    "X": 1818.76,
+                    "Y": 750.008,
+                    "Width": 43.679996,
+                    "Height": 56.783997,
+                    "RotationDegrees": 0,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 31
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 32
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 33
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 33
+              }
+            }
+          },
+          {
+            "Position": 1,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 1,
+              "Observation": {
+                "$observation": 22
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 2,
+              "Observation": {
+                "$observation": 34
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 35
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 28,
+                      "Red": false,
+                      "ChineseName": "南"
+                    },
+                    "SlotPath": "Emj/121/4",
+                    "GroupPath": "Emj/121",
+                    "X": 2079.608,
+                    "Y": 700.56,
+                    "Width": 56.784,
+                    "Height": 43.68,
+                    "RotationDegrees": -90,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 31
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 32
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 33
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 33
+              }
+            }
+          },
+          {
+            "Position": 2,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 2,
+              "Observation": {
+                "$observation": 22
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 3,
+              "Observation": {
+                "$observation": 36
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 37
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 23,
+                      "Red": false,
+                      "ChineseName": "6索"
+                    },
+                    "SlotPath": "Emj/124/4",
+                    "GroupPath": "Emj/124",
+                    "X": 2009.16,
+                    "Y": 463.008,
+                    "Width": 43.680004,
+                    "Height": 56.784,
+                    "RotationDegrees": -180,
+                    "Mirrored": false,
+                    "Stable": false,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 11,
+                      "AddGreen": 11,
+                      "AddBlue": 11,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "unclassified",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 0,
+                      "SourceKind": 0,
+                      "MappingStatus": 0,
+                      "Reason": "只有稳定牌河图像可解释摸切颜色；副露和动画不适用。"
+                    },
+                    "WasClaimed": {
+                      "Availability": 0,
+                      "SourceKind": 0,
+                      "MappingStatus": 0,
+                      "Reason": "只有稳定牌河图像可解释被鸣颜色；副露和动画不适用。"
+                    }
+                  }
+                ],
+                "Stable": false,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 33
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 33
+              }
+            }
+          },
+          {
+            "Position": 3,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 3,
+              "Observation": {
+                "$observation": 22
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 0,
+              "Observation": {
+                "$observation": 38
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 39
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 30,
+                      "Red": false,
+                      "ChineseName": "北"
+                    },
+                    "SlotPath": "Emj/127/4",
+                    "GroupPath": "Emj/127",
+                    "X": 1752.0079,
+                    "Y": 525.56,
+                    "Width": 56.784,
+                    "Height": 43.68,
+                    "RotationDegrees": 90,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 31
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 32
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 33
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 33
+              }
+            }
+          }
+        ]
+      },
+      "Table": {
+        "Code": "PUBLIC_IMAGES_PARTIAL_CANDIDATE",
+        "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+        "Stable": false,
+        "Tiles": [
+          {
+            "Area": "river-bottom",
+            "ScreenDirection": "bottom",
+            "SlotPath": "Emj/118/4",
+            "GroupPath": "Emj/118",
+            "X": 1818.76,
+            "Y": 750.008,
+            "Width": 43.679996,
+            "Height": 56.783997,
+            "RotationDegrees": 0,
+            "Mirrored": false,
+            "Kind34": 31,
+            "RedFive": false,
+            "ChineseName": "白",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-right",
+            "ScreenDirection": "right",
+            "SlotPath": "Emj/121/4",
+            "GroupPath": "Emj/121",
+            "X": 2079.608,
+            "Y": 700.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": -90,
+            "Mirrored": false,
+            "Kind34": 28,
+            "RedFive": false,
+            "ChineseName": "南",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-top",
+            "ScreenDirection": "top",
+            "SlotPath": "Emj/124/4",
+            "GroupPath": "Emj/124",
+            "X": 2009.16,
+            "Y": 463.008,
+            "Width": 43.680004,
+            "Height": 56.784,
+            "RotationDegrees": -180,
+            "Mirrored": false,
+            "Kind34": 23,
+            "RedFive": false,
+            "ChineseName": "6索",
+            "Stable": false,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 11,
+              "AddGreen": 11,
+              "AddBlue": 11,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "unclassified",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-left",
+            "ScreenDirection": "left",
+            "SlotPath": "Emj/127/4",
+            "GroupPath": "Emj/127",
+            "X": 1752.0079,
+            "Y": 525.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": 90,
+            "Mirrored": false,
+            "Kind34": 30,
+            "RedFive": false,
+            "ChineseName": "北",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          }
+        ],
+        "Rejections": [],
+        "MeldGroups": [],
+        "Areas": [
+          {
+            "Area": "river-bottom",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-right",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-top",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": false,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-left",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "meld-bottom",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-right",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-top",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-left",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          }
+        ],
+        "HistoryComplete": false,
+        "CurrentDisplayComplete": false
+      },
+      "ActionMenu": {
+        "Code": "ACTION_MENU_VISIBLE_CANDIDATE",
+        "Visible": true,
+        "AllVisibleRowsDecoded": true,
+        "Rows": [
+          {
+            "Path": "Emj/104/3/2",
+            "ScreenY": 914.19995,
+            "Action": "Pon",
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE",
+            "ListItemIndex": 0,
+            "ListItemDisabled": false,
+            "RendererEnabled": true,
+            "ListInteractionEnabled": true
+          },
+          {
+            "Path": "Emj/104/3/21001",
+            "ScreenY": 958.99994,
+            "Action": "Pass",
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE",
+            "ListItemIndex": 1,
+            "ListItemDisabled": false,
+            "RendererEnabled": true,
+            "ListInteractionEnabled": true
+          }
+        ],
+        "ListState": {
+          "ListLength": 2,
+          "AllocatedRendererCount": 2,
+          "FirstVisibleItemIndex": 0,
+          "NumVisibleItems": 5,
+          "IsUpdatePending": false,
+          "IsScrollRefreshPending": false,
+          "IsItemInteractionEnabled": true
+        },
+        "MappingStatus": "Candidate",
+        "CompleteLegalActions": false,
+        "ActionOccurred": false
+      },
+      "Riichi": [
+        {
+          "ScreenDirection": "bottom",
+          "Path": "Emj/100/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "right",
+          "Path": "Emj/101/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "top",
+          "Path": "Emj/102/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "left",
+          "Path": "Emj/103/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        }
+      ]
+    },
+    {
+      "Sample": 117,
+      "Role": "ResponseProjection",
+      "PublicRecord": {
+        "SourceLine": 207,
+        "JournalSequence": 207,
+        "Utc": "2026-09-24T13:45:36.0704624+00:00"
+      },
+      "TableRecord": {
+        "SourceLine": 211,
+        "JournalSequence": 211,
+        "Utc": "2026-09-24T13:45:36.0707329+00:00"
+      },
+      "Snapshot": {
+        "SchemaVersion": 1,
+        "SessionId": "d73df7ae-b1cb-4d5a-9250-e1e42306941e",
+        "StateRevision": 117,
+        "Observation": {
+          "$observation": 40
+        },
+        "Stability": 2,
+        "Synchronization": 1,
+        "SynchronizationReason": "只有离散可见图像，尚无可信开局、完整实体手牌或连续事件；不能供完整牌局 AI 决策。",
+        "RoundId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": "d73df7aeb1cb4d5a9250e1e42306941e:2",
+          "Observation": {
+            "$observation": 41
+          }
+        },
+        "DealerPlayerId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 3,
+          "Observation": {
+            "$observation": 42
+          }
+        },
+        "RoundWind": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 43
+          }
+        },
+        "HandNumber": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "$observation": 43
+          }
+        },
+        "Honba": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 44
+          }
+        },
+        "RiichiSticks": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 45
+          }
+        },
+        "WallRemaining": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 66,
+          "Observation": {
+            "$observation": 46
+          }
+        },
+        "LowerVisibleFaces": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": [
+            {
+              "Tile": {
+                "Id": 0,
+                "Red": false,
+                "ChineseName": "1万"
+              },
+              "Slot": {
+                "Path": "Emj/134/9/4",
+                "DisplayPosition": 1,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 8,
+                "Red": false,
+                "ChineseName": "9万"
+              },
+              "Slot": {
+                "Path": "Emj/1340001/9/4",
+                "DisplayPosition": 2,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 10,
+                "Red": false,
+                "ChineseName": "2筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340002/9/4",
+                "DisplayPosition": 3,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 12,
+                "Red": false,
+                "ChineseName": "4筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340003/9/4",
+                "DisplayPosition": 4,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 13,
+                "Red": true,
+                "ChineseName": "赤5筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340004/9/4",
+                "DisplayPosition": 5,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 15,
+                "Red": false,
+                "ChineseName": "7筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340005/9/4",
+                "DisplayPosition": 6,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 15,
+                "Red": false,
+                "ChineseName": "7筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340006/9/4",
+                "DisplayPosition": 7,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 16,
+                "Red": false,
+                "ChineseName": "8筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340007/9/4",
+                "DisplayPosition": 8,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 16,
+                "Red": false,
+                "ChineseName": "8筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340008/9/4",
+                "DisplayPosition": 9,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 17,
+                "Red": false,
+                "ChineseName": "9筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340009/9/4",
+                "DisplayPosition": 10,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 23,
+                "Red": false,
+                "ChineseName": "6索"
+              },
+              "Slot": {
+                "Path": "Emj/1340010/9/4",
+                "DisplayPosition": 11,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 23,
+                "Red": false,
+                "ChineseName": "6索"
+              },
+              "Slot": {
+                "Path": "Emj/1340011/9/4",
+                "DisplayPosition": 12,
+                "StateRevision": 117
+              }
+            },
+            {
+              "Tile": {
+                "Id": 33,
+                "Red": false,
+                "ChineseName": "中"
+              },
+              "Slot": {
+                "Path": "Emj/1340012/9/4",
+                "DisplayPosition": 13,
+                "StateRevision": 117
+              }
+            }
+          ],
+          "Observation": {
+            "$observation": 40
+          }
+        },
+        "DoraMode": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "$observation": 47
+          }
+        },
+        "DoraDisplay": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": [
+            {
+              "Id": 8,
+              "Red": false,
+              "ChineseName": "9万"
+            }
+          ],
+          "Observation": {
+            "$observation": 48
+          }
+        },
+        "Players": [
+          {
+            "Position": 0,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 0,
+              "Observation": {
+                "$observation": 42
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 1,
+              "Observation": {
+                "$observation": 49
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 50
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 31,
+                      "Red": false,
+                      "ChineseName": "白"
+                    },
+                    "SlotPath": "Emj/118/4",
+                    "GroupPath": "Emj/118",
+                    "X": 1818.76,
+                    "Y": 750.008,
+                    "Width": 43.679996,
+                    "Height": 56.783997,
+                    "RotationDegrees": 0,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 51
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 52
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 53
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 53
+              }
+            }
+          },
+          {
+            "Position": 1,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 1,
+              "Observation": {
+                "$observation": 42
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 2,
+              "Observation": {
+                "$observation": 54
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 55
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 28,
+                      "Red": false,
+                      "ChineseName": "南"
+                    },
+                    "SlotPath": "Emj/121/4",
+                    "GroupPath": "Emj/121",
+                    "X": 2079.608,
+                    "Y": 700.56,
+                    "Width": 56.784,
+                    "Height": 43.68,
+                    "RotationDegrees": -90,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 51
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 52
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 53
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 53
+              }
+            }
+          },
+          {
+            "Position": 2,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 2,
+              "Observation": {
+                "$observation": 42
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 3,
+              "Observation": {
+                "$observation": 56
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 57
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 23,
+                      "Red": false,
+                      "ChineseName": "6索"
+                    },
+                    "SlotPath": "Emj/124/4",
+                    "GroupPath": "Emj/124",
+                    "X": 2009.16,
+                    "Y": 463.008,
+                    "Width": 43.680004,
+                    "Height": 56.784,
+                    "RotationDegrees": -180,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 11,
+                      "AddGreen": 11,
+                      "AddBlue": 11,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "unclassified",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 0,
+                      "SourceKind": 0,
+                      "MappingStatus": 0,
+                      "Reason": "当前颜色叠加／过渡尚未映射，不能以非灰色推定手切。"
+                    },
+                    "WasClaimed": {
+                      "Availability": 0,
+                      "SourceKind": 0,
+                      "MappingStatus": 0,
+                      "Reason": "当前颜色叠加／过渡尚未映射，不能以非灰色推定手切。"
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 53
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 53
+              }
+            }
+          },
+          {
+            "Position": 3,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 3,
+              "Observation": {
+                "$observation": 42
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 0,
+              "Observation": {
+                "$observation": 58
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 59
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 30,
+                      "Red": false,
+                      "ChineseName": "北"
+                    },
+                    "SlotPath": "Emj/127/4",
+                    "GroupPath": "Emj/127",
+                    "X": 1752.0079,
+                    "Y": 525.56,
+                    "Width": 56.784,
+                    "Height": 43.68,
+                    "RotationDegrees": 90,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 51
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 52
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 53
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 53
+              }
+            }
+          }
+        ]
+      },
+      "Table": {
+        "Code": "PUBLIC_IMAGES_STABLE_CANDIDATE",
+        "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+        "Stable": true,
+        "Tiles": [
+          {
+            "Area": "river-bottom",
+            "ScreenDirection": "bottom",
+            "SlotPath": "Emj/118/4",
+            "GroupPath": "Emj/118",
+            "X": 1818.76,
+            "Y": 750.008,
+            "Width": 43.679996,
+            "Height": 56.783997,
+            "RotationDegrees": 0,
+            "Mirrored": false,
+            "Kind34": 31,
+            "RedFive": false,
+            "ChineseName": "白",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-right",
+            "ScreenDirection": "right",
+            "SlotPath": "Emj/121/4",
+            "GroupPath": "Emj/121",
+            "X": 2079.608,
+            "Y": 700.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": -90,
+            "Mirrored": false,
+            "Kind34": 28,
+            "RedFive": false,
+            "ChineseName": "南",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-top",
+            "ScreenDirection": "top",
+            "SlotPath": "Emj/124/4",
+            "GroupPath": "Emj/124",
+            "X": 2009.16,
+            "Y": 463.008,
+            "Width": 43.680004,
+            "Height": 56.784,
+            "RotationDegrees": -180,
+            "Mirrored": false,
+            "Kind34": 23,
+            "RedFive": false,
+            "ChineseName": "6索",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 11,
+              "AddGreen": 11,
+              "AddBlue": 11,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "unclassified",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-left",
+            "ScreenDirection": "left",
+            "SlotPath": "Emj/127/4",
+            "GroupPath": "Emj/127",
+            "X": 1752.0079,
+            "Y": 525.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": 90,
+            "Mirrored": false,
+            "Kind34": 30,
+            "RedFive": false,
+            "ChineseName": "北",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          }
+        ],
+        "Rejections": [],
+        "MeldGroups": [],
+        "Areas": [
+          {
+            "Area": "river-bottom",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-right",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-top",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-left",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "meld-bottom",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-right",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-top",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-left",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          }
+        ],
+        "HistoryComplete": false,
+        "CurrentDisplayComplete": false
+      },
+      "ActionMenu": {
+        "Code": "ACTION_MENU_VISIBLE_CANDIDATE",
+        "Visible": true,
+        "AllVisibleRowsDecoded": true,
+        "Rows": [
+          {
+            "Path": "Emj/104/3/2",
+            "ScreenY": 914.19995,
+            "Action": "Pon",
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE",
+            "ListItemIndex": 0,
+            "ListItemDisabled": false,
+            "RendererEnabled": true,
+            "ListInteractionEnabled": true
+          },
+          {
+            "Path": "Emj/104/3/21001",
+            "ScreenY": 958.99994,
+            "Action": "Pass",
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE",
+            "ListItemIndex": 1,
+            "ListItemDisabled": false,
+            "RendererEnabled": true,
+            "ListInteractionEnabled": true
+          }
+        ],
+        "ListState": {
+          "ListLength": 2,
+          "AllocatedRendererCount": 2,
+          "FirstVisibleItemIndex": 0,
+          "NumVisibleItems": 5,
+          "IsUpdatePending": false,
+          "IsScrollRefreshPending": false,
+          "IsItemInteractionEnabled": true
+        },
+        "MappingStatus": "Candidate",
+        "CompleteLegalActions": false,
+        "ActionOccurred": false
+      },
+      "Riichi": [
+        {
+          "ScreenDirection": "bottom",
+          "Path": "Emj/100/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "right",
+          "Path": "Emj/101/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "top",
+          "Path": "Emj/102/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "left",
+          "Path": "Emj/103/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        }
+      ]
+    },
+    {
+      "Sample": 600,
+      "Role": "ResponseProjection",
+      "PublicRecord": {
+        "SourceLine": 1182,
+        "JournalSequence": 1182,
+        "Utc": "2026-09-24T13:46:29.7548814+00:00"
+      },
+      "TableRecord": {
+        "SourceLine": 1183,
+        "JournalSequence": 1183,
+        "Utc": "2026-09-24T13:46:29.7550712+00:00"
+      },
+      "Snapshot": {
+        "SchemaVersion": 1,
+        "SessionId": "d73df7ae-b1cb-4d5a-9250-e1e42306941e",
+        "StateRevision": 600,
+        "Observation": {
+          "$observation": 60
+        },
+        "Stability": 2,
+        "Synchronization": 1,
+        "SynchronizationReason": "只有离散可见图像，尚无可信开局、完整实体手牌或连续事件；不能供完整牌局 AI 决策。",
+        "RoundId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": "d73df7aeb1cb4d5a9250e1e42306941e:2",
+          "Observation": {
+            "$observation": 61
+          }
+        },
+        "DealerPlayerId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 3,
+          "Observation": {
+            "$observation": 62
+          }
+        },
+        "RoundWind": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 63
+          }
+        },
+        "HandNumber": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "$observation": 63
+          }
+        },
+        "Honba": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 64
+          }
+        },
+        "RiichiSticks": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "$observation": 65
+          }
+        },
+        "WallRemaining": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 66,
+          "Observation": {
+            "$observation": 66
+          }
+        },
+        "LowerVisibleFaces": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": [
+            {
+              "Tile": {
+                "Id": 0,
+                "Red": false,
+                "ChineseName": "1万"
+              },
+              "Slot": {
+                "Path": "Emj/134/9/4",
+                "DisplayPosition": 1,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 8,
+                "Red": false,
+                "ChineseName": "9万"
+              },
+              "Slot": {
+                "Path": "Emj/1340001/9/4",
+                "DisplayPosition": 2,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 10,
+                "Red": false,
+                "ChineseName": "2筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340002/9/4",
+                "DisplayPosition": 3,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 12,
+                "Red": false,
+                "ChineseName": "4筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340003/9/4",
+                "DisplayPosition": 4,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 13,
+                "Red": true,
+                "ChineseName": "赤5筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340004/9/4",
+                "DisplayPosition": 5,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 15,
+                "Red": false,
+                "ChineseName": "7筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340005/9/4",
+                "DisplayPosition": 6,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 15,
+                "Red": false,
+                "ChineseName": "7筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340006/9/4",
+                "DisplayPosition": 7,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 16,
+                "Red": false,
+                "ChineseName": "8筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340007/9/4",
+                "DisplayPosition": 8,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 16,
+                "Red": false,
+                "ChineseName": "8筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340008/9/4",
+                "DisplayPosition": 9,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 17,
+                "Red": false,
+                "ChineseName": "9筒"
+              },
+              "Slot": {
+                "Path": "Emj/1340009/9/4",
+                "DisplayPosition": 10,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 23,
+                "Red": false,
+                "ChineseName": "6索"
+              },
+              "Slot": {
+                "Path": "Emj/1340010/9/4",
+                "DisplayPosition": 11,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 23,
+                "Red": false,
+                "ChineseName": "6索"
+              },
+              "Slot": {
+                "Path": "Emj/1340011/9/4",
+                "DisplayPosition": 12,
+                "StateRevision": 600
+              }
+            },
+            {
+              "Tile": {
+                "Id": 33,
+                "Red": false,
+                "ChineseName": "中"
+              },
+              "Slot": {
+                "Path": "Emj/1340012/9/4",
+                "DisplayPosition": 13,
+                "StateRevision": 600
+              }
+            }
+          ],
+          "Observation": {
+            "$observation": 60
+          }
+        },
+        "DoraMode": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "$observation": 67
+          }
+        },
+        "DoraDisplay": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": [
+            {
+              "Id": 8,
+              "Red": false,
+              "ChineseName": "9万"
+            }
+          ],
+          "Observation": {
+            "$observation": 68
+          }
+        },
+        "Players": [
+          {
+            "Position": 0,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 0,
+              "Observation": {
+                "$observation": 62
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 1,
+              "Observation": {
+                "$observation": 69
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 70
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 31,
+                      "Red": false,
+                      "ChineseName": "白"
+                    },
+                    "SlotPath": "Emj/118/4",
+                    "GroupPath": "Emj/118",
+                    "X": 1818.76,
+                    "Y": 750.008,
+                    "Width": 43.679996,
+                    "Height": 56.783997,
+                    "RotationDegrees": 0,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 71
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 72
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 73
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 73
+              }
+            }
+          },
+          {
+            "Position": 1,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 1,
+              "Observation": {
+                "$observation": 62
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 2,
+              "Observation": {
+                "$observation": 74
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 75
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 28,
+                      "Red": false,
+                      "ChineseName": "南"
+                    },
+                    "SlotPath": "Emj/121/4",
+                    "GroupPath": "Emj/121",
+                    "X": 2079.608,
+                    "Y": 700.56,
+                    "Width": 56.784,
+                    "Height": 43.68,
+                    "RotationDegrees": -90,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 71
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 72
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 73
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 73
+              }
+            }
+          },
+          {
+            "Position": 2,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 2,
+              "Observation": {
+                "$observation": 62
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 3,
+              "Observation": {
+                "$observation": 76
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 77
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 23,
+                      "Red": false,
+                      "ChineseName": "6索"
+                    },
+                    "SlotPath": "Emj/124/4",
+                    "GroupPath": "Emj/124",
+                    "X": 2009.16,
+                    "Y": 463.008,
+                    "Width": 43.680004,
+                    "Height": 56.784,
+                    "RotationDegrees": -180,
+                    "Mirrored": false,
+                    "Stable": false,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 84,
+                      "AddGreen": 84,
+                      "AddBlue": 84,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "unclassified",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 0,
+                      "SourceKind": 0,
+                      "MappingStatus": 0,
+                      "Reason": "只有稳定牌河图像可解释摸切颜色；副露和动画不适用。"
+                    },
+                    "WasClaimed": {
+                      "Availability": 0,
+                      "SourceKind": 0,
+                      "MappingStatus": 0,
+                      "Reason": "只有稳定牌河图像可解释被鸣颜色；副露和动画不适用。"
+                    }
+                  }
+                ],
+                "Stable": false,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 73
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 73
+              }
+            }
+          },
+          {
+            "Position": 3,
+            "PlayerId": {
+              "Availability": 1,
+              "SourceKind": 2,
+              "MappingStatus": 1,
+              "Value": 3,
+              "Observation": {
+                "$observation": 62
+              }
+            },
+            "SeatWind": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 0,
+              "Observation": {
+                "$observation": 78
+              }
+            },
+            "Score": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 1,
+              "Value": 25000,
+              "Observation": {
+                "$observation": 79
+              }
+            },
+            "RiichiDeclared": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直声明未读取。"
+            },
+            "RiichiEstablished": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "立直成立未读取。"
+            },
+            "Ippatsu": {
+              "Availability": 0,
+              "SourceKind": 0,
+              "MappingStatus": 0,
+              "Reason": "一发状态未读取。"
+            },
+            "RiverImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [
+                  {
+                    "Tile": {
+                      "Id": 30,
+                      "Red": false,
+                      "ChineseName": "北"
+                    },
+                    "SlotPath": "Emj/127/4",
+                    "GroupPath": "Emj/127",
+                    "X": 1752.0079,
+                    "Y": 525.56,
+                    "Width": 56.784,
+                    "Height": 43.68,
+                    "RotationDegrees": 90,
+                    "Mirrored": false,
+                    "Stable": true,
+                    "DisplayPosition": {
+                      "DisplayRow": 1,
+                      "VisibleColumn": 1,
+                      "ReadOrder": 1,
+                      "IsSideways": false,
+                      "IsEventOrder": false
+                    },
+                    "Style": {
+                      "AddRed": 0,
+                      "AddGreen": 0,
+                      "AddBlue": 0,
+                      "MultiplyRed": 100,
+                      "MultiplyGreen": 100,
+                      "MultiplyBlue": 100,
+                      "Name": "normal",
+                      "CalledTileMeaningVerified": false,
+                      "TsumogiriMeaningVerified": false
+                    },
+                    "Tsumogiri": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 71
+                      }
+                    },
+                    "WasClaimed": {
+                      "Availability": 1,
+                      "SourceKind": 2,
+                      "MappingStatus": 1,
+                      "Value": false,
+                      "Observation": {
+                        "$observation": 72
+                      }
+                    }
+                  }
+                ],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": false,
+                "VisibleSlots": 1,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 73
+              }
+            },
+            "MeldImages": {
+              "Availability": 1,
+              "SourceKind": 1,
+              "MappingStatus": 0,
+              "Value": {
+                "Tiles": [],
+                "Stable": true,
+                "RegionReadable": true,
+                "AllVisibleSlotsDecoded": true,
+                "ObservedEmpty": true,
+                "VisibleSlots": 0,
+                "UnknownComponents": 0,
+                "RejectionCodes": [],
+                "Groups": [],
+                "HasChronologicalOrder": false,
+                "HistoryComplete": false
+              },
+              "Observation": {
+                "$observation": 73
+              }
+            }
+          }
+        ]
+      },
+      "Table": {
+        "Code": "PUBLIC_IMAGES_PARTIAL_CANDIDATE",
+        "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+        "Stable": false,
+        "Tiles": [
+          {
+            "Area": "river-bottom",
+            "ScreenDirection": "bottom",
+            "SlotPath": "Emj/118/4",
+            "GroupPath": "Emj/118",
+            "X": 1818.76,
+            "Y": 750.008,
+            "Width": 43.679996,
+            "Height": 56.783997,
+            "RotationDegrees": 0,
+            "Mirrored": false,
+            "Kind34": 31,
+            "RedFive": false,
+            "ChineseName": "白",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-right",
+            "ScreenDirection": "right",
+            "SlotPath": "Emj/121/4",
+            "GroupPath": "Emj/121",
+            "X": 2079.608,
+            "Y": 700.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": -90,
+            "Mirrored": false,
+            "Kind34": 28,
+            "RedFive": false,
+            "ChineseName": "南",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-top",
+            "ScreenDirection": "top",
+            "SlotPath": "Emj/124/4",
+            "GroupPath": "Emj/124",
+            "X": 2009.16,
+            "Y": 463.008,
+            "Width": 43.680004,
+            "Height": 56.784,
+            "RotationDegrees": -180,
+            "Mirrored": false,
+            "Kind34": 23,
+            "RedFive": false,
+            "ChineseName": "6索",
+            "Stable": false,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 84,
+              "AddGreen": 84,
+              "AddBlue": 84,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "unclassified",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          },
+          {
+            "Area": "river-left",
+            "ScreenDirection": "left",
+            "SlotPath": "Emj/127/4",
+            "GroupPath": "Emj/127",
+            "X": 1752.0079,
+            "Y": 525.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": 90,
+            "Mirrored": false,
+            "Kind34": 30,
+            "RedFive": false,
+            "ChineseName": "北",
+            "Stable": true,
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            },
+            "Quality": "Candidate"
+          }
+        ],
+        "Rejections": [],
+        "MeldGroups": [],
+        "Areas": [
+          {
+            "Area": "river-bottom",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-right",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-top",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": false,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "river-left",
+            "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": false,
+            "VisibleSlots": 1,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 0
+          },
+          {
+            "Area": "meld-bottom",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-right",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-top",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          },
+          {
+            "Area": "meld-left",
+            "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+            "ContainerVerified": true,
+            "ContainerVisible": true,
+            "EnumerationCompleted": true,
+            "ObservedEmptyCandidate": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "Stable": true,
+            "VisibleGroups": 0,
+            "VerifiedRegionRoots": 4
+          }
+        ],
+        "HistoryComplete": false,
+        "CurrentDisplayComplete": false
+      },
+      "ActionMenu": {
+        "Code": "ACTION_MENU_VISIBLE_CANDIDATE",
+        "Visible": true,
+        "AllVisibleRowsDecoded": true,
+        "Rows": [
+          {
+            "Path": "Emj/104/3/2",
+            "ScreenY": 914.19995,
+            "Action": "Pon",
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE",
+            "ListItemIndex": 0,
+            "ListItemDisabled": false,
+            "RendererEnabled": true,
+            "ListInteractionEnabled": true
+          },
+          {
+            "Path": "Emj/104/3/21001",
+            "ScreenY": 958.99994,
+            "Action": "Pass",
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE",
+            "ListItemIndex": 1,
+            "ListItemDisabled": false,
+            "RendererEnabled": true,
+            "ListInteractionEnabled": true
+          }
+        ],
+        "ListState": {
+          "ListLength": 2,
+          "AllocatedRendererCount": 2,
+          "FirstVisibleItemIndex": 0,
+          "NumVisibleItems": 5,
+          "IsUpdatePending": false,
+          "IsScrollRefreshPending": false,
+          "IsItemInteractionEnabled": true
+        },
+        "MappingStatus": "Candidate",
+        "CompleteLegalActions": false,
+        "ActionOccurred": false
+      },
+      "Riichi": [
+        {
+          "ScreenDirection": "bottom",
+          "Path": "Emj/100/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "right",
+          "Path": "Emj/101/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "top",
+          "Path": "Emj/102/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        },
+        {
+          "ScreenDirection": "left",
+          "Path": "Emj/103/2",
+          "StickVisible": null,
+          "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+          "MappingStatus": "Candidate",
+          "DeclarationTimingVerified": false
+        }
+      ]
+    }
+  ],
+  "RecordedRiverEvents": [
+    {
+      "Source": {
+        "SourceLine": 83,
+        "JournalSequence": 83,
+        "Utc": "2026-09-24T13:45:29.6982885+00:00"
+      },
+      "RoundId": {
+        "Availability": 1,
+        "SourceKind": 2,
+        "MappingStatus": 1,
+        "Value": "d73df7aeb1cb4d5a9250e1e42306941e:2",
+        "Observation": {
+          "Sequence": 60,
+          "ObservedAtUtc": "2026-09-24T13:45:29.6693007+00:00",
+          "Source": "PublicRoundEventTracker:current-round-identity",
+          "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+          "DerivationInputs": [
+            "opening-observation:2",
+            "initial-faces-observation:39",
+            "confirmed-opening-observation:39",
+            "current-identity-observation:60"
+          ]
+        }
+      },
+      "Change": {
+        "Kind": "DiscardObserved",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/127/4",
+        "Tile": {
+          "Kind34": 30,
+          "RedFive": false,
+          "ChineseName": "北"
+        },
+        "Tsumogiri": false,
+        "Sample": 60,
+        "DiscardOrdinal": 1,
+        "IsSideways": false
+      }
+    },
+    {
+      "Source": {
+        "SourceLine": 139,
+        "JournalSequence": 139,
+        "Utc": "2026-09-24T13:45:33.1811366+00:00"
+      },
+      "RoundId": {
+        "Availability": 1,
+        "SourceKind": 2,
+        "MappingStatus": 1,
+        "Value": "d73df7aeb1cb4d5a9250e1e42306941e:2",
+        "Observation": {
+          "Sequence": 91,
+          "ObservedAtUtc": "2026-09-24T13:45:33.17989+00:00",
+          "Source": "PublicRoundEventTracker:current-round-identity",
+          "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+          "DerivationInputs": [
+            "opening-observation:2",
+            "initial-faces-observation:39",
+            "confirmed-opening-observation:39",
+            "current-identity-observation:91"
+          ]
+        }
+      },
+      "Change": {
+        "Kind": "DiscardObserved",
+        "ScreenDirection": "bottom",
+        "SlotPath": "Emj/118/4",
+        "Tile": {
+          "Kind34": 31,
+          "RedFive": false,
+          "ChineseName": "白"
+        },
+        "Tsumogiri": false,
+        "Sample": 91,
+        "DiscardOrdinal": 2,
+        "IsSideways": false
+      }
+    },
+    {
+      "Source": {
+        "SourceLine": 168,
+        "JournalSequence": 168,
+        "Utc": "2026-09-24T13:45:34.4031913+00:00"
+      },
+      "RoundId": {
+        "Availability": 1,
+        "SourceKind": 2,
+        "MappingStatus": 1,
+        "Value": "d73df7aeb1cb4d5a9250e1e42306941e:2",
+        "Observation": {
+          "Sequence": 102,
+          "ObservedAtUtc": "2026-09-24T13:45:34.4020267+00:00",
+          "Source": "PublicRoundEventTracker:current-round-identity",
+          "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+          "DerivationInputs": [
+            "opening-observation:2",
+            "initial-faces-observation:39",
+            "confirmed-opening-observation:39",
+            "current-identity-observation:102"
+          ]
+        }
+      },
+      "Change": {
+        "Kind": "DiscardObserved",
+        "ScreenDirection": "right",
+        "SlotPath": "Emj/121/4",
+        "Tile": {
+          "Kind34": 28,
+          "RedFive": false,
+          "ChineseName": "南"
+        },
+        "Tsumogiri": false,
+        "Sample": 102,
+        "DiscardOrdinal": 3,
+        "IsSideways": false
+      }
+    },
+    {
+      "Source": {
+        "SourceLine": 208,
+        "JournalSequence": 208,
+        "Utc": "2026-09-24T13:45:36.07048+00:00"
+      },
+      "RoundId": {
+        "Availability": 1,
+        "SourceKind": 2,
+        "MappingStatus": 1,
+        "Value": "d73df7aeb1cb4d5a9250e1e42306941e:2",
+        "Observation": {
+          "Sequence": 117,
+          "ObservedAtUtc": "2026-09-24T13:45:36.0692773+00:00",
+          "Source": "PublicRoundEventTracker:current-round-identity",
+          "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+          "DerivationInputs": [
+            "opening-observation:2",
+            "initial-faces-observation:39",
+            "confirmed-opening-observation:39",
+            "current-identity-observation:117"
+          ]
+        }
+      },
+      "Change": {
+        "Kind": "DiscardObserved",
+        "ScreenDirection": "top",
+        "SlotPath": "Emj/124/4",
+        "Tile": {
+          "Kind34": 23,
+          "RedFive": false,
+          "ChineseName": "6索"
+        },
+        "Tsumogiri": null,
+        "Sample": 117,
+        "DiscardOrdinal": 4,
+        "IsSideways": false
+      }
+    }
+  ],
+  "RecordedRuntime": {
+    "Source": {
+      "SourceLine": 558,
+      "JournalSequence": 558,
+      "Utc": "2026-09-24T13:45:55.269422+00:00"
+    },
+    "AddonStateCode": 30,
+    "LegalActionsWereIntentionallyRemoved": true
+  },
+  "ReconstructionConditions": [
+    "PublicSnapshot fields, their mapping status, menu rows and table readings are copied from the indicated source records.",
+    "Observation references are deduplicated only; the replay restores their original content.",
+    "Recorded samples 115 and 116 warm only the public table response-highlight tracker. They are distinct original observations, do not enter the projector, and do not create discard events.",
+    "The replay creates a managed AddonProbe shell and presence-only public slot records from the logged decoded table. No native pointers or hidden faces are synthesized.",
+    "Pinned canonical tile resources are reconstructed from logged Kind34/Red identities only for a stability comparison. The second frame's old brightness-sensitive stability bits are replaced by the new tracker result; these recomputed bits are not original live observations.",
+    "Runtime action flags and hand are rebuilt from the recorded enabled Pon/Pass menu and exact visible hand; the persisted recovery snapshot intentionally removes LegalActions.",
+    "AddonStateCode is copied from the recorded public recovery snapshot; AtkValueCount 109 is an explicit managed replay condition. No other hidden runtime fields are restored.",
+    "A legacy candidate for tile 15/fromSeat 1 is an explicit regression perturbation, not a claim that the source runtime supplied that exact candidate.",
+    "River history slots are reconstructed from the recorded DiscardObserved events. History remains incomplete; later timestamps do not invent new game actions.",
+    "No callback is sent. An accepted mapped Pon or Pass proves only offline integration on this recorded public input."
+  ]
+}

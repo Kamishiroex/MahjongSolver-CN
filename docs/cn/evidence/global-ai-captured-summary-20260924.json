@@ -1,0 +1,68 @@
+{
+  "SourceSha256": "8f3bcf6bf48460141559bd14d37d011e06198698db1040a2481fdeb596cc6fd2",
+  "Observations": 5182,
+  "ReplayedRecordedHeartbeats": 1165,
+  "ProjectedDiscardFixtures": 358,
+  "ProjectionErrors": {
+    "AKOCHAN_PUBLIC_OWN_MELD_INCOMPLETE": 337
+  },
+  "Evidence": [
+    {
+      "Category": "open-table",
+      "Sample": 8272,
+      "HandCount": 14,
+      "RiverCounts": [
+        14,
+        16,
+        16,
+        16
+      ],
+      "MeldCounts": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "CandidateCount": 1,
+      "Error": null
+    },
+    {
+      "Category": "closed-table",
+      "Sample": 10897,
+      "HandCount": 14,
+      "RiverCounts": [
+        14,
+        14,
+        14,
+        15
+      ],
+      "MeldCounts": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "CandidateCount": 9,
+      "Error": null
+    },
+    {
+      "Category": "own-open-hand",
+      "Sample": 9299,
+      "HandCount": 11,
+      "RiverCounts": [
+        8,
+        8,
+        9,
+        9
+      ],
+      "MeldCounts": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "CandidateCount": 10,
+      "Error": null
+    }
+  ]
+}

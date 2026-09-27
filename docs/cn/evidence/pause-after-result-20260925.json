@@ -1,0 +1,127 @@
+{
+  "CapturedPluginVersion": "0.6.1.8",
+  "ClientVersion": "2026.09.15.0000.0000",
+  "SourceDecodedSha256": "2e26e4a14925a460ca6821739bf4ea42b2785951517004d6c9c00eed1bf04ccb",
+  "Scope": "Public log summary only. Submitted next-hand action is not proof of game acceptance. The later process termination has no demonstrated cause.",
+  "Entries": [
+    {
+      "Utc": "2026-09-25T11:41:18.3181328+00:00",
+      "Kind": "action_submission",
+      "Data": {
+        "Label": "hand-result-next",
+        "Result": "Submitted",
+        "AddonStateCode": 29,
+        "ActionConfirmed": false
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:18.386932+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34370,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:18.4986715+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34371,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:18.6125699+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34372,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:18.7233905+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34373,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:18.835067+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34374,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:18.9428233+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34375,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:19.0597513+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34376,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:19.1657001+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34377,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:19.2794228+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34378,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:19.390808+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34379,
+        "LowerCode": "LOWER_LAYOUT_UNVERIFIED",
+        "TableCode": "PUBLIC_IMAGES_PARTIAL_CANDIDATE"
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:19.9196161+00:00",
+      "Kind": "play_stopped",
+      "Data": {
+        "Reason": "AUTO_SNAPSHOT_UNAVAILABLE: 牌局读取失败或已退出牌桌，已取消排队动作。",
+        "Mode": "Automatic",
+        "RuntimeSequence": 8898,
+        "Layout": null
+      }
+    },
+    {
+      "Utc": "2026-09-25T11:41:19.9446776+00:00",
+      "Kind": "public_table_changed",
+      "Data": {
+        "Sequence": 34384,
+        "LowerCode": "NO_VISIBLE_LOWER_ROW",
+        "TableCode": "PUBLIC_TABLE_UNAVAILABLE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "Author": "XeldarAlz; CN adaptation contributors",
+  "Name": "MahjongSolver · 多玛方城战求解器（国服优化版）",
+  "InternalName": "Mahjong.Plugin.CN",
+  "RepoUrl": "https://github.com/Kamishiroex/MahjongSolver-CN",
+  "AssemblyVersion": "4.1.4.0",
+  "DalamudApiLevel": 15,
+  "ApplicableVersion": "2026.09.15.0000.0000",
+  "MinimumDalamudVersion": "15.0.3.5",
+  "Punchline": "默认采用上游求解器，提供国服对局辅助与任务管理。",
+  "Description": "MahjongSolver，多玛方城战求解器（国服优化版）。使用 /mjcn 打开完整主界面，标准功能无需测试验证。提供手动提醒、自动打牌、任务暂停与继续、整场场数/时长/截止停止规则、自动排队和进桌开打，以及本人资料页评分、本地记录、诊断与恢复核对。评分目标因整场刷新证据尚缺而暂未开放。自动操作默认关闭，保留版本、读牌与动作检查。另提供测试版功能，验证后可用，仍需主动选择和启动。只使用正常可见信息，不补造缺失历史，不保证获胜或上分。基于 XeldarAlz/FFXIV-AutoMahjongSolver，遵循 AGPL-3.0-or-later；第三方组件的许可与来源见 NOTICE。",
+  "Tags": [
+    "mahjong",
+    "麻将",
+    "国服",
+    "自动"
+  ],
+  "LoadRequiredState": 0,
+  "LoadSync": false,
+  "CanUnloadAsync": false
+}

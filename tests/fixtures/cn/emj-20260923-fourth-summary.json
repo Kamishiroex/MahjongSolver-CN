@@ -1,0 +1,163 @@
+{
+  "fixture_schema": 1,
+  "kind": "real_cn_full_capture_aggregate_summary",
+  "interpretation": "Deidentified aggregate evidence only. Counts are repeated visible diagnostic samples, not distinct tiles, verified actions or a complete game. No original path, timestamp, coordinate, per-frame hand, tile order, per-tile icon or face hash is included.",
+  "source_zip_sha256": "c97730fa400ad4a883b6023454e0d65e3c62d8a37bb7dd889e1731b73321a78b",
+  "source_format": "mjcn-local-capture",
+  "source_schema": 1,
+  "source_plugin_version": "0.1.2.0",
+  "source_tag": "cn-v0.1.2.0",
+  "source_tag_commit": "c9dd360cb3b30e66fa69bcabc17d33fe0e5a8efd",
+  "catalog_sha256": "a2f0215ebf082a95da01bca5f12a078092a036a7d77c4705e26574e77d1c447b",
+  "identity": {
+    "GameVersion": "2026.09.15.0000.0000",
+    "DalamudVersion": "15.0.3.5",
+    "ClientStructsVersion": "1.0.0+f824354f4a6a2b1cd16cc8fcb670c7a66bf64880",
+    "Runtime": "10.0.1",
+    "Api": 15,
+    "DalamudCommit": "cac6159a2c76e62a4e1f7bc347454c205808bb04",
+    "UpstreamCommit": "21ae5ca9aa1fa3785baa540245b51efa346f9d37",
+    "PluginVersion": "0.1.2.0",
+    "Language": "ChineseSimplified",
+    "ErrorCode": null
+  },
+  "capture_scope": {
+    "lower_hand": true,
+    "public_layout": true,
+    "full_game_state": false,
+    "automation": false,
+    "offline_replay_header": false
+  },
+  "uld_sha256": "DA6B6A98B5E1ECDD01EF7A37F3851A0BC90A8935F163CA6B0EEDCF2DA23F2E5F",
+  "counts": {
+    "addon_present": 337,
+    "addon_ready": 336,
+    "addon_visible": 337,
+    "candidate_samples": 3243,
+    "committed_record_bytes": 45171497,
+    "frames": 342,
+    "lifecycle_records": 1,
+    "public_transform_samples": 120765,
+    "records": 349,
+    "selected_shell_part_samples": 6383,
+    "stable_reading_frames": 208,
+    "ui_node_samples": 197053
+  },
+  "record_kinds": {
+    "frame": 342,
+    "header": 1,
+    "lifecycle": 1,
+    "review": 4,
+    "status": 1
+  },
+  "session": {
+    "state": "complete",
+    "segments": 2,
+    "jsonl_bytes": 4263180,
+    "ignored_uncommitted_tail_bytes": 0,
+    "expanded_bytes": 45171497,
+    "compression": "gzip-record-members",
+    "unwritten_accepted_records": 0,
+    "ignored_archive_copies": 0,
+    "manifest_verified": true
+  },
+  "error_codes": {},
+  "candidate_statuses": {
+    "LOWER_ROW_TRANSITION_OR_LAYOUT_UNVERIFIED": 61,
+    "RESOURCE_VERIFIED": 3182
+  },
+  "catalog_game_version_matches": true,
+  "catalog_match_counts": {
+    "exact_pair_known_semantics": 3182,
+    "missing_icon_or_hash": 61
+  },
+  "lower_reading_codes": {
+    "LOWER_LAYOUT_UNVERIFIED": 33,
+    "LOWER_STABILIZING": 95,
+    "NO_VISIBLE_LOWER_ROW": 6,
+    "STABLE_VISIBLE_FACES": 208
+  },
+  "user_review_counts": {
+    "match": 4,
+    "mismatch": 0
+  },
+  "recorder_status_codes": {
+    "CAPTURE_STOPPED": 1
+  },
+  "lifecycle_events": {
+    "PostSetup": 1,
+    "PreFinalize": 0
+  },
+  "boundary_observations": {
+    "first_frame_ready": false,
+    "last_frame_ready": true,
+    "table_exit_demonstrated_in_this_capture": false
+  },
+  "production_offline_replay": {
+    "frames": 342,
+    "resource_verified_candidates": 3182,
+    "production_catalog_decoded_verified_candidates": 3182,
+    "verified_but_not_decoded_candidates": 0,
+    "rejected_candidates": 61,
+    "rejected_candidates_retained_resource_identity": 0,
+    "stable_frames": 208,
+    "stable_decoded_samples": 2193,
+    "recorded_replayed_stability_mismatches": 0,
+    "recorded_replayed_status_mismatches": 0,
+    "recorded_replayed_tile_result_mismatches": 0,
+    "missing_recorded_lower_reading": 0,
+    "unstable_frame_retained_decoded_tiles": 0,
+    "non_ready_frame_retained_decoded_tiles": 0,
+    "invalid_complete_game_state_claims": 0,
+    "reviews": 4,
+    "user_confirmed_reviews": 4,
+    "review_candidates": 50,
+    "production_catalog_decoded_review_candidates": 50,
+    "review_not_latest_frame": 0,
+    "review_not_stable_frame": 0,
+    "review_candidate_snapshot_mismatch": 0,
+    "frame_sequence_regressions": 0
+  },
+  "public_layout_statuses": {
+    "PUBLIC_LAYOUT_METADATA_ONLY": 19443
+  },
+  "public_layout_area_counts": {
+    "dora-display": 1236,
+    "lower-meld-candidate": 1884,
+    "river-bottom": 3726,
+    "river-left": 4485,
+    "river-right": 4047,
+    "river-top": 4065
+  },
+  "public_layout_area_frame_counts": {
+    "dora-display": 309,
+    "river-right": 281,
+    "river-top": 299,
+    "river-left": 295,
+    "river-bottom": 254,
+    "lower-meld-candidate": 224
+  },
+  "public_metadata_checks": {
+    "nonfinite_transforms": 0,
+    "river_shell_rectangle_matches": 5441,
+    "river_shell_rectangle_mismatches": 0,
+    "uncovered_candidate_samples": 3079,
+    "distinct_uncovered_candidate_paths": 36,
+    "frames_with_uncovered_candidates_by_area": {
+      "dora-display": 0,
+      "river-right": 161,
+      "river-top": 159,
+      "river-left": 132,
+      "river-bottom": 139,
+      "lower-meld-candidate": 0
+    },
+    "new_region_face_resource_collection_enabled": false
+  },
+  "limitations": [
+    "A complete recording session does not establish a complete Mahjong match or semantic game state.",
+    "Successful public metadata samples cover only the versioned allowlist; other visible river candidates have base-node metadata only.",
+    "Review snapshots are already represented in frame aggregates and are not additional independent tile samples.",
+    "Only PostSetup was observed; table exit, reload, multiple rounds, long-duration limits and recovery failures are not demonstrated by this capture.",
+    "Stable lower images do not establish drawn-tile identity, complete hand membership or a playable turn; suggestions and actions remain disabled."
+  ]
+}

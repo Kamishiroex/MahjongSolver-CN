@@ -1,0 +1,148 @@
+{
+  "sourceSession": "mjcn-game-20260925-093022-2385f4aba96d40b6baa54471792d0031",
+  "pluginVersion": "0.6.1.6",
+  "clientVersion": "2026.09.15.0000.0000",
+  "note": "Minimal real journal excerpt. Runtime snapshots are legacy reader observations, not independently verified public state. Submission is not confirmation. No private player data.",
+  "decision": {
+    "utc": "2026-09-25T09:39:54.5567678+00:00",
+    "choice": {
+      "Kind": 2,
+      "DiscardTile": {
+        "Id": 9
+      },
+      "Call": null,
+      "Reasoning": "AKOCHAN_GLOBAL: 全局公开牌局 AI；引擎评分 -17.63，耗时 304 毫秒。AKOCHAN_GLOBAL: AI 选择立直，打出1筒。 输入缺口/假设：实验全桌输入；未观测的跨玩家事件顺序、临时振听与首巡状态不视为已知。；赤五及精确终局计分规则沿用引擎配置；对手暗手保持未知。；当前实际对局类型未读到，暂按东南战分析；未使用排队设置推定本局类型。；公开事件历史不完整；以当前公开桌面和同局已记录事件分析，不伪造完整回放。；玩家1副露Emj/1130002未识别完整，暂未纳入。；事件历史不完整；未观察到的先后顺序不补造，历史防守特征可能缺失。",
+      "Steps": null,
+      "DiscardRed": false,
+      "DiscardTsumogiri": true,
+      "ReasonSteps": []
+    },
+    "legalFlags": 515,
+    "handIds": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      7,
+      10,
+      11,
+      12,
+      23,
+      24,
+      25,
+      9
+    ]
+  },
+  "riichi": {
+    "Utc": "2026-09-25T09:39:55.1343292+00:00",
+    "ObservationSessionId": "3d4fe773-bc9a-4dbc-b399-bae0d1b2c650",
+    "ObservationSequence": 510,
+    "Label": "riichi",
+    "Result": "Submitted",
+    "Option": 0,
+    "TileId": 9,
+    "Slot": null,
+    "AddonStateCode": 6,
+    "Route": "classic-opcode11",
+    "Source": "InputDispatcher/submission",
+    "ActionConfirmed": false
+  },
+  "riichi-tsumogiri": {
+    "Utc": "2026-09-25T09:39:58.201758+00:00",
+    "ObservationSessionId": "3d4fe773-bc9a-4dbc-b399-bae0d1b2c650",
+    "ObservationSequence": 511,
+    "Label": "riichi-tsumogiri",
+    "Result": "Submitted",
+    "Option": null,
+    "TileId": 9,
+    "Slot": 13,
+    "AddonStateCode": null,
+    "Route": "opcode-15+7(raw=76050,slot=13)",
+    "Source": "InputDispatcher/submission",
+    "ActionConfirmed": false
+  },
+  "afterDiscard": {
+    "utc": "2026-09-25T09:39:58.3009851+00:00",
+    "state": 17,
+    "handIds": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      7,
+      10,
+      11,
+      12,
+      23,
+      24,
+      25
+    ],
+    "wall": 18
+  },
+  "laterDraw": {
+    "utc": "2026-09-25T09:40:06.3022981+00:00",
+    "state": 5,
+    "handIds": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      7,
+      10,
+      11,
+      12,
+      23,
+      24,
+      25,
+      22
+    ],
+    "wall": 15
+  },
+  "stop": {
+    "Utc": "2026-09-25T09:40:07.0220905+00:00",
+    "Reason": "AUTO_RIICHI_TILE_MISSING: 立直选择的牌已不在当前手牌。",
+    "Menu": {
+      "StateCode": 15,
+      "CallModalVisible": true,
+      "VisibleListLabels": [
+        "Riichi",
+        "Pass"
+      ],
+      "ParentLabels": []
+    }
+  },
+  "winMenu": {
+    "utc": "2026-09-25T09:40:36.8418075+00:00",
+    "menu": {
+      "Visible": true,
+      "AllVisibleRowsDecoded": true,
+      "Rows": [
+        {
+          "Path": "Emj/104/3/2",
+          "ScreenY": 972.19995,
+          "StateRevision": 5523,
+          "Action": 4,
+          "Enabled": true,
+          "Code": "ACTION_MENU_LABEL_CANDIDATE"
+        },
+        {
+          "Path": "Emj/104/3/21001",
+          "ScreenY": 1016.99994,
+          "StateRevision": 5523,
+          "Action": 7,
+          "Enabled": true,
+          "Code": "ACTION_MENU_LABEL_CANDIDATE"
+        }
+      ],
+      "Code": "ACTION_MENU_VISIBLE_CANDIDATE",
+      "CompleteLegalActions": false,
+      "ActionOccurred": false
+    }
+  }
+}

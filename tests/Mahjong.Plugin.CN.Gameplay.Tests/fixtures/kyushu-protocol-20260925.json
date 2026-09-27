@@ -1,0 +1,225 @@
+{
+  "Source": "CN local public AI error 2026-09-25T13:37:50.2677575Z, plugin 0.6.2.1",
+  "ActualPublicInput": {
+    "OurPlayerId": 0,
+    "RoundWind": 0,
+    "HandNumber": 1,
+    "Honba": 0,
+    "RiichiSticks": 0,
+    "DealerPlayerId": 1,
+    "WallRemaining": 66,
+    "Hand": [
+      {
+        "Id": 0,
+        "Red": false,
+        "ChineseName": "1\u4e07"
+      },
+      {
+        "Id": 7,
+        "Red": false,
+        "ChineseName": "8\u4e07"
+      },
+      {
+        "Id": 14,
+        "Red": false,
+        "ChineseName": "6\u7b52"
+      },
+      {
+        "Id": 15,
+        "Red": false,
+        "ChineseName": "7\u7b52"
+      },
+      {
+        "Id": 18,
+        "Red": false,
+        "ChineseName": "1\u7d22"
+      },
+      {
+        "Id": 20,
+        "Red": false,
+        "ChineseName": "3\u7d22"
+      },
+      {
+        "Id": 26,
+        "Red": false,
+        "ChineseName": "9\u7d22"
+      },
+      {
+        "Id": 28,
+        "Red": false,
+        "ChineseName": "\u5357"
+      },
+      {
+        "Id": 29,
+        "Red": false,
+        "ChineseName": "\u897f"
+      },
+      {
+        "Id": 29,
+        "Red": false,
+        "ChineseName": "\u897f"
+      },
+      {
+        "Id": 30,
+        "Red": false,
+        "ChineseName": "\u5317"
+      },
+      {
+        "Id": 32,
+        "Red": false,
+        "ChineseName": "\u53d1"
+      },
+      {
+        "Id": 33,
+        "Red": false,
+        "ChineseName": "\u4e2d"
+      },
+      {
+        "Id": 17,
+        "Red": false,
+        "ChineseName": "9\u7b52"
+      }
+    ],
+    "DoraIndicators": [
+      {
+        "Id": 10,
+        "Red": false,
+        "ChineseName": "2\u7b52"
+      }
+    ],
+    "Players": [
+      {
+        "PlayerId": 0,
+        "SeatWind": 3,
+        "Score": 25000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [],
+        "Melds": [],
+        "Ippatsu": false,
+        "DoubleRiichi": false
+      },
+      {
+        "PlayerId": 1,
+        "SeatWind": 0,
+        "Score": 25000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 17,
+              "Red": false,
+              "ChineseName": "9\u7b52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/121/4",
+            "ObservedSequence": 6,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false,
+        "DoubleRiichi": false
+      },
+      {
+        "PlayerId": 2,
+        "SeatWind": 1,
+        "Score": 25000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "\u897f"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/124/4",
+            "ObservedSequence": 7,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false,
+        "DoubleRiichi": false
+      },
+      {
+        "PlayerId": 3,
+        "SeatWind": 2,
+        "Score": 25000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "\u5317"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/127/4",
+            "ObservedSequence": 27,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false,
+        "DoubleRiichi": false
+      }
+    ],
+    "Trigger": {
+      "Type": "tsumo",
+      "Actor": 0,
+      "Tile": {
+        "Id": 17,
+        "Red": false,
+        "ChineseName": "9\u7b52"
+      }
+    },
+    "Assumptions": [
+      "\u5b9e\u9a8c\u5168\u684c\u8f93\u5165\uff1b\u672a\u89c2\u6d4b\u7684\u8de8\u73a9\u5bb6\u4e8b\u4ef6\u987a\u5e8f\u3001\u4e34\u65f6\u632f\u542c\u4e0e\u9996\u5de1\u72b6\u6001\u4e0d\u89c6\u4e3a\u5df2\u77e5\u3002",
+      "\u8d64\u4e94\u53ca\u7cbe\u786e\u7ec8\u5c40\u8ba1\u5206\u89c4\u5219\u6cbf\u7528\u5f15\u64ce\u914d\u7f6e\uff1b\u5bf9\u624b\u6697\u624b\u4fdd\u6301\u672a\u77e5\u3002",
+      "\u516c\u5f00\u4e8b\u4ef6\u5386\u53f2\u4e0d\u5b8c\u6574\uff1b\u4ee5\u5f53\u524d\u516c\u5f00\u684c\u9762\u548c\u540c\u5c40\u5df2\u8bb0\u5f55\u4e8b\u4ef6\u5206\u6790\uff0c\u4e0d\u4f2a\u9020\u5b8c\u6574\u56de\u653e\u3002"
+    ],
+    "ContextKey": "6f789cbd28e14c57ae733a91a4a9e83b:20:68c1ba8f9b44493aa989c8c655e7e831:0:1:0:1:epoch=68c1ba8f9b44493aa989c8c655e7e831:observed:1",
+    "Utc": "2026-09-25T13:37:55.1450961+00:00",
+    "LegalActions": 513,
+    "MatchFirstRound": 4,
+    "HistoryComplete": false,
+    "OwnDrawKind": "normal",
+    "OwnTemporaryFuriten": false,
+    "OwnRiichiFuriten": false,
+    "KnownEvents": [
+      {
+        "Sequence": 27,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 30,
+          "Red": false,
+          "ChineseName": "\u5317"
+        },
+        "Consumed": []
+      }
+    ]
+  },
+  "OriginalInputSha256": "6AD58A404D022357DFBB4CF220128DC1FE4B48E0D18765F796E04764D4034DD4",
+  "OriginalError": "GLOBAL_AI_AkochanProtocolException",
+  "ExpectedMove": "kyushukyuhai",
+  "NativeWireMove": {
+    "type": "ryukyoku",
+    "reason": "kyushukyuhai",
+    "actor": 0
+  },
+  "MenuEvidence": "Original permission flags omitted the unrecognized row. New Kyushukyuhai permission is tested separately using the pinned CN EmjAddon row25; not fabricated as an old observation."
+}

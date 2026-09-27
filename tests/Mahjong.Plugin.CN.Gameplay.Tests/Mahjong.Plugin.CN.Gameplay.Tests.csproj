@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <AssemblyName>Mahjong.Plugin.CN.Gameplay.Tests</AssemblyName>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-09-25-01</DalamudLibPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\fixtures\cn\result-transition-20260925.json" Link="Fixtures\result-transition-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <ProjectReference Include="..\..\Mahjong.Plugin.CN\Mahjong.Plugin.CN.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Fixed API assemblies for managed fixtures only; no Dalamud host or game process is started. -->
+    <Reference Include="Dalamud;Dalamud.Common;Dalamud.Bindings.ImGui;FFXIVClientStructs;InteropGenerator.Runtime;Lumina;Lumina.Excel;Newtonsoft.Json;ImGuiScene;HexaGen.Runtime;Serilog">
+      <HintPath>$(DalamudLibPath)\%(Identity).dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\GlobalUsings.cs" Link="Upstream\GlobalUsings.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\Replay\*.cs" Link="Upstream\Replay\%(Filename)%(Extension)" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\Stubs\StubPluginLog.cs" Link="Upstream\Stubs\StubPluginLog.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\Stubs\TempDir.cs" Link="Upstream\Stubs\TempDir.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\FindingsLogTests.cs" Link="Upstream\FindingsLogTests.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\PathRedactorTests.cs" Link="Upstream\PathRedactorTests.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\ErrorSinkTests.cs" Link="Upstream\ErrorSinkTests.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\HandArrayDecoderTests.cs" Link="Upstream\HandArrayDecoderTests.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\MeldTrackerTests.cs" Link="Upstream\MeldTrackerTests.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud.Tests\MeldTrackerInteractionTests.cs" Link="Upstream\MeldTrackerInteractionTests.cs" />
+    <Compile Include="..\Mahjong.Plugin.CN.Tests\ChineseActionLabelsTests.cs" Link="ChineseActionLabelsTests.cs" />
+    <None Include="..\Mahjong.Plugin.Dalamud.Tests\Replay\fixtures\*.json" Link="Replay\fixtures\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\cn\evidence\own-visible-transition-20260924.json" Link="Fixtures\own-visible-transition-20260924.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\cn\evidence\river-prefix-example-20260924.json" Link="Fixtures\river-prefix-example-20260924.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="CheckPinnedRuntime" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(DalamudLibPath)\Dalamud.dll')" Text="Requires fixed CN Dalamud API 15 libraries from 26-09-25-01, or an explicit DalamudLibPath." />
+  </Target>
+  <ItemGroup>
+    <None Update="fixtures\riichi-menu-closed-20260926.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\current-facts-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\kyushu-protocol-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\current-riichi-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\ron-dispatched-as-chi-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\riichi-discard-repeated-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\draw-origin-normal-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\ron-false-furiten-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\riichi-window-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="fixtures\furiten-stale-ron-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\fixtures\cn\own-discard-style-20260924.json" Link="Fixtures\own-discard-style-20260924.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\fixtures\cn\held-chi-open-hand-20260925.json" Link="Fixtures\held-chi-open-hand-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\fixtures\cn\long-public-event-20260925.json" Link="Fixtures\long-public-event-20260925.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

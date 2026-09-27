@@ -1,0 +1,96 @@
+{
+  "sourceUrl": "https://github.com/critter-mj/akochan/blob/53188a0b926fbab38177f88c3cd87d554cf412af/haifu_log_sample.json",
+  "sourceCommit": "53188a0b926fbab38177f88c3cd87d554cf412af",
+  "sourceFileSha256": "c3ea8f287e43bdac64e016046f4402ea99b5392ccc061438f42915f7484127f7",
+  "scope": "Public upstream example prefix; opponent concealed tiles removed; never a CN live observation.",
+  "playerId": 0,
+  "events": [
+    {
+      "kyoku_first": 4,
+      "aka_flag": true,
+      "type": "start_game"
+    },
+    {
+      "bakaze": "E",
+      "dora_marker": "F",
+      "honba": 0,
+      "kyoku": 1,
+      "kyotaku": 0,
+      "oya": 0,
+      "scores": [
+        25000,
+        25000,
+        25000,
+        25000
+      ],
+      "tehais": [
+        [
+          "3m",
+          "5m",
+          "3m",
+          "7s",
+          "6m",
+          "9p",
+          "8m",
+          "3s",
+          "4s",
+          "N",
+          "1s",
+          "C",
+          "2s"
+        ],
+        [
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?"
+        ],
+        [
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?"
+        ],
+        [
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?"
+        ]
+      ],
+      "type": "start_kyoku"
+    },
+    {
+      "actor": 0,
+      "pai": "6m",
+      "type": "tsumo"
+    }
+  ]
+}

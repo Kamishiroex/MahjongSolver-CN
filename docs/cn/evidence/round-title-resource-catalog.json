@@ -1,0 +1,176 @@
+{
+    "SchemaVersion":  1,
+    "GameVersion":  "2026.09.15.0000.0000",
+    "EvidenceId":  "cn-emj-round-title-icons-20260924",
+    "UldSha256":  "DA6B6A98B5E1ECDD01EF7A37F3851A0BC90A8935F163CA6B0EEDCF2DA23F2E5F",
+    "Method":  "Decoded local Chinese textures with pinned Lumina and visually checked each of eight labels; images remain local, not redistributed.",
+    "RuntimeExample":  {
+                           "Path":  "Emj/19",
+                           "IconId":  121452,
+                           "ClientTexturePathHash":  "14A042F1",
+                           "Label":  "东二局",
+                           "Source":  ".work/live-public-20260924-081123.json"
+                       },
+    "Resources":  [
+                      {
+                          "IconId":  121451,
+                          "Path":  "ui/icon/121000/chs/121451.tex",
+                          "Width":  640,
+                          "Height":  80,
+                          "Bytes":  204880,
+                          "Sha256":  "B2595358A495CD43AB278DE7E728185CD0D082AF41B65296FA23CE5531E4FD3C",
+                          "LuminaCrc32":  "443EA5D8",
+                          "ClientTexturePathHash":  "BBC15A27"
+                      },
+                      {
+                          "IconId":  121451,
+                          "Path":  "ui/icon/121000/chs/121451_hr1.tex",
+                          "Width":  1280,
+                          "Height":  160,
+                          "Bytes":  204880,
+                          "Sha256":  "339ACD2E90E573E9C335B6EDCA021AE7A6F9F651BD0CB67D693767CC0B7862B9",
+                          "LuminaCrc32":  "D2D281CB",
+                          "ClientTexturePathHash":  "2D2D7E34"
+                      },
+                      {
+                          "IconId":  121452,
+                          "Path":  "ui/icon/121000/chs/121452.tex",
+                          "Width":  640,
+                          "Height":  80,
+                          "Bytes":  204880,
+                          "Sha256":  "34FD8BCE9A1A12BE972E09F09FA3F0CB1D8D37BD66CF4DEA3E9137919EB94AB8",
+                          "LuminaCrc32":  "039EDF08",
+                          "ClientTexturePathHash":  "FC6120F7"
+                      },
+                      {
+                          "IconId":  121452,
+                          "Path":  "ui/icon/121000/chs/121452_hr1.tex",
+                          "Width":  1280,
+                          "Height":  160,
+                          "Bytes":  204880,
+                          "Sha256":  "A5D234F9A4290057E012860DE419B87B804EF6F83532F2AA6800A0D6B267ED34",
+                          "LuminaCrc32":  "EB5FBD0E",
+                          "ClientTexturePathHash":  "14A042F1"
+                      },
+                      {
+                          "IconId":  121453,
+                          "Path":  "ui/icon/121000/chs/121453.tex",
+                          "Width":  640,
+                          "Height":  80,
+                          "Bytes":  204880,
+                          "Sha256":  "6427B7285D77947FE40EECB280F8886C09C609991B7025CB0CA800514F602152",
+                          "LuminaCrc32":  "3EFEF6B8",
+                          "ClientTexturePathHash":  "C1010947"
+                      },
+                      {
+                          "IconId":  121453,
+                          "Path":  "ui/icon/121000/chs/121453_hr1.tex",
+                          "Width":  1280,
+                          "Height":  160,
+                          "Bytes":  204880,
+                          "Sha256":  "55BB92DE723D2586E5D56A72836C77FEBC715F075525D4940E4543EB637BED24",
+                          "LuminaCrc32":  "FC24A94D",
+                          "ClientTexturePathHash":  "03DB56B2"
+                      },
+                      {
+                          "IconId":  121454,
+                          "Path":  "ui/icon/121000/chs/121454.tex",
+                          "Width":  640,
+                          "Height":  80,
+                          "Bytes":  204880,
+                          "Sha256":  "5F5901307EC32534113218BA5B3396E4CC69489EAFF306B9ECF19DF85034D5D4",
+                          "LuminaCrc32":  "8CDE2AA8",
+                          "ClientTexturePathHash":  "7321D557"
+                      },
+                      {
+                          "IconId":  121454,
+                          "Path":  "ui/icon/121000/chs/121454_hr1.tex",
+                          "Width":  1280,
+                          "Height":  160,
+                          "Bytes":  204880,
+                          "Sha256":  "D73A63973DE0B12C1FD396F60BF85998E8EED6E4636107FA142992D94245DA1E",
+                          "LuminaCrc32":  "9845C484",
+                          "ClientTexturePathHash":  "67BA3B7B"
+                      },
+                      {
+                          "IconId":  121455,
+                          "Path":  "ui/icon/121000/chs/121455.tex",
+                          "Width":  640,
+                          "Height":  80,
+                          "Bytes":  204880,
+                          "Sha256":  "C0EFC3C274F029799ECC1196A1F416C85AE1CC2D52E6AB3CA52553DDB6136CEF",
+                          "LuminaCrc32":  "B1BE0318",
+                          "ClientTexturePathHash":  "4E41FCE7"
+                      },
+                      {
+                          "IconId":  121455,
+                          "Path":  "ui/icon/121000/chs/121455_hr1.tex",
+                          "Width":  1280,
+                          "Height":  160,
+                          "Bytes":  204880,
+                          "Sha256":  "DC52BDA4E41D40487D326B94AC0D9CCAB9D16F6C2707907A2A4BFA19D3B61B9E",
+                          "LuminaCrc32":  "8F3ED0C7",
+                          "ClientTexturePathHash":  "70C12F38"
+                      },
+                      {
+                          "IconId":  121456,
+                          "Path":  "ui/icon/121000/chs/121456.tex",
+                          "Width":  640,
+                          "Height":  80,
+                          "Bytes":  204880,
+                          "Sha256":  "6FC7285B0DCC2D9E079E7E45977B341D173F0DB10847E00C3A2E60E2DACE4044",
+                          "LuminaCrc32":  "F61E79C8",
+                          "ClientTexturePathHash":  "09E18637"
+                      },
+                      {
+                          "IconId":  121456,
+                          "Path":  "ui/icon/121000/chs/121456_hr1.tex",
+                          "Width":  1280,
+                          "Height":  160,
+                          "Bytes":  204880,
+                          "Sha256":  "3FCA95197AB07867AA3C94B5132191E2E2FC363A85FA27B45D031792E3E6AB79",
+                          "LuminaCrc32":  "B6B3EC02",
+                          "ClientTexturePathHash":  "494C13FD"
+                      },
+                      {
+                          "IconId":  121457,
+                          "Path":  "ui/icon/121000/chs/121457.tex",
+                          "Width":  640,
+                          "Height":  80,
+                          "Bytes":  204880,
+                          "Sha256":  "39C46A1C1D82331B004269B594E1C4CF6036B77B28BD412297C8309907DF057B",
+                          "LuminaCrc32":  "CB7E5078",
+                          "ClientTexturePathHash":  "3481AF87"
+                      },
+                      {
+                          "IconId":  121457,
+                          "Path":  "ui/icon/121000/chs/121457_hr1.tex",
+                          "Width":  1280,
+                          "Height":  160,
+                          "Bytes":  204880,
+                          "Sha256":  "FF6804C3690F73B9C8FE38EFAC35E041D74782F4B4071C5128A7DF7A877BD22E",
+                          "LuminaCrc32":  "A1C8F841",
+                          "ClientTexturePathHash":  "5E3707BE"
+                      },
+                      {
+                          "IconId":  121458,
+                          "Path":  "ui/icon/121000/chs/121458.tex",
+                          "Width":  640,
+                          "Height":  80,
+                          "Bytes":  204880,
+                          "Sha256":  "B4EC69EC72E98A676B41FA18EBA6EB51049BB3EBABE2EE8DC5C8123B0C9E6BF2",
+                          "LuminaCrc32":  "492EC7A9",
+                          "ClientTexturePathHash":  "B6D13856"
+                      },
+                      {
+                          "IconId":  121458,
+                          "Path":  "ui/icon/121000/chs/121458_hr1.tex",
+                          "Width":  1280,
+                          "Height":  160,
+                          "Bytes":  204880,
+                          "Sha256":  "0205F5505B0AF6A8494952B8AC305677972508D5D41D3654947A1411B2923044",
+                          "LuminaCrc32":  "7E713790",
+                          "ClientTexturePathHash":  "818EC86F"
+                      }
+                  ]
+}

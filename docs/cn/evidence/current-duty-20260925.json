@@ -1,0 +1,11 @@
+{
+  "observedUtc": "2026-09-25T10:21:02Z",
+  "clientVersion": "2026.09.15.0000.0000",
+  "structs": "1.0.0+243dc41e4d71f350cd80aa5eba8c75517f3d5154",
+  "source": "read-only GameMain named fields via fixed structs; unique code signature checked against on-disk executable",
+  "TerritoryLoadState": 2,
+  "CurrentTerritoryTypeId": 831,
+  "CurrentContentFinderConditionId": 766,
+  "meaning": "current duty is East-only general ranked table; not inferred from queue preference",
+  "limitation": "This verifies current duty identity only; subsequent external full-UI probe exceeded its read budget. No game operation was sent."
+}

@@ -1,0 +1,2733 @@
+{
+  "Schema": 1,
+  "SourceSession": "mjcn-live-20260924-091538",
+  "SourceEventsSha256": "8f3bcf6bf48460141559bd14d37d011e06198698db1040a2481fdeb596cc6fd2",
+  "Sample": 6945,
+  "Utc": "2026-09-24T09:28:16.5194281+00:00",
+  "GameVersion": "2026.09.15.0000.0000",
+  "Note": "Exact recorded public Addon observation. No player names, concealed opponent faces, or synthetic game events. Incomplete reading remains explicit.",
+  "Addon": {
+    "Name": "Emj",
+    "Present": true,
+    "Visible": true,
+    "Ready": true,
+    "AtkValueCount": 109,
+    "Error": null,
+    "LowerHandFaces": [
+      {
+        "Path": "Emj/134/9/4",
+        "X": 925.6,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76042,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 1888599768
+      },
+      {
+        "Path": "Emj/1340001/9/4",
+        "X": 984.4,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76044,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 59492178
+      },
+      {
+        "Path": "Emj/1340002/9/4",
+        "X": 1043.2,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76046,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 763228116
+      },
+      {
+        "Path": "Emj/1340003/9/4",
+        "X": 1102,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76047,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 973536151
+      },
+      {
+        "Path": "Emj/1340004/9/4",
+        "X": 1160.8,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76048,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 3854513222
+      },
+      {
+        "Path": "Emj/1340005/9/4",
+        "X": 1219.6,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76049,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 4072939525
+      },
+      {
+        "Path": "Emj/1340006/9/4",
+        "X": 1278.4,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76053,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 2284372389
+      },
+      {
+        "Path": "Emj/1340007/9/4",
+        "X": 1337.2,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76053,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 2284372389
+      },
+      {
+        "Path": "Emj/1340008/9/4",
+        "X": 1396,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76060,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 1519535715
+      },
+      {
+        "Path": "Emj/1340009/9/4",
+        "X": 1454.7999,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76060,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 1519535715
+      },
+      {
+        "Path": "Emj/1340010/9/4",
+        "X": 1513.6,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76062,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 1952739045
+      },
+      {
+        "Path": "Emj/1340011/9/4",
+        "X": 1572.4,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76065,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 268763948
+      },
+      {
+        "Path": "Emj/1340012/9/4",
+        "X": 1631.2,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76066,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 696795113
+      },
+      {
+        "Path": "Emj/135/9/4",
+        "X": 1704,
+        "Y": 1118,
+        "Width": 56,
+        "Height": 72.799995,
+        "IconId": 76052,
+        "DiagnosticStatus": "RESOURCE_VERIFIED",
+        "FacePathHash": 2673071590
+      }
+    ],
+    "LowerHandReading": {
+      "Code": "STABLE_VISIBLE_FACES",
+      "Reason": "下方牌面连续两次采样一致；仅为可见图像，不能判断完整手牌、摸牌身份或是否可出牌。",
+      "Stable": true,
+      "Tiles": [
+        {
+          "Path": "Emj/134/9/4",
+          "DisplayPosition": 1,
+          "IconId": 76042,
+          "FacePathHash": 1888599768,
+          "Kind34": 1,
+          "RedFive": false,
+          "ChineseName": "2万"
+        },
+        {
+          "Path": "Emj/1340001/9/4",
+          "DisplayPosition": 2,
+          "IconId": 76044,
+          "FacePathHash": 59492178,
+          "Kind34": 3,
+          "RedFive": false,
+          "ChineseName": "4万"
+        },
+        {
+          "Path": "Emj/1340002/9/4",
+          "DisplayPosition": 3,
+          "IconId": 76046,
+          "FacePathHash": 763228116,
+          "Kind34": 5,
+          "RedFive": false,
+          "ChineseName": "6万"
+        },
+        {
+          "Path": "Emj/1340003/9/4",
+          "DisplayPosition": 4,
+          "IconId": 76047,
+          "FacePathHash": 973536151,
+          "Kind34": 6,
+          "RedFive": false,
+          "ChineseName": "7万"
+        },
+        {
+          "Path": "Emj/1340004/9/4",
+          "DisplayPosition": 5,
+          "IconId": 76048,
+          "FacePathHash": 3854513222,
+          "Kind34": 7,
+          "RedFive": false,
+          "ChineseName": "8万"
+        },
+        {
+          "Path": "Emj/1340005/9/4",
+          "DisplayPosition": 6,
+          "IconId": 76049,
+          "FacePathHash": 4072939525,
+          "Kind34": 8,
+          "RedFive": false,
+          "ChineseName": "9万"
+        },
+        {
+          "Path": "Emj/1340006/9/4",
+          "DisplayPosition": 7,
+          "IconId": 76053,
+          "FacePathHash": 2284372389,
+          "Kind34": 12,
+          "RedFive": false,
+          "ChineseName": "4筒"
+        },
+        {
+          "Path": "Emj/1340007/9/4",
+          "DisplayPosition": 8,
+          "IconId": 76053,
+          "FacePathHash": 2284372389,
+          "Kind34": 12,
+          "RedFive": false,
+          "ChineseName": "4筒"
+        },
+        {
+          "Path": "Emj/1340008/9/4",
+          "DisplayPosition": 9,
+          "IconId": 76060,
+          "FacePathHash": 1519535715,
+          "Kind34": 19,
+          "RedFive": false,
+          "ChineseName": "2索"
+        },
+        {
+          "Path": "Emj/1340009/9/4",
+          "DisplayPosition": 10,
+          "IconId": 76060,
+          "FacePathHash": 1519535715,
+          "Kind34": 19,
+          "RedFive": false,
+          "ChineseName": "2索"
+        },
+        {
+          "Path": "Emj/1340010/9/4",
+          "DisplayPosition": 11,
+          "IconId": 76062,
+          "FacePathHash": 1952739045,
+          "Kind34": 21,
+          "RedFive": false,
+          "ChineseName": "4索"
+        },
+        {
+          "Path": "Emj/1340011/9/4",
+          "DisplayPosition": 12,
+          "IconId": 76065,
+          "FacePathHash": 268763948,
+          "Kind34": 24,
+          "RedFive": false,
+          "ChineseName": "7索"
+        },
+        {
+          "Path": "Emj/1340012/9/4",
+          "DisplayPosition": 13,
+          "IconId": 76066,
+          "FacePathHash": 696795113,
+          "Kind34": 25,
+          "RedFive": false,
+          "ChineseName": "8索"
+        },
+        {
+          "Path": "Emj/135/9/4",
+          "DisplayPosition": 14,
+          "IconId": 76052,
+          "FacePathHash": 2673071590,
+          "Kind34": 11,
+          "RedFive": false,
+          "ChineseName": "3筒"
+        }
+      ],
+      "CompleteGameState": false
+    },
+    "PublicTableFaces": [
+      {
+        "Area": "meld-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/115/2/4",
+        "GroupPath": "Emj/115",
+        "Template": 1022,
+        "X": 963.106,
+        "Y": 1009.22,
+        "Width": 42.587997,
+        "Height": 32.76,
+        "RotationDegrees": 90,
+        "Mirrored": false,
+        "IconId": 76064,
+        "FacePathHash": 125704047,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": null,
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "meld-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/115/3/4",
+        "GroupPath": "Emj/115",
+        "Template": 1022,
+        "X": 963.106,
+        "Y": 1045.62,
+        "Width": 42.587997,
+        "Height": 32.76,
+        "RotationDegrees": 90,
+        "Mirrored": false,
+        "IconId": 76064,
+        "FacePathHash": 125704047,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": null,
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "meld-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/115/4/4",
+        "GroupPath": "Emj/115",
+        "Template": 1021,
+        "X": 962.42,
+        "Y": 961.956,
+        "Width": 32.76,
+        "Height": 42.587997,
+        "RotationDegrees": 0,
+        "Mirrored": false,
+        "IconId": 76064,
+        "FacePathHash": 125704047,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": null,
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-bottom",
+        "ScreenDirection": "bottom",
+        "SlotPath": "Emj/118/4",
+        "GroupPath": "Emj/118",
+        "Template": 1021,
+        "X": 1295.76,
+        "Y": 825.008,
+        "Width": 43.679996,
+        "Height": 56.783997,
+        "RotationDegrees": 0,
+        "Mirrored": false,
+        "IconId": 76068,
+        "FacePathHash": 3779781755,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 1,
+          "ReadOrder": 1,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-bottom",
+        "ScreenDirection": "bottom",
+        "SlotPath": "Emj/1180001/4",
+        "GroupPath": "Emj/1180001",
+        "Template": 1021,
+        "X": 1343.36,
+        "Y": 825.008,
+        "Width": 43.679996,
+        "Height": 56.783997,
+        "RotationDegrees": 0,
+        "Mirrored": false,
+        "IconId": 76070,
+        "FacePathHash": 3041930589,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 2,
+          "ReadOrder": 2,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-bottom",
+        "ScreenDirection": "bottom",
+        "SlotPath": "Emj/1180002/4",
+        "GroupPath": "Emj/1180002",
+        "Template": 1021,
+        "X": 1390.96,
+        "Y": 825.008,
+        "Width": 43.679996,
+        "Height": 56.783997,
+        "RotationDegrees": 0,
+        "Mirrored": false,
+        "IconId": 76071,
+        "FacePathHash": 2720741662,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 3,
+          "ReadOrder": 3,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-bottom",
+        "ScreenDirection": "bottom",
+        "SlotPath": "Emj/1180003/4",
+        "GroupPath": "Emj/1180003",
+        "Template": 1021,
+        "X": 1438.5599,
+        "Y": 825.008,
+        "Width": 43.679996,
+        "Height": 56.783997,
+        "RotationDegrees": 0,
+        "Mirrored": false,
+        "IconId": 76058,
+        "FacePathHash": 175988600,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 4,
+          "ReadOrder": 4,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-bottom",
+        "ScreenDirection": "bottom",
+        "SlotPath": "Emj/1180004/4",
+        "GroupPath": "Emj/1180004",
+        "Template": 1021,
+        "X": 1486.16,
+        "Y": 825.008,
+        "Width": 43.679996,
+        "Height": 56.783997,
+        "RotationDegrees": 0,
+        "Mirrored": false,
+        "IconId": 76073,
+        "FacePathHash": 2363298200,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 5,
+          "ReadOrder": 5,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-right",
+        "ScreenDirection": "right",
+        "SlotPath": "Emj/121/4",
+        "GroupPath": "Emj/121",
+        "Template": 1023,
+        "X": 1556.608,
+        "Y": 775.56,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": -90,
+        "Mirrored": false,
+        "IconId": 76073,
+        "FacePathHash": 2363298200,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 1,
+          "ReadOrder": 1,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-right",
+        "ScreenDirection": "right",
+        "SlotPath": "Emj/1210001/4",
+        "GroupPath": "Emj/1210001",
+        "Template": 1023,
+        "X": 1556.608,
+        "Y": 727.95996,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": -90,
+        "Mirrored": false,
+        "IconId": 76074,
+        "FacePathHash": 3904666705,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 2,
+          "ReadOrder": 2,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-right",
+        "ScreenDirection": "right",
+        "SlotPath": "Emj/1210002/4",
+        "GroupPath": "Emj/1210002",
+        "Template": 1023,
+        "X": 1556.608,
+        "Y": 680.36,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": -90,
+        "Mirrored": false,
+        "IconId": 76041,
+        "FacePathHash": 1226605085,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 3,
+          "ReadOrder": 3,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-right",
+        "ScreenDirection": "right",
+        "SlotPath": "Emj/1210003/4",
+        "GroupPath": "Emj/1210003",
+        "Template": 1023,
+        "X": 1556.608,
+        "Y": 632.76,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": -90,
+        "Mirrored": false,
+        "IconId": 76072,
+        "FacePathHash": 2611348955,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 4,
+          "ReadOrder": 4,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": -75,
+          "AddGreen": -75,
+          "AddBlue": -75,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "darkened",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-right",
+        "ScreenDirection": "right",
+        "SlotPath": "Emj/1210004/4",
+        "GroupPath": "Emj/1210004",
+        "Template": 1023,
+        "X": 1556.608,
+        "Y": 585.16,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": -90,
+        "Mirrored": false,
+        "IconId": 76074,
+        "FacePathHash": 3904666705,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 5,
+          "ReadOrder": 5,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": -75,
+          "AddGreen": -75,
+          "AddBlue": -75,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "darkened",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-top",
+        "ScreenDirection": "top",
+        "SlotPath": "Emj/124/4",
+        "GroupPath": "Emj/124",
+        "Template": 1024,
+        "X": 1504.36,
+        "Y": 538.008,
+        "Width": 43.680004,
+        "Height": 56.784,
+        "RotationDegrees": -180,
+        "Mirrored": false,
+        "IconId": 76050,
+        "FacePathHash": 2980445536,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 1,
+          "ReadOrder": 1,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-top",
+        "ScreenDirection": "top",
+        "SlotPath": "Emj/1240001/4",
+        "GroupPath": "Emj/1240001",
+        "Template": 1024,
+        "X": 1456.76,
+        "Y": 538.008,
+        "Width": 43.680004,
+        "Height": 56.784,
+        "RotationDegrees": -180,
+        "Mirrored": false,
+        "IconId": 76073,
+        "FacePathHash": 2363298200,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 2,
+          "ReadOrder": 2,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-top",
+        "ScreenDirection": "top",
+        "SlotPath": "Emj/1240002/4",
+        "GroupPath": "Emj/1240002",
+        "Template": 1024,
+        "X": 1409.16,
+        "Y": 538.008,
+        "Width": 43.680004,
+        "Height": 56.784,
+        "RotationDegrees": -180,
+        "Mirrored": false,
+        "IconId": 76069,
+        "FacePathHash": 4130467896,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 3,
+          "ReadOrder": 3,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-top",
+        "ScreenDirection": "top",
+        "SlotPath": "Emj/1240003/4",
+        "GroupPath": "Emj/1240003",
+        "Template": 1024,
+        "X": 1361.5599,
+        "Y": 538.008,
+        "Width": 43.680004,
+        "Height": 56.784,
+        "RotationDegrees": -180,
+        "Mirrored": false,
+        "IconId": 76076,
+        "FacePathHash": 3326760151,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 4,
+          "ReadOrder": 4,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-top",
+        "ScreenDirection": "top",
+        "SlotPath": "Emj/1240004/4",
+        "GroupPath": "Emj/1240004",
+        "Template": 1024,
+        "X": 1313.96,
+        "Y": 538.008,
+        "Width": 43.680004,
+        "Height": 56.784,
+        "RotationDegrees": -180,
+        "Mirrored": false,
+        "IconId": 76064,
+        "FacePathHash": 125704047,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 5,
+          "ReadOrder": 5,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": -75,
+          "AddBlue": -75,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "red-tinted",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/127/4",
+        "GroupPath": "Emj/127",
+        "Template": 1022,
+        "X": 1229.0079,
+        "Y": 600.56,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": 90,
+        "Mirrored": false,
+        "IconId": 76070,
+        "FacePathHash": 3041930589,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 1,
+          "ReadOrder": 1,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/1270001/4",
+        "GroupPath": "Emj/1270001",
+        "Template": 1022,
+        "X": 1229.0079,
+        "Y": 648.16,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": 90,
+        "Mirrored": false,
+        "IconId": 76068,
+        "FacePathHash": 3779781755,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 2,
+          "ReadOrder": 2,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/1270002/4",
+        "GroupPath": "Emj/1270002",
+        "Template": 1022,
+        "X": 1229.0079,
+        "Y": 695.76,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": 90,
+        "Mirrored": false,
+        "IconId": 76057,
+        "FacePathHash": 3586429097,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 3,
+          "ReadOrder": 3,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/1270003/4",
+        "GroupPath": "Emj/1270003",
+        "Template": 1022,
+        "X": 1229.0079,
+        "Y": 743.36,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": 90,
+        "Mirrored": false,
+        "IconId": 76047,
+        "FacePathHash": 973536151,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 4,
+          "ReadOrder": 4,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/1270004/4",
+        "GroupPath": "Emj/1270004",
+        "Template": 1022,
+        "X": 1229.0079,
+        "Y": 790.95996,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": 90,
+        "Mirrored": false,
+        "IconId": 76041,
+        "FacePathHash": 1226605085,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 5,
+          "ReadOrder": 5,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": -75,
+          "AddGreen": -75,
+          "AddBlue": -75,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "darkened",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      },
+      {
+        "Area": "river-left",
+        "ScreenDirection": "left",
+        "SlotPath": "Emj/1270005/4",
+        "GroupPath": "Emj/1270005",
+        "Template": 1022,
+        "X": 1229.0079,
+        "Y": 838.56,
+        "Width": 56.784,
+        "Height": 43.68,
+        "RotationDegrees": 90,
+        "Mirrored": false,
+        "IconId": 76046,
+        "FacePathHash": 763228116,
+        "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+        "RiverPosition": {
+          "DisplayRow": 1,
+          "VisibleColumn": 6,
+          "ReadOrder": 6,
+          "IsSideways": false
+        },
+        "VisualMark": {
+          "AddRed": 0,
+          "AddGreen": 0,
+          "AddBlue": 0,
+          "MultiplyRed": 100,
+          "MultiplyGreen": 100,
+          "MultiplyBlue": 100,
+          "Style": "normal",
+          "CalledTileMeaningVerified": false,
+          "TsumogiriMeaningVerified": false
+        }
+      }
+    ],
+    "PublicTableReading": {
+      "Code": "PUBLIC_IMAGES_STABLE_CANDIDATE",
+      "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+      "Stable": true,
+      "Tiles": [
+        {
+          "Area": "meld-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/115/2/4",
+          "GroupPath": "Emj/115",
+          "X": 963.106,
+          "Y": 1009.22,
+          "Width": 42.587997,
+          "Height": 32.76,
+          "RotationDegrees": 90,
+          "Mirrored": false,
+          "Kind34": 23,
+          "RedFive": false,
+          "ChineseName": "6索",
+          "Stable": true,
+          "RiverPosition": null,
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "meld-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/115/3/4",
+          "GroupPath": "Emj/115",
+          "X": 963.106,
+          "Y": 1045.62,
+          "Width": 42.587997,
+          "Height": 32.76,
+          "RotationDegrees": 90,
+          "Mirrored": false,
+          "Kind34": 23,
+          "RedFive": false,
+          "ChineseName": "6索",
+          "Stable": true,
+          "RiverPosition": null,
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "meld-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/115/4/4",
+          "GroupPath": "Emj/115",
+          "X": 962.42,
+          "Y": 961.956,
+          "Width": 32.76,
+          "Height": 42.587997,
+          "RotationDegrees": 0,
+          "Mirrored": false,
+          "Kind34": 23,
+          "RedFive": false,
+          "ChineseName": "6索",
+          "Stable": true,
+          "RiverPosition": null,
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-bottom",
+          "ScreenDirection": "bottom",
+          "SlotPath": "Emj/118/4",
+          "GroupPath": "Emj/118",
+          "X": 1295.76,
+          "Y": 825.008,
+          "Width": 43.679996,
+          "Height": 56.783997,
+          "RotationDegrees": 0,
+          "Mirrored": false,
+          "Kind34": 27,
+          "RedFive": false,
+          "ChineseName": "东",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 1,
+            "ReadOrder": 1,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-bottom",
+          "ScreenDirection": "bottom",
+          "SlotPath": "Emj/1180001/4",
+          "GroupPath": "Emj/1180001",
+          "X": 1343.36,
+          "Y": 825.008,
+          "Width": 43.679996,
+          "Height": 56.783997,
+          "RotationDegrees": 0,
+          "Mirrored": false,
+          "Kind34": 29,
+          "RedFive": false,
+          "ChineseName": "西",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 2,
+            "ReadOrder": 2,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-bottom",
+          "ScreenDirection": "bottom",
+          "SlotPath": "Emj/1180002/4",
+          "GroupPath": "Emj/1180002",
+          "X": 1390.96,
+          "Y": 825.008,
+          "Width": 43.679996,
+          "Height": 56.783997,
+          "RotationDegrees": 0,
+          "Mirrored": false,
+          "Kind34": 30,
+          "RedFive": false,
+          "ChineseName": "北",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 3,
+            "ReadOrder": 3,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-bottom",
+          "ScreenDirection": "bottom",
+          "SlotPath": "Emj/1180003/4",
+          "GroupPath": "Emj/1180003",
+          "X": 1438.5599,
+          "Y": 825.008,
+          "Width": 43.679996,
+          "Height": 56.783997,
+          "RotationDegrees": 0,
+          "Mirrored": false,
+          "Kind34": 17,
+          "RedFive": false,
+          "ChineseName": "9筒",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 4,
+            "ReadOrder": 4,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-bottom",
+          "ScreenDirection": "bottom",
+          "SlotPath": "Emj/1180004/4",
+          "GroupPath": "Emj/1180004",
+          "X": 1486.16,
+          "Y": 825.008,
+          "Width": 43.679996,
+          "Height": 56.783997,
+          "RotationDegrees": 0,
+          "Mirrored": false,
+          "Kind34": 32,
+          "RedFive": false,
+          "ChineseName": "发",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 5,
+            "ReadOrder": 5,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-right",
+          "ScreenDirection": "right",
+          "SlotPath": "Emj/121/4",
+          "GroupPath": "Emj/121",
+          "X": 1556.608,
+          "Y": 775.56,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": -90,
+          "Mirrored": false,
+          "Kind34": 32,
+          "RedFive": false,
+          "ChineseName": "发",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 1,
+            "ReadOrder": 1,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-right",
+          "ScreenDirection": "right",
+          "SlotPath": "Emj/1210001/4",
+          "GroupPath": "Emj/1210001",
+          "X": 1556.608,
+          "Y": 727.95996,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": -90,
+          "Mirrored": false,
+          "Kind34": 33,
+          "RedFive": false,
+          "ChineseName": "中",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 2,
+            "ReadOrder": 2,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-right",
+          "ScreenDirection": "right",
+          "SlotPath": "Emj/1210002/4",
+          "GroupPath": "Emj/1210002",
+          "X": 1556.608,
+          "Y": 680.36,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": -90,
+          "Mirrored": false,
+          "Kind34": 0,
+          "RedFive": false,
+          "ChineseName": "1万",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 3,
+            "ReadOrder": 3,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-right",
+          "ScreenDirection": "right",
+          "SlotPath": "Emj/1210003/4",
+          "GroupPath": "Emj/1210003",
+          "X": 1556.608,
+          "Y": 632.76,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": -90,
+          "Mirrored": false,
+          "Kind34": 31,
+          "RedFive": false,
+          "ChineseName": "白",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 4,
+            "ReadOrder": 4,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": -75,
+            "AddGreen": -75,
+            "AddBlue": -75,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "darkened",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-right",
+          "ScreenDirection": "right",
+          "SlotPath": "Emj/1210004/4",
+          "GroupPath": "Emj/1210004",
+          "X": 1556.608,
+          "Y": 585.16,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": -90,
+          "Mirrored": false,
+          "Kind34": 33,
+          "RedFive": false,
+          "ChineseName": "中",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 5,
+            "ReadOrder": 5,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": -75,
+            "AddGreen": -75,
+            "AddBlue": -75,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "darkened",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-top",
+          "ScreenDirection": "top",
+          "SlotPath": "Emj/124/4",
+          "GroupPath": "Emj/124",
+          "X": 1504.36,
+          "Y": 538.008,
+          "Width": 43.680004,
+          "Height": 56.784,
+          "RotationDegrees": -180,
+          "Mirrored": false,
+          "Kind34": 9,
+          "RedFive": false,
+          "ChineseName": "1筒",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 1,
+            "ReadOrder": 1,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-top",
+          "ScreenDirection": "top",
+          "SlotPath": "Emj/1240001/4",
+          "GroupPath": "Emj/1240001",
+          "X": 1456.76,
+          "Y": 538.008,
+          "Width": 43.680004,
+          "Height": 56.784,
+          "RotationDegrees": -180,
+          "Mirrored": false,
+          "Kind34": 32,
+          "RedFive": false,
+          "ChineseName": "发",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 2,
+            "ReadOrder": 2,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-top",
+          "ScreenDirection": "top",
+          "SlotPath": "Emj/1240002/4",
+          "GroupPath": "Emj/1240002",
+          "X": 1409.16,
+          "Y": 538.008,
+          "Width": 43.680004,
+          "Height": 56.784,
+          "RotationDegrees": -180,
+          "Mirrored": false,
+          "Kind34": 28,
+          "RedFive": false,
+          "ChineseName": "南",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 3,
+            "ReadOrder": 3,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-top",
+          "ScreenDirection": "top",
+          "SlotPath": "Emj/1240003/4",
+          "GroupPath": "Emj/1240003",
+          "X": 1361.5599,
+          "Y": 538.008,
+          "Width": 43.680004,
+          "Height": 56.784,
+          "RotationDegrees": -180,
+          "Mirrored": false,
+          "Kind34": 13,
+          "RedFive": true,
+          "ChineseName": "赤5筒",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 4,
+            "ReadOrder": 4,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-top",
+          "ScreenDirection": "top",
+          "SlotPath": "Emj/1240004/4",
+          "GroupPath": "Emj/1240004",
+          "X": 1313.96,
+          "Y": 538.008,
+          "Width": 43.680004,
+          "Height": 56.784,
+          "RotationDegrees": -180,
+          "Mirrored": false,
+          "Kind34": 23,
+          "RedFive": false,
+          "ChineseName": "6索",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 5,
+            "ReadOrder": 5,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": -75,
+            "AddBlue": -75,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "red-tinted",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/127/4",
+          "GroupPath": "Emj/127",
+          "X": 1229.0079,
+          "Y": 600.56,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": 90,
+          "Mirrored": false,
+          "Kind34": 29,
+          "RedFive": false,
+          "ChineseName": "西",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 1,
+            "ReadOrder": 1,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/1270001/4",
+          "GroupPath": "Emj/1270001",
+          "X": 1229.0079,
+          "Y": 648.16,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": 90,
+          "Mirrored": false,
+          "Kind34": 27,
+          "RedFive": false,
+          "ChineseName": "东",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 2,
+            "ReadOrder": 2,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/1270002/4",
+          "GroupPath": "Emj/1270002",
+          "X": 1229.0079,
+          "Y": 695.76,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": 90,
+          "Mirrored": false,
+          "Kind34": 16,
+          "RedFive": false,
+          "ChineseName": "8筒",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 3,
+            "ReadOrder": 3,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/1270003/4",
+          "GroupPath": "Emj/1270003",
+          "X": 1229.0079,
+          "Y": 743.36,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": 90,
+          "Mirrored": false,
+          "Kind34": 6,
+          "RedFive": false,
+          "ChineseName": "7万",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 4,
+            "ReadOrder": 4,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/1270004/4",
+          "GroupPath": "Emj/1270004",
+          "X": 1229.0079,
+          "Y": 790.95996,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": 90,
+          "Mirrored": false,
+          "Kind34": 0,
+          "RedFive": false,
+          "ChineseName": "1万",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 5,
+            "ReadOrder": 5,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": -75,
+            "AddGreen": -75,
+            "AddBlue": -75,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "darkened",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        },
+        {
+          "Area": "river-left",
+          "ScreenDirection": "left",
+          "SlotPath": "Emj/1270005/4",
+          "GroupPath": "Emj/1270005",
+          "X": 1229.0079,
+          "Y": 838.56,
+          "Width": 56.784,
+          "Height": 43.68,
+          "RotationDegrees": 90,
+          "Mirrored": false,
+          "Kind34": 5,
+          "RedFive": false,
+          "ChineseName": "6万",
+          "Stable": true,
+          "RiverPosition": {
+            "DisplayRow": 1,
+            "VisibleColumn": 6,
+            "ReadOrder": 6,
+            "IsSideways": false
+          },
+          "VisualMark": {
+            "AddRed": 0,
+            "AddGreen": 0,
+            "AddBlue": 0,
+            "MultiplyRed": 100,
+            "MultiplyGreen": 100,
+            "MultiplyBlue": 100,
+            "Style": "normal",
+            "CalledTileMeaningVerified": false,
+            "TsumogiriMeaningVerified": false
+          },
+          "Quality": "Candidate"
+        }
+      ],
+      "Rejections": [],
+      "MeldGroups": [
+        {
+          "GroupPath": "Emj/115",
+          "ScreenDirection": "left",
+          "VisibleSlots": 3,
+          "KnownFaces": 3,
+          "AllVisibleSlotsDecoded": true,
+          "Stable": true,
+          "SlotPaths": [
+            "Emj/115/2/4",
+            "Emj/115/3/4",
+            "Emj/115/4/4"
+          ],
+          "ErrorCodes": [],
+          "VerifiedBackSlots": 0,
+          "ShapeCode": "PUBLIC_PON_THREE_FACE_PATTERN",
+          "InferredClosedKanKind34": null
+        }
+      ],
+      "Areas": [
+        {
+          "Area": "river-bottom",
+          "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+          "ContainerVerified": true,
+          "ContainerVisible": true,
+          "EnumerationCompleted": true,
+          "ObservedEmptyCandidate": false,
+          "VisibleSlots": 5,
+          "UnknownComponents": 0,
+          "Stable": true,
+          "VisibleGroups": 0,
+          "VerifiedRegionRoots": 0
+        },
+        {
+          "Area": "river-right",
+          "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+          "ContainerVerified": true,
+          "ContainerVisible": true,
+          "EnumerationCompleted": true,
+          "ObservedEmptyCandidate": false,
+          "VisibleSlots": 5,
+          "UnknownComponents": 0,
+          "Stable": true,
+          "VisibleGroups": 0,
+          "VerifiedRegionRoots": 0
+        },
+        {
+          "Area": "river-top",
+          "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+          "ContainerVerified": true,
+          "ContainerVisible": true,
+          "EnumerationCompleted": true,
+          "ObservedEmptyCandidate": false,
+          "VisibleSlots": 5,
+          "UnknownComponents": 0,
+          "Stable": true,
+          "VisibleGroups": 0,
+          "VerifiedRegionRoots": 0
+        },
+        {
+          "Area": "river-left",
+          "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+          "ContainerVerified": true,
+          "ContainerVisible": true,
+          "EnumerationCompleted": true,
+          "ObservedEmptyCandidate": false,
+          "VisibleSlots": 6,
+          "UnknownComponents": 0,
+          "Stable": true,
+          "VisibleGroups": 0,
+          "VerifiedRegionRoots": 0
+        },
+        {
+          "Area": "meld-bottom",
+          "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+          "ContainerVerified": true,
+          "ContainerVisible": true,
+          "EnumerationCompleted": true,
+          "ObservedEmptyCandidate": true,
+          "VisibleSlots": 0,
+          "UnknownComponents": 0,
+          "Stable": true,
+          "VisibleGroups": 0,
+          "VerifiedRegionRoots": 4
+        },
+        {
+          "Area": "meld-right",
+          "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+          "ContainerVerified": true,
+          "ContainerVisible": true,
+          "EnumerationCompleted": true,
+          "ObservedEmptyCandidate": true,
+          "VisibleSlots": 0,
+          "UnknownComponents": 0,
+          "Stable": true,
+          "VisibleGroups": 0,
+          "VerifiedRegionRoots": 4
+        },
+        {
+          "Area": "meld-top",
+          "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+          "ContainerVerified": true,
+          "ContainerVisible": true,
+          "EnumerationCompleted": true,
+          "ObservedEmptyCandidate": true,
+          "VisibleSlots": 0,
+          "UnknownComponents": 0,
+          "Stable": true,
+          "VisibleGroups": 0,
+          "VerifiedRegionRoots": 4
+        },
+        {
+          "Area": "meld-left",
+          "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+          "ContainerVerified": true,
+          "ContainerVisible": true,
+          "EnumerationCompleted": true,
+          "ObservedEmptyCandidate": false,
+          "VisibleSlots": 3,
+          "UnknownComponents": 0,
+          "Stable": true,
+          "VisibleGroups": 1,
+          "VerifiedRegionRoots": 4
+        }
+      ],
+      "HistoryComplete": false,
+      "CurrentDisplayComplete": false
+    },
+    "PublicTableAreas": [
+      {
+        "Area": "river-bottom",
+        "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "ObservedEmptyCandidate": false,
+        "VisibleSlots": 5,
+        "UnknownComponents": 0,
+        "Stable": false,
+        "VisibleGroups": 0,
+        "VerifiedRegionRoots": 0
+      },
+      {
+        "Area": "river-right",
+        "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "ObservedEmptyCandidate": false,
+        "VisibleSlots": 5,
+        "UnknownComponents": 0,
+        "Stable": false,
+        "VisibleGroups": 0,
+        "VerifiedRegionRoots": 0
+      },
+      {
+        "Area": "river-top",
+        "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "ObservedEmptyCandidate": false,
+        "VisibleSlots": 5,
+        "UnknownComponents": 0,
+        "Stable": false,
+        "VisibleGroups": 0,
+        "VerifiedRegionRoots": 0
+      },
+      {
+        "Area": "river-left",
+        "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "ObservedEmptyCandidate": false,
+        "VisibleSlots": 6,
+        "UnknownComponents": 0,
+        "Stable": false,
+        "VisibleGroups": 0,
+        "VerifiedRegionRoots": 0
+      },
+      {
+        "Area": "meld-bottom",
+        "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "ObservedEmptyCandidate": true,
+        "VisibleSlots": 0,
+        "UnknownComponents": 0,
+        "Stable": false,
+        "VisibleGroups": 0,
+        "VerifiedRegionRoots": 4
+      },
+      {
+        "Area": "meld-right",
+        "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "ObservedEmptyCandidate": true,
+        "VisibleSlots": 0,
+        "UnknownComponents": 0,
+        "Stable": false,
+        "VisibleGroups": 0,
+        "VerifiedRegionRoots": 4
+      },
+      {
+        "Area": "meld-top",
+        "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "ObservedEmptyCandidate": true,
+        "VisibleSlots": 0,
+        "UnknownComponents": 0,
+        "Stable": false,
+        "VisibleGroups": 0,
+        "VerifiedRegionRoots": 4
+      },
+      {
+        "Area": "meld-left",
+        "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "ObservedEmptyCandidate": false,
+        "VisibleSlots": 3,
+        "UnknownComponents": 0,
+        "Stable": false,
+        "VisibleGroups": 1,
+        "VerifiedRegionRoots": 4
+      }
+    ],
+    "PublicStatusCandidates": [
+      {
+        "Path": "Emj/105/3/2",
+        "Field": "CenterCounterRight",
+        "Direction": null,
+        "Number": 9,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/105/2/2",
+        "Field": "CenterCounterLeft",
+        "Direction": null,
+        "Number": 4,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/44/13/3",
+        "Field": "PlayerScore",
+        "Direction": "left",
+        "Number": 30100,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/44/13/2",
+        "Field": "PlayerScore",
+        "Direction": "left",
+        "Number": 30100,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/44/10",
+        "Field": "SeatWind",
+        "Direction": "left",
+        "Number": 0,
+        "Value": "东",
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/42/13/3",
+        "Field": "PlayerScore",
+        "Direction": "top",
+        "Number": 33000,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/42/13/2",
+        "Field": "PlayerScore",
+        "Direction": "top",
+        "Number": 33000,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/42/10",
+        "Field": "SeatWind",
+        "Direction": "top",
+        "Number": 3,
+        "Value": "北",
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/40/13/3",
+        "Field": "PlayerScore",
+        "Direction": "right",
+        "Number": 18200,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/40/13/2",
+        "Field": "PlayerScore",
+        "Direction": "right",
+        "Number": 18200,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/40/10",
+        "Field": "SeatWind",
+        "Direction": "right",
+        "Number": 2,
+        "Value": "西",
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/38/12/3",
+        "Field": "PlayerScore",
+        "Direction": "bottom",
+        "Number": 17700,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/38/12/2",
+        "Field": "PlayerScore",
+        "Direction": "bottom",
+        "Number": 17700,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/38/9",
+        "Field": "SeatWind",
+        "Direction": "bottom",
+        "Number": 1,
+        "Value": "南",
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/27",
+        "Field": "DoraDisplayLabel",
+        "Direction": null,
+        "Number": null,
+        "Value": "宝牌（多玛式）",
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/23",
+        "Field": "TopBlackStickCount",
+        "Direction": null,
+        "Number": 1,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      },
+      {
+        "Path": "Emj/22",
+        "Field": "TopRedStickCount",
+        "Direction": null,
+        "Number": 1,
+        "Value": null,
+        "Code": "PUBLIC_STATUS_VALUE_CANDIDATE",
+        "Source": "CN-emj.uld-fixed-public-status",
+        "MappingStatus": "Candidate",
+        "SemanticVerified": false
+      }
+    ],
+    "PublicDoraCandidates": [
+      {
+        "Path": "Emj/28/2",
+        "Slot": 0,
+        "IconId": 76044,
+        "PathHash": 59492178,
+        "Kind34": 3,
+        "RedFive": false,
+        "Code": "PUBLIC_DORA_FACE_CANDIDATE",
+        "SelectedPart": {
+          "PartId": 0,
+          "PartsListId": 0,
+          "PartCount": 1,
+          "U": 0,
+          "V": 0,
+          "Width": 40,
+          "Height": 52
+        },
+        "ImageFlags": 128
+      }
+    ],
+    "RoundTitleResource": {
+      "Path": "Emj/19",
+      "Code": "ROUND_TITLE_RESOURCE_CANDIDATE",
+      "PartsListId": 0,
+      "PartCount": 1,
+      "SelectedPart": 0,
+      "U": 0,
+      "V": 0,
+      "Width": 640,
+      "Height": 80,
+      "AssetId": 0,
+      "TextureType": 1,
+      "IconId": 121458,
+      "TexturePathHash": 2173618287,
+      "MappingStatus": "Candidate",
+      "SemanticVerified": false
+    },
+    "PublicActionMenu": {
+      "Code": "ACTION_MENU_NOT_VISIBLE",
+      "Visible": false,
+      "AllVisibleRowsDecoded": false,
+      "Rows": [],
+      "MappingStatus": "Candidate",
+      "CompleteLegalActions": false,
+      "ActionOccurred": false
+    },
+    "PublicOpponentHands": [
+      {
+        "ScreenDirection": "right",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "VisibleSlots": 13,
+        "VerifiedBackCount": 13,
+        "SeparateDrawSlotVisible": false,
+        "Code": "OPPONENT_VISIBLE_BACK_COUNT_CANDIDATE",
+        "Slots": [
+          {
+            "SlotPath": "Emj/138/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380001/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380002/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380003/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380004/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380005/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380006/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380007/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380008/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380009/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380010/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380011/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1380012/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          }
+        ],
+        "UnknownComponents": 0,
+        "Quality": "Candidate",
+        "CountComplete": true
+      },
+      {
+        "ScreenDirection": "top",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "VisibleSlots": 13,
+        "VerifiedBackCount": 13,
+        "SeparateDrawSlotVisible": true,
+        "Code": "OPPONENT_VISIBLE_BACK_COUNT_CANDIDATE",
+        "Slots": [
+          {
+            "SlotPath": "Emj/141/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410001/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410002/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410003/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410004/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410005/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410006/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410007/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410008/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410009/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410011/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1410012/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/142/4",
+            "SeparateDrawSlot": true,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          }
+        ],
+        "UnknownComponents": 0,
+        "Quality": "Candidate",
+        "CountComplete": true
+      },
+      {
+        "ScreenDirection": "left",
+        "ContainerVerified": true,
+        "ContainerVisible": true,
+        "EnumerationCompleted": true,
+        "VisibleSlots": 10,
+        "VerifiedBackCount": 10,
+        "SeparateDrawSlotVisible": false,
+        "Code": "OPPONENT_VISIBLE_BACK_COUNT_CANDIDATE",
+        "Slots": [
+          {
+            "SlotPath": "Emj/144/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440001/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440002/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440003/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440004/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440006/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440007/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440008/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440009/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          },
+          {
+            "SlotPath": "Emj/1440010/4",
+            "SeparateDrawSlot": false,
+            "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+          }
+        ],
+        "UnknownComponents": 0,
+        "Quality": "Candidate",
+        "CountComplete": true
+      }
+    ],
+    "PublicHandInteraction": {
+      "Code": "PUBLIC_HAND_INTERACTION_CANDIDATE",
+      "AllVisibleFacesBound": true,
+      "Buttons": [
+        {
+          "FacePath": "Emj/134/9/4",
+          "RootId": 134,
+          "ScreenX": 925.6,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340001/9/4",
+          "RootId": 1340001,
+          "ScreenX": 984.4,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340002/9/4",
+          "RootId": 1340002,
+          "ScreenX": 1043.2,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340003/9/4",
+          "RootId": 1340003,
+          "ScreenX": 1102,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340004/9/4",
+          "RootId": 1340004,
+          "ScreenX": 1160.8,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340005/9/4",
+          "RootId": 1340005,
+          "ScreenX": 1219.6,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340006/9/4",
+          "RootId": 1340006,
+          "ScreenX": 1278.4,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340007/9/4",
+          "RootId": 1340007,
+          "ScreenX": 1337.2,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340008/9/4",
+          "RootId": 1340008,
+          "ScreenX": 1396,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340009/9/4",
+          "RootId": 1340009,
+          "ScreenX": 1454.7999,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340010/9/4",
+          "RootId": 1340010,
+          "ScreenX": 1513.6,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340011/9/4",
+          "RootId": 1340011,
+          "ScreenX": 1572.4,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/1340012/9/4",
+          "RootId": 1340012,
+          "ScreenX": 1631.2,
+          "SeparateSlotCandidate": false,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        },
+        {
+          "FacePath": "Emj/135/9/4",
+          "RootId": 135,
+          "ScreenX": 1704,
+          "SeparateSlotCandidate": true,
+          "ButtonEnabled": true,
+          "Code": "PUBLIC_HAND_BUTTON_CANDIDATE"
+        }
+      ],
+      "MappingStatus": "Candidate",
+      "CompleteLegalDiscards": false,
+      "DrawIdentityVerified": false
+    },
+    "PublicRiichiCandidates": [
+      {
+        "ScreenDirection": "bottom",
+        "Path": "Emj/100/2",
+        "StickVisible": null,
+        "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+        "MappingStatus": "Candidate",
+        "DeclarationTimingVerified": false
+      },
+      {
+        "ScreenDirection": "right",
+        "Path": "Emj/101/2",
+        "StickVisible": null,
+        "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+        "MappingStatus": "Candidate",
+        "DeclarationTimingVerified": false
+      },
+      {
+        "ScreenDirection": "top",
+        "Path": "Emj/102/2",
+        "StickVisible": null,
+        "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+        "MappingStatus": "Candidate",
+        "DeclarationTimingVerified": false
+      },
+      {
+        "ScreenDirection": "left",
+        "Path": "Emj/103/2",
+        "StickVisible": null,
+        "Code": "RIICHI_STICK_VISIBILITY_UNOBSERVED",
+        "MappingStatus": "Candidate",
+        "DeclarationTimingVerified": false
+      }
+    ],
+    "HistoryComplete": false
+  }
+}

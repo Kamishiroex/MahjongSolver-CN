@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-09-25-01</DalamudLibPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- No Dalamud/plugin project dependency: only exact-version unmanaged struct declarations. -->
+    <Compile Include="..\..\Mahjong.Plugin.Dalamud\GameState\Variants\ChineseActionLabels.cs" Link="Production\ChineseActionLabels.cs" />
+    <Reference Include="FFXIVClientStructs;InteropGenerator.Runtime">
+      <HintPath>$(DalamudLibPath)\%(Identity).dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\VisibleUiReader.cs" Link="Production\VisibleUiReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\Models.cs" Link="Production\Models.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\DiagnosticBuffer.cs" Link="Production\DiagnosticBuffer.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\LowerHandProfile.cs" Link="Production\LowerHandProfile.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\LowerHandGeometry.cs" Link="Production\LowerHandGeometry.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\LowerHandImageReader.cs" Link="Production\LowerHandImageReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\LowerHandReading.cs" Link="Production\LowerHandReading.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicLayoutMetadata.cs" Link="Production\PublicLayoutMetadata.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\LowerMeldMetadataProfile.cs" Link="Production\LowerMeldMetadataProfile.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicTableMetadataProfile.cs" Link="Production\PublicTableMetadataProfile.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicTableReading.cs" Link="Production\PublicTableReading.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicCallEventTracker.cs" Link="Production\PublicCallEventTracker.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicTableGeometry.cs" Link="Production\PublicTableGeometry.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicTableImageReader.cs" Link="Production\PublicTableImageReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicOpponentHandReader.cs" Link="Production\PublicOpponentHandReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicStatusReader.cs" Link="Production\PublicStatusReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicDoraReader.cs" Link="Production\PublicDoraReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicActionMenuReader.cs" Link="Production\PublicActionMenuReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicHandInteractionReader.cs" Link="Production\PublicHandInteractionReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\PublicRiichiReader.cs" Link="Production\PublicRiichiReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\RoundTitleResourceReader.cs" Link="Production\RoundTitleResourceReader.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\RoundTitleCatalog.cs" Link="Production\RoundTitleCatalog.cs" />
+    <Compile Include="..\..\Mahjong.Plugin.CN\Diagnostics\LocalCaptureRecorder.cs" Link="Production\LocalCaptureRecorder.cs" />
+    <None Include="..\..\docs\cn\evidence\tile-resource-catalog.json" Link="Fixtures\tile-resource-catalog.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\cn\evidence\public-call-transitions-20260924.json" Link="Fixtures\public-call-transitions-20260924.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="CheckPinnedStructs" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(DalamudLibPath)\FFXIVClientStructs.dll')" Text="需要本机固定版本26-09-25-01的ClientStructs，或显式指定DalamudLibPath。" />
+  </Target>
+</Project>

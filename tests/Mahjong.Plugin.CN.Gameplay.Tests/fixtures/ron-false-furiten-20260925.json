@@ -1,0 +1,3766 @@
+{
+  "SourceSession": "mjcn-game-20260925-102739-b17914d559f44d13934c1718248e33cf",
+  "SourceFilesAtExtraction": [
+    {
+      "File": "events.jsonl",
+      "Sha256": "89c8e94f39a1751c514f666d807ac1b90c4ed0df70de3a84c7137e11311265a5"
+    }
+  ],
+  "CapturedUtc": "2026-09-25T10:34:33.5816876+00:00",
+  "PluginVersion": "0.6.1.8",
+  "ActualPublicInput": {
+    "OurPlayerId": 0,
+    "RoundWind": 0,
+    "HandNumber": 1,
+    "Honba": 3,
+    "RiichiSticks": 0,
+    "DealerPlayerId": 2,
+    "WallRemaining": 51,
+    "Hand": [
+      {
+        "Id": 3,
+        "Red": false,
+        "ChineseName": "4万"
+      },
+      {
+        "Id": 4,
+        "Red": false,
+        "ChineseName": "5万"
+      },
+      {
+        "Id": 5,
+        "Red": false,
+        "ChineseName": "6万"
+      },
+      {
+        "Id": 14,
+        "Red": false,
+        "ChineseName": "6筒"
+      },
+      {
+        "Id": 15,
+        "Red": false,
+        "ChineseName": "7筒"
+      },
+      {
+        "Id": 16,
+        "Red": false,
+        "ChineseName": "8筒"
+      },
+      {
+        "Id": 20,
+        "Red": false,
+        "ChineseName": "3索"
+      },
+      {
+        "Id": 20,
+        "Red": false,
+        "ChineseName": "3索"
+      },
+      {
+        "Id": 20,
+        "Red": false,
+        "ChineseName": "3索"
+      },
+      {
+        "Id": 23,
+        "Red": false,
+        "ChineseName": "6索"
+      },
+      {
+        "Id": 24,
+        "Red": false,
+        "ChineseName": "7索"
+      },
+      {
+        "Id": 30,
+        "Red": false,
+        "ChineseName": "北"
+      },
+      {
+        "Id": 30,
+        "Red": false,
+        "ChineseName": "北"
+      }
+    ],
+    "DoraIndicators": [
+      {
+        "Id": 8,
+        "Red": false,
+        "ChineseName": "9万"
+      }
+    ],
+    "Players": [
+      {
+        "PlayerId": 0,
+        "SeatWind": 2,
+        "Score": 14200,
+        "RiichiDeclared": true,
+        "RiichiEstablished": true,
+        "RiichiDiscardIndex": 4,
+        "River": [
+          {
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/118/4",
+            "ObservedSequence": 2540,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180001/4",
+            "ObservedSequence": 2602,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180002/4",
+            "ObservedSequence": 2675,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": true,
+            "SlotPath": "Emj/1180003/4",
+            "ObservedSequence": 2753,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 17,
+              "Red": false,
+              "ChineseName": "9筒"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/117/4",
+            "ObservedSequence": 2869,
+            "RiichiDeclaration": true
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": null
+      },
+      {
+        "PlayerId": 1,
+        "SeatWind": 3,
+        "Score": 14200,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/121/4",
+            "ObservedSequence": 2550,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210001/4",
+            "ObservedSequence": 2613,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210002/4",
+            "ObservedSequence": 2689,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210003/4",
+            "ObservedSequence": 2893,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false
+      },
+      {
+        "PlayerId": 2,
+        "SeatWind": 0,
+        "Score": 57400,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/124/4",
+            "ObservedSequence": 2488,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240001/4",
+            "ObservedSequence": 2557,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 9,
+              "Red": false,
+              "ChineseName": "1筒"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240002/4",
+            "ObservedSequence": 2620,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 25,
+              "Red": false,
+              "ChineseName": "8索"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240003/4",
+            "ObservedSequence": 2697,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 3,
+              "Red": false,
+              "ChineseName": "4万"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240004/4",
+            "ObservedSequence": 2901,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": false
+      },
+      {
+        "PlayerId": 3,
+        "SeatWind": 1,
+        "Score": 14200,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 2,
+              "Red": false,
+              "ChineseName": "3万"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/127/4",
+            "ObservedSequence": 2511,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 5,
+              "Red": false,
+              "ChineseName": "6万"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270001/4",
+            "ObservedSequence": 2568,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270002/4",
+            "ObservedSequence": 2655,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 10,
+              "Red": false,
+              "ChineseName": "2筒"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270003/4",
+            "ObservedSequence": 2725,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270004/4",
+            "ObservedSequence": 2826,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 25,
+              "Red": false,
+              "ChineseName": "8索"
+            },
+            "Tsumogiri": null,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270005/4",
+            "ObservedSequence": 2945,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [
+          {
+            "Type": "pon",
+            "FromPlayerId": 0,
+            "ClaimedTile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Tiles": [
+              {
+                "Id": 31,
+                "Red": false,
+                "ChineseName": "白"
+              },
+              {
+                "Id": 31,
+                "Red": false,
+                "ChineseName": "白"
+              },
+              {
+                "Id": 31,
+                "Red": false,
+                "ChineseName": "白"
+              }
+            ],
+            "GroupPath": "Emj/115"
+          }
+        ],
+        "Ippatsu": false
+      }
+    ],
+    "Trigger": {
+      "Type": "dahai",
+      "Actor": 3,
+      "Tile": {
+        "Id": 25,
+        "Red": false,
+        "ChineseName": "8索"
+      }
+    },
+    "Assumptions": [
+      "实验全桌输入；未观测的跨玩家事件顺序、临时振听与首巡状态不视为已知。",
+      "赤五及精确终局计分规则沿用引擎配置；对手暗手保持未知。",
+      "公开事件历史不完整；以当前公开桌面和同局已记录事件分析，不伪造完整回放。",
+      "玩家0公开立直棒按已立直参与防守；成立时刻未独立确认。",
+      "玩家3部分摸切／手切未知；引擎按未知处理或采用其默认值。"
+    ],
+    "ContextKey": "6a88016116514e8286861fca21701b08:194:cb8f899e23c847dbaf60dc83841030d9:0:1:3:2:epoch=cb8f899e23c847dbaf60dc83841030d9:observed:8",
+    "Utc": "2026-09-25T10:34:33.5410358+00:00",
+    "LegalActions": 520,
+    "MatchFirstRound": 4,
+    "HistoryComplete": false,
+    "OwnDrawKind": null,
+    "KnownEvents": [
+      {
+        "Sequence": 2488,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 29,
+          "Red": false,
+          "ChineseName": "西"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2511,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 2,
+          "Red": false,
+          "ChineseName": "3万"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2540,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 28,
+          "Red": false,
+          "ChineseName": "南"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2550,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 0,
+          "Red": false,
+          "ChineseName": "1万"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2557,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 26,
+          "Red": false,
+          "ChineseName": "9索"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2568,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 5,
+          "Red": false,
+          "ChineseName": "6万"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2602,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 29,
+          "Red": false,
+          "ChineseName": "西"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2613,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 0,
+          "Red": false,
+          "ChineseName": "1万"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2620,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 9,
+          "Red": false,
+          "ChineseName": "1筒"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2655,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 26,
+          "Red": false,
+          "ChineseName": "9索"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2675,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 0,
+          "Red": false,
+          "ChineseName": "1万"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2689,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 33,
+          "Red": false,
+          "ChineseName": "中"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2697,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 25,
+          "Red": false,
+          "ChineseName": "8索"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2725,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 10,
+          "Red": false,
+          "ChineseName": "2筒"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2753,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 31,
+          "Red": false,
+          "ChineseName": "白"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2788,
+        "Type": "pon",
+        "Actor": 3,
+        "Target": 0,
+        "Tile": {
+          "Id": 31,
+          "Red": false,
+          "ChineseName": "白"
+        },
+        "Consumed": [
+          {
+            "Id": 31,
+            "Red": false,
+            "ChineseName": "白"
+          },
+          {
+            "Id": 31,
+            "Red": false,
+            "ChineseName": "白"
+          }
+        ]
+      },
+      {
+        "Sequence": 2826,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 33,
+          "Red": false,
+          "ChineseName": "中"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2869,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 17,
+          "Red": false,
+          "ChineseName": "9筒"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2893,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 29,
+          "Red": false,
+          "ChineseName": "西"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2901,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 3,
+          "Red": false,
+          "ChineseName": "4万"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 2945,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 25,
+          "Red": false,
+          "ChineseName": "8索"
+        },
+        "Consumed": []
+      }
+    ]
+  },
+  "OldDecision": {
+    "Candidates": [
+      {
+        "Moves": [
+          {
+            "Type": "none",
+            "Actor": 0,
+            "Target": null,
+            "Tile": null,
+            "Consumed": [],
+            "Tsumogiri": null
+          }
+        ],
+        "Score": -24.642866134643555
+      }
+    ],
+    "InputSha256": "F2596BD8FD83191DFDB19E2ACC8128CB99451FF45719409C6069B86FEFE20367",
+    "Assumptions": [
+      "实验全桌输入；未观测的跨玩家事件顺序、临时振听与首巡状态不视为已知。",
+      "赤五及精确终局计分规则沿用引擎配置；对手暗手保持未知。",
+      "公开事件历史不完整；以当前公开桌面和同局已记录事件分析，不伪造完整回放。",
+      "玩家0公开立直棒按已立直参与防守；成立时刻未独立确认。",
+      "玩家3部分摸切／手切未知；引擎按未知处理或采用其默认值。",
+      "事件历史不完整；未观察到的先后顺序不补造，历史防守特征可能缺失。",
+      "一发资格未知时按无一发估值，实际和牌资格仍以游戏按钮为准。",
+      "未识别摸切的弃牌按手切估值。"
+    ],
+    "EngineCommit": "53188a0b926fbab38177f88c3cd87d554cf412af",
+    "StartToResponseMilliseconds": 241.5293,
+    "AppliedSnapshotJson": "{\"dealer\": 2, \"dora\": [\"9m\"], \"hand_number\": 1, \"honba\": 3, \"players\": [{\"hand\": [\"4m\", \"5m\", \"6m\", \"6p\", \"7p\", \"8p\", \"3s\", \"3s\", \"3s\", \"6s\", \"7s\", \"N\", \"N\"], \"id\": 0, \"melds\": [], \"riichi_declared\": true, \"riichi_established\": true, \"river\": [{\"pai\": \"S\", \"riichi\": false, \"tsumogiri\": true}, {\"pai\": \"W\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"1m\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"P\", \"riichi\": false, \"tsumogiri\": true}, {\"pai\": \"9p\", \"riichi\": true, \"tsumogiri\": false}], \"score\": 14200, \"seat_wind\": 2}, {\"hand\": [], \"id\": 1, \"melds\": [], \"riichi_declared\": false, \"riichi_established\": false, \"river\": [{\"pai\": \"1m\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"1m\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"C\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"W\", \"riichi\": false, \"tsumogiri\": false}], \"score\": 14200, \"seat_wind\": 3}, {\"hand\": [], \"id\": 2, \"melds\": [], \"riichi_declared\": false, \"riichi_established\": false, \"river\": [{\"pai\": \"W\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"9s\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"1p\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"8s\", \"riichi\": false, \"tsumogiri\": true}, {\"pai\": \"4m\", \"riichi\": false, \"tsumogiri\": false}], \"score\": 57400, \"seat_wind\": 0}, {\"hand\": [], \"id\": 3, \"melds\": [{\"consumed\": [\"P\", \"P\"], \"pai\": \"P\", \"target_relative\": 1, \"type\": 2}], \"riichi_declared\": false, \"riichi_established\": false, \"river\": [{\"pai\": \"3m\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"6m\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"9s\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"2p\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"C\", \"riichi\": false, \"tsumogiri\": false}, {\"pai\": \"8s\", \"riichi\": false, \"tsumogiri\": false}], \"score\": 14200, \"seat_wind\": 1}], \"public_visible\": [\"1m\", \"1m\", \"1m\", \"3m\", \"4m\", \"6m\", \"9m\", \"1p\", \"2p\", \"9p\", \"8s\", \"8s\", \"9s\", \"9s\", \"S\", \"W\", \"W\", \"W\", \"P\", \"P\", \"P\", \"C\", \"C\"], \"riichi_sticks\": 0, \"round_wind\": 0, \"wall_remaining\": 51, \"win_context\": {\"own_draw_kind\": null, \"own_ippatsu\": null, \"ron_incident_han\": 0, \"tsumo_incident_han\": 0}}",
+    "EngineName": "akochan (experimental public snapshot)",
+    "HistoryComplete": false
+  },
+  "PublicSnapshot": {
+    "SchemaVersion": 1,
+    "SessionId": "cb8f899e-23c8-47db-af60-dc83841030d9",
+    "StateRevision": 2945,
+    "Observation": {
+      "Sequence": 2945,
+      "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+      "Source": "VisibleUiReader/LowerHandTracker:Emj",
+      "Evidence": "docs/cn/TILE-RESOURCE-EVIDENCE.md; docs/cn/FOURTH-CAPTURE.md; docs/cn/PUBLIC-MONITOR-EVIDENCE.md",
+      "DerivationInputs": []
+    },
+    "Stability": 2,
+    "Synchronization": 1,
+    "SynchronizationReason": "只有离散可见图像，尚无可信开局、完整实体手牌或连续事件；不能供完整牌局 AI 决策。",
+    "RoundId": {
+      "Availability": 1,
+      "SourceKind": 2,
+      "MappingStatus": 1,
+      "Value": "cb8f899e23c847dbaf60dc83841030d9:2414",
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "PublicRoundEventTracker:current-round-identity",
+        "Evidence": "docs/cn/ROUND-RIICHI-CONTINUOUS-EVIDENCE.md; retained observed opening + matching current round identity; no observation gap",
+        "DerivationInputs": [
+          "opening-observation:2414",
+          "initial-faces-observation:2469",
+          "confirmed-opening-observation:2469",
+          "current-identity-observation:2945"
+        ]
+      }
+    },
+    "DecisionWindowId": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "决策窗口未建立。"
+    },
+    "Rules": {
+      "RuleSetId": {
+        "Availability": 0,
+        "SourceKind": 0,
+        "MappingStatus": 0,
+        "Reason": "规则配置身份未验证。"
+      },
+      "MatchType": {
+        "Availability": 1,
+        "SourceKind": 1,
+        "MappingStatus": 1,
+        "Value": "east",
+        "Observation": {
+          "Sequence": 2945,
+          "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+          "Source": "GameMain.CurrentContentFinderConditionId+CN.ContentFinderCondition",
+          "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+          "DerivationInputs": [
+            "ContentFinderCondition:766"
+          ]
+        }
+      },
+      "EndCondition": {
+        "Availability": 0,
+        "SourceKind": 0,
+        "MappingStatus": 0,
+        "Reason": "结束条件未验证。"
+      },
+      "MinimumHan": {
+        "Availability": 0,
+        "SourceKind": 0,
+        "MappingStatus": 0,
+        "Reason": "最低役番规则未确认。"
+      },
+      "RedFivesEnabled": {
+        "Availability": 0,
+        "SourceKind": 0,
+        "MappingStatus": 0,
+        "Reason": "赤牌规则未确认。"
+      },
+      "OpenTanyao": {
+        "Availability": 1,
+        "SourceKind": 1,
+        "MappingStatus": 1,
+        "Value": true,
+        "Observation": {
+          "Sequence": 2945,
+          "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+          "Source": "PublicCurrentFacts/current-public-display",
+          "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+          "DerivationInputs": []
+        }
+      }
+    },
+    "Players": [
+      {
+        "Position": 0,
+        "PlayerId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+            "DerivationInputs": [
+              "Players.Lower.SeatWind",
+              "Players.Right.SeatWind",
+              "Players.Upper.SeatWind",
+              "Players.Left.SeatWind"
+            ]
+          }
+        },
+        "SeatWind": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 2,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicStatusReader:Emj",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/9",
+            "DerivationInputs": []
+          }
+        },
+        "Score": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 14200,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicStatusReader:Emj",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/38/12/3,Emj/38/12/2",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiDeclared": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": true,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiEstablished": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "本次未读取；不沿用其他观察的状态字段。"
+        },
+        "Ippatsu": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "本次未读取；不沿用其他观察的状态字段。"
+        },
+        "RiichiDiscardIndex": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "立直声明牌位置未确认。"
+        },
+        "River": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "牌河及顺序未验证。"
+        },
+        "Melds": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "公开副露未读取；未知不等于无副露。"
+        },
+        "RiverImages": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "Tiles": [
+              {
+                "Tile": {
+                  "Id": 17,
+                  "Red": false,
+                  "ChineseName": "9筒"
+                },
+                "SlotPath": "Emj/117/4",
+                "GroupPath": "Emj/117",
+                "X": 2384.608,
+                "Y": 806.16,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": -90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 5,
+                  "ReadOrder": 5,
+                  "IsSideways": true,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "SlotPath": "Emj/118/4",
+                "GroupPath": "Emj/118",
+                "X": 2193.76,
+                "Y": 808.008,
+                "Width": 43.679996,
+                "Height": 56.783997,
+                "RotationDegrees": 0,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 1,
+                  "ReadOrder": 1,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": -75,
+                  "AddGreen": -75,
+                  "AddBlue": -75,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "darkened",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": true,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "SlotPath": "Emj/1180001/4",
+                "GroupPath": "Emj/1180001",
+                "X": 2241.36,
+                "Y": 808.008,
+                "Width": 43.679996,
+                "Height": 56.783997,
+                "RotationDegrees": 0,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 2,
+                  "ReadOrder": 2,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "SlotPath": "Emj/1180002/4",
+                "GroupPath": "Emj/1180002",
+                "X": 2288.96,
+                "Y": 808.008,
+                "Width": 43.679996,
+                "Height": 56.783997,
+                "RotationDegrees": 0,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 3,
+                  "ReadOrder": 3,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "SlotPath": "Emj/1180003/4",
+                "GroupPath": "Emj/1180003",
+                "X": 2336.56,
+                "Y": 808.008,
+                "Width": 43.679996,
+                "Height": 56.783997,
+                "RotationDegrees": 0,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 4,
+                  "ReadOrder": 4,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": -75,
+                  "AddGreen": -150,
+                  "AddBlue": -150,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "darkened-red-tinted",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": true,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": true,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              }
+            ],
+            "Stable": true,
+            "RegionReadable": true,
+            "AllVisibleSlotsDecoded": true,
+            "ObservedEmpty": false,
+            "VisibleSlots": 5,
+            "UnknownComponents": 0,
+            "RejectionCodes": [],
+            "Groups": [],
+            "HasChronologicalOrder": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicTableTracker:Emj",
+            "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+            "DerivationInputs": []
+          }
+        },
+        "MeldImages": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "Tiles": [],
+            "Stable": true,
+            "RegionReadable": true,
+            "AllVisibleSlotsDecoded": true,
+            "ObservedEmpty": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "RejectionCodes": [],
+            "Groups": [],
+            "HasChronologicalOrder": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicTableTracker:Emj",
+            "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+            "DerivationInputs": []
+          }
+        },
+        "OpponentHandAppearance": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "本人不使用对手牌背读侧；其他区域本次未读。"
+        }
+      },
+      {
+        "Position": 1,
+        "PlayerId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+            "DerivationInputs": [
+              "Players.Lower.SeatWind",
+              "Players.Right.SeatWind",
+              "Players.Upper.SeatWind",
+              "Players.Left.SeatWind"
+            ]
+          }
+        },
+        "SeatWind": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 3,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicStatusReader:Emj",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/10",
+            "DerivationInputs": []
+          }
+        },
+        "Score": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 14200,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicStatusReader:Emj",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; lower/right score and wind compared to current public display; paths=Emj/40/13/3,Emj/40/13/2",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiDeclared": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiEstablished": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "Ippatsu": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiDiscardIndex": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "立直声明牌位置未确认。"
+        },
+        "River": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "牌河及顺序未验证。"
+        },
+        "Melds": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "公开副露未读取；未知不等于无副露。"
+        },
+        "RiverImages": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "Tiles": [
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "SlotPath": "Emj/121/4",
+                "GroupPath": "Emj/121",
+                "X": 2454.608,
+                "Y": 758.56,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": -90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 1,
+                  "ReadOrder": 1,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "SlotPath": "Emj/1210001/4",
+                "GroupPath": "Emj/1210001",
+                "X": 2454.608,
+                "Y": 710.95996,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": -90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 2,
+                  "ReadOrder": 2,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "SlotPath": "Emj/1210002/4",
+                "GroupPath": "Emj/1210002",
+                "X": 2454.608,
+                "Y": 663.36,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": -90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 3,
+                  "ReadOrder": 3,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "SlotPath": "Emj/1210003/4",
+                "GroupPath": "Emj/1210003",
+                "X": 2454.608,
+                "Y": 615.76,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": -90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 4,
+                  "ReadOrder": 4,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              }
+            ],
+            "Stable": true,
+            "RegionReadable": true,
+            "AllVisibleSlotsDecoded": true,
+            "ObservedEmpty": false,
+            "VisibleSlots": 4,
+            "UnknownComponents": 0,
+            "RejectionCodes": [],
+            "Groups": [],
+            "HasChronologicalOrder": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicTableTracker:Emj",
+            "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+            "DerivationInputs": []
+          }
+        },
+        "MeldImages": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "Tiles": [],
+            "Stable": true,
+            "RegionReadable": true,
+            "AllVisibleSlotsDecoded": true,
+            "ObservedEmpty": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "RejectionCodes": [],
+            "Groups": [],
+            "HasChronologicalOrder": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicTableTracker:Emj",
+            "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+            "DerivationInputs": []
+          }
+        },
+        "OpponentHandAppearance": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "VisibleSlots": 13,
+            "VerifiedBackCount": 13,
+            "CountComplete": true,
+            "SeparateDrawSlotVisible": true,
+            "Slots": [
+              {
+                "SlotPath": "Emj/1380001/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380002/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380003/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380004/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380005/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380006/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380007/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380008/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380009/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380010/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380011/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1380012/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/139/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": true,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              }
+            ],
+            "Code": "OPPONENT_VISIBLE_BACK_COUNT_CANDIDATE",
+            "IsDrawEvent": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicOpponentHandReader:right",
+            "Evidence": "fixed visible EmjTile back-only slots; no hidden face image/resource access; appearance is not a draw event",
+            "DerivationInputs": []
+          }
+        }
+      },
+      {
+        "Position": 2,
+        "PlayerId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 2,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+            "DerivationInputs": [
+              "Players.Lower.SeatWind",
+              "Players.Right.SeatWind",
+              "Players.Upper.SeatWind",
+              "Players.Left.SeatWind"
+            ]
+          }
+        },
+        "SeatWind": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 0,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicStatusReader:Emj",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/10",
+            "DerivationInputs": []
+          }
+        },
+        "Score": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 57400,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicStatusReader:Emj",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/42/13/3,Emj/42/13/2",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiDeclared": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiEstablished": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "Ippatsu": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiDiscardIndex": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "立直声明牌位置未确认。"
+        },
+        "River": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "牌河及顺序未验证。"
+        },
+        "Melds": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "公开副露未读取；未知不等于无副露。"
+        },
+        "RiverImages": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "Tiles": [
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "SlotPath": "Emj/124/4",
+                "GroupPath": "Emj/124",
+                "X": 2402.36,
+                "Y": 521.008,
+                "Width": 43.680004,
+                "Height": 56.784,
+                "RotationDegrees": -180,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 1,
+                  "ReadOrder": 1,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 26,
+                  "Red": false,
+                  "ChineseName": "9索"
+                },
+                "SlotPath": "Emj/1240001/4",
+                "GroupPath": "Emj/1240001",
+                "X": 2354.76,
+                "Y": 521.008,
+                "Width": 43.680004,
+                "Height": 56.784,
+                "RotationDegrees": -180,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 2,
+                  "ReadOrder": 2,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 9,
+                  "Red": false,
+                  "ChineseName": "1筒"
+                },
+                "SlotPath": "Emj/1240002/4",
+                "GroupPath": "Emj/1240002",
+                "X": 2307.16,
+                "Y": 521.008,
+                "Width": 43.680004,
+                "Height": 56.784,
+                "RotationDegrees": -180,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 3,
+                  "ReadOrder": 3,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 25,
+                  "Red": false,
+                  "ChineseName": "8索"
+                },
+                "SlotPath": "Emj/1240003/4",
+                "GroupPath": "Emj/1240003",
+                "X": 2259.56,
+                "Y": 521.008,
+                "Width": 43.680004,
+                "Height": 56.784,
+                "RotationDegrees": -180,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 4,
+                  "ReadOrder": 4,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": -75,
+                  "AddGreen": -75,
+                  "AddBlue": -75,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "darkened",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": true,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 3,
+                  "Red": false,
+                  "ChineseName": "4万"
+                },
+                "SlotPath": "Emj/1240004/4",
+                "GroupPath": "Emj/1240004",
+                "X": 2211.96,
+                "Y": 521.008,
+                "Width": 43.680004,
+                "Height": 56.784,
+                "RotationDegrees": -180,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 5,
+                  "ReadOrder": 5,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              }
+            ],
+            "Stable": true,
+            "RegionReadable": true,
+            "AllVisibleSlotsDecoded": true,
+            "ObservedEmpty": false,
+            "VisibleSlots": 5,
+            "UnknownComponents": 0,
+            "RejectionCodes": [],
+            "Groups": [],
+            "HasChronologicalOrder": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicTableTracker:Emj",
+            "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+            "DerivationInputs": []
+          }
+        },
+        "MeldImages": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "Tiles": [],
+            "Stable": true,
+            "RegionReadable": true,
+            "AllVisibleSlotsDecoded": true,
+            "ObservedEmpty": true,
+            "VisibleSlots": 0,
+            "UnknownComponents": 0,
+            "RejectionCodes": [],
+            "Groups": [],
+            "HasChronologicalOrder": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicTableTracker:Emj",
+            "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+            "DerivationInputs": []
+          }
+        },
+        "OpponentHandAppearance": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "VisibleSlots": 13,
+            "VerifiedBackCount": 13,
+            "CountComplete": true,
+            "SeparateDrawSlotVisible": true,
+            "Slots": [
+              {
+                "SlotPath": "Emj/141/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410001/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410002/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410003/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410004/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410005/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410006/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410007/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410008/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410009/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410010/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1410012/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/142/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": true,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              }
+            ],
+            "Code": "OPPONENT_VISIBLE_BACK_COUNT_CANDIDATE",
+            "IsDrawEvent": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicOpponentHandReader:top",
+            "Evidence": "fixed visible EmjTile back-only slots; no hidden face image/resource access; appearance is not a draw event",
+            "DerivationInputs": []
+          }
+        }
+      },
+      {
+        "Position": 3,
+        "PlayerId": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": 3,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+            "DerivationInputs": [
+              "Players.Lower.SeatWind",
+              "Players.Right.SeatWind",
+              "Players.Upper.SeatWind",
+              "Players.Left.SeatWind"
+            ]
+          }
+        },
+        "SeatWind": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 1,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicStatusReader:Emj",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/10",
+            "DerivationInputs": []
+          }
+        },
+        "Score": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": 14200,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicStatusReader:Emj",
+            "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; upper/left fixed equivalent ULD panel and finite glyph mapping; no per-value live visual confirmation; paths=Emj/44/13/3,Emj/44/13/2",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiDeclared": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiEstablished": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "Ippatsu": {
+          "Availability": 1,
+          "SourceKind": 2,
+          "MappingStatus": 1,
+          "Value": false,
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "PublicCurrentFacts/current-public-display",
+            "Evidence": "docs/cn/PUBLIC-INPUT-GAPS-20260925.md",
+            "DerivationInputs": []
+          }
+        },
+        "RiichiDiscardIndex": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "立直声明牌位置未确认。"
+        },
+        "River": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "牌河及顺序未验证。"
+        },
+        "Melds": {
+          "Availability": 0,
+          "SourceKind": 0,
+          "MappingStatus": 0,
+          "Reason": "公开副露未读取；未知不等于无副露。"
+        },
+        "RiverImages": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "Tiles": [
+              {
+                "Tile": {
+                  "Id": 2,
+                  "Red": false,
+                  "ChineseName": "3万"
+                },
+                "SlotPath": "Emj/127/4",
+                "GroupPath": "Emj/127",
+                "X": 2127.008,
+                "Y": 583.56,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": 90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 1,
+                  "ReadOrder": 1,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 5,
+                  "Red": false,
+                  "ChineseName": "6万"
+                },
+                "SlotPath": "Emj/1270001/4",
+                "GroupPath": "Emj/1270001",
+                "X": 2127.008,
+                "Y": 631.16,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": 90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 2,
+                  "ReadOrder": 2,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 26,
+                  "Red": false,
+                  "ChineseName": "9索"
+                },
+                "SlotPath": "Emj/1270002/4",
+                "GroupPath": "Emj/1270002",
+                "X": 2127.008,
+                "Y": 678.76,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": 90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 3,
+                  "ReadOrder": 3,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 10,
+                  "Red": false,
+                  "ChineseName": "2筒"
+                },
+                "SlotPath": "Emj/1270003/4",
+                "GroupPath": "Emj/1270003",
+                "X": 2127.008,
+                "Y": 726.36,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": 90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 4,
+                  "ReadOrder": 4,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "SlotPath": "Emj/1270004/4",
+                "GroupPath": "Emj/1270004",
+                "X": 2127.008,
+                "Y": 773.95996,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": 90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 5,
+                  "ReadOrder": 5,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-public-river-shading",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                },
+                "WasClaimed": {
+                  "Availability": 1,
+                  "SourceKind": 2,
+                  "MappingStatus": 1,
+                  "Value": false,
+                  "Observation": {
+                    "Sequence": 2945,
+                    "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+                    "Source": "PublicDiscardSemantics/Emj-called-river-overlay",
+                    "Evidence": "docs/cn/LIVE-DISCARD-STYLE-EVIDENCE.md; CN 2026.09.15; 102 independent hand-discard cases and 64 unique drawn-tile-discard cases; docs/cn/PUBLIC-CALL-TRANSITIONS-20260924.md; 24 clean called-color overlay transitions",
+                    "DerivationInputs": [
+                      "public river template Res 3 AddRGB/MultiplyRGB/Style"
+                    ]
+                  }
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 25,
+                  "Red": false,
+                  "ChineseName": "8索"
+                },
+                "SlotPath": "Emj/1270005/4",
+                "GroupPath": "Emj/1270005",
+                "X": 2127.008,
+                "Y": 839.76,
+                "Width": 56.784,
+                "Height": 43.68,
+                "RotationDegrees": 90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": {
+                  "DisplayRow": 1,
+                  "VisibleColumn": 6,
+                  "ReadOrder": 6,
+                  "IsSideways": false,
+                  "IsEventOrder": false
+                },
+                "Style": {
+                  "AddRed": 88,
+                  "AddGreen": 88,
+                  "AddBlue": 88,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "unclassified",
+                  "ResponseHighlight": true,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 0,
+                  "SourceKind": 0,
+                  "MappingStatus": 0,
+                  "Reason": "当前响应菜单的牌河高亮动画，包括亮度归零阶段；不能据此推定摸切或被鸣。"
+                },
+                "WasClaimed": {
+                  "Availability": 0,
+                  "SourceKind": 0,
+                  "MappingStatus": 0,
+                  "Reason": "当前响应菜单的牌河高亮动画，包括亮度归零阶段；不能据此推定摸切或被鸣。"
+                }
+              }
+            ],
+            "Stable": true,
+            "RegionReadable": true,
+            "AllVisibleSlotsDecoded": true,
+            "ObservedEmpty": false,
+            "VisibleSlots": 6,
+            "UnknownComponents": 0,
+            "RejectionCodes": [],
+            "Groups": [],
+            "HasChronologicalOrder": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicTableTracker:Emj",
+            "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+            "DerivationInputs": []
+          }
+        },
+        "MeldImages": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "Tiles": [
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "SlotPath": "Emj/115/2/4",
+                "GroupPath": "Emj/115",
+                "X": 1861.106,
+                "Y": 944.62,
+                "Width": 42.587997,
+                "Height": 32.76,
+                "RotationDegrees": 90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": null,
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 0,
+                  "SourceKind": 0,
+                  "MappingStatus": 0,
+                  "Reason": "只有稳定牌河图像可解释摸切颜色；副露和动画不适用。"
+                },
+                "WasClaimed": {
+                  "Availability": 0,
+                  "SourceKind": 0,
+                  "MappingStatus": 0,
+                  "Reason": "只有稳定牌河图像可解释被鸣颜色；副露和动画不适用。"
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "SlotPath": "Emj/115/3/4",
+                "GroupPath": "Emj/115",
+                "X": 1861.106,
+                "Y": 981.01996,
+                "Width": 42.587997,
+                "Height": 32.76,
+                "RotationDegrees": 90,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": null,
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 0,
+                  "SourceKind": 0,
+                  "MappingStatus": 0,
+                  "Reason": "只有稳定牌河图像可解释摸切颜色；副露和动画不适用。"
+                },
+                "WasClaimed": {
+                  "Availability": 0,
+                  "SourceKind": 0,
+                  "MappingStatus": 0,
+                  "Reason": "只有稳定牌河图像可解释被鸣颜色；副露和动画不适用。"
+                }
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "SlotPath": "Emj/115/4/4",
+                "GroupPath": "Emj/115",
+                "X": 1860.42,
+                "Y": 1017.756,
+                "Width": 32.76,
+                "Height": 42.587997,
+                "RotationDegrees": 0,
+                "Mirrored": false,
+                "Stable": true,
+                "DisplayPosition": null,
+                "Style": {
+                  "AddRed": 0,
+                  "AddGreen": 0,
+                  "AddBlue": 0,
+                  "MultiplyRed": 100,
+                  "MultiplyGreen": 100,
+                  "MultiplyBlue": 100,
+                  "Name": "normal",
+                  "ResponseHighlight": false,
+                  "CalledTileMeaningVerified": false,
+                  "TsumogiriMeaningVerified": false
+                },
+                "Tsumogiri": {
+                  "Availability": 0,
+                  "SourceKind": 0,
+                  "MappingStatus": 0,
+                  "Reason": "只有稳定牌河图像可解释摸切颜色；副露和动画不适用。"
+                },
+                "WasClaimed": {
+                  "Availability": 0,
+                  "SourceKind": 0,
+                  "MappingStatus": 0,
+                  "Reason": "只有稳定牌河图像可解释被鸣颜色；副露和动画不适用。"
+                }
+              }
+            ],
+            "Stable": true,
+            "RegionReadable": true,
+            "AllVisibleSlotsDecoded": true,
+            "ObservedEmpty": false,
+            "VisibleSlots": 3,
+            "UnknownComponents": 0,
+            "RejectionCodes": [],
+            "Groups": [
+              {
+                "GroupPath": "Emj/115",
+                "VisibleSlots": 3,
+                "KnownFaces": 3,
+                "VerifiedBackSlots": 0,
+                "Stable": true,
+                "ShapeCode": "PUBLIC_PON_THREE_FACE_PATTERN",
+                "InferredClosedKanKind34": null
+              }
+            ],
+            "HasChronologicalOrder": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicTableTracker:Emj",
+            "Evidence": "docs/cn/PUBLIC-TABLE-EVIDENCE.md; fixed public image resources; no chronological inference",
+            "DerivationInputs": []
+          }
+        },
+        "OpponentHandAppearance": {
+          "Availability": 1,
+          "SourceKind": 1,
+          "MappingStatus": 0,
+          "Value": {
+            "VisibleSlots": 10,
+            "VerifiedBackCount": 10,
+            "CountComplete": true,
+            "SeparateDrawSlotVisible": false,
+            "Slots": [
+              {
+                "SlotPath": "Emj/144/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440001/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440002/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440003/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440004/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440005/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440006/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440007/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440008/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              },
+              {
+                "SlotPath": "Emj/1440009/4",
+                "StateRevision": 2945,
+                "SeparateDrawSlot": false,
+                "BackVerified": true,
+                "Code": "OPPONENT_BACK_RESOURCE_VERIFIED"
+              }
+            ],
+            "Code": "OPPONENT_VISIBLE_BACK_COUNT_CANDIDATE",
+            "IsDrawEvent": false,
+            "HistoryComplete": false
+          },
+          "Observation": {
+            "Sequence": 2945,
+            "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+            "Source": "VisibleUiReader/PublicOpponentHandReader:left",
+            "Evidence": "fixed visible EmjTile back-only slots; no hidden face image/resource access; appearance is not a draw event",
+            "DerivationInputs": []
+          }
+        }
+      }
+    ],
+    "OurPlayerId": {
+      "Availability": 1,
+      "SourceKind": 2,
+      "MappingStatus": 1,
+      "Value": 0,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+        "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+        "DerivationInputs": [
+          "Players.Lower.SeatWind",
+          "Players.Right.SeatWind",
+          "Players.Upper.SeatWind",
+          "Players.Left.SeatWind"
+        ]
+      }
+    },
+    "PlayerIdBasis": {
+      "Availability": 1,
+      "SourceKind": 2,
+      "MappingStatus": 1,
+      "Value": 1,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+        "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+        "DerivationInputs": [
+          "Players.Lower.SeatWind",
+          "Players.Right.SeatWind",
+          "Players.Upper.SeatWind",
+          "Players.Left.SeatWind"
+        ]
+      }
+    },
+    "DealerPlayerId": {
+      "Availability": 1,
+      "SourceKind": 2,
+      "MappingStatus": 1,
+      "Value": 2,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "PublicObservationAssembler/ScreenRelativePlayerIdentity",
+        "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
+        "DerivationInputs": [
+          "Players.Lower.SeatWind",
+          "Players.Right.SeatWind",
+          "Players.Upper.SeatWind",
+          "Players.Left.SeatWind"
+        ]
+      }
+    },
+    "RoundWind": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 1,
+      "Value": 0,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/RoundTitleCatalog:Emj/19",
+        "Evidence": "docs/cn/evidence/round-title-resource-catalog.json; cn-emj-round-title-icons-20260924",
+        "DerivationInputs": []
+      }
+    },
+    "HandNumber": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 1,
+      "Value": 1,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/RoundTitleCatalog:Emj/19",
+        "Evidence": "docs/cn/evidence/round-title-resource-catalog.json; cn-emj-round-title-icons-20260924",
+        "DerivationInputs": []
+      }
+    },
+    "Honba": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 1,
+      "Value": 3,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/PublicStatusReader:Emj",
+        "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/23",
+        "DerivationInputs": []
+      }
+    },
+    "RiichiSticks": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 1,
+      "Value": 0,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/PublicStatusReader:Emj",
+        "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/22",
+        "DerivationInputs": []
+      }
+    },
+    "WallRemaining": {
+      "Availability": 1,
+      "SourceKind": 2,
+      "MappingStatus": 1,
+      "Value": 51,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/PublicStatusReader:Emj",
+        "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24",
+        "DerivationInputs": [
+          "Emj/105/2/2",
+          "Emj/105/3/2"
+        ]
+      }
+    },
+    "TurnPlayerId": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "当前行动玩家未映射。"
+    },
+    "OurDoubleRiichi": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "双立直状态未读取。"
+    },
+    "LowerVisibleFaces": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 1,
+      "Value": [
+        {
+          "Tile": {
+            "Id": 3,
+            "Red": false,
+            "ChineseName": "4万"
+          },
+          "Slot": {
+            "Path": "Emj/134/9/4",
+            "DisplayPosition": 1,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 4,
+            "Red": false,
+            "ChineseName": "5万"
+          },
+          "Slot": {
+            "Path": "Emj/1340001/9/4",
+            "DisplayPosition": 2,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 5,
+            "Red": false,
+            "ChineseName": "6万"
+          },
+          "Slot": {
+            "Path": "Emj/1340002/9/4",
+            "DisplayPosition": 3,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 14,
+            "Red": false,
+            "ChineseName": "6筒"
+          },
+          "Slot": {
+            "Path": "Emj/1340003/9/4",
+            "DisplayPosition": 4,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 15,
+            "Red": false,
+            "ChineseName": "7筒"
+          },
+          "Slot": {
+            "Path": "Emj/1340004/9/4",
+            "DisplayPosition": 5,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 16,
+            "Red": false,
+            "ChineseName": "8筒"
+          },
+          "Slot": {
+            "Path": "Emj/1340005/9/4",
+            "DisplayPosition": 6,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 20,
+            "Red": false,
+            "ChineseName": "3索"
+          },
+          "Slot": {
+            "Path": "Emj/1340006/9/4",
+            "DisplayPosition": 7,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 20,
+            "Red": false,
+            "ChineseName": "3索"
+          },
+          "Slot": {
+            "Path": "Emj/1340007/9/4",
+            "DisplayPosition": 8,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 20,
+            "Red": false,
+            "ChineseName": "3索"
+          },
+          "Slot": {
+            "Path": "Emj/1340008/9/4",
+            "DisplayPosition": 9,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 23,
+            "Red": false,
+            "ChineseName": "6索"
+          },
+          "Slot": {
+            "Path": "Emj/1340009/9/4",
+            "DisplayPosition": 10,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 24,
+            "Red": false,
+            "ChineseName": "7索"
+          },
+          "Slot": {
+            "Path": "Emj/1340010/9/4",
+            "DisplayPosition": 11,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 30,
+            "Red": false,
+            "ChineseName": "北"
+          },
+          "Slot": {
+            "Path": "Emj/1340011/9/4",
+            "DisplayPosition": 12,
+            "StateRevision": 2945
+          }
+        },
+        {
+          "Tile": {
+            "Id": 30,
+            "Red": false,
+            "ChineseName": "北"
+          },
+          "Slot": {
+            "Path": "Emj/1340012/9/4",
+            "DisplayPosition": 13,
+            "StateRevision": 2945
+          }
+        }
+      ],
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/LowerHandTracker:Emj",
+        "Evidence": "docs/cn/TILE-RESOURCE-EVIDENCE.md; docs/cn/FOURTH-CAPTURE.md; docs/cn/PUBLIC-MONITOR-EVIDENCE.md",
+        "DerivationInputs": []
+      }
+    },
+    "OwnHand": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "完整实体手牌尚未确认；下方可见牌面不能代替。"
+    },
+    "HasDrawnTile": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "本观察是否有独立摸牌未确认。"
+    },
+    "OwnDrawKind": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "当前摸牌来源尚无连续公开证据。"
+    },
+    "DrawnTileSlot": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "摸牌身份未确认，不能假设最右牌就是摸牌。"
+    },
+    "DoraMode": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 1,
+      "Value": 1,
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/PublicStatusReader:Emj",
+        "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; CN 2026.09.15 ordinary public display compared on 2026-09-24; paths=Emj/27",
+        "DerivationInputs": []
+      }
+    },
+    "DoraDisplay": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 1,
+      "Value": [
+        {
+          "Id": 0,
+          "Red": false,
+          "ChineseName": "1万"
+        }
+      ],
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/PublicDoraReader:Emj",
+        "Evidence": "docs/cn/LIVE-PUBLIC-STATUS-EVIDENCE.md; docs/cn/PUBLIC-INPUT-GAPS-20260925.md; fixed Emj/28..32/2 public display resource identities; display mode is read separately; not a flip event",
+        "DerivationInputs": []
+      }
+    },
+    "LegalActions": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "合法动作菜单未验证。"
+    },
+    "VisibleActionMenu": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 0,
+      "Value": {
+        "Visible": true,
+        "AllVisibleRowsDecoded": true,
+        "Rows": [
+          {
+            "Path": "Emj/104/3/2",
+            "ScreenY": 972.19995,
+            "StateRevision": 2945,
+            "Action": 4,
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE"
+          },
+          {
+            "Path": "Emj/104/3/21001",
+            "ScreenY": 1016.99994,
+            "StateRevision": 2945,
+            "Action": 7,
+            "Enabled": true,
+            "Code": "ACTION_MENU_LABEL_CANDIDATE"
+          }
+        ],
+        "Code": "ACTION_MENU_VISIBLE_CANDIDATE",
+        "CompleteLegalActions": false,
+        "ActionOccurred": false
+      },
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/PublicActionMenuReader:Emj/104/3",
+        "Evidence": "fixed Emj 1052/1030/1029/text4 ownership and finite action labels; menu semantics remain Candidate",
+        "DerivationInputs": []
+      }
+    },
+    "DiscardableSlots": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "当前可弃牌槽位未验证。"
+    },
+    "StatusCandidates": {
+      "Availability": 1,
+      "SourceKind": 1,
+      "MappingStatus": 0,
+      "Value": {
+        "Values": [
+          {
+            "Path": "Emj/105/3/2",
+            "Field": "CenterCounterRight",
+            "Position": null,
+            "Number": 1,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/105/2/2",
+            "Field": "CenterCounterLeft",
+            "Position": null,
+            "Number": 5,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/44/13/3",
+            "Field": "PlayerScore",
+            "Position": 3,
+            "Number": 14200,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/44/13/2",
+            "Field": "PlayerScore",
+            "Position": 3,
+            "Number": 14200,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/44/10",
+            "Field": "SeatWind",
+            "Position": 3,
+            "Number": 1,
+            "Value": "南",
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/42/13/3",
+            "Field": "PlayerScore",
+            "Position": 2,
+            "Number": 57400,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/42/13/2",
+            "Field": "PlayerScore",
+            "Position": 2,
+            "Number": 57400,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/42/10",
+            "Field": "SeatWind",
+            "Position": 2,
+            "Number": 0,
+            "Value": "东",
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/40/13/3",
+            "Field": "PlayerScore",
+            "Position": 1,
+            "Number": 14200,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/40/13/2",
+            "Field": "PlayerScore",
+            "Position": 1,
+            "Number": 14200,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/40/10",
+            "Field": "SeatWind",
+            "Position": 1,
+            "Number": 3,
+            "Value": "北",
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/38/12/3",
+            "Field": "PlayerScore",
+            "Position": 0,
+            "Number": 14200,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/38/12/2",
+            "Field": "PlayerScore",
+            "Position": 0,
+            "Number": 14200,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/38/9",
+            "Field": "SeatWind",
+            "Position": 0,
+            "Number": 2,
+            "Value": "西",
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/27",
+            "Field": "DoraDisplayLabel",
+            "Position": null,
+            "Number": null,
+            "Value": "宝牌（多玛式）",
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/23",
+            "Field": "TopBlackStickCount",
+            "Position": null,
+            "Number": 3,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/22",
+            "Field": "TopRedStickCount",
+            "Position": null,
+            "Number": 0,
+            "Value": null,
+            "Code": "PUBLIC_STATUS_VALUE_CANDIDATE"
+          },
+          {
+            "Path": "Emj/15",
+            "Field": "RoundHeader",
+            "Position": null,
+            "Number": null,
+            "Value": null,
+            "Code": "STATUS_VALUE_UNAVAILABLE"
+          }
+        ]
+      },
+      "Observation": {
+        "Sequence": 2945,
+        "ObservedAtUtc": "2026-09-25T10:34:32.9871488+00:00",
+        "Source": "VisibleUiReader/PublicStatusReader:Emj",
+        "Evidence": "docs/cn/VISIBLE-FIELDS-EVIDENCE.md; bounded allowlisted parsed values; semantic mapping is Candidate",
+        "DerivationInputs": []
+      }
+    },
+    "LegacySeats": [],
+    "LegacySeatsWerePresent": false,
+    "LegacyOurSeat": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "没有旧座位信息。"
+    },
+    "LegacyTurnIndex": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "没有旧轮转信息。"
+    },
+    "LegacyDrawnTileKnown": {
+      "Availability": 0,
+      "SourceKind": 0,
+      "MappingStatus": 0,
+      "Reason": "没有旧摸牌标记。"
+    }
+  },
+  "ExpectedMove": "hora"
+}

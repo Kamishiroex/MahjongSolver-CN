@@ -1,0 +1,590 @@
+{
+  "Schema": "mjcn-public-river-prefix-example-v1",
+  "SourceSession": "mjcn-live-20260924-091538",
+  "SourceEventsSha256": "8f3bcf6bf48460141559bd14d37d011e06198698db1040a2481fdeb596cc6fd2",
+  "Note": "Exact current river DTOs only. Selected frames demonstrate a local two-discard prefix; not complete Mahjong event history.",
+  "Frames": [
+    {
+      "Sample": 1422,
+      "Utc": "2026-09-24T09:18:14.1072869+00:00",
+      "RoundTitleIcon": 121455,
+      "Addon": {
+        "Name": "Emj",
+        "Present": true,
+        "Visible": true,
+        "Ready": true,
+        "AtkValueCount": 109,
+        "Error": null,
+        "VisibleNodes": [],
+        "PublicTableReading": {
+          "Code": "PUBLIC_IMAGES_PARTIAL_CANDIDATE",
+          "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+          "Stable": false,
+          "Tiles": [],
+          "Rejections": [],
+          "MeldGroups": [],
+          "Areas": [
+            {
+              "Area": "river-bottom",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-right",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-top",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-left",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            }
+          ]
+        },
+        "PublicTableFaces": []
+      }
+    },
+    {
+      "Sample": 1437,
+      "Utc": "2026-09-24T09:18:15.744209+00:00",
+      "RoundTitleIcon": 121455,
+      "Addon": {
+        "Name": "Emj",
+        "Present": true,
+        "Visible": true,
+        "Ready": true,
+        "AtkValueCount": 109,
+        "Error": null,
+        "VisibleNodes": [],
+        "PublicTableReading": {
+          "Code": "PUBLIC_IMAGES_PARTIAL_CANDIDATE",
+          "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+          "Stable": false,
+          "Tiles": [
+            {
+              "Area": "river-bottom",
+              "ScreenDirection": "bottom",
+              "SlotPath": "Emj/118/4",
+              "GroupPath": "Emj/118",
+              "X": 1311.625,
+              "Y": 830.4412,
+              "Width": 48.06869,
+              "Height": 62.4893,
+              "RotationDegrees": 0,
+              "Mirrored": false,
+              "Kind34": 28,
+              "RedFive": false,
+              "ChineseName": "南",
+              "Stable": false,
+              "RiverPosition": {
+                "DisplayRow": 1,
+                "VisibleColumn": 1,
+                "ReadOrder": 1,
+                "IsSideways": false
+              },
+              "VisualMark": {
+                "AddRed": 0,
+                "AddGreen": 0,
+                "AddBlue": 0,
+                "MultiplyRed": 100,
+                "MultiplyGreen": 100,
+                "MultiplyBlue": 100,
+                "Style": "normal",
+                "CalledTileMeaningVerified": false,
+                "TsumogiriMeaningVerified": false
+              },
+              "Quality": "Candidate"
+            }
+          ],
+          "Rejections": [],
+          "MeldGroups": [],
+          "Areas": [
+            {
+              "Area": "river-bottom",
+              "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": false,
+              "VisibleSlots": 1,
+              "UnknownComponents": 0,
+              "Stable": false,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-right",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-top",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-left",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            }
+          ]
+        },
+        "PublicTableFaces": [
+          {
+            "Area": "river-bottom",
+            "ScreenDirection": "bottom",
+            "SlotPath": "Emj/118/4",
+            "GroupPath": "Emj/118",
+            "Template": 1021,
+            "X": 1311.625,
+            "Y": 830.4412,
+            "Width": 48.06869,
+            "Height": 62.4893,
+            "RotationDegrees": 0,
+            "Mirrored": false,
+            "IconId": 76069,
+            "FacePathHash": 4130467896,
+            "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Sample": 1441,
+      "Utc": "2026-09-24T09:18:16.183626+00:00",
+      "RoundTitleIcon": 121455,
+      "Addon": {
+        "Name": "Emj",
+        "Present": true,
+        "Visible": true,
+        "Ready": true,
+        "AtkValueCount": 109,
+        "Error": null,
+        "VisibleNodes": [],
+        "PublicTableReading": {
+          "Code": "PUBLIC_IMAGES_STABLE_CANDIDATE",
+          "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+          "Stable": true,
+          "Tiles": [
+            {
+              "Area": "river-bottom",
+              "ScreenDirection": "bottom",
+              "SlotPath": "Emj/118/4",
+              "GroupPath": "Emj/118",
+              "X": 1295.76,
+              "Y": 825.008,
+              "Width": 43.679996,
+              "Height": 56.783997,
+              "RotationDegrees": 0,
+              "Mirrored": false,
+              "Kind34": 28,
+              "RedFive": false,
+              "ChineseName": "南",
+              "Stable": true,
+              "RiverPosition": {
+                "DisplayRow": 1,
+                "VisibleColumn": 1,
+                "ReadOrder": 1,
+                "IsSideways": false
+              },
+              "VisualMark": {
+                "AddRed": 0,
+                "AddGreen": 0,
+                "AddBlue": 0,
+                "MultiplyRed": 100,
+                "MultiplyGreen": 100,
+                "MultiplyBlue": 100,
+                "Style": "normal",
+                "CalledTileMeaningVerified": false,
+                "TsumogiriMeaningVerified": false
+              },
+              "Quality": "Candidate"
+            }
+          ],
+          "Rejections": [],
+          "MeldGroups": [],
+          "Areas": [
+            {
+              "Area": "river-bottom",
+              "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": false,
+              "VisibleSlots": 1,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-right",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-top",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-left",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            }
+          ]
+        },
+        "PublicTableFaces": [
+          {
+            "Area": "river-bottom",
+            "ScreenDirection": "bottom",
+            "SlotPath": "Emj/118/4",
+            "GroupPath": "Emj/118",
+            "Template": 1021,
+            "X": 1295.76,
+            "Y": 825.008,
+            "Width": 43.679996,
+            "Height": 56.783997,
+            "RotationDegrees": 0,
+            "Mirrored": false,
+            "IconId": 76069,
+            "FacePathHash": 4130467896,
+            "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Sample": 1451,
+      "Utc": "2026-09-24T09:18:17.2737748+00:00",
+      "RoundTitleIcon": 121455,
+      "Addon": {
+        "Name": "Emj",
+        "Present": true,
+        "Visible": true,
+        "Ready": true,
+        "AtkValueCount": 109,
+        "Error": null,
+        "VisibleNodes": [],
+        "PublicTableReading": {
+          "Code": "PUBLIC_IMAGES_STABLE_CANDIDATE",
+          "Reason": "仅为当前可见牌面候选；屏幕方向不是门风，槽位不是出牌顺序，副露种类、来源及缺失历史未知。",
+          "Stable": true,
+          "Tiles": [
+            {
+              "Area": "river-bottom",
+              "ScreenDirection": "bottom",
+              "SlotPath": "Emj/118/4",
+              "GroupPath": "Emj/118",
+              "X": 1295.76,
+              "Y": 825.008,
+              "Width": 43.679996,
+              "Height": 56.783997,
+              "RotationDegrees": 0,
+              "Mirrored": false,
+              "Kind34": 28,
+              "RedFive": false,
+              "ChineseName": "南",
+              "Stable": true,
+              "RiverPosition": {
+                "DisplayRow": 1,
+                "VisibleColumn": 1,
+                "ReadOrder": 1,
+                "IsSideways": false
+              },
+              "VisualMark": {
+                "AddRed": 0,
+                "AddGreen": 0,
+                "AddBlue": 0,
+                "MultiplyRed": 100,
+                "MultiplyGreen": 100,
+                "MultiplyBlue": 100,
+                "Style": "normal",
+                "CalledTileMeaningVerified": false,
+                "TsumogiriMeaningVerified": false
+              },
+              "Quality": "Candidate"
+            },
+            {
+              "Area": "river-right",
+              "ScreenDirection": "right",
+              "SlotPath": "Emj/121/4",
+              "GroupPath": "Emj/121",
+              "X": 1556.608,
+              "Y": 775.56,
+              "Width": 56.784,
+              "Height": 43.68,
+              "RotationDegrees": -90,
+              "Mirrored": false,
+              "Kind34": 6,
+              "RedFive": false,
+              "ChineseName": "7万",
+              "Stable": true,
+              "RiverPosition": {
+                "DisplayRow": 1,
+                "VisibleColumn": 1,
+                "ReadOrder": 1,
+                "IsSideways": false
+              },
+              "VisualMark": {
+                "AddRed": 0,
+                "AddGreen": 0,
+                "AddBlue": 0,
+                "MultiplyRed": 100,
+                "MultiplyGreen": 100,
+                "MultiplyBlue": 100,
+                "Style": "normal",
+                "CalledTileMeaningVerified": false,
+                "TsumogiriMeaningVerified": false
+              },
+              "Quality": "Candidate"
+            }
+          ],
+          "Rejections": [],
+          "MeldGroups": [],
+          "Areas": [
+            {
+              "Area": "river-bottom",
+              "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": false,
+              "VisibleSlots": 1,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-right",
+              "Code": "PUBLIC_AREA_VISIBLE_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": false,
+              "VisibleSlots": 1,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-top",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            },
+            {
+              "Area": "river-left",
+              "Code": "PUBLIC_AREA_EMPTY_CANDIDATE",
+              "ContainerVerified": true,
+              "ContainerVisible": true,
+              "EnumerationCompleted": true,
+              "ObservedEmptyCandidate": true,
+              "VisibleSlots": 0,
+              "UnknownComponents": 0,
+              "Stable": true,
+              "VisibleGroups": 0,
+              "VerifiedRegionRoots": 0
+            }
+          ]
+        },
+        "PublicTableFaces": [
+          {
+            "Area": "river-bottom",
+            "ScreenDirection": "bottom",
+            "SlotPath": "Emj/118/4",
+            "GroupPath": "Emj/118",
+            "Template": 1021,
+            "X": 1295.76,
+            "Y": 825.008,
+            "Width": 43.679996,
+            "Height": 56.783997,
+            "RotationDegrees": 0,
+            "Mirrored": false,
+            "IconId": 76069,
+            "FacePathHash": 4130467896,
+            "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            }
+          },
+          {
+            "Area": "river-right",
+            "ScreenDirection": "right",
+            "SlotPath": "Emj/121/4",
+            "GroupPath": "Emj/121",
+            "Template": 1023,
+            "X": 1556.608,
+            "Y": 775.56,
+            "Width": 56.784,
+            "Height": 43.68,
+            "RotationDegrees": -90,
+            "Mirrored": false,
+            "IconId": 76047,
+            "FacePathHash": 973536151,
+            "Code": "PUBLIC_FACE_RESOURCE_VERIFIED",
+            "RiverPosition": {
+              "DisplayRow": 1,
+              "VisibleColumn": 1,
+              "ReadOrder": 1,
+              "IsSideways": false
+            },
+            "VisualMark": {
+              "AddRed": 0,
+              "AddGreen": 0,
+              "AddBlue": 0,
+              "MultiplyRed": 100,
+              "MultiplyGreen": 100,
+              "MultiplyBlue": 100,
+              "Style": "normal",
+              "CalledTileMeaningVerified": false,
+              "TsumogiriMeaningVerified": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

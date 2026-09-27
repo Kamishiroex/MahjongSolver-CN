@@ -1,0 +1,90 @@
+{
+  "Source": "CN public journal 2026-09-26; selected excerpts, submission is not acknowledgement",
+  "GameVersion": "2026.09.15.0000.0000",
+  "PluginVersion": "0.6.4.3",
+  "Choice": {
+    "Kind": 2,
+    "DiscardTile": {
+      "Id": 25
+    },
+    "Call": null,
+    "Reasoning": "AKOCHAN_GLOBAL: 凡夫 Mortal V4；引擎评分 0.69，耗时 32 毫秒。AKOCHAN_GLOBAL: AI 选择立直，打出8索。",
+    "Steps": null,
+    "DiscardRed": false,
+    "DiscardTsumogiri": false,
+    "ReasonSteps": []
+  },
+  "InitialLegalFlags": 515,
+  "AfterRuntime": {
+    "Utc": "2026-09-25T18:14:52.0288897+00:00",
+    "State": 6,
+    "HandIds": [
+      3,
+      4,
+      5,
+      13,
+      14,
+      15,
+      17,
+      17,
+      17,
+      20,
+      21,
+      23,
+      25,
+      23
+    ],
+    "Wall": 42
+  },
+  "Submission": {
+    "Utc": "2026-09-25T18:14:52.0289159+00:00",
+    "ObservationSessionId": "8e129570-4040-41c4-ab02-c2d614050e9f",
+    "ObservationSequence": 263,
+    "Label": "riichi",
+    "Result": "Submitted",
+    "Option": 0,
+    "TileId": 25,
+    "Slot": null,
+    "AddonStateCode": 6,
+    "Route": "registered-list-click",
+    "Source": "InputDispatcher/submission",
+    "ActionConfirmed": false
+  },
+  "AfterLegalFlags": 1,
+  "AfterMenu": {
+    "Utc": "2026-09-25T18:14:52.1676765+00:00",
+    "Value": {
+      "Visible": false,
+      "AllVisibleRowsDecoded": false,
+      "Rows": [],
+      "Code": "ACTION_MENU_NOT_VISIBLE",
+      "CompleteLegalActions": false,
+      "ActionOccurred": false
+    }
+  },
+  "Stop": {
+    "Utc": "2026-09-25T18:15:02.0593294+00:00",
+    "Reason": "AUTO_OUTCOME_TIMEOUT: riichi 已发送，但未观察到牌局变化；不会盲目重复发送。",
+    "Mode": "Automatic",
+    "Layout": "Emj",
+    "RuntimeSequence": 263,
+    "Error": null,
+    "Menu": {
+      "StateCode": 6,
+      "CallModalVisible": false,
+      "VisibleListLabels": [],
+      "ParentLabels": []
+    },
+    "Dispatch": {
+      "StateCode": 6,
+      "Option": 0,
+      "ParentLabels": [
+        "Riichi",
+        "Pass"
+      ],
+      "Route": "registered-list-click",
+      "Result": 0,
+      "NativeReturn": null
+    }
+  }
+}

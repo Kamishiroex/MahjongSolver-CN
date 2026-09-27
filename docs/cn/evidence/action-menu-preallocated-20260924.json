@@ -1,0 +1,71 @@
+{
+  "Schema": "mjcn-public-action-menu-preallocated-v1",
+  "GameVersion": "2026.09.15.0000.0000",
+  "ClientStructsCommit": "f824354f4a6a2b1cd16cc8fcb670c7a66bf64880",
+  "SourceSession": "mjcn-live-20260924-091538",
+  "SourceSample": 2,
+  "SourceUtc": "2026-09-24T09:15:39.2507222+00:00",
+  "SourceCaptureDurationMilliseconds": 33.283,
+  "PublicActionMenu": {
+    "Code": "ACTION_MENU_PARTIAL_CANDIDATE",
+    "Visible": true,
+    "AllVisibleRowsDecoded": false,
+    "Rows": [
+      {
+        "Path": "Emj/104/3/2",
+        "ScreenY": 989.19995,
+        "Action": "Tsumo",
+        "Enabled": true,
+        "Code": "ACTION_MENU_LABEL_CANDIDATE"
+      },
+      {
+        "Path": "Emj/104/3/21002",
+        "ScreenY": 989.19995,
+        "Action": null,
+        "Enabled": true,
+        "Code": "ACTION_MENU_TEXT_INVALID"
+      },
+      {
+        "Path": "Emj/104/3/21003",
+        "ScreenY": 989.19995,
+        "Action": null,
+        "Enabled": true,
+        "Code": "ACTION_MENU_TEXT_INVALID"
+      },
+      {
+        "Path": "Emj/104/3/21004",
+        "ScreenY": 989.19995,
+        "Action": null,
+        "Enabled": true,
+        "Code": "ACTION_MENU_TEXT_INVALID"
+      },
+      {
+        "Path": "Emj/104/3/21005",
+        "ScreenY": 989.19995,
+        "Action": null,
+        "Enabled": true,
+        "Code": "ACTION_MENU_TEXT_INVALID"
+      },
+      {
+        "Path": "Emj/104/3/21006",
+        "ScreenY": 989.19995,
+        "Action": null,
+        "Enabled": true,
+        "Code": "ACTION_MENU_TEXT_INVALID"
+      },
+      {
+        "Path": "Emj/104/3/21001",
+        "ScreenY": 1034,
+        "Action": "Pass",
+        "Enabled": true,
+        "Code": "ACTION_MENU_LABEL_CANDIDATE"
+      }
+    ],
+    "MappingStatus": "Candidate",
+    "CompleteLegalActions": false,
+    "ActionOccurred": false
+  },
+  "ActiveRendererMetadataCaptured": false,
+  "Interpretation": "Raw old-reader observation only. Seven node candidates are not seven confirmed menu items. Active list membership was not captured; this cannot validate the new renderer binding.",
+  "SourceEventsSha256": "8f3bcf6bf48460141559bd14d37d011e06198698db1040a2481fdeb596cc6fd2"
+}

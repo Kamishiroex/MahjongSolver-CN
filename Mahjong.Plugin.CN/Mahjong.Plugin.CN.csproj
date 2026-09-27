@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>$(DefineConstants);MAHJONG_CN</DefineConstants>
+    <Version>4.1.4</Version>
+    <AssemblyName>Mahjong.Plugin.CN</AssemblyName>
+    <RootNamespace>Mahjong.Plugin.CN</RootNamespace>
+    <Description>默认采用上游求解器，提供国服对局辅助与任务管理。</Description>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-09-25-01</DalamudLibPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dalamud;Dalamud.Common;Dalamud.Bindings.ImGui;FFXIVClientStructs;InteropGenerator.Runtime;Lumina;Lumina.Excel;Newtonsoft.Json;ImGuiScene;HexaGen.Runtime">
+      <HintPath>$(DalamudLibPath)\%(Identity).dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <ProjectReference Include="..\Mahjong.Cn.Core\Mahjong.Cn.Core.csproj" />
+    <ProjectReference Include="..\Mahjong.Plugin.Game\Mahjong.Plugin.Game.csproj" />
+    <InternalsVisibleTo Include="Mahjong.Plugin.CN.Gameplay.Tests" />
+    <None Update="Mahjong.Plugin.CN.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Reuse upstream gameplay modules, not its plugin entry, telemetry or raw dump services. -->
+    <Compile Include="..\Mahjong.Plugin.Dalamud\GlobalUsings.cs" Link="Upstream\GlobalUsings.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud\Configuration.cs" Link="Upstream\Configuration.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud\Composition\DalamudConfigService.cs" Link="Upstream\DalamudConfigService.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud\GameState\**\*.cs" Link="Upstream\GameState\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud\Actions\*.cs" Link="Upstream\Actions\%(Filename)%(Extension)" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud\Logging\FindingsLog.cs" Link="Upstream\FindingsLog.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud\Logging\ErrorSink.cs" Link="Upstream\ErrorSink.cs" />
+    <Compile Include="..\Mahjong.Plugin.Dalamud\Logging\PathRedactor.cs" Link="Upstream\PathRedactor.cs" />
+    <Content Include="..\data\layouts\*.json" Link="layouts\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="CheckDalamud" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(DalamudLibPath)\Dalamud.dll')" Text="未找到固定版本国服 Dalamud 库。请运行 scripts/build-cn.ps1 -DalamudLibPath &lt;26-09-25-01目录&gt;。" />
+  </Target>
+</Project>

@@ -1,0 +1,111 @@
+{
+    "Evidence":  "Real CN 0.6.1.5 journal excerpt, menu public order; native renderer memory in tests is constructed",
+    "Client":  "2026.09.15.0000.0000",
+    "Session":  "mjcn-game-20260925-084652-3c7ceba210af4deb82ed399ae1c9cb27",
+    "MenuUtc":  "2026-09-25T09:02:02.7137712+00:00",
+    "Menu":  {
+                 "Visible":  true,
+                 "AllVisibleRowsDecoded":  true,
+                 "Rows":  [
+                              {
+                                  "Path":  "Emj/104/3/2",
+                                  "ScreenY":  981.39996,
+                                  "StateRevision":  8188,
+                                  "Action":  4,
+                                  "Enabled":  true,
+                                  "Code":  "ACTION_MENU_LABEL_CANDIDATE"
+                              },
+                              {
+                                  "Path":  "Emj/104/3/21001",
+                                  "ScreenY":  1026.2,
+                                  "StateRevision":  8188,
+                                  "Action":  2,
+                                  "Enabled":  true,
+                                  "Code":  "ACTION_MENU_LABEL_CANDIDATE"
+                              },
+                              {
+                                  "Path":  "Emj/104/3/21002",
+                                  "ScreenY":  1071,
+                                  "StateRevision":  8188,
+                                  "Action":  7,
+                                  "Enabled":  true,
+                                  "Code":  "ACTION_MENU_LABEL_CANDIDATE"
+                              }
+                          ],
+                 "Code":  "ACTION_MENU_VISIBLE_CANDIDATE",
+                 "CompleteLegalActions":  false,
+                 "ActionOccurred":  false
+             },
+    "ChoiceUtc":  "2026-09-25T09:02:03.3828153+00:00",
+    "Choice":  {
+                   "Kind":  4,
+                   "DiscardTile":  null,
+                   "Call":  null,
+                   "Reasoning":  "AKOCHAN_GLOBAL: 全局公开牌局 AI；引擎评分 4.16，耗时 269 毫秒。AKOCHAN_GLOBAL: AI 选择荣和。 输入缺口/假设：实验全桌输入；未观测的跨玩家事件顺序、临时振听与首巡状态不视为已知。；赤五及精确终局计分规则沿用引擎配置；对手暗手保持未知。；当前实际对局类型未读到，暂按东南战分析；未使用排队设置推定本局类型。；公开事件历史不完整；以当前公开桌面和同局已记录事件分析，不伪造完整回放。；玩家1副露Emj/1130001未识别完整，暂未纳入。；玩家1副露Emj/1130002未识别完整，暂未纳入。；玩家3部分摸切／手切未知；引擎按未知处理或采用其默认值。；事件历史不完整；未观察到的先后顺序不补造，历史防守特征可能缺失。；未识别摸切的弃牌按手切估值。",
+                   "Steps":  null,
+                   "DiscardRed":  null,
+                   "DiscardTsumogiri":  null,
+                   "ReasonSteps":  [
+
+                                   ]
+               },
+    "Submission":  {
+                       "Utc":  "2026-09-25T09:02:03.5935491+00:00",
+                       "ObservationSessionId":  "ffca8cd4-3bde-4ebf-b7d9-6788326f3638",
+                       "ObservationSequence":  601,
+                       "Label":  "ron",
+                       "Result":  "Submitted",
+                       "Option":  1,
+                       "TileId":  null,
+                       "Slot":  null,
+                       "AddonStateCode":  null,
+                       "Route":  "classic-opcode11",
+                       "Source":  "InputDispatcher/submission",
+                       "ActionConfirmed":  false
+                   },
+    "AfterUtc":  "2026-09-25T09:02:03.7207425+00:00",
+    "AfterMelds":  [
+                       {
+                           "Kind":  1,
+                           "Tiles":  [
+                                         {
+                                             "Id":  32
+                                         },
+                                         {
+                                             "Id":  32
+                                         },
+                                         {
+                                             "Id":  32
+                                         }
+                                     ],
+                           "ClaimedTile":  {
+                                               "Id":  32
+                                           },
+                           "ClaimedFromSeat":  3,
+                           "IsKan":  false,
+                           "IsOpen":  true,
+                           "TileCount":  3
+                       },
+                       {
+                           "Kind":  0,
+                           "Tiles":  [
+                                         {
+                                             "Id":  11
+                                         },
+                                         {
+                                             "Id":  12
+                                         },
+                                         {
+                                             "Id":  13
+                                         }
+                                     ],
+                           "ClaimedTile":  {
+                                               "Id":  11
+                                           },
+                           "ClaimedFromSeat":  3,
+                           "IsKan":  false,
+                           "IsOpen":  true,
+                           "TileCount":  3
+                       }
+                   ]
+}

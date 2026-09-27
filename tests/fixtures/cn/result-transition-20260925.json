@@ -1,0 +1,3537 @@
+{
+  "SourceSession": "d57ff82d-c7e0-415c-8b9c-f96c5d1b0294",
+  "GameVersion": "2026.09.15.0000.0000",
+  "Note": "Public log excerpt. Empty state is a runtime observation; null state is the stop menu. Riichi inputs are actual logged AI requests, not synthesized turns.",
+  "EmptyHandState": 35,
+  "EmptyHandUtc": "2026-09-25T05:04:15.5699185+00:00",
+  "NextSubmittedUtc": "2026-09-25T05:04:15.5638304+00:00",
+  "Stop": {
+    "Utc": "2026-09-25T05:04:15.5867742+00:00",
+    "Reason": "AUTO_SNAPSHOT_UNAVAILABLE: 牌局读取失败或已退出牌桌，已取消排队动作。",
+    "Mode": "Automatic",
+    "Layout": "Emj",
+    "RuntimeSequence": 4469,
+    "Error": null,
+    "Menu": {
+      "StateCode": 27,
+      "CallModalVisible": false,
+      "VisibleListLabels": [],
+      "ParentLabels": []
+    },
+    "Dispatch": {
+      "StateCode": 6,
+      "Option": 0,
+      "ParentLabels": [
+        "Riichi",
+        "Pass"
+      ],
+      "Route": "classic-opcode11",
+      "Result": 0,
+      "NativeReturn": false
+    }
+  },
+  "RiichiDraws": [
+    {
+      "Utc": "2026-09-25T05:03:53.121798+00:00",
+      "InputSha256": "5438B79B02FED894E120C9425C972502DB9E4FD18713A50D136673A799FE50F6",
+      "Input": {
+        "OurPlayerId": 0,
+        "RoundWind": 0,
+        "HandNumber": 3,
+        "Honba": 0,
+        "RiichiSticks": 0,
+        "DealerPlayerId": 2,
+        "WallRemaining": 10,
+        "Hand": [
+          {
+            "Id": 3,
+            "Red": false,
+            "ChineseName": "4万"
+          },
+          {
+            "Id": 3,
+            "Red": false,
+            "ChineseName": "4万"
+          },
+          {
+            "Id": 4,
+            "Red": false,
+            "ChineseName": "5万"
+          },
+          {
+            "Id": 4,
+            "Red": true,
+            "ChineseName": "赤5万"
+          },
+          {
+            "Id": 5,
+            "Red": false,
+            "ChineseName": "6万"
+          },
+          {
+            "Id": 5,
+            "Red": false,
+            "ChineseName": "6万"
+          },
+          {
+            "Id": 15,
+            "Red": false,
+            "ChineseName": "7筒"
+          },
+          {
+            "Id": 16,
+            "Red": false,
+            "ChineseName": "8筒"
+          },
+          {
+            "Id": 17,
+            "Red": false,
+            "ChineseName": "9筒"
+          },
+          {
+            "Id": 21,
+            "Red": false,
+            "ChineseName": "4索"
+          },
+          {
+            "Id": 22,
+            "Red": false,
+            "ChineseName": "5索"
+          },
+          {
+            "Id": 23,
+            "Red": false,
+            "ChineseName": "6索"
+          },
+          {
+            "Id": 24,
+            "Red": false,
+            "ChineseName": "7索"
+          },
+          {
+            "Id": 0,
+            "Red": false,
+            "ChineseName": "1万"
+          }
+        ],
+        "DoraIndicators": [
+          {
+            "Id": 23,
+            "Red": false,
+            "ChineseName": "6索"
+          }
+        ],
+        "Players": [
+          {
+            "PlayerId": 0,
+            "SeatWind": 2,
+            "Score": 34200,
+            "RiichiDeclared": true,
+            "RiichiEstablished": true,
+            "RiichiDiscardIndex": 9,
+            "River": [
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/118/4",
+                "ObservedSequence": 19310,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180001/4",
+                "ObservedSequence": 19355,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 26,
+                  "Red": false,
+                  "ChineseName": "9索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180002/4",
+                "ObservedSequence": 19408,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180003/4",
+                "ObservedSequence": 19463,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180004/4",
+                "ObservedSequence": 19516,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 27,
+                  "Red": false,
+                  "ChineseName": "东"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180005/4",
+                "ObservedSequence": 19566,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 18,
+                  "Red": false,
+                  "ChineseName": "1索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": true,
+                "SlotPath": "Emj/1180006/4",
+                "ObservedSequence": 19623,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 4,
+                  "Red": false,
+                  "ChineseName": "5万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180007/4",
+                "ObservedSequence": 19753,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 1,
+                  "Red": false,
+                  "ChineseName": "2万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180008/4",
+                "ObservedSequence": 19910,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 22,
+                  "Red": false,
+                  "ChineseName": "5索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/117/4",
+                "ObservedSequence": 20006,
+                "RiichiDeclaration": true
+              },
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180010/4",
+                "ObservedSequence": 20048,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180011/4",
+                "ObservedSequence": 20089,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 12,
+                  "Red": false,
+                  "ChineseName": "4筒"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180012/4",
+                "ObservedSequence": 20131,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 32,
+                  "Red": false,
+                  "ChineseName": "发"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180013/4",
+                "ObservedSequence": 20172,
+                "RiichiDeclaration": false
+              }
+            ],
+            "Melds": [],
+            "Ippatsu": null
+          },
+          {
+            "PlayerId": 1,
+            "SeatWind": 3,
+            "Score": 23700,
+            "RiichiDeclared": false,
+            "RiichiEstablished": false,
+            "RiichiDiscardIndex": null,
+            "River": [
+              {
+                "Tile": {
+                  "Id": 30,
+                  "Red": false,
+                  "ChineseName": "北"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/121/4",
+                "ObservedSequence": 19320,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210001/4",
+                "ObservedSequence": 19365,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 1,
+                  "Red": false,
+                  "ChineseName": "2万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210002/4",
+                "ObservedSequence": 19418,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 9,
+                  "Red": false,
+                  "ChineseName": "1筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210003/4",
+                "ObservedSequence": 19474,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 10,
+                  "Red": false,
+                  "ChineseName": "2筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210004/4",
+                "ObservedSequence": 19525,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 12,
+                  "Red": false,
+                  "ChineseName": "4筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210005/4",
+                "ObservedSequence": 19576,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 14,
+                  "Red": false,
+                  "ChineseName": "6筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210006/4",
+                "ObservedSequence": 19642,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 15,
+                  "Red": false,
+                  "ChineseName": "7筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210007/4",
+                "ObservedSequence": 19764,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 22,
+                  "Red": true,
+                  "ChineseName": "赤5索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210008/4",
+                "ObservedSequence": 19819,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 10,
+                  "Red": false,
+                  "ChineseName": "2筒"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210009/4",
+                "ObservedSequence": 19920,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 6,
+                  "Red": false,
+                  "ChineseName": "7万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210010/4",
+                "ObservedSequence": 20015,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210011/4",
+                "ObservedSequence": 20058,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 26,
+                  "Red": false,
+                  "ChineseName": "9索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210012/4",
+                "ObservedSequence": 20099,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 3,
+                  "Red": false,
+                  "ChineseName": "4万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210013/4",
+                "ObservedSequence": 20141,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 14,
+                  "Red": false,
+                  "ChineseName": "6筒"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210014/4",
+                "ObservedSequence": 20182,
+                "RiichiDeclaration": false
+              }
+            ],
+            "Melds": [
+              {
+                "Type": "chi",
+                "FromPlayerId": 0,
+                "ClaimedTile": {
+                  "Id": 18,
+                  "Red": false,
+                  "ChineseName": "1索"
+                },
+                "Tiles": [
+                  {
+                    "Id": 19,
+                    "Red": false,
+                    "ChineseName": "2索"
+                  },
+                  {
+                    "Id": 20,
+                    "Red": false,
+                    "ChineseName": "3索"
+                  },
+                  {
+                    "Id": 18,
+                    "Red": false,
+                    "ChineseName": "1索"
+                  }
+                ],
+                "GroupPath": "Emj/113"
+              }
+            ],
+            "Ippatsu": null
+          },
+          {
+            "PlayerId": 2,
+            "SeatWind": 0,
+            "Score": 3800,
+            "RiichiDeclared": true,
+            "RiichiEstablished": true,
+            "RiichiDiscardIndex": 13,
+            "River": [
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/124/4",
+                "ObservedSequence": 19288,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240001/4",
+                "ObservedSequence": 19331,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 32,
+                  "Red": false,
+                  "ChineseName": "发"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240002/4",
+                "ObservedSequence": 19376,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 25,
+                  "Red": false,
+                  "ChineseName": "8索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240003/4",
+                "ObservedSequence": 19429,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 27,
+                  "Red": false,
+                  "ChineseName": "东"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240004/4",
+                "ObservedSequence": 19486,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 27,
+                  "Red": false,
+                  "ChineseName": "东"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240005/4",
+                "ObservedSequence": 19536,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 12,
+                  "Red": false,
+                  "ChineseName": "4筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240006/4",
+                "ObservedSequence": 19586,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240007/4",
+                "ObservedSequence": 19651,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 17,
+                  "Red": false,
+                  "ChineseName": "9筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240008/4",
+                "ObservedSequence": 19774,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 21,
+                  "Red": false,
+                  "ChineseName": "4索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240009/4",
+                "ObservedSequence": 19862,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 32,
+                  "Red": false,
+                  "ChineseName": "发"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240010/4",
+                "ObservedSequence": 19930,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240011/4",
+                "ObservedSequence": 20027,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 2,
+                  "Red": false,
+                  "ChineseName": "3万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240012/4",
+                "ObservedSequence": 20068,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 5,
+                  "Red": false,
+                  "ChineseName": "6万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/123/4",
+                "ObservedSequence": 20110,
+                "RiichiDeclaration": true
+              },
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240014/4",
+                "ObservedSequence": 20151,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 19,
+                  "Red": false,
+                  "ChineseName": "2索"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240015/4",
+                "ObservedSequence": 20191,
+                "RiichiDeclaration": false
+              }
+            ],
+            "Melds": [],
+            "Ippatsu": null
+          },
+          {
+            "PlayerId": 3,
+            "SeatWind": 1,
+            "Score": 38300,
+            "RiichiDeclared": false,
+            "RiichiEstablished": false,
+            "RiichiDiscardIndex": null,
+            "River": [
+              {
+                "Tile": {
+                  "Id": 30,
+                  "Red": false,
+                  "ChineseName": "北"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/127/4",
+                "ObservedSequence": 19299,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270001/4",
+                "ObservedSequence": 19341,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270002/4",
+                "ObservedSequence": 19385,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 30,
+                  "Red": false,
+                  "ChineseName": "北"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270003/4",
+                "ObservedSequence": 19441,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 27,
+                  "Red": false,
+                  "ChineseName": "东"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270004/4",
+                "ObservedSequence": 19496,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270005/4",
+                "ObservedSequence": 19547,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 1,
+                  "Red": false,
+                  "ChineseName": "2万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270006/4",
+                "ObservedSequence": 19597,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 2,
+                  "Red": false,
+                  "ChineseName": "3万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270007/4",
+                "ObservedSequence": 19664,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 20,
+                  "Red": false,
+                  "ChineseName": "3索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": true,
+                "SlotPath": "Emj/1270008/4",
+                "ObservedSequence": 19785,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 18,
+                  "Red": false,
+                  "ChineseName": "1索"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270009/4",
+                "ObservedSequence": 19873,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 25,
+                  "Red": false,
+                  "ChineseName": "8索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270010/4",
+                "ObservedSequence": 19942,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 26,
+                  "Red": false,
+                  "ChineseName": "9索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270011/4",
+                "ObservedSequence": 20036,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270012/4",
+                "ObservedSequence": 20079,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 5,
+                  "Red": false,
+                  "ChineseName": "6万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270013/4",
+                "ObservedSequence": 20119,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 32,
+                  "Red": false,
+                  "ChineseName": "发"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270014/4",
+                "ObservedSequence": 20161,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270015/4",
+                "ObservedSequence": 20203,
+                "RiichiDeclaration": false
+              }
+            ],
+            "Melds": [],
+            "Ippatsu": null
+          }
+        ],
+        "Trigger": {
+          "Type": "tsumo",
+          "Actor": 0,
+          "Tile": {
+            "Id": 0,
+            "Red": false,
+            "ChineseName": "1万"
+          }
+        },
+        "Assumptions": [
+          "实验全桌输入；未观测的跨玩家事件顺序、临时振听、一发与首巡状态不视为已知。",
+          "四人东南战与赤五规则沿用本地引擎配置；对手暗手保持未知。",
+          "公开事件历史不完整；以当前公开桌面和同局已记录事件分析，不伪造完整回放。",
+          "玩家0公开立直棒按已立直参与防守；成立时刻未独立确认。",
+          "玩家1副露Emj/1130001未识别完整，暂未纳入。",
+          "玩家1未读到正向立直标志，暂按未立直分析。",
+          "玩家2公开立直棒按已立直参与防守；成立时刻未独立确认。",
+          "玩家3未读到正向立直标志，暂按未立直分析。",
+          "宝牌使用当前资源与标签候选读值；映射尚未完成独立验证。"
+        ],
+        "ContextKey": "c4b1167f7c1c4628ab1ec2700c574a79:564:50593aab33474c768657b1c05de94dfe:0:3:0:2:epoch=50593aab33474c768657b1c05de94dfe:observed:23",
+        "Utc": "2026-09-25T05:03:53.081028+00:00",
+        "LegalActions": 514,
+        "MatchFirstRound": 0,
+        "HistoryComplete": false,
+        "KnownEvents": [
+          {
+            "Sequence": 19288,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19299,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "北"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19310,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19320,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "北"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19331,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19341,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19355,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19365,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19376,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19385,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19408,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19418,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 1,
+              "Red": false,
+              "ChineseName": "2万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19429,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 25,
+              "Red": false,
+              "ChineseName": "8索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19441,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "北"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19463,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19474,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 9,
+              "Red": false,
+              "ChineseName": "1筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19486,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "东"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19496,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "东"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19516,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19525,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 10,
+              "Red": false,
+              "ChineseName": "2筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19536,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "东"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19547,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19566,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "东"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19576,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 12,
+              "Red": false,
+              "ChineseName": "4筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19586,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 12,
+              "Red": false,
+              "ChineseName": "4筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19597,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 1,
+              "Red": false,
+              "ChineseName": "2万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19623,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 18,
+              "Red": false,
+              "ChineseName": "1索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19630,
+            "Type": "chi",
+            "Actor": 1,
+            "Target": 0,
+            "Tile": {
+              "Id": 18,
+              "Red": false,
+              "ChineseName": "1索"
+            },
+            "Consumed": [
+              {
+                "Id": 19,
+                "Red": false,
+                "ChineseName": "2索"
+              },
+              {
+                "Id": 20,
+                "Red": false,
+                "ChineseName": "3索"
+              }
+            ]
+          },
+          {
+            "Sequence": 19642,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 14,
+              "Red": false,
+              "ChineseName": "6筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19651,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19664,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 2,
+              "Red": false,
+              "ChineseName": "3万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19753,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 4,
+              "Red": false,
+              "ChineseName": "5万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19764,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 15,
+              "Red": false,
+              "ChineseName": "7筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19774,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 17,
+              "Red": false,
+              "ChineseName": "9筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19785,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 20,
+              "Red": false,
+              "ChineseName": "3索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19819,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 22,
+              "Red": true,
+              "ChineseName": "赤5索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19862,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 21,
+              "Red": false,
+              "ChineseName": "4索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19873,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 18,
+              "Red": false,
+              "ChineseName": "1索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19910,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 1,
+              "Red": false,
+              "ChineseName": "2万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19920,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 10,
+              "Red": false,
+              "ChineseName": "2筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19930,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19942,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 25,
+              "Red": false,
+              "ChineseName": "8索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20006,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 22,
+              "Red": false,
+              "ChineseName": "5索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20015,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 6,
+              "Red": false,
+              "ChineseName": "7万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20027,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20036,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20048,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20058,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20068,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 2,
+              "Red": false,
+              "ChineseName": "3万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20079,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20089,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20099,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20110,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 5,
+              "Red": false,
+              "ChineseName": "6万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20119,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 5,
+              "Red": false,
+              "ChineseName": "6万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20131,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 12,
+              "Red": false,
+              "ChineseName": "4筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20141,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 3,
+              "Red": false,
+              "ChineseName": "4万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20151,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20161,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20172,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20182,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 14,
+              "Red": false,
+              "ChineseName": "6筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20191,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 19,
+              "Red": false,
+              "ChineseName": "2索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20203,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Consumed": []
+          }
+        ]
+      },
+      "Candidates": [
+        {
+          "Moves": [
+            {
+              "Type": "dahai",
+              "Actor": 0,
+              "Target": null,
+              "Tile": {
+                "Id": 0,
+                "Red": false,
+                "ChineseName": "1万"
+              },
+              "Consumed": [],
+              "Tsumogiri": true
+            }
+          ],
+          "Score": 45.546119689941406
+        }
+      ]
+    },
+    {
+      "Utc": "2026-09-25T05:03:57.6767626+00:00",
+      "InputSha256": "7C18C5E27349376F3946F452C8FD865D10CC1B9C0F6DD6C0102B1CA5EEB9D696",
+      "Input": {
+        "OurPlayerId": 0,
+        "RoundWind": 0,
+        "HandNumber": 3,
+        "Honba": 0,
+        "RiichiSticks": 0,
+        "DealerPlayerId": 2,
+        "WallRemaining": 6,
+        "Hand": [
+          {
+            "Id": 3,
+            "Red": false,
+            "ChineseName": "4万"
+          },
+          {
+            "Id": 3,
+            "Red": false,
+            "ChineseName": "4万"
+          },
+          {
+            "Id": 4,
+            "Red": false,
+            "ChineseName": "5万"
+          },
+          {
+            "Id": 4,
+            "Red": true,
+            "ChineseName": "赤5万"
+          },
+          {
+            "Id": 5,
+            "Red": false,
+            "ChineseName": "6万"
+          },
+          {
+            "Id": 5,
+            "Red": false,
+            "ChineseName": "6万"
+          },
+          {
+            "Id": 15,
+            "Red": false,
+            "ChineseName": "7筒"
+          },
+          {
+            "Id": 16,
+            "Red": false,
+            "ChineseName": "8筒"
+          },
+          {
+            "Id": 17,
+            "Red": false,
+            "ChineseName": "9筒"
+          },
+          {
+            "Id": 21,
+            "Red": false,
+            "ChineseName": "4索"
+          },
+          {
+            "Id": 22,
+            "Red": false,
+            "ChineseName": "5索"
+          },
+          {
+            "Id": 23,
+            "Red": false,
+            "ChineseName": "6索"
+          },
+          {
+            "Id": 24,
+            "Red": false,
+            "ChineseName": "7索"
+          },
+          {
+            "Id": 10,
+            "Red": false,
+            "ChineseName": "2筒"
+          }
+        ],
+        "DoraIndicators": [
+          {
+            "Id": 23,
+            "Red": false,
+            "ChineseName": "6索"
+          }
+        ],
+        "Players": [
+          {
+            "PlayerId": 0,
+            "SeatWind": 2,
+            "Score": 34200,
+            "RiichiDeclared": true,
+            "RiichiEstablished": true,
+            "RiichiDiscardIndex": 9,
+            "River": [
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/118/4",
+                "ObservedSequence": 19310,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180001/4",
+                "ObservedSequence": 19355,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 26,
+                  "Red": false,
+                  "ChineseName": "9索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180002/4",
+                "ObservedSequence": 19408,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180003/4",
+                "ObservedSequence": 19463,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180004/4",
+                "ObservedSequence": 19516,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 27,
+                  "Red": false,
+                  "ChineseName": "东"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180005/4",
+                "ObservedSequence": 19566,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 18,
+                  "Red": false,
+                  "ChineseName": "1索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": true,
+                "SlotPath": "Emj/1180006/4",
+                "ObservedSequence": 19623,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 4,
+                  "Red": false,
+                  "ChineseName": "5万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180007/4",
+                "ObservedSequence": 19753,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 1,
+                  "Red": false,
+                  "ChineseName": "2万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180008/4",
+                "ObservedSequence": 19910,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 22,
+                  "Red": false,
+                  "ChineseName": "5索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/117/4",
+                "ObservedSequence": 20006,
+                "RiichiDeclaration": true
+              },
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180010/4",
+                "ObservedSequence": 20048,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180011/4",
+                "ObservedSequence": 20089,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 12,
+                  "Red": false,
+                  "ChineseName": "4筒"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180012/4",
+                "ObservedSequence": 20131,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 32,
+                  "Red": false,
+                  "ChineseName": "发"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180013/4",
+                "ObservedSequence": 20172,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1180014/4",
+                "ObservedSequence": 20213,
+                "RiichiDeclaration": false
+              }
+            ],
+            "Melds": [],
+            "Ippatsu": null
+          },
+          {
+            "PlayerId": 1,
+            "SeatWind": 3,
+            "Score": 23700,
+            "RiichiDeclared": false,
+            "RiichiEstablished": false,
+            "RiichiDiscardIndex": null,
+            "River": [
+              {
+                "Tile": {
+                  "Id": 30,
+                  "Red": false,
+                  "ChineseName": "北"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/121/4",
+                "ObservedSequence": 19320,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210001/4",
+                "ObservedSequence": 19365,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 1,
+                  "Red": false,
+                  "ChineseName": "2万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210002/4",
+                "ObservedSequence": 19418,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 9,
+                  "Red": false,
+                  "ChineseName": "1筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210003/4",
+                "ObservedSequence": 19474,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 10,
+                  "Red": false,
+                  "ChineseName": "2筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210004/4",
+                "ObservedSequence": 19525,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 12,
+                  "Red": false,
+                  "ChineseName": "4筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210005/4",
+                "ObservedSequence": 19576,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 14,
+                  "Red": false,
+                  "ChineseName": "6筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210006/4",
+                "ObservedSequence": 19642,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 15,
+                  "Red": false,
+                  "ChineseName": "7筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210007/4",
+                "ObservedSequence": 19764,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 22,
+                  "Red": true,
+                  "ChineseName": "赤5索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210008/4",
+                "ObservedSequence": 19819,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 10,
+                  "Red": false,
+                  "ChineseName": "2筒"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210009/4",
+                "ObservedSequence": 19920,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 6,
+                  "Red": false,
+                  "ChineseName": "7万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210010/4",
+                "ObservedSequence": 20015,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210011/4",
+                "ObservedSequence": 20058,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 26,
+                  "Red": false,
+                  "ChineseName": "9索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210012/4",
+                "ObservedSequence": 20099,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 3,
+                  "Red": false,
+                  "ChineseName": "4万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210013/4",
+                "ObservedSequence": 20141,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 14,
+                  "Red": false,
+                  "ChineseName": "6筒"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210014/4",
+                "ObservedSequence": 20182,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 12,
+                  "Red": false,
+                  "ChineseName": "4筒"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1210015/4",
+                "ObservedSequence": 20224,
+                "RiichiDeclaration": false
+              }
+            ],
+            "Melds": [
+              {
+                "Type": "chi",
+                "FromPlayerId": 0,
+                "ClaimedTile": {
+                  "Id": 18,
+                  "Red": false,
+                  "ChineseName": "1索"
+                },
+                "Tiles": [
+                  {
+                    "Id": 19,
+                    "Red": false,
+                    "ChineseName": "2索"
+                  },
+                  {
+                    "Id": 20,
+                    "Red": false,
+                    "ChineseName": "3索"
+                  },
+                  {
+                    "Id": 18,
+                    "Red": false,
+                    "ChineseName": "1索"
+                  }
+                ],
+                "GroupPath": "Emj/113"
+              }
+            ],
+            "Ippatsu": null
+          },
+          {
+            "PlayerId": 2,
+            "SeatWind": 0,
+            "Score": 3800,
+            "RiichiDeclared": true,
+            "RiichiEstablished": true,
+            "RiichiDiscardIndex": 13,
+            "River": [
+              {
+                "Tile": {
+                  "Id": 28,
+                  "Red": false,
+                  "ChineseName": "南"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/124/4",
+                "ObservedSequence": 19288,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240001/4",
+                "ObservedSequence": 19331,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 32,
+                  "Red": false,
+                  "ChineseName": "发"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240002/4",
+                "ObservedSequence": 19376,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 25,
+                  "Red": false,
+                  "ChineseName": "8索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240003/4",
+                "ObservedSequence": 19429,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 27,
+                  "Red": false,
+                  "ChineseName": "东"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240004/4",
+                "ObservedSequence": 19486,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 27,
+                  "Red": false,
+                  "ChineseName": "东"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240005/4",
+                "ObservedSequence": 19536,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 12,
+                  "Red": false,
+                  "ChineseName": "4筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240006/4",
+                "ObservedSequence": 19586,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240007/4",
+                "ObservedSequence": 19651,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 17,
+                  "Red": false,
+                  "ChineseName": "9筒"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240008/4",
+                "ObservedSequence": 19774,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 21,
+                  "Red": false,
+                  "ChineseName": "4索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240009/4",
+                "ObservedSequence": 19862,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 32,
+                  "Red": false,
+                  "ChineseName": "发"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240010/4",
+                "ObservedSequence": 19930,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240011/4",
+                "ObservedSequence": 20027,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 2,
+                  "Red": false,
+                  "ChineseName": "3万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240012/4",
+                "ObservedSequence": 20068,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 5,
+                  "Red": false,
+                  "ChineseName": "6万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/123/4",
+                "ObservedSequence": 20110,
+                "RiichiDeclaration": true
+              },
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240014/4",
+                "ObservedSequence": 20151,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 19,
+                  "Red": false,
+                  "ChineseName": "2索"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240015/4",
+                "ObservedSequence": 20191,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 17,
+                  "Red": false,
+                  "ChineseName": "9筒"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1240016/4",
+                "ObservedSequence": 20234,
+                "RiichiDeclaration": false
+              }
+            ],
+            "Melds": [],
+            "Ippatsu": null
+          },
+          {
+            "PlayerId": 3,
+            "SeatWind": 1,
+            "Score": 38300,
+            "RiichiDeclared": false,
+            "RiichiEstablished": false,
+            "RiichiDiscardIndex": null,
+            "River": [
+              {
+                "Tile": {
+                  "Id": 30,
+                  "Red": false,
+                  "ChineseName": "北"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/127/4",
+                "ObservedSequence": 19299,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 29,
+                  "Red": false,
+                  "ChineseName": "西"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270001/4",
+                "ObservedSequence": 19341,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 33,
+                  "Red": false,
+                  "ChineseName": "中"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270002/4",
+                "ObservedSequence": 19385,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 30,
+                  "Red": false,
+                  "ChineseName": "北"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270003/4",
+                "ObservedSequence": 19441,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 27,
+                  "Red": false,
+                  "ChineseName": "东"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270004/4",
+                "ObservedSequence": 19496,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270005/4",
+                "ObservedSequence": 19547,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 1,
+                  "Red": false,
+                  "ChineseName": "2万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270006/4",
+                "ObservedSequence": 19597,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 2,
+                  "Red": false,
+                  "ChineseName": "3万"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270007/4",
+                "ObservedSequence": 19664,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 20,
+                  "Red": false,
+                  "ChineseName": "3索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": true,
+                "SlotPath": "Emj/1270008/4",
+                "ObservedSequence": 19785,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 18,
+                  "Red": false,
+                  "ChineseName": "1索"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270009/4",
+                "ObservedSequence": 19873,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 25,
+                  "Red": false,
+                  "ChineseName": "8索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270010/4",
+                "ObservedSequence": 19942,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 26,
+                  "Red": false,
+                  "ChineseName": "9索"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270011/4",
+                "ObservedSequence": 20036,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 31,
+                  "Red": false,
+                  "ChineseName": "白"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270012/4",
+                "ObservedSequence": 20079,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 5,
+                  "Red": false,
+                  "ChineseName": "6万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270013/4",
+                "ObservedSequence": 20119,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 32,
+                  "Red": false,
+                  "ChineseName": "发"
+                },
+                "Tsumogiri": true,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270014/4",
+                "ObservedSequence": 20161,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270015/4",
+                "ObservedSequence": 20203,
+                "RiichiDeclaration": false
+              },
+              {
+                "Tile": {
+                  "Id": 0,
+                  "Red": false,
+                  "ChineseName": "1万"
+                },
+                "Tsumogiri": false,
+                "WasClaimed": false,
+                "SlotPath": "Emj/1270016/4",
+                "ObservedSequence": 20244,
+                "RiichiDeclaration": false
+              }
+            ],
+            "Melds": [],
+            "Ippatsu": null
+          }
+        ],
+        "Trigger": {
+          "Type": "tsumo",
+          "Actor": 0,
+          "Tile": {
+            "Id": 10,
+            "Red": false,
+            "ChineseName": "2筒"
+          }
+        },
+        "Assumptions": [
+          "实验全桌输入；未观测的跨玩家事件顺序、临时振听、一发与首巡状态不视为已知。",
+          "四人东南战与赤五规则沿用本地引擎配置；对手暗手保持未知。",
+          "公开事件历史不完整；以当前公开桌面和同局已记录事件分析，不伪造完整回放。",
+          "玩家0公开立直棒按已立直参与防守；成立时刻未独立确认。",
+          "玩家1副露Emj/1130001未识别完整，暂未纳入。",
+          "玩家1未读到正向立直标志，暂按未立直分析。",
+          "玩家2公开立直棒按已立直参与防守；成立时刻未独立确认。",
+          "玩家3未读到正向立直标志，暂按未立直分析。",
+          "宝牌使用当前资源与标签候选读值；映射尚未完成独立验证。"
+        ],
+        "ContextKey": "c4b1167f7c1c4628ab1ec2700c574a79:592:50593aab33474c768657b1c05de94dfe:0:3:0:2:epoch=50593aab33474c768657b1c05de94dfe:observed:23",
+        "Utc": "2026-09-25T05:03:57.6366162+00:00",
+        "LegalActions": 514,
+        "MatchFirstRound": 0,
+        "HistoryComplete": false,
+        "KnownEvents": [
+          {
+            "Sequence": 19288,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19299,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "北"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19310,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19320,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "北"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19331,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19341,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19355,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19365,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19376,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19385,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19408,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19418,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 1,
+              "Red": false,
+              "ChineseName": "2万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19429,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 25,
+              "Red": false,
+              "ChineseName": "8索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19441,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "北"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19463,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19474,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 9,
+              "Red": false,
+              "ChineseName": "1筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19486,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "东"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19496,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "东"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19516,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19525,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 10,
+              "Red": false,
+              "ChineseName": "2筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19536,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "东"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19547,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19566,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "东"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19576,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 12,
+              "Red": false,
+              "ChineseName": "4筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19586,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 12,
+              "Red": false,
+              "ChineseName": "4筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19597,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 1,
+              "Red": false,
+              "ChineseName": "2万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19623,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 18,
+              "Red": false,
+              "ChineseName": "1索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19630,
+            "Type": "chi",
+            "Actor": 1,
+            "Target": 0,
+            "Tile": {
+              "Id": 18,
+              "Red": false,
+              "ChineseName": "1索"
+            },
+            "Consumed": [
+              {
+                "Id": 19,
+                "Red": false,
+                "ChineseName": "2索"
+              },
+              {
+                "Id": 20,
+                "Red": false,
+                "ChineseName": "3索"
+              }
+            ]
+          },
+          {
+            "Sequence": 19642,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 14,
+              "Red": false,
+              "ChineseName": "6筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19651,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19664,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 2,
+              "Red": false,
+              "ChineseName": "3万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19753,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 4,
+              "Red": false,
+              "ChineseName": "5万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19764,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 15,
+              "Red": false,
+              "ChineseName": "7筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19774,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 17,
+              "Red": false,
+              "ChineseName": "9筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19785,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 20,
+              "Red": false,
+              "ChineseName": "3索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19819,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 22,
+              "Red": true,
+              "ChineseName": "赤5索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19862,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 21,
+              "Red": false,
+              "ChineseName": "4索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19873,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 18,
+              "Red": false,
+              "ChineseName": "1索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19910,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 1,
+              "Red": false,
+              "ChineseName": "2万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19920,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 10,
+              "Red": false,
+              "ChineseName": "2筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19930,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 19942,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 25,
+              "Red": false,
+              "ChineseName": "8索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20006,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 22,
+              "Red": false,
+              "ChineseName": "5索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20015,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 6,
+              "Red": false,
+              "ChineseName": "7万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20027,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "中"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20036,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20048,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "南"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20058,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20068,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 2,
+              "Red": false,
+              "ChineseName": "3万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20079,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20089,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "白"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20099,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20110,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 5,
+              "Red": false,
+              "ChineseName": "6万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20119,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 5,
+              "Red": false,
+              "ChineseName": "6万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20131,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 12,
+              "Red": false,
+              "ChineseName": "4筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20141,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 3,
+              "Red": false,
+              "ChineseName": "4万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20151,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "西"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20161,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20172,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "发"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20182,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 14,
+              "Red": false,
+              "ChineseName": "6筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20191,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 19,
+              "Red": false,
+              "ChineseName": "2索"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20203,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20213,
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20224,
+            "Type": "dahai",
+            "Actor": 1,
+            "Target": null,
+            "Tile": {
+              "Id": 12,
+              "Red": false,
+              "ChineseName": "4筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20234,
+            "Type": "dahai",
+            "Actor": 2,
+            "Target": null,
+            "Tile": {
+              "Id": 17,
+              "Red": false,
+              "ChineseName": "9筒"
+            },
+            "Consumed": []
+          },
+          {
+            "Sequence": 20244,
+            "Type": "dahai",
+            "Actor": 3,
+            "Target": null,
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1万"
+            },
+            "Consumed": []
+          }
+        ]
+      },
+      "Candidates": [
+        {
+          "Moves": [
+            {
+              "Type": "dahai",
+              "Actor": 0,
+              "Target": null,
+              "Tile": {
+                "Id": 10,
+                "Red": false,
+                "ChineseName": "2筒"
+              },
+              "Consumed": [],
+              "Tsumogiri": true
+            }
+          ],
+          "Score": 43.846858978271484
+        }
+      ]
+    }
+  ]
+}

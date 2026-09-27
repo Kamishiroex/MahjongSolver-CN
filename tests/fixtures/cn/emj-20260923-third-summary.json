@@ -1,0 +1,180 @@
+{
+  "fixture_schema": 1,
+  "kind": "real_cn_lower_face_aggregate_summary",
+  "interpretation": "Deidentified aggregate evidence only. Repeated visible candidate resources and user review statements are not a complete Mahjong hand or game snapshot. No original path, absolute timestamp, screen coordinates, tile order, per-tile icons or face hashes are included.",
+  "source_zip_sha256": "6efa5aff645a95d51d373110d455fc58731e85ddea8874b340b8df0b89a733d2",
+  "source_schema": 2,
+  "plugin_version": "0.1.1.2",
+  "source_tag_commit": "a0791ad85529e429b6287a0dd47abedb6bade972",
+  "catalog_sha256": "a2f0215ebf082a95da01bca5f12a078092a036a7d77c4705e26574e77d1c447b",
+  "identity": {
+    "GameVersion": "2026.09.15.0000.0000",
+    "DalamudVersion": "15.0.3.5",
+    "DalamudCommit": "cac6159a2c76e62a4e1f7bc347454c205808bb04",
+    "ClientStructsVersion": "1.0.0+f824354f4a6a2b1cd16cc8fcb670c7a66bf64880",
+    "Language": "ChineseSimplified",
+    "Runtime": "10.0.1",
+    "Api": 15,
+    "error_code": null
+  },
+  "totals": {
+    "retained_frames": 75,
+    "dropped_old_frames": 142,
+    "retained_nodes": 39494,
+    "distinct_node_paths": 818,
+    "consecutive_emj_topology_changes": 42,
+    "present_emj_node_count_min": 171,
+    "present_emj_node_count_max": 732,
+    "probe_errors": 0,
+    "error_frames": 0,
+    "lifecycle_events": 1,
+    "text_node_samples": 2224
+  },
+  "timeline_observations": {
+    "entries": 217,
+    "first_sequence": 1,
+    "last_sequence": 217,
+    "first_table_frame_sequence": 5,
+    "first_table_frame_retained": true,
+    "emj_absent_frames": 4,
+    "emj_present_frames": 213,
+    "post_setup_events": 1,
+    "pre_finalize_events": 0,
+    "last_frame_emj_present": true,
+    "last_frame_lower_face_candidates": 0
+  },
+  "retained_atk_value_count_distribution": { "50": 44, "73": 6, "109": 25 },
+  "retained_candidate_count_distribution": { "0": 14, "7": 38, "8": 22, "9": 1 },
+  "lower_hand_resources": {
+    "capture_enabled": true,
+    "uld_sha256": "DA6B6A98B5E1ECDD01EF7A37F3851A0BC90A8935F163CA6B0EEDCF2DA23F2E5F",
+    "candidate_samples": 451,
+    "resource_verified_samples": 442,
+    "resource_verified_frames": 60,
+    "layout_transition_rejected_samples": 9,
+    "layout_transition_rejected_sequences": [168],
+    "null_icon_samples": 9,
+    "null_face_hash_samples": 9,
+    "hash_and_icon_match_same_catalog_resource": 442,
+    "hash_and_icon_disagreements": 0,
+    "unknown_catalog_hashes": 0,
+    "high_resolution_matches": 442,
+    "matched_style_counts": { "second": 442 }
+  },
+  "reviews": [
+    {
+      "sequence": 73,
+      "user_confirmed_match": true,
+      "candidate_count": 14,
+      "resource_verified_candidates": 14,
+      "hash_and_icon_catalog_matches": 14,
+      "hash_and_icon_disagreements": 0,
+      "unknown_catalog_hashes": 0,
+      "frame_still_retained": false,
+      "candidate_copy_matches_retained_frame": null
+    },
+    {
+      "sequence": 164,
+      "user_confirmed_match": true,
+      "candidate_count": 8,
+      "resource_verified_candidates": 8,
+      "hash_and_icon_catalog_matches": 8,
+      "hash_and_icon_disagreements": 0,
+      "unknown_catalog_hashes": 0,
+      "frame_still_retained": true,
+      "candidate_copy_matches_retained_frame": true
+    }
+  ],
+  "selected_frames": [
+    {
+      "sequence": 5,
+      "emj_present": true,
+      "atk_value_count": 50,
+      "visible_node_count": 171,
+      "candidate_count": 0,
+      "resource_verified_candidates": 0,
+      "layout_transition_rejected_candidates": 0
+    },
+    {
+      "sequence": 144,
+      "emj_present": true,
+      "atk_value_count": 50,
+      "visible_node_count": 550,
+      "candidate_count": 8,
+      "resource_verified_candidates": 8,
+      "layout_transition_rejected_candidates": 0
+    },
+    {
+      "sequence": 164,
+      "emj_present": true,
+      "atk_value_count": 50,
+      "visible_node_count": 567,
+      "candidate_count": 8,
+      "resource_verified_candidates": 8,
+      "layout_transition_rejected_candidates": 0
+    },
+    {
+      "sequence": 168,
+      "emj_present": true,
+      "atk_value_count": 50,
+      "visible_node_count": 575,
+      "candidate_count": 9,
+      "resource_verified_candidates": 0,
+      "layout_transition_rejected_candidates": 9
+    },
+    {
+      "sequence": 169,
+      "emj_present": true,
+      "atk_value_count": 50,
+      "visible_node_count": 561,
+      "candidate_count": 7,
+      "resource_verified_candidates": 7,
+      "layout_transition_rejected_candidates": 0
+    },
+    {
+      "sequence": 187,
+      "emj_present": true,
+      "atk_value_count": 73,
+      "visible_node_count": 612,
+      "candidate_count": 7,
+      "resource_verified_candidates": 7,
+      "layout_transition_rejected_candidates": 0
+    },
+    {
+      "sequence": 193,
+      "emj_present": true,
+      "atk_value_count": 109,
+      "visible_node_count": 623,
+      "candidate_count": 7,
+      "resource_verified_candidates": 7,
+      "layout_transition_rejected_candidates": 0
+    },
+    {
+      "sequence": 204,
+      "emj_present": true,
+      "atk_value_count": 109,
+      "visible_node_count": 732,
+      "candidate_count": 7,
+      "resource_verified_candidates": 7,
+      "layout_transition_rejected_candidates": 0
+    },
+    {
+      "sequence": 205,
+      "emj_present": true,
+      "atk_value_count": 109,
+      "visible_node_count": 241,
+      "candidate_count": 0,
+      "resource_verified_candidates": 0,
+      "layout_transition_rejected_candidates": 0
+    },
+    {
+      "sequence": 217,
+      "emj_present": true,
+      "atk_value_count": 109,
+      "visible_node_count": 303,
+      "candidate_count": 0,
+      "resource_verified_candidates": 0,
+      "layout_transition_rejected_candidates": 0
+    }
+  ]
+}

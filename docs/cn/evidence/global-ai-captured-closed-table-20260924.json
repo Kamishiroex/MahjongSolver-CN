@@ -1,0 +1,3044 @@
+{
+  "Category": "closed-table",
+  "SourceCapture": "mjcn-live-20260924-091538",
+  "SourceSha256": "8f3bcf6bf48460141559bd14d37d011e06198698db1040a2481fdeb596cc6fd2",
+  "Sample": 10897,
+  "Utc": "2026-09-24T09:35:27.4626802+00:00",
+  "Mode": "Offline actual-captured-public-table integration",
+  "IsLiveGameDecision": false,
+  "LiveOperationWindowVerified": false,
+  "SynthesizedIntermediateFrames": 0,
+  "SourceGame": "2026.09.15.0000.0000",
+  "SourceClientStructs": "1.0.0\u002Bf824354f4a6a2b1cd16cc8fcb670c7a66bf64880",
+  "PublicProfileUldSha256": "DA6B6A98B5E1ECDD01EF7A37F3851A0BC90A8935F163CA6B0EEDCF2DA23F2E5F",
+  "ProducerAssemblySha256": "206D4B3C375C0EF1EBD4E3387C3EDB97B716DF01F25FD21C7A4FF91279C91B06",
+  "ActualPublicInput": {
+    "OurPlayerId": 0,
+    "RoundWind": 0,
+    "HandNumber": 3,
+    "Honba": 0,
+    "RiichiSticks": 0,
+    "DealerPlayerId": 3,
+    "WallRemaining": 12,
+    "Hand": [
+      {
+        "Id": 8,
+        "Red": false,
+        "ChineseName": "9\u4E07"
+      },
+      {
+        "Id": 8,
+        "Red": false,
+        "ChineseName": "9\u4E07"
+      },
+      {
+        "Id": 13,
+        "Red": false,
+        "ChineseName": "5\u7B52"
+      },
+      {
+        "Id": 14,
+        "Red": false,
+        "ChineseName": "6\u7B52"
+      },
+      {
+        "Id": 14,
+        "Red": false,
+        "ChineseName": "6\u7B52"
+      },
+      {
+        "Id": 15,
+        "Red": false,
+        "ChineseName": "7\u7B52"
+      },
+      {
+        "Id": 21,
+        "Red": false,
+        "ChineseName": "4\u7D22"
+      },
+      {
+        "Id": 21,
+        "Red": false,
+        "ChineseName": "4\u7D22"
+      },
+      {
+        "Id": 22,
+        "Red": false,
+        "ChineseName": "5\u7D22"
+      },
+      {
+        "Id": 23,
+        "Red": false,
+        "ChineseName": "6\u7D22"
+      },
+      {
+        "Id": 23,
+        "Red": false,
+        "ChineseName": "6\u7D22"
+      },
+      {
+        "Id": 24,
+        "Red": false,
+        "ChineseName": "7\u7D22"
+      },
+      {
+        "Id": 24,
+        "Red": false,
+        "ChineseName": "7\u7D22"
+      },
+      {
+        "Id": 18,
+        "Red": false,
+        "ChineseName": "1\u7D22"
+      }
+    ],
+    "DoraIndicators": [
+      {
+        "Id": 1,
+        "Red": false,
+        "ChineseName": "2\u4E07"
+      }
+    ],
+    "Players": [
+      {
+        "PlayerId": 0,
+        "SeatWind": 1,
+        "Score": 11000,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 9,
+              "Red": false,
+              "ChineseName": "1\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/118/4",
+            "ObservedSequence": 10329,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "\u4E1C"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180001/4",
+            "ObservedSequence": 10366,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "\u5317"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180002/4",
+            "ObservedSequence": 10406,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "\u4E2D"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180003/4",
+            "ObservedSequence": 10449,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 1,
+              "Red": false,
+              "ChineseName": "2\u4E07"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180004/4",
+            "ObservedSequence": 10485,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 2,
+              "Red": false,
+              "ChineseName": "3\u4E07"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180005/4",
+            "ObservedSequence": 10540,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9\u7D22"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180006/4",
+            "ObservedSequence": 10578,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 10,
+              "Red": false,
+              "ChineseName": "2\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180007/4",
+            "ObservedSequence": 10615,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "\u5357"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180008/4",
+            "ObservedSequence": 10655,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 2,
+              "Red": false,
+              "ChineseName": "3\u4E07"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180009/4",
+            "ObservedSequence": 10696,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 19,
+              "Red": false,
+              "ChineseName": "2\u7D22"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180010/4",
+            "ObservedSequence": 10741,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1\u4E07"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180011/4",
+            "ObservedSequence": 10783,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 23,
+              "Red": false,
+              "ChineseName": "6\u7D22"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180012/4",
+            "ObservedSequence": 10820,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "\u4E2D"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1180013/4",
+            "ObservedSequence": 10858,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": null
+      },
+      {
+        "PlayerId": 1,
+        "SeatWind": 2,
+        "Score": 46300,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "\u897F"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/121/4",
+            "ObservedSequence": 10340,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "\u53D1"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210001/4",
+            "ObservedSequence": 10377,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 8,
+              "Red": false,
+              "ChineseName": "9\u4E07"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210002/4",
+            "ObservedSequence": 10421,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 11,
+              "Red": false,
+              "ChineseName": "3\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210003/4",
+            "ObservedSequence": 10458,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9\u7D22"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210004/4",
+            "ObservedSequence": 10497,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 19,
+              "Red": false,
+              "ChineseName": "2\u7D22"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210005/4",
+            "ObservedSequence": 10551,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 3,
+              "Red": false,
+              "ChineseName": "4\u4E07"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210006/4",
+            "ObservedSequence": 10588,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 15,
+              "Red": false,
+              "ChineseName": "7\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210007/4",
+            "ObservedSequence": 10627,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 32,
+              "Red": false,
+              "ChineseName": "\u53D1"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210008/4",
+            "ObservedSequence": 10665,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 16,
+              "Red": false,
+              "ChineseName": "8\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210009/4",
+            "ObservedSequence": 10708,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "\u4E1C"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210010/4",
+            "ObservedSequence": 10751,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 6,
+              "Red": false,
+              "ChineseName": "7\u4E07"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210011/4",
+            "ObservedSequence": 10792,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 22,
+              "Red": false,
+              "ChineseName": "5\u7D22"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210012/4",
+            "ObservedSequence": 10832,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "\u5357"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1210013/4",
+            "ObservedSequence": 10868,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": null
+      },
+      {
+        "PlayerId": 2,
+        "SeatWind": 3,
+        "Score": 10400,
+        "RiichiDeclared": true,
+        "RiichiEstablished": true,
+        "RiichiDiscardIndex": 8,
+        "River": [
+          {
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "\u767D"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/124/4",
+            "ObservedSequence": 10350,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 33,
+              "Red": false,
+              "ChineseName": "\u4E2D"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240001/4",
+            "ObservedSequence": 10388,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 17,
+              "Red": false,
+              "ChineseName": "9\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240002/4",
+            "ObservedSequence": 10433,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 15,
+              "Red": false,
+              "ChineseName": "7\u7B52"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240003/4",
+            "ObservedSequence": 10469,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 8,
+              "Red": false,
+              "ChineseName": "9\u4E07"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240004/4",
+            "ObservedSequence": 10522,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 28,
+              "Red": false,
+              "ChineseName": "\u5357"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240005/4",
+            "ObservedSequence": 10563,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 17,
+              "Red": false,
+              "ChineseName": "9\u7B52"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240006/4",
+            "ObservedSequence": 10600,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 9,
+              "Red": false,
+              "ChineseName": "1\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240007/4",
+            "ObservedSequence": 10636,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 23,
+              "Red": false,
+              "ChineseName": "6\u7D22"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/123/4",
+            "ObservedSequence": 10680,
+            "RiichiDeclaration": true
+          },
+          {
+            "Tile": {
+              "Id": 13,
+              "Red": false,
+              "ChineseName": "5\u7B52"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240009/4",
+            "ObservedSequence": 10717,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "\u897F"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240010/4",
+            "ObservedSequence": 10762,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 6,
+              "Red": false,
+              "ChineseName": "7\u4E07"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240011/4",
+            "ObservedSequence": 10803,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 16,
+              "Red": false,
+              "ChineseName": "8\u7B52"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240012/4",
+            "ObservedSequence": 10842,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 7,
+              "Red": false,
+              "ChineseName": "8\u4E07"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1240013/4",
+            "ObservedSequence": 10879,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": null
+      },
+      {
+        "PlayerId": 3,
+        "SeatWind": 0,
+        "Score": 32300,
+        "RiichiDeclared": false,
+        "RiichiEstablished": false,
+        "RiichiDiscardIndex": null,
+        "River": [
+          {
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1\u4E07"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/127/4",
+            "ObservedSequence": 10320,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "\u4E1C"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270001/4",
+            "ObservedSequence": 10360,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "\u897F"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270002/4",
+            "ObservedSequence": 10398,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "\u5317"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270003/4",
+            "ObservedSequence": 10444,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 17,
+              "Red": false,
+              "ChineseName": "9\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270004/4",
+            "ObservedSequence": 10481,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 7,
+              "Red": false,
+              "ChineseName": "8\u4E07"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270005/4",
+            "ObservedSequence": 10533,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 30,
+              "Red": false,
+              "ChineseName": "\u5317"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270006/4",
+            "ObservedSequence": 10573,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 29,
+              "Red": false,
+              "ChineseName": "\u897F"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270007/4",
+            "ObservedSequence": 10611,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 31,
+              "Red": false,
+              "ChineseName": "\u767D"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270008/4",
+            "ObservedSequence": 10648,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 26,
+              "Red": false,
+              "ChineseName": "9\u7D22"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270009/4",
+            "ObservedSequence": 10692,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 16,
+              "Red": false,
+              "ChineseName": "8\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270010/4",
+            "ObservedSequence": 10734,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 27,
+              "Red": false,
+              "ChineseName": "\u4E1C"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270011/4",
+            "ObservedSequence": 10772,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 0,
+              "Red": false,
+              "ChineseName": "1\u4E07"
+            },
+            "Tsumogiri": true,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270012/4",
+            "ObservedSequence": 10815,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 10,
+              "Red": false,
+              "ChineseName": "2\u7B52"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270013/4",
+            "ObservedSequence": 10853,
+            "RiichiDeclaration": false
+          },
+          {
+            "Tile": {
+              "Id": 24,
+              "Red": false,
+              "ChineseName": "7\u7D22"
+            },
+            "Tsumogiri": false,
+            "WasClaimed": false,
+            "SlotPath": "Emj/1270014/4",
+            "ObservedSequence": 10895,
+            "RiichiDeclaration": false
+          }
+        ],
+        "Melds": [],
+        "Ippatsu": null
+      }
+    ],
+    "Trigger": {
+      "Type": "tsumo",
+      "Actor": 0,
+      "Tile": {
+        "Id": 18,
+        "Red": false,
+        "ChineseName": "1\u7D22"
+      }
+    },
+    "Assumptions": [
+      "\u5B9E\u9A8C\u5168\u684C\u8F93\u5165\uFF1B\u672A\u89C2\u6D4B\u7684\u8DE8\u73A9\u5BB6\u4E8B\u4EF6\u987A\u5E8F\u3001\u4E34\u65F6\u632F\u542C\u3001\u4E00\u53D1\u4E0E\u9996\u5DE1\u72B6\u6001\u4E0D\u89C6\u4E3A\u5DF2\u77E5\u3002",
+      "\u56DB\u4EBA\u4E1C\u5357\u6218\u4E0E\u8D64\u4E94\u89C4\u5219\u6CBF\u7528\u672C\u5730\u5F15\u64CE\u914D\u7F6E\uFF1B\u5BF9\u624B\u6697\u624B\u4FDD\u6301\u672A\u77E5\u3002",
+      "\u516C\u5F00\u4E8B\u4EF6\u5386\u53F2\u4E0D\u5B8C\u6574\uFF1B\u4EE5\u5F53\u524D\u516C\u5F00\u684C\u9762\u548C\u540C\u5C40\u5DF2\u8BB0\u5F55\u4E8B\u4EF6\u5206\u6790\uFF0C\u4E0D\u4F2A\u9020\u5B8C\u6574\u56DE\u653E\u3002",
+      "\u73A9\u5BB60\u672A\u8BFB\u5230\u6B63\u5411\u7ACB\u76F4\u6807\u5FD7\uFF0C\u6682\u6309\u672A\u7ACB\u76F4\u5206\u6790\u3002",
+      "\u73A9\u5BB61\u672A\u8BFB\u5230\u6B63\u5411\u7ACB\u76F4\u6807\u5FD7\uFF0C\u6682\u6309\u672A\u7ACB\u76F4\u5206\u6790\u3002",
+      "\u73A9\u5BB62\u724C\u6CB3\u90E8\u5206\u69FD\u4F4D\u5C1A\u672A\u8BC6\u522B\uFF1B\u7EB3\u5165\u5F53\u524D\u53EF\u89C1\u4E0E\u540C\u5C40\u5DF2\u8BB0\u5F55\u768414\u5F20\uFF0C\u7F3A\u5931\u724C\u4E0D\u731C\u6D4B\u3002",
+      "\u73A9\u5BB62\u516C\u5F00\u7ACB\u76F4\u68D2\u6309\u5DF2\u7ACB\u76F4\u53C2\u4E0E\u9632\u5B88\uFF1B\u6210\u7ACB\u65F6\u523B\u672A\u72EC\u7ACB\u786E\u8BA4\u3002",
+      "\u73A9\u5BB63\u672A\u8BFB\u5230\u6B63\u5411\u7ACB\u76F4\u6807\u5FD7\uFF0C\u6682\u6309\u672A\u7ACB\u76F4\u5206\u6790\u3002",
+      "\u5B9D\u724C\u4F7F\u7528\u5F53\u524D\u8D44\u6E90\u4E0E\u6807\u7B7E\u5019\u9009\u8BFB\u503C\uFF1B\u6620\u5C04\u5C1A\u672A\u5B8C\u6210\u72EC\u7ACB\u9A8C\u8BC1\u3002",
+      "OFFLINE_FORCED_DISCARD_WINDOW: \u624B\u724C\u4E0E\u516C\u5F00\u684C\u9762\u6765\u81EA\u539F\u59CB\u5B9E\u673A\u8BB0\u5F55\uFF1B\u5141\u8BB8\u5F03\u724C\u6807\u5FD7\u662F\u79BB\u7EBF\u6D4B\u8BD5\u6761\u4EF6\uFF0C\u672A\u5BA3\u79F0\u8BE5\u91C7\u6837\u7684\u6E38\u620F\u64CD\u4F5C\u7A97\u53E3\u5DF2\u5B9E\u6D4B\u3002"
+    ],
+    "ContextKey": "recorded-20260924-sample-10897",
+    "Utc": "2026-09-24T09:35:27.4626802+00:00",
+    "LegalActions": "Discard",
+    "MatchFirstRound": 0,
+    "HistoryComplete": false,
+    "KnownEvents": [
+      {
+        "Sequence": 10320,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 0,
+          "Red": false,
+          "ChineseName": "1\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10329,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 9,
+          "Red": false,
+          "ChineseName": "1\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10340,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 29,
+          "Red": false,
+          "ChineseName": "\u897F"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10350,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 31,
+          "Red": false,
+          "ChineseName": "\u767D"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10360,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 27,
+          "Red": false,
+          "ChineseName": "\u4E1C"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10366,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 27,
+          "Red": false,
+          "ChineseName": "\u4E1C"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10377,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 32,
+          "Red": false,
+          "ChineseName": "\u53D1"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10388,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 33,
+          "Red": false,
+          "ChineseName": "\u4E2D"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10398,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 29,
+          "Red": false,
+          "ChineseName": "\u897F"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10406,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 30,
+          "Red": false,
+          "ChineseName": "\u5317"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10421,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 8,
+          "Red": false,
+          "ChineseName": "9\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10433,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 17,
+          "Red": false,
+          "ChineseName": "9\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10444,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 30,
+          "Red": false,
+          "ChineseName": "\u5317"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10449,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 33,
+          "Red": false,
+          "ChineseName": "\u4E2D"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10458,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 11,
+          "Red": false,
+          "ChineseName": "3\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10469,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 15,
+          "Red": false,
+          "ChineseName": "7\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10481,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 17,
+          "Red": false,
+          "ChineseName": "9\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10485,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 1,
+          "Red": false,
+          "ChineseName": "2\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10497,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 26,
+          "Red": false,
+          "ChineseName": "9\u7D22"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10522,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 8,
+          "Red": false,
+          "ChineseName": "9\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10533,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 7,
+          "Red": false,
+          "ChineseName": "8\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10540,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 2,
+          "Red": false,
+          "ChineseName": "3\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10551,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 19,
+          "Red": false,
+          "ChineseName": "2\u7D22"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10563,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 28,
+          "Red": false,
+          "ChineseName": "\u5357"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10573,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 30,
+          "Red": false,
+          "ChineseName": "\u5317"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10578,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 26,
+          "Red": false,
+          "ChineseName": "9\u7D22"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10588,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 3,
+          "Red": false,
+          "ChineseName": "4\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10600,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 17,
+          "Red": false,
+          "ChineseName": "9\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10611,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 29,
+          "Red": false,
+          "ChineseName": "\u897F"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10615,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 10,
+          "Red": false,
+          "ChineseName": "2\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10627,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 15,
+          "Red": false,
+          "ChineseName": "7\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10636,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 9,
+          "Red": false,
+          "ChineseName": "1\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10648,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 31,
+          "Red": false,
+          "ChineseName": "\u767D"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10655,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 28,
+          "Red": false,
+          "ChineseName": "\u5357"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10665,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 32,
+          "Red": false,
+          "ChineseName": "\u53D1"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10680,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 23,
+          "Red": false,
+          "ChineseName": "6\u7D22"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10692,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 26,
+          "Red": false,
+          "ChineseName": "9\u7D22"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10696,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 2,
+          "Red": false,
+          "ChineseName": "3\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10708,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 16,
+          "Red": false,
+          "ChineseName": "8\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10717,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 13,
+          "Red": false,
+          "ChineseName": "5\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10734,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 16,
+          "Red": false,
+          "ChineseName": "8\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10741,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 19,
+          "Red": false,
+          "ChineseName": "2\u7D22"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10751,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 27,
+          "Red": false,
+          "ChineseName": "\u4E1C"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10762,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 29,
+          "Red": false,
+          "ChineseName": "\u897F"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10772,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 27,
+          "Red": false,
+          "ChineseName": "\u4E1C"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10783,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 0,
+          "Red": false,
+          "ChineseName": "1\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10792,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 6,
+          "Red": false,
+          "ChineseName": "7\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10803,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 6,
+          "Red": false,
+          "ChineseName": "7\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10815,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 0,
+          "Red": false,
+          "ChineseName": "1\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10820,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 23,
+          "Red": false,
+          "ChineseName": "6\u7D22"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10832,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 22,
+          "Red": false,
+          "ChineseName": "5\u7D22"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10842,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 16,
+          "Red": false,
+          "ChineseName": "8\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10853,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 10,
+          "Red": false,
+          "ChineseName": "2\u7B52"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10858,
+        "Type": "dahai",
+        "Actor": 0,
+        "Target": null,
+        "Tile": {
+          "Id": 33,
+          "Red": false,
+          "ChineseName": "\u4E2D"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10868,
+        "Type": "dahai",
+        "Actor": 1,
+        "Target": null,
+        "Tile": {
+          "Id": 28,
+          "Red": false,
+          "ChineseName": "\u5357"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10879,
+        "Type": "dahai",
+        "Actor": 2,
+        "Target": null,
+        "Tile": {
+          "Id": 7,
+          "Red": false,
+          "ChineseName": "8\u4E07"
+        },
+        "Consumed": []
+      },
+      {
+        "Sequence": 10895,
+        "Type": "dahai",
+        "Actor": 3,
+        "Target": null,
+        "Tile": {
+          "Id": 24,
+          "Red": false,
+          "ChineseName": "7\u7D22"
+        },
+        "Consumed": []
+      }
+    ]
+  },
+  "NativeCanonicalTransport": {
+    "record": [
+      {
+        "type": "start_game",
+        "kyoku_first": 0,
+        "aka_flag": true
+      },
+      {
+        "type": "start_kyoku",
+        "bakaze": "E",
+        "kyoku": 3,
+        "honba": 0,
+        "kyotaku": 0,
+        "oya": 3,
+        "mjcn_snapshot": {
+          "schema": 1,
+          "context_key": "recorded-20260924-sample-10897",
+          "our_player": 0,
+          "round_wind": 0,
+          "hand_number": 3,
+          "honba": 0,
+          "riichi_sticks": 0,
+          "dealer": 3,
+          "wall_remaining": 12,
+          "hand": [
+            "9m",
+            "9m",
+            "5p",
+            "6p",
+            "6p",
+            "7p",
+            "1s",
+            "4s",
+            "4s",
+            "5s",
+            "6s",
+            "6s",
+            "7s",
+            "7s"
+          ],
+          "dora": [
+            "2m"
+          ],
+          "history_complete": false,
+          "legal_actions": 1,
+          "players": [
+            {
+              "id": 0,
+              "seat_wind": 1,
+              "score": 11000,
+              "riichi_declared": false,
+              "riichi_established": false,
+              "ippatsu": null,
+              "river": [
+                {
+                  "pai": "1p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "E",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "N",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "C",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "2m",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "3m",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "9s",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "2p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "S",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "3m",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "2s",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "1m",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "6s",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "C",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                }
+              ],
+              "melds": []
+            },
+            {
+              "id": 1,
+              "seat_wind": 2,
+              "score": 46300,
+              "riichi_declared": false,
+              "riichi_established": false,
+              "ippatsu": null,
+              "river": [
+                {
+                  "pai": "W",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "F",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "9m",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "3p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "9s",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "2s",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "4m",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "7p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "F",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "8p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "E",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "7m",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "5s",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "S",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                }
+              ],
+              "melds": []
+            },
+            {
+              "id": 2,
+              "seat_wind": 3,
+              "score": 10400,
+              "riichi_declared": true,
+              "riichi_established": true,
+              "ippatsu": null,
+              "river": [
+                {
+                  "pai": "P",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "C",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "9p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "7p",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "9m",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "S",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "9p",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "1p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "6s",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": true
+                },
+                {
+                  "pai": "5p",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "W",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "7m",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "8p",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "8m",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                }
+              ],
+              "melds": []
+            },
+            {
+              "id": 3,
+              "seat_wind": 0,
+              "score": 32300,
+              "riichi_declared": false,
+              "riichi_established": false,
+              "ippatsu": null,
+              "river": [
+                {
+                  "pai": "1m",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "E",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "W",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "N",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "9p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "8m",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "N",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "W",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "P",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "9s",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "8p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "E",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "1m",
+                  "tsumogiri": true,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "2p",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                },
+                {
+                  "pai": "7s",
+                  "tsumogiri": false,
+                  "claimed": false,
+                  "riichi": false
+                }
+              ],
+              "melds": []
+            }
+          ]
+        }
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "1m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "1p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "W",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "P",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "E",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "E",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "F",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "C",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "W",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "N",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "9m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "9p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "N",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "C",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "3p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "7p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "9p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "2m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "9s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "9m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "8m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "3m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "2s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "S",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "N",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "9s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "4m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "9p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "W",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "2p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "7p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "1p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "P",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "S",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "F",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "6s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "9s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "3m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "8p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "5p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "8p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "2s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "E",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "W",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "E",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "1m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "7m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "7m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "1m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "6s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "5s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "8p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "2p",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 0,
+        "target": null,
+        "pai": "C",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 1,
+        "target": null,
+        "pai": "S",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 2,
+        "target": null,
+        "pai": "8m",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "dahai",
+        "actor": 3,
+        "target": null,
+        "pai": "7s",
+        "consumed": [],
+        "can_act": false
+      },
+      {
+        "type": "tsumo",
+        "actor": 0,
+        "pai": "1s",
+        "mjcn_after_call": false,
+        "can_act": true
+      }
+    ]
+  },
+  "AppliedNativeState": {
+    "dealer": 3,
+    "dora": [
+      "2m"
+    ],
+    "hand_number": 3,
+    "honba": 0,
+    "players": [
+      {
+        "hand": [
+          "9m",
+          "9m",
+          "5p",
+          "6p",
+          "6p",
+          "7p",
+          "1s",
+          "4s",
+          "4s",
+          "5s",
+          "6s",
+          "6s",
+          "7s",
+          "7s"
+        ],
+        "id": 0,
+        "melds": [],
+        "riichi_declared": false,
+        "riichi_established": false,
+        "river": [
+          {
+            "pai": "1p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "E",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "N",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "C",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "2m",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "3m",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "9s",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "2p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "S",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "3m",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "2s",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "1m",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "6s",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "C",
+            "riichi": false,
+            "tsumogiri": true
+          }
+        ],
+        "score": 11000,
+        "seat_wind": 1
+      },
+      {
+        "hand": [],
+        "id": 1,
+        "melds": [],
+        "riichi_declared": false,
+        "riichi_established": false,
+        "river": [
+          {
+            "pai": "W",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "F",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "9m",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "3p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "9s",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "2s",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "4m",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "7p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "F",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "8p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "E",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "7m",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "5s",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "S",
+            "riichi": false,
+            "tsumogiri": true
+          }
+        ],
+        "score": 46300,
+        "seat_wind": 2
+      },
+      {
+        "hand": [],
+        "id": 2,
+        "melds": [],
+        "riichi_declared": true,
+        "riichi_established": true,
+        "river": [
+          {
+            "pai": "P",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "C",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "9p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "7p",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "9m",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "S",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "9p",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "1p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "6s",
+            "riichi": true,
+            "tsumogiri": false
+          },
+          {
+            "pai": "5p",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "W",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "7m",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "8p",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "8m",
+            "riichi": false,
+            "tsumogiri": true
+          }
+        ],
+        "score": 10400,
+        "seat_wind": 3
+      },
+      {
+        "hand": [],
+        "id": 3,
+        "melds": [],
+        "riichi_declared": false,
+        "riichi_established": false,
+        "river": [
+          {
+            "pai": "1m",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "E",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "W",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "N",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "9p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "8m",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "N",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "W",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "P",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "9s",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "8p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "E",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "1m",
+            "riichi": false,
+            "tsumogiri": true
+          },
+          {
+            "pai": "2p",
+            "riichi": false,
+            "tsumogiri": false
+          },
+          {
+            "pai": "7s",
+            "riichi": false,
+            "tsumogiri": false
+          }
+        ],
+        "score": 32300,
+        "seat_wind": 0
+      }
+    ],
+    "public_visible": [
+      "1m",
+      "1m",
+      "1m",
+      "2m",
+      "2m",
+      "3m",
+      "3m",
+      "4m",
+      "7m",
+      "7m",
+      "8m",
+      "8m",
+      "9m",
+      "9m",
+      "1p",
+      "1p",
+      "2p",
+      "2p",
+      "3p",
+      "5p",
+      "7p",
+      "7p",
+      "8p",
+      "8p",
+      "8p",
+      "9p",
+      "9p",
+      "9p",
+      "2s",
+      "2s",
+      "5s",
+      "6s",
+      "6s",
+      "7s",
+      "9s",
+      "9s",
+      "9s",
+      "E",
+      "E",
+      "E",
+      "E",
+      "S",
+      "S",
+      "S",
+      "W",
+      "W",
+      "W",
+      "W",
+      "N",
+      "N",
+      "N",
+      "P",
+      "P",
+      "F",
+      "F",
+      "C",
+      "C",
+      "C"
+    ],
+    "riichi_sticks": 0,
+    "round_wind": 0,
+    "wall_remaining": 12
+  },
+  "NativeDecision": {
+    "Candidates": [
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 8,
+              "Red": false,
+              "ChineseName": "9\u4E07"
+            },
+            "Consumed": [],
+            "Tsumogiri": false
+          }
+        ],
+        "Score": -51.033485412597656
+      },
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 15,
+              "Red": false,
+              "ChineseName": "7\u7B52"
+            },
+            "Consumed": [],
+            "Tsumogiri": false
+          }
+        ],
+        "Score": -51.134342193603516
+      },
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 22,
+              "Red": false,
+              "ChineseName": "5\u7D22"
+            },
+            "Consumed": [],
+            "Tsumogiri": false
+          }
+        ],
+        "Score": -51.32784652709961
+      },
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 24,
+              "Red": false,
+              "ChineseName": "7\u7D22"
+            },
+            "Consumed": [],
+            "Tsumogiri": false
+          }
+        ],
+        "Score": -51.338600158691406
+      },
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 13,
+              "Red": false,
+              "ChineseName": "5\u7B52"
+            },
+            "Consumed": [],
+            "Tsumogiri": false
+          }
+        ],
+        "Score": -51.48740005493164
+      },
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 23,
+              "Red": false,
+              "ChineseName": "6\u7D22"
+            },
+            "Consumed": [],
+            "Tsumogiri": false
+          }
+        ],
+        "Score": -51.503822326660156
+      },
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 14,
+              "Red": false,
+              "ChineseName": "6\u7B52"
+            },
+            "Consumed": [],
+            "Tsumogiri": false
+          }
+        ],
+        "Score": -51.62328338623047
+      },
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 18,
+              "Red": false,
+              "ChineseName": "1\u7D22"
+            },
+            "Consumed": [],
+            "Tsumogiri": true
+          }
+        ],
+        "Score": -53.83419418334961
+      },
+      {
+        "Moves": [
+          {
+            "Type": "dahai",
+            "Actor": 0,
+            "Target": null,
+            "Tile": {
+              "Id": 21,
+              "Red": false,
+              "ChineseName": "4\u7D22"
+            },
+            "Consumed": [],
+            "Tsumogiri": false
+          }
+        ],
+        "Score": -55.03983688354492
+      }
+    ],
+    "InputSha256": "63BCBACD99367810FBA0A0FC7C62DAB90F6684DE84EFBBD8322B55C94D9A81EE",
+    "Assumptions": [
+      "\u5B9E\u9A8C\u5168\u684C\u8F93\u5165\uFF1B\u672A\u89C2\u6D4B\u7684\u8DE8\u73A9\u5BB6\u4E8B\u4EF6\u987A\u5E8F\u3001\u4E34\u65F6\u632F\u542C\u3001\u4E00\u53D1\u4E0E\u9996\u5DE1\u72B6\u6001\u4E0D\u89C6\u4E3A\u5DF2\u77E5\u3002",
+      "\u56DB\u4EBA\u4E1C\u5357\u6218\u4E0E\u8D64\u4E94\u89C4\u5219\u6CBF\u7528\u672C\u5730\u5F15\u64CE\u914D\u7F6E\uFF1B\u5BF9\u624B\u6697\u624B\u4FDD\u6301\u672A\u77E5\u3002",
+      "\u516C\u5F00\u4E8B\u4EF6\u5386\u53F2\u4E0D\u5B8C\u6574\uFF1B\u4EE5\u5F53\u524D\u516C\u5F00\u684C\u9762\u548C\u540C\u5C40\u5DF2\u8BB0\u5F55\u4E8B\u4EF6\u5206\u6790\uFF0C\u4E0D\u4F2A\u9020\u5B8C\u6574\u56DE\u653E\u3002",
+      "\u73A9\u5BB60\u672A\u8BFB\u5230\u6B63\u5411\u7ACB\u76F4\u6807\u5FD7\uFF0C\u6682\u6309\u672A\u7ACB\u76F4\u5206\u6790\u3002",
+      "\u73A9\u5BB61\u672A\u8BFB\u5230\u6B63\u5411\u7ACB\u76F4\u6807\u5FD7\uFF0C\u6682\u6309\u672A\u7ACB\u76F4\u5206\u6790\u3002",
+      "\u73A9\u5BB62\u724C\u6CB3\u90E8\u5206\u69FD\u4F4D\u5C1A\u672A\u8BC6\u522B\uFF1B\u7EB3\u5165\u5F53\u524D\u53EF\u89C1\u4E0E\u540C\u5C40\u5DF2\u8BB0\u5F55\u768414\u5F20\uFF0C\u7F3A\u5931\u724C\u4E0D\u731C\u6D4B\u3002",
+      "\u73A9\u5BB62\u516C\u5F00\u7ACB\u76F4\u68D2\u6309\u5DF2\u7ACB\u76F4\u53C2\u4E0E\u9632\u5B88\uFF1B\u6210\u7ACB\u65F6\u523B\u672A\u72EC\u7ACB\u786E\u8BA4\u3002",
+      "\u73A9\u5BB63\u672A\u8BFB\u5230\u6B63\u5411\u7ACB\u76F4\u6807\u5FD7\uFF0C\u6682\u6309\u672A\u7ACB\u76F4\u5206\u6790\u3002",
+      "\u5B9D\u724C\u4F7F\u7528\u5F53\u524D\u8D44\u6E90\u4E0E\u6807\u7B7E\u5019\u9009\u8BFB\u503C\uFF1B\u6620\u5C04\u5C1A\u672A\u5B8C\u6210\u72EC\u7ACB\u9A8C\u8BC1\u3002",
+      "OFFLINE_FORCED_DISCARD_WINDOW: \u624B\u724C\u4E0E\u516C\u5F00\u684C\u9762\u6765\u81EA\u539F\u59CB\u5B9E\u673A\u8BB0\u5F55\uFF1B\u5141\u8BB8\u5F03\u724C\u6807\u5FD7\u662F\u79BB\u7EBF\u6D4B\u8BD5\u6761\u4EF6\uFF0C\u672A\u5BA3\u79F0\u8BE5\u91C7\u6837\u7684\u6E38\u620F\u64CD\u4F5C\u7A97\u53E3\u5DF2\u5B9E\u6D4B\u3002",
+      "\u4E8B\u4EF6\u5386\u53F2\u4E0D\u5B8C\u6574\uFF1B\u672A\u89C2\u5BDF\u5230\u7684\u5148\u540E\u987A\u5E8F\u4E0D\u8865\u9020\uFF0C\u5386\u53F2\u9632\u5B88\u7279\u5F81\u53EF\u80FD\u7F3A\u5931\u3002",
+      "\u4E00\u53D1\u8D44\u683C\u672A\u77E5\u65F6\u6309\u65E0\u4E00\u53D1\u4F30\u503C\uFF0C\u5B9E\u9645\u548C\u724C\u8D44\u683C\u4ECD\u4EE5\u6E38\u620F\u6309\u94AE\u4E3A\u51C6\u3002"
+    ],
+    "EngineCommit": "53188a0b926fbab38177f88c3cd87d554cf412af",
+    "StartToResponseMilliseconds": 764.1472,
+    "AppliedSnapshotJson": "{\u0022dealer\u0022: 3, \u0022dora\u0022: [\u00222m\u0022], \u0022hand_number\u0022: 3, \u0022honba\u0022: 0, \u0022players\u0022: [{\u0022hand\u0022: [\u00229m\u0022, \u00229m\u0022, \u00225p\u0022, \u00226p\u0022, \u00226p\u0022, \u00227p\u0022, \u00221s\u0022, \u00224s\u0022, \u00224s\u0022, \u00225s\u0022, \u00226s\u0022, \u00226s\u0022, \u00227s\u0022, \u00227s\u0022], \u0022id\u0022: 0, \u0022melds\u0022: [], \u0022riichi_declared\u0022: false, \u0022riichi_established\u0022: false, \u0022river\u0022: [{\u0022pai\u0022: \u00221p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022E\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u0022N\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u0022C\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00222m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00223m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00229s\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00222p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022S\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00223m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00222s\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00221m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00226s\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u0022C\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}], \u0022score\u0022: 11000, \u0022seat_wind\u0022: 1}, {\u0022hand\u0022: [], \u0022id\u0022: 1, \u0022melds\u0022: [], \u0022riichi_declared\u0022: false, \u0022riichi_established\u0022: false, \u0022river\u0022: [{\u0022pai\u0022: \u0022W\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022F\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00229m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00223p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00229s\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00222s\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00224m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00227p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022F\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00228p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022E\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00227m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00225s\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022S\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}], \u0022score\u0022: 46300, \u0022seat_wind\u0022: 2}, {\u0022hand\u0022: [], \u0022id\u0022: 2, \u0022melds\u0022: [], \u0022riichi_declared\u0022: true, \u0022riichi_established\u0022: true, \u0022river\u0022: [{\u0022pai\u0022: \u0022P\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022C\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00229p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00227p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00229m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u0022S\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00229p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00221p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00226s\u0022, \u0022riichi\u0022: true, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00225p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u0022W\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00227m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00228p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00228m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}], \u0022score\u0022: 10400, \u0022seat_wind\u0022: 3}, {\u0022hand\u0022: [], \u0022id\u0022: 3, \u0022melds\u0022: [], \u0022riichi_declared\u0022: false, \u0022riichi_established\u0022: false, \u0022river\u0022: [{\u0022pai\u0022: \u00221m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022E\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022W\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022N\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00229p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00228m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022N\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u0022W\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u0022P\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00229s\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00228p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u0022E\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00221m\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: true}, {\u0022pai\u0022: \u00222p\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}, {\u0022pai\u0022: \u00227s\u0022, \u0022riichi\u0022: false, \u0022tsumogiri\u0022: false}], \u0022score\u0022: 32300, \u0022seat_wind\u0022: 0}], \u0022public_visible\u0022: [\u00221m\u0022, \u00221m\u0022, \u00221m\u0022, \u00222m\u0022, \u00222m\u0022, \u00223m\u0022, \u00223m\u0022, \u00224m\u0022, \u00227m\u0022, \u00227m\u0022, \u00228m\u0022, \u00228m\u0022, \u00229m\u0022, \u00229m\u0022, \u00221p\u0022, \u00221p\u0022, \u00222p\u0022, \u00222p\u0022, \u00223p\u0022, \u00225p\u0022, \u00227p\u0022, \u00227p\u0022, \u00228p\u0022, \u00228p\u0022, \u00228p\u0022, \u00229p\u0022, \u00229p\u0022, \u00229p\u0022, \u00222s\u0022, \u00222s\u0022, \u00225s\u0022, \u00226s\u0022, \u00226s\u0022, \u00227s\u0022, \u00229s\u0022, \u00229s\u0022, \u00229s\u0022, \u0022E\u0022, \u0022E\u0022, \u0022E\u0022, \u0022E\u0022, \u0022S\u0022, \u0022S\u0022, \u0022S\u0022, \u0022W\u0022, \u0022W\u0022, \u0022W\u0022, \u0022W\u0022, \u0022N\u0022, \u0022N\u0022, \u0022N\u0022, \u0022P\u0022, \u0022P\u0022, \u0022F\u0022, \u0022F\u0022, \u0022C\u0022, \u0022C\u0022, \u0022C\u0022], \u0022riichi_sticks\u0022: 0, \u0022round_wind\u0022: 0, \u0022wall_remaining\u0022: 12}",
+    "EngineName": "akochan (experimental public snapshot)",
+    "HistoryComplete": false
+  },
+  "Error": null
+}

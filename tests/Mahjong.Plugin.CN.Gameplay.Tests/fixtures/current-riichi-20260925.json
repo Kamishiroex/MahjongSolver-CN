@@ -1,0 +1,61 @@
+{
+  "SourceSha256": "d09cf06ce44822d4dfcb7d506d03c215f068591d6c482d911959d8f9aba78962",
+  "ObservedAtUtc": "2026-09-25T07:15:14.8530346+00:00",
+  "GameVersion": "2026.09.15.0000.0000",
+  "Evidence": "Read-only production reader, explicit public control headers. No GUI automation.",
+  "Riichi": [
+    {
+      "ScreenDirection": "bottom",
+      "Path": "Emj/100/2",
+      "StickVisible": true,
+      "Code": "PUBLIC_RIICHI_STICK_CANDIDATE",
+      "MappingStatus": "Candidate",
+      "DeclarationTimingVerified": false
+    },
+    {
+      "ScreenDirection": "right",
+      "Path": "Emj/101/2",
+      "StickVisible": false,
+      "Code": "PUBLIC_RIICHI_STICK_HIDDEN_OWNER",
+      "MappingStatus": "Candidate",
+      "DeclarationTimingVerified": false
+    },
+    {
+      "ScreenDirection": "top",
+      "Path": "Emj/102/2",
+      "StickVisible": false,
+      "Code": "PUBLIC_RIICHI_STICK_HIDDEN_OWNER",
+      "MappingStatus": "Candidate",
+      "DeclarationTimingVerified": false
+    },
+    {
+      "ScreenDirection": "left",
+      "Path": "Emj/103/2",
+      "StickVisible": false,
+      "Code": "PUBLIC_RIICHI_STICK_HIDDEN_OWNER",
+      "MappingStatus": "Candidate",
+      "DeclarationTimingVerified": false
+    }
+  ],
+  "Dora": [
+    {
+      "Path": "Emj/28/2",
+      "Slot": 0,
+      "IconId": 76053,
+      "PathHash": 2284372389,
+      "Kind34": 12,
+      "RedFive": false,
+      "Code": "PUBLIC_DORA_FACE_CANDIDATE",
+      "SelectedPart": {
+        "PartId": 0,
+        "PartsListId": 0,
+        "PartCount": 1,
+        "U": 0,
+        "V": 0,
+        "Width": 40,
+        "Height": 52
+      },
+      "ImageFlags": 128
+    }
+  ]
+}

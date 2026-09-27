@@ -1,0 +1,48 @@
+{
+  "collectedOn": "2026-09-25",
+  "source": "Local version files and read-only PE metadata; no game execution",
+  "gameVersion": "2026.09.15.0000.0000",
+  "selectedHooksDirectory": "%APPDATA%/XIVLauncherCN/addon/Hooks/26-09-25-01",
+  "dalamud": {
+    "assemblyVersion": "15.0.3.5",
+    "apiLevel": 15,
+    "informationalVersion": "15.0.3.5+a198a02bdce1f3213cad618850ab1b2736307588",
+    "scmVersion": "26-09-25-01",
+    "gitHash": "a198a02bdce1f3213cad618850ab1b2736307588",
+    "gitHashClientStructs": "243dc41e4",
+    "repositoryUrlMetadata": "https://github.com/Dalamud-DailyRoutines/Dalamud",
+    "sourceLookupRepository": "https://github.com/ottercorp/Dalamud",
+    "sha256": "DBDAE52C6A2313E440491287FBD5A6219BC72317F928B566BD65F7FB152F33FE"
+  },
+  "clientStructs": {
+    "informationalVersion": "1.0.0+243dc41e4d71f350cd80aa5eba8c75517f3d5154",
+    "fileVersion": "7.56.2.9310",
+    "gitHash": "243dc41e4d71f350cd80aa5eba8c75517f3d5154",
+    "gitSubmoduleRepository": "https://github.com/Dalamud-DailyRoutines/FFXIVClientStructs.git",
+    "sourceLookupRepository": "https://github.com/ottercorp/FFXIVClientStructs",
+    "idaDataVersion": "2026.09.15.0000.0000",
+    "sha256": "D397764C6DD787C865E7422EA12C0C4DFF1AD5B5117F4047F6E033ECE5E84E77"
+  },
+  "runtime": {
+    "tfm": "net10.0",
+    "sourceTargetFramework": "net10.0-windows",
+    "rollForward": "LatestMinor",
+    "frameworks": [
+      {
+        "name": "Microsoft.NETCore.App",
+        "version": "10.0.0"
+      },
+      {
+        "name": "Microsoft.WindowsDesktop.App",
+        "version": "10.0.0"
+      }
+    ]
+  },
+  "otherLocalCopies": [],
+  "scope": {
+    "sourceAndBinaryIdentityVerified": true,
+    "dalamudLoadTestPerformed": false,
+    "cnMahjongGameStateVerified": false,
+    "cnMahjongCallbacksVerified": false
+  }
+}

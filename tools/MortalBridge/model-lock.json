@@ -1,0 +1,15 @@
+{
+  "source_url": "https://github.com/Equim-chan/Mortal",
+  "source_commit": "0cff2b52982be5b1163aa9a62fb01f03ce91e0d2",
+  "model_url": "https://huggingface.co/Yuchen1457/mortal-582500",
+  "model_revision": "7386c9f5c751a3ea75efea99737cef5a5ef950f1",
+  "checkpoint": "mortal_582500.pth",
+  "checkpoint_bytes": 130786031,
+  "checkpoint_sha256": "738e0d6e3c0ce9671629554ad39abd147d2ffbac676e80b194c83f2acc0fea20",
+  "version": 4,
+  "observation_shape": [1012, 34],
+  "action_space": 46,
+  "license": "AGPL-3.0; community checkpoint, not an official Mortal model release",
+  "torch_version": "2.9.1+cpu",
+  "numpy_version": "2.3.3"
+}
