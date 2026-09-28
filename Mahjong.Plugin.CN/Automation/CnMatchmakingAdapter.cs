@@ -15,26 +15,27 @@ internal static unsafe class CnMatchmakingAdapter
         row.TerritoryType.RowId == 831 && row.ContentLinkType == 1 && row.IsInDutyFinder &&
         row.Name.ToString() == "多玛方城战：" + duty.Name;
 
-    internal static (QueuePhase Phase, bool Matches, bool PopMatches) ReadQueue(uint selected)
+    internal static (QueuePhase Phase, bool Matches, bool PopMatches) ReadQueue(IReadOnlyList<uint> selected)
     {
         var finder = ContentsFinder.Instance();
         if (finder == null) throw new InvalidOperationException("QUEUE_STATE_UNAVAILABLE");
         ref var info = ref finder->QueueInfo;
         if ((int)info.QueueState > 5) throw new InvalidOperationException("QUEUE_STATE_UNKNOWN");
-        int count = 0;
-        bool matches = true;
+        var queued = new List<uint>();
+        bool regular = true;
         foreach (var entry in info.QueuedEntries)
         {
             if (entry.ContentType == ContentsType.None) continue;
-            count++;
-            matches &= entry.ContentType == ContentsType.Regular && entry.Id == selected;
+            queued.Add(entry.Id);
+            regular &= entry.ContentType == ContentsType.Regular;
         }
-        return ((QueuePhase)info.QueueState, matches && count == 1,
-            info.PoppedQueueEntry.ContentType == ContentsType.Regular && info.PoppedQueueEntry.Id == selected);
+        return ((QueuePhase)info.QueueState, regular && MahjongDuties.QueueMatches(selected, queued),
+            info.PoppedQueueEntry.ContentType == ContentsType.Regular && selected.Contains(info.PoppedQueueEntry.Id));
     }
 
-    internal static void Queue(uint selected)
+    internal static void Queue(uint[] selected)
     {
+        if (!MahjongDuties.ValidSelection(selected)) throw new InvalidOperationException("麻将桌型选择无效。");
         var finder = ContentsFinder.Instance();
         if (finder == null || finder->QueueInfo.QueueState != FFXIVClientStructs.FFXIV.Client.Enums.ContentsFinderQueueState.None)
             throw new InvalidOperationException("QUEUE_ALREADY_ACTIVE");
@@ -45,7 +46,8 @@ internal static unsafe class CnMatchmakingAdapter
             throw new InvalidOperationException("排队惩罚尚未结束或惩罚状态不可读。");
         // QueueDuties consumes ContentFinderCondition row IDs (not Content/territory IDs).
         // The client/server retain their normal availability/rank/party validation.
-        finder->QueueInfo.QueueDuties(&selected, 1);
+        fixed (uint* ids = selected)
+            finder->QueueInfo.QueueDuties(ids, selected.Length);
     }
 
     internal static bool CanAccept(nint address) => FindCommenceEvent((AddonContentsFinderConfirm*)address) != null;

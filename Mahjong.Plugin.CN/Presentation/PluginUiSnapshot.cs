@@ -15,6 +15,7 @@ internal sealed record PluginUiSnapshot(DateTimeOffset CapturedUtc, long Observa
     ImmutableArray<string> RecentEvents = default,
     bool RatingRefreshing = false, string RatingStatus = "")
 {
+    internal RunPresentation RunStatus { get; init; } = new("尚未开始", "选择手动提示或自动打牌。");
     internal static PluginUiSnapshot Empty { get; } = new(default, 0, PlayMode.Off, false,
         "等待状态更新。", "标准求解器", "任务未启动。", null, null, []);
     internal string ModeLabel => Mode switch

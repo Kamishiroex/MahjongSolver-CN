@@ -19,6 +19,65 @@ public sealed class EntryServicesCollection { }
 [Collection("CN entry services")]
 public sealed class TestAccessEntryTests
 {
+    [Theory]
+    [InlineData(false, false)][InlineData(true, false)][InlineData(false, true)][InlineData(true, true)]
+    public async Task Background_preparation_requires_both_source_choice_and_lease_and_never_starts_a_task(bool beta, bool valid)
+    {
+        using var host = new Host();
+        Host.Set(host.Entry, "taskRun", new Mahjong.Cn.Tasks.TaskRun());
+        Directory.CreateDirectory(host.LogTestDirectory);
+        // Deliberately incomplete installation: checks may run, native code must not.
+        File.WriteAllText(Path.Combine(host.LogTestDirectory, "mortal-installation.json"), "{}");
+        Host.Set(host.Entry, "selectedEngineDirectory", host.LogTestDirectory);
+        Host.Set(host.Entry, "<MortalSelected>k__BackingField", true);
+        Host.Set(host.Entry, "experimentalHandAiEnabled", beta ? 1 : 0);
+        if (valid) Assert.True(host.Access.TryUnlock(Host.Code));
+        typeof(Plugin).GetMethod("RequestSelectedMortalWarmup", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(host.Entry, null);
+        typeof(Plugin).GetMethod("UpdateSelectedMortalWarmup", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(host.Entry, null);
+        var session = Host.Get<Mahjong.Cn.Engines.MortalEngineSession?>(host.Entry, "mortalSession");
+        try
+        {
+            if (beta && valid)
+            {
+                Assert.NotNull(session);
+                await Assert.ThrowsAnyAsync<Exception>(async () => await session.Preparation);
+                Assert.False(session.IsReady);
+            }
+            else Assert.Null(session);
+            Assert.Null(host.Entry.PlayRuntime);
+            Assert.False(host.Entry.TableAutomationArmed);
+            Assert.False(host.Entry.GameOperationsAuthorized);
+            Assert.Equal(Mahjong.Cn.Tasks.TaskRunPhase.NotStarted, host.Entry.TaskRun.Phase);
+        }
+        finally { session?.Dispose(); }
+    }
+
+    [Fact]
+    public void Lease_renewal_alone_does_not_request_background_preparation_for_retained_source()
+    {
+        using var host = new Host();
+        Host.Set(host.Entry, "experimentalHandAiEnabled", 1);
+        Host.Set(host.Entry, "<MortalSelected>k__BackingField", true);
+        host.Entry.VerifyTestCode(Host.Code);
+        Assert.False(Host.Get<bool>(host.Entry, "backgroundWarmupRequested"));
+        Assert.Null(Host.Get<object?>(host.Entry, "mortalSession"));
+        Assert.False(host.Entry.TableAutomationArmed);
+    }
+
+    [Theory][InlineData(false)][InlineData(true)]
+    public void Restored_test_source_requests_preparation_only_with_valid_lease(bool valid)
+    {
+        using var host = new Host();
+        Directory.CreateDirectory(host.LogTestDirectory);
+        var saved = new SolverPreferenceStore(Path.Combine(host.LogTestDirectory, "preference.json"));
+        Assert.True(saved.Save(true)); Host.Set(host.Entry, "solverPreference", saved);
+        if (valid) Assert.True(host.Access.TryUnlock(Host.Code));
+        typeof(Plugin).GetMethod("RestoreSolverPreference", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(host.Entry, null);
+        Assert.True(host.Entry.ExperimentalHandAiEnabled);
+        Assert.Equal(valid, Host.Get<bool>(host.Entry, "backgroundWarmupRequested"));
+        Assert.Null(host.Entry.PlayRuntime); Assert.False(host.Entry.TableAutomationArmed);
+    }
+
     [Theory][InlineData("pause")][InlineData("end")][InlineData("stop")]
     public void Recovery_cannot_survive_manual_pause_end_or_stop(string action)
     {
@@ -83,9 +142,9 @@ public sealed class TestAccessEntryTests
             int pauseRequest = Host.Get<int>(host.Entry, "modeRequestVersion");
             host.Entry.ArmTableAutomation();
             host.Entry.SetTableAutomationOptions(new(true, true, 767, false));
-            Assert.Equal(pauseRequest, Host.Get<int>(host.Entry, "modeRequestVersion"));
+            Assert.True(Host.Get<int>(host.Entry, "modeRequestVersion") > pauseRequest);
             Assert.True(File.Exists(Path.Combine(host.LogTestDirectory, "table-automation.json")));
-            host.Drain(); // Settings cancel only the arm; the pending pause still executes.
+            host.Drain(); // The newer unified pause cancels the arm and still tears down gameplay.
             Assert.Contains("已暂停", host.Entry.Status);
             Host.Set(host.Entry, "<AutomationOptions>k__BackingField", new Mahjong.Plugin.CN.Automation.TableAutomationOptions());
             typeof(Plugin).GetMethod("LoadTableAutomationOptions", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(host.Entry, null);
@@ -97,16 +156,18 @@ public sealed class TestAccessEntryTests
     }
 
     [Fact]
-    public void Queue_only_stop_preserves_current_gameplay_permission_and_pending_mode_request()
+    public void Queue_stop_uses_unified_pause_and_invalidates_pending_gameplay()
     {
         using var host = new Host();
         Host.Set(host.Entry, "gameplayAllowed", true);
         Host.Set(host.Entry, "modeRequestVersion", 21);
         Host.Get<Mahjong.Plugin.CN.Automation.TableAutomation>(host.Entry, "tableAutomation").Arm(new(true, true), 0);
         host.Entry.StopTableAutomation();
-        Assert.True(Host.Get<bool>(host.Entry, "gameplayAllowed"));
-        Assert.Equal(21, Host.Get<int>(host.Entry, "modeRequestVersion"));
+        Assert.False(Host.Get<bool>(host.Entry, "gameplayAllowed"));
+        Assert.True(Host.Get<int>(host.Entry, "modeRequestVersion") > 21);
         Assert.False(host.Entry.TableAutomationArmed);
+        host.Drain();
+        Assert.Contains("已暂停", host.Entry.Status);
     }
     [Fact]
     public void Queue_arming_does_not_cancel_a_previously_queued_pause()

@@ -13,6 +13,7 @@ public sealed class MortalEngineSession : IDisposable
     public double WarmupMilliseconds { get; private set; }
     private string status = "凡夫预热中：正在校验模型与运行库，可在进桌前完成。";
     public string Status => Volatile.Read(ref status);
+    public bool IsReady => Preparation.IsCompletedSuccessfully && engine.IsReady;
     private int disposed;
 
     public MortalEngineSession(string directory)

@@ -10,6 +10,15 @@ namespace Mahjong.Plugin.CN.Automation;
 internal static unsafe class CnCallMenuResolver
 {
     private static readonly UTF8Encoding Utf8 = new(false, true);
+    // Only current visible, enabled renderer bindings count as an offered win.
+    // Parent strings and hand-shape inference are deliberately excluded (furiten etc.).
+    internal static bool TryGetAvailableWin(AtkUnitBase* unit, out ActionKind kind)
+    {
+        bool ron = TryResolve(unit, ActionKind.Ron, out _, out _);
+        bool tsumo = TryResolve(unit, ActionKind.Tsumo, out _, out _);
+        kind = ron ? ActionKind.Ron : ActionKind.Tsumo;
+        return ron != tsumo;
+    }
     internal static bool TryResolve(AtkUnitBase* unit, ActionKind intent, out int option, out ImmutableArray<string> labels)
     {
         option = -1; labels = [];

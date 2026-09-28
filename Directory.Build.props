@@ -3,7 +3,7 @@
   <!-- Shared compiler settings; publication is explicit, never triggered by a push. -->
 
   <PropertyGroup Label="Identity">
-    <Version>4.1.4</Version>
+    <Version>5.2.1</Version>
     <Authors>XeldarAlz</Authors>
     <Copyright>Copyright (c) XeldarAlz</Copyright>
     <PackageProjectUrl>https://github.com/Kamishiroex/MahjongSolver-CN</PackageProjectUrl>

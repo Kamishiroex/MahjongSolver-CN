@@ -90,6 +90,17 @@ public sealed partial class Plugin
     { lock(gate){ if(taskRun.HasUnfinishedRun){taskRun.RequestStopAfterMatch();UpdateTaskCore();} } }
     internal void EndTask()
     { PausePlay();lock(gate){taskRun.End(AutomationNow);Status=TaskSummary;} }
+    internal void StartHintsFromToolbar()
+    {
+        if (taskRun?.HasUnfinishedRun == true)
+        {
+            if (PlayRuntime?.Mode == PlayMode.Manual && taskRun.Phase != TaskRunPhase.Paused) return;
+            PausePlay();
+            PlayRuntime?.PauseAutomation("用户切换为手动提示，正在重新预检。");
+            ResumeTaskCore(false);
+        }
+        else ActivatePlay(false);
+    }
     internal void StartAutomaticFromToolbar()
     {
         lock(gate)
@@ -133,6 +144,8 @@ public sealed partial class Plugin
                 if(!CheckLowerHandResource() || !taskRun.Resume(AutomationNow,DateTimeOffset.UtcNow,CurrentCharacterContext(),CurrentRating))
                 {Status=TaskSummary;return;}
                 PreserveQualifiedTaskAccess();
+                RequestSelectedMortalWarmup();
+                UpdateSelectedMortalWarmup();
                 if(needsOperations && !GrantTaskOperations(operationEpoch))return;
                 resumingTask=true;
                 ratingReadingEnabled=true;

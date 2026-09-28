@@ -36,7 +36,7 @@ public sealed partial class Plugin
         {
             if (!File.Exists(AutomationSettingsPath)) return;
             var options = JsonSerializer.Deserialize<TableAutomationOptions>(File.ReadAllText(AutomationSettingsPath));
-            if (options is not null && MahjongDuties.Find(options.DutyId) is not null &&
+            if (options is not null && options.ValidSelection &&
                 options.MatchLimit is >= 0 and <= 9999) AutomationOptions = options;
         }
         catch (Exception ex) { Log.Warning("读取自动排队设置失败：{Type}", ex.GetType().Name); }
@@ -47,9 +47,9 @@ public sealed partial class Plugin
     {
         lock (gate)
         {
-            if (disposed || MahjongDuties.Find(options.DutyId) is null || options.MatchLimit is < 0 or > 9999) return;
+            if (disposed || !options.ValidSelection || options.MatchLimit is < 0 or > 9999) return;
             if (options != AutomationOptions)
-                SuspendTableAutomation("设置已保存；点击“启动自动功能”生效。");
+                PausePlay(); // Pause the runtime too; do not leave it armed behind a revoked input gate.
             try
             {
                 string temp = AutomationSettingsPath + ".tmp";
@@ -88,9 +88,13 @@ public sealed partial class Plugin
                 {
                     if (AutomationOptions.AutoQueue)
                     {
-                        var duty = MahjongDuties.Find(AutomationOptions.DutyId)!;
-                        var row = DataManager.GetExcelSheet<ContentFinderCondition>().GetRow(duty.Id);
-                        if (!CnMatchmakingAdapter.MatchesSheet(duty, row)) throw new InvalidOperationException("麻将排队数据表与适配版本不一致。");
+                        if (!AutomationOptions.ValidSelection) throw new InvalidOperationException("麻将桌型选择无效。");
+                        foreach (uint id in AutomationOptions.SelectedDuties)
+                        {
+                            var duty = MahjongDuties.Find(id)!;
+                            var row = DataManager.GetExcelSheet<ContentFinderCondition>().GetRow(id);
+                            if (!CnMatchmakingAdapter.MatchesSheet(duty, row)) throw new InvalidOperationException("麻将排队数据表与适配版本不一致。");
+                        }
                         var resource = DataManager.GetFile<UldFile>("ui/uld/contentsfinderconfirm.uld");
                         if (resource is null || Convert.ToHexString(SHA256.HashData(resource.Data)) != CnMatchmakingAdapter.ConfirmUldHash)
                             throw new InvalidOperationException("匹配确认界面资源与适配版本不一致。");
@@ -102,10 +106,12 @@ public sealed partial class Plugin
                         var duty = MahjongDuties.Find(AutomationOptions.DutyId)!;
                         bool leader = Objects.LocalPlayer is { } local && Party.PartyLeaderIndex < Party.Length && Party[(int)Party.PartyLeaderIndex]?.EntityId == local.EntityId;
                         if (MahjongDuties.PartyError(duty, Party.Length, Party.IsAlliance, leader) is { } partyError) throw new InvalidOperationException(partyError);
-                        if (CnMatchmakingAdapter.ReadQueue(duty.Id).Phase != QueuePhase.None) throw new InvalidOperationException("已有报名，不能作为新任务接管；请先在游戏内取消。");
+                        if (CnMatchmakingAdapter.ReadQueue(AutomationOptions.SelectedDuties).Phase != QueuePhase.None) throw new InvalidOperationException("已有报名，不能作为新任务接管；请先在游戏内取消。");
                     }
                     if (!BeginManagedTask(AutomationOptions.AutoStart, true)) { tableAutomation.Disarm(Status); return; }
                     if(!GrantTaskOperations(operationEpoch))return;
+                    RequestSelectedMortalWarmup();
+                    UpdateSelectedMortalWarmup();
                     tableAutomation.Arm(AutomationOptions with { MatchLimit = 0 }, AutomationNow);
                 }
                 catch (Exception ex) { tableAutomation.Disarm("自动功能未启动：" + ex.Message); }
@@ -126,7 +132,7 @@ public sealed partial class Plugin
         }
     }
 
-    internal void StopTableAutomation() => SuspendTableAutomation("自动排队及进桌开打已停止；已提交的报名请在任务搜索器取消。");
+    internal void StopTableAutomation() => PausePlay();
 
     private void OnAutomationDutyCompleted(IDutyStateEventArgs args)
     {
@@ -162,7 +168,8 @@ public sealed partial class Plugin
                 bool ownedAutomation=request==Volatile.Read(ref automationRequestVersion);
                 if (taskRun?.Plan is { } taskPlan && taskRun.MatchId is { } match &&
                     taskRun.RunId==observedRun && match==observedMatch && taskRun.CharacterContext==CurrentCharacterContext() &&
-                    (taskPlan.DutyId == 0 || taskPlan.DutyId == dutyId) && taskRun.CompleteMatch(match))
+                    (taskPlan.DutyId == 0 || taskPlan.DutyId == dutyId ||
+                        taskPlan.Continuous && taskAutomationSnapshot?.ContainsDuty(dutyId) == true) && taskRun.CompleteMatch(match))
                 {
                     RecordJournalEvent("task_match_completed",new {taskRun.RunId,MatchId=match,ReviewMatchId=journal?.SessionId,taskRun.CompletedMatches,DutyId=dutyId,Engine=TaskEngineIdentity});
                     UpdateTaskCore();
@@ -185,7 +192,7 @@ public sealed partial class Plugin
         RecordJournalEvent("table_automation_state", new
         {
             tableAutomation.Armed, tableAutomation.Status, AutomationOptions.AutoQueue,
-            AutomationOptions.AutoStart, AutomationOptions.DutyId,
+            AutomationOptions.AutoStart, AutomationOptions.DutyId, AutomationOptions.SecondaryDutyId, tableAutomation.MatchedDutyId,
             AutomationOptions.MatchLimit, tableAutomation.CompletedMatches, tableAutomation.MatchCompleted,
         });
     }
@@ -205,6 +212,9 @@ public sealed partial class Plugin
         }
         try
         {
+            // Readiness enters the coordinator BEFORE it reserves any game action.
+            bool engineReady = AwaitSelectedMortalForTable();
+            if (!tableAutomation.Armed) return;
             if (taskRun?.Plan is not null && !taskRun.AllowsNextMatch && !tableAutomation.MatchCompleted && !taskRun.InMatch)
             { tableAutomation.Disarm(TaskSummary); RecordTableAutomationState(); return; }
             var table = (AtkUnitBase*)GameGui.GetAddonByName("Emj").Address;
@@ -217,15 +227,15 @@ public sealed partial class Plugin
                 Conditions[ConditionFlag.Occupied] || Conditions[ConditionFlag.OccupiedInEvent] ||
                 Conditions[ConditionFlag.TradeOpen] || Conditions[ConditionFlag.ExecutingCraftingAction] ||
                 Conditions[ConditionFlag.ExecutingGatheringAction];
-            var q = AutomationOptions.AutoQueue ? CnMatchmakingAdapter.ReadQueue(AutomationOptions.DutyId) : (QueuePhase.None, false, false);
+            var q = AutomationOptions.AutoQueue ? CnMatchmakingAdapter.ReadQueue(AutomationOptions.SelectedDuties) : (QueuePhase.None, false, false);
             nint confirm = GameGui.GetAddonByName("ContentsFinderConfirm").Address;
             uint currentDuty = DutyState.ContentFinderCondition.RowId;
             bool canLeave = tableAutomation.MatchCompleted && inDuty && !busy &&
-                currentDuty == AutomationOptions.DutyId && EventFramework.CanLeaveCurrentContent();
+                currentDuty == tableAutomation.MatchedDutyId && EventFramework.CanLeaveCurrentContent();
             var action = tableAutomation.Tick(now, new(Client.IsLoggedIn, visible, inDuty,
                 visible || tableAutomation.MatchCompleted ? tableBusy : queueBusy,
                 PlayRuntime?.Mode is PlayMode.Manual or PlayMode.Automatic, q.Item1, q.Item2, q.Item3,
-                confirm != 0 && CnMatchmakingAdapter.CanAccept(confirm), currentDuty, canLeave));
+                confirm != 0 && CnMatchmakingAdapter.CanAccept(confirm), currentDuty, canLeave, engineReady));
             if (!SelectedSourceAccessValid || !GameOperationsAuthorized) { EnforceBetaAccess(); return; }
             if (action == TableAutomationAction.Queue)
             {
@@ -235,12 +245,12 @@ public sealed partial class Plugin
                     Party[(int)Party.PartyLeaderIndex]?.EntityId == local.EntityId;
                 string? partyError = MahjongDuties.PartyError(duty, Party.Length, Party.IsAlliance, leader);
                 if (partyError is not null) throw new InvalidOperationException(partyError);
-                CnMatchmakingAdapter.Queue(duty.Id);
+                CnMatchmakingAdapter.Queue(AutomationOptions.SelectedDuties);
             }
             else if (action == TableAutomationAction.Accept)
             {
                 if (taskRun?.Plan is not null && !taskRun.AllowsNextMatch) return;
-                var check = CnMatchmakingAdapter.ReadQueue(AutomationOptions.DutyId);
+                var check = CnMatchmakingAdapter.ReadQueue(AutomationOptions.SelectedDuties);
                 if (check.Phase != QueuePhase.Ready || !check.Matches || !check.PopMatches)
                     throw new InvalidOperationException("匹配确认状态已改变。");
                 CnMatchmakingAdapter.Accept(confirm);
@@ -256,13 +266,14 @@ public sealed partial class Plugin
             else if (action == TableAutomationAction.LeaveCompletedMatch)
             {
                 if (!tableAutomation.Armed || !tableAutomation.MatchCompleted ||
-                    DutyState.ContentFinderCondition.RowId != AutomationOptions.DutyId ||
+                    DutyState.ContentFinderCondition.RowId != tableAutomation.MatchedDutyId ||
                     !EventFramework.CanLeaveCurrentContent())
                     throw new InvalidOperationException("已完成对局的退桌条件发生变化。");
                 EventFramework.LeaveCurrentContent(false);
             }
             if (action != TableAutomationAction.None)
-                RecordJournalEvent("table_automation_action", new { Action = action.ToString(), AutomationOptions.DutyId, DecisionSource = TechnicalDecisionSource });
+                RecordJournalEvent("table_automation_action", new { Action = action.ToString(), AutomationOptions.DutyId,
+                    AutomationOptions.SecondaryDutyId, tableAutomation.MatchedDutyId, DecisionSource = TechnicalDecisionSource });
         }
         catch (Exception ex)
         {

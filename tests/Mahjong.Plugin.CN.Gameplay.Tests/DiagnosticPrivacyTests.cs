@@ -7,6 +7,16 @@ namespace Mahjong.Plugin.CN.Gameplay.Tests;
 public sealed class DiagnosticPrivacyTests
 {
     [Fact]
+    public void Large_export_strings_remain_private_even_if_processing_limit_is_reached()
+    {
+        string text = new string('a', 500_000) + " token=synthetic-private-value C:\\Users\\SyntheticPrivateUser\\file";
+        var result = DiagnosticPrivacy.Sanitize(JsonSerializer.SerializeToElement(new { Detail = text }));
+        Assert.DoesNotContain("synthetic-private-value", result.GetRawText());
+        Assert.DoesNotContain("SyntheticPrivateUser", result.GetRawText());
+        Assert.Contains("redacted", result.GetProperty("Detail").GetString());
+        Assert.Contains("synthetic-private-value", text); // Export-only; source evidence stays intact.
+    }
+    [Fact]
     public void Export_redacts_private_fields_and_paths_but_preserves_actual_source_and_public_links()
     {
         var value = DiagnosticPrivacy.Sanitize(JsonSerializer.SerializeToElement(new

@@ -35,7 +35,7 @@ internal sealed partial class MainWindow
         }
         if (plugin.TestAccessExpiresAt is { } expiry) ImGui.TextWrapped($"有效期至 {expiry.ToLocalTime():yyyy-MM-dd HH:mm}");
         ImGui.TextWrapped("顶部直接开始自动打牌，任务页可开始连续对局，总览可刷新本人评分。自动功能可以代你出牌、鸣牌、和牌、结算、报名、确认匹配及退桌；使用上游求解器也一样。");
-        ImGui.TextWrapped("在上方选择求解来源。验证、续期和重载不改变来源、不预热，也不自动开打或排队；暂停始终有效。");
+        ImGui.TextWrapped("验证或续期不切换来源、不预热或开打。主动选择测试来源后提前预热；重载时，资格有效且上次已选用的模型也会提前准备。开始任务才操作游戏，暂停始终有效。");
         AiEngineView.DrawSelector(plugin, "beta-engine");
         if (ImGui.CollapsingHeader("本地技术详情、资源导入与自检"))
         {

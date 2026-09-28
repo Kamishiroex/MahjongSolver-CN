@@ -52,8 +52,6 @@ internal sealed partial class MainWindow
         DrawPersistentControls();
         if (plugin.PendingStopAlert is { } stop)
         {
-            ImGui.TextColored(GlassTheme.Warning, "功能已暂停，请接管；确认不恢复。");
-            Scroll("stop-detail", new Vector2(0, ImGui.GetTextLineHeightWithSpacing() * 2), () => ImGui.TextWrapped(Presentation.DisplayCopy.Summary(stop.Reason)));
             if (ImGui.SmallButton("我已看到停止原因")) plugin.AcknowledgeStopAlert();
             SameLineIfFits(140 * GlassTheme.Scale);
             if (ImGui.SmallButton("导出停止日志")) plugin.DispatchUi(plugin.ExportGameLogs);
@@ -98,9 +96,13 @@ internal sealed partial class MainWindow
         ImGui.SameLine(right);
         if (ImGui.Button(compact ? "展开###layout-toggle" : "紧凑###layout-toggle", buttonSize)) SetCompact(!compact);
         ImGui.TextWrapped(Brand.ProductSubtitle);
-        ImGui.TextDisabled($"{view.ModeLabel} · {view.Engine} · {LocalCaptureRecorder.PluginVersion}");
+        using (var technical = new GlassTheme.StyleScope())
+        {
+            technical.Color(ImGuiCol.Text, ImGui.GetStyle().Colors[(int)ImGuiCol.TextDisabled]);
+            ImGui.TextWrapped($"{view.ModeLabel} · {view.Engine} · {LocalCaptureRecorder.PluginVersion}");
+        }
         bool automatic = view.Mode == Mahjong.Plugin.Dalamud.PlayMode.Automatic && !view.Paused;
-        if(ImGui.Button("开始提示",buttonSize))plugin.DispatchUi(()=>plugin.ActivatePlay(false));
+        if(ImGui.Button("手动提示",buttonSize))plugin.DispatchUi(plugin.StartHintsFromToolbar);
         if(plugin.TaskOperationsAvailable)
         {
         SameLineIfFits(buttonSize.X);
@@ -117,21 +119,30 @@ internal sealed partial class MainWindow
             danger.Color(ImGuiCol.ButtonHovered, new Vector4(.65f,.20f,.18f,1));
             danger.Color(ImGuiCol.Text, Vector4.One);
             // Immediate revocation, never queued behind other UI intentions.
-            if (ImGui.Button("暂停", buttonSize)) plugin.PausePlay();
-            if (ImGui.IsItemHovered()) ImGui.SetTooltip("暂停提醒、自动打牌与排队，继续只读记牌。\n保留任务进度；需主动点击自动打牌或继续任务恢复。");
+            bool paused = plugin.TaskRun.Phase == Mahjong.Cn.Tasks.TaskRunPhase.Paused;
+            if (ImGui.Button(paused ? "继续###primary-pause" : "暂停###primary-pause", buttonSize))
+            { if (paused) plugin.DispatchUi(plugin.ResumeTask); else plugin.PausePlay(); }
+            if (ImGui.IsItemHovered()) ImGui.SetTooltip("统一暂停或继续本次任务：提醒、自动打牌和排队。\n保留场数与规则，继续时重新核对权限和牌桌。模型保持常驻。\n已经提交的报名请在游戏内取消。");
         }
         SameLineIfFits(buttonSize.X);
-        if (ImGui.Button("本场后停", buttonSize)) plugin.DispatchUi(plugin.StopAfterCurrentMatch);
-        if (ImGui.IsItemHovered()) ImGui.SetTooltip("打完当前整场东风战或半庄后停止，不再排下一场。\n不是在当前小局结束后停。");
-        SameLineIfFits(buttonSize.X);
-        if (ImGui.Button("停止全部", buttonSize)) plugin.Stop("用户停止全部读取、提醒与自动操作。");
-        if (ImGui.IsItemHovered()) ImGui.SetTooltip("停止全部读取、提醒、自动打牌和排队。\n不会强退牌局；已提交的报名需在游戏内取消。\n关闭窗口不等于暂停。");
-        ImGui.TextWrapped(view.TaskStatus);
-        if(plugin.QuickRecoveryPending)ImGui.TextColored(GlassTheme.Warning,"正在恢复原任务；当前不提交操作。");
-        if(plugin.QuickRecoveryPending)ImGui.TextWrapped(plugin.QuickRecoveryStatus);
-        else if(plugin.TableAutomationArmed)ImGui.TextWrapped("测试版游戏操作 · 连续任务已授权："+plugin.TableAutomationStatus);
-        else if(plugin.RatingRefreshBusy)ImGui.TextWrapped("测试版游戏操作 · 本次评分窗口刷新已授权。");
-        else if(!plugin.ExperimentalHandAiEnabled && !automatic)ImGui.TextWrapped("标准模式不执行游戏操作，仅提供提示。");
+        if (ImGui.Button("更多", buttonSize)) ImGui.OpenPopup("session-more");
+        if (ImGui.BeginPopup("session-more"))
+        {
+            try
+            {
+                if (ImGui.MenuItem("本场打完后停止")) plugin.DispatchUi(plugin.StopAfterCurrentMatch);
+                if (ImGui.IsItemHovered()) ImGui.SetTooltip("打完当前整场东风战或半庄，不再排下一场。");
+                if (ImGui.MenuItem("结束本次任务")) plugin.EndTask();
+                if (ImGui.IsItemHovered()) ImGui.SetTooltip("下次开始创建新任务；历史记录保留，不强退牌桌。");
+                if (ImGui.MenuItem("停止全部并释放模型")) plugin.Stop("用户停止全部读取、提醒与自动操作。");
+                if (ImGui.IsItemHovered()) ImGui.SetTooltip("同时停止读取、排队和模型进程。已提交的报名仍需在游戏内取消。");
+            }
+            finally { ImGui.EndPopup(); }
+        }
+        ImGui.TextColored(view.RunStatus.NeedsAttention ? GlassTheme.Warning : GlassTheme.Accent, view.RunStatus.Title);
+        ImGui.TextWrapped(view.RunStatus.Detail);
+        if (plugin.EnginePreparationSummary is { } preparation) ImGui.TextWrapped(preparation);
+        if (!plugin.ExperimentalHandAiEnabled && !automatic) ImGui.TextWrapped("标准模式不执行游戏操作，仅提供提示。");
         if(!plugin.TestAccessUnlocked && plugin.QualifiedTaskContinues)
             ImGui.TextWrapped("测试资格已到期，本次任务继续有效；结束或重载后新任务需重新验证。");
         if(!plugin.SelectedSourceAccessValid)
@@ -153,13 +164,6 @@ internal sealed partial class MainWindow
         switch (page)
         {
             case 0:
-                Card("start", "启动", () =>
-                {
-                    ImGui.TextWrapped("当前来源：" + view.Engine);
-                    if (ImGui.Button("手动提醒")) plugin.DispatchUi(() => plugin.ActivatePlay(false));
-                    SameLineIfFits(140 * GlassTheme.Scale);
-                    if (ImGui.Button("目标与任务")) page = 1;
-                });
                 bool wide=ImGui.GetContentRegionAvail().X/GlassTheme.Scale>=950;
                 if(wide && ImGui.BeginTable("overview-columns",2,ImGuiTableFlags.SizingStretchProp))
                 {
@@ -181,7 +185,7 @@ internal sealed partial class MainWindow
                 else Card("hint-task","提示任务",()=>
                 { ImGui.TextWrapped("跟踪当前整场与已支持的时间目标，不代替玩家操作。");
                   if(ImGui.Button("开始本场提示任务"))plugin.DispatchUi(()=>plugin.ActivatePlay(false)); });
-                Card("rules", "停止规则 · 任意一项达到即本场后停", DrawTaskRules);
+                if (ImGui.CollapsingHeader("更多停止条件（可选）")) Card("rules", "停止规则", DrawTaskRules);
                 break;
             case 2: Card("history-summary", "整场摘要", DrawHistory); Card("history", "整场日志与恢复", DrawJournal); break;
             case 3:

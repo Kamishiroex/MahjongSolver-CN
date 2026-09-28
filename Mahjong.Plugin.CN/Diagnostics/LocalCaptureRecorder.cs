@@ -19,7 +19,7 @@ internal sealed class LocalCaptureRecorder
 {
     internal const string Format = "mjcn-local-capture";
     internal const int SchemaVersion = 1;
-    internal const string PluginVersion = "4.1.4";
+    internal const string PluginVersion = "5.2.1";
     internal const string Compression = "gzip-record-members";
     internal const int MaximumRecordBytes = 4 * 1024 * 1024;
     private const int MetadataReserveBytes = 64 * 1024;

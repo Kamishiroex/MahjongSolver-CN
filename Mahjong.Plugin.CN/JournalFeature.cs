@@ -326,6 +326,7 @@ public sealed partial class Plugin
         }
         var addon = frame.Addons.FirstOrDefault(x => x.Name == "Emj");
         journalLower = journalLowerTracker.Observe(frame.Sequence, addon);
+        guidanceFaces = journalLower.Stable ? addon?.LowerHandFaces?.ToArray() : null;
         journalLowerUtc = frame.Utc;
         journalTable = journalTableTracker.Observe(frame.Sequence, addon);
         if (journalPublicMonitor is { IsActive: false } && addon is { Present: true, Visible: true, Ready: true, Error: null })
