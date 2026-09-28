@@ -37,6 +37,21 @@ public sealed class DiscardHighlightTests
         Assert.Equal(faces[3].X, red!.X); Assert.Contains("赤", red.Label);
     }
     [Fact]
+    public void Red_five_moved_to_pon_is_not_compared_against_closed_hand_red_count()
+    {
+        var (state, _, faces) = Hand();
+        faces = faces.Where((_, i) => i is < 3 or > 5).ToArray();
+        var tracker = new LowerHandTracker(); var addon = new AddonProbe("Emj", true, true, true, 50, [], null, faces);
+        tracker.Observe(1, addon); var reading = tracker.Observe(2, addon);
+        Assert.True(reading.Stable);
+        state = state with { Hand = state.Hand.Where((_, i) => i is < 3 or > 5).ToArray(),
+            OurMelds = [Meld.Pon(Tile.FromId(4), Tile.FromId(4), 1)] };
+        var choice = ActionChoice.Discard(Tile.FromId(0));
+        Assert.Null(DiscardHighlight.Create(state, choice, reading, faces, Now, Now, null));
+        Assert.NotNull(DiscardHighlight.Create(state, choice, reading, faces, Now, Now, null, meldRed: 1));
+    }
+
+    [Fact]
     public void Drawn_identity_is_required_and_matching_duplicate_is_selected_by_path()
     {
         var (state, reading, faces) = Hand();

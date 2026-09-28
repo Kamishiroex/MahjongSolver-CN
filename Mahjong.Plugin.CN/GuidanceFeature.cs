@@ -19,7 +19,7 @@ public sealed partial class Plugin
         var aggregator = PlayRuntime?.ActiveAggregator;
         Volatile.Write(ref discardHighlight, active && gameplayAllowed && GlassTheme.HighlightDiscard
             ? DiscardHighlight.Create(aggregator?.Latest, aggregator?.LastChoice, journalLower, guidanceFaces,
-                journalLowerUtc, now, drawnPath) : null);
+                journalLowerUtc, now, drawnPath, PlayRuntime?.MeldTracker.MeldAkadora ?? 0) : null);
     }
 
     private void DrawDiscardHighlight()

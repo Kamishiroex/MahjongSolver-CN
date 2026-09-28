@@ -10,7 +10,7 @@ internal sealed record DiscardHighlight(float X, float Y, float Width, float Hei
 {
     internal static DiscardHighlight? Create(StateSnapshot? state, ActionChoice? choice,
         LowerHandReading? reading, HandFaceCandidate[]? faces, DateTimeOffset sampledUtc,
-        DateTimeOffset now, string? confirmedDrawnPath)
+        DateTimeOffset now, string? confirmedDrawnPath, int meldRed = 0)
     {
         if (state is null || choice is not { Kind: ActionKind.Discard or ActionKind.Riichi, DiscardTile: { } tile } ||
             reading is not { Stable: true } || faces is null || now < sampledUtc ||
@@ -20,7 +20,8 @@ internal sealed record DiscardHighlight(float X, float Y, float Width, float Hei
             choice.Kind == ActionKind.Riichi && !state.Legal.Can(ActionFlags.Riichi) || state.AddonStateCode is 25 or 29 ||
             state.Hand.Count + 3 * state.OurMelds.Count != 14 ||
             !state.Hand.Select(t => (int)t.Id).Order().SequenceEqual(reading.Tiles.Select(t => t.Kind34).Order()) ||
-            state.AkaDora != reading.Tiles.Count(t => t.RedFive) || !LowerHandProfile.CheckLayout(faces).Eligible)
+            meldRed is < 0 or > 3 || state.OurMelds.Count == 0 && meldRed != 0 ||
+            state.AkaDora - meldRed != reading.Tiles.Count(t => t.RedFive) || !LowerHandProfile.CheckLayout(faces).Eligible)
             return null;
         if ((choice.DiscardTsumogiri.HasValue || state.OurRiichi) && confirmedDrawnPath is null) return null;
         var candidates = reading.Tiles.Where(t => t.Kind34 == tile.Id &&
