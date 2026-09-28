@@ -3,7 +3,7 @@
   "Name": "MahjongSolver · 多玛方城战求解器（国服优化版）",
   "InternalName": "Mahjong.Plugin.CN",
   "RepoUrl": "https://github.com/Kamishiroex/MahjongSolver-CN",
-  "AssemblyVersion": "4.1.4.0",
+  "AssemblyVersion": "5.2.1.0",
   "DalamudApiLevel": 15,
   "ApplicableVersion": "2026.09.15.0000.0000",
   "MinimumDalamudVersion": "15.0.3.5",

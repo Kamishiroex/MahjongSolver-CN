@@ -15,8 +15,8 @@ $repoRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $artifactsDir = Join-Path $repoRoot 'artifacts'
 $sdkVersion = '10.0.100'
 $pluginName = 'Mahjong.Plugin.CN'
-$pluginVersion = '4.1.4'
-$assemblyVersion = '4.1.4.0'
+$pluginVersion = '5.2.1'
+$assemblyVersion = '5.2.1.0'
 $utf8 = New-Object Text.UTF8Encoding($false)
 . (Join-Path $PSScriptRoot 'source-package.ps1')
 $originalDirectory = Get-Location
