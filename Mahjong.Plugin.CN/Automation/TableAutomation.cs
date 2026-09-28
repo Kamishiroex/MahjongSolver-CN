@@ -1,7 +1,13 @@
 namespace Mahjong.Plugin.CN.Automation;
 
 internal sealed record TableAutomationOptions(bool AutoQueue = false, bool AutoStart = false, uint DutyId = 766,
-    bool AutoAdvanceAfterHand = true, int MatchLimit = 0, bool KeepAutomaticBetweenHands = false);
+    bool AutoAdvanceAfterHand = true, int MatchLimit = 0, bool KeepAutomaticBetweenHands = false,
+    uint? SecondaryDutyId = null)
+{
+    internal uint[] SelectedDuties => SecondaryDutyId is { } second ? [DutyId, second] : [DutyId];
+    internal bool ContainsDuty(uint id) => id == DutyId || id == SecondaryDutyId;
+    internal bool ValidSelection => MahjongDuties.ValidSelection(SelectedDuties);
+}
 internal sealed record MahjongDuty(uint Id, string Name, bool Friends, uint ContentId);
 
 internal static class MahjongDuties
@@ -19,6 +25,12 @@ internal static class MahjongDuties
         new(650, "半庄战4人亲友桌（不带食断）", true, 61004),
     ];
     internal static MahjongDuty? Find(uint id) => All.SingleOrDefault(x => x.Id == id);
+    internal static bool ValidSelection(IReadOnlyList<uint> selected) => selected.Count is 1 or 2 &&
+        selected.Distinct().Count() == selected.Count && selected.All(id => Find(id) is not null) &&
+        selected.Select(id => Find(id)!.Friends).Distinct().Count() == 1;
+    internal static bool QueueMatches(IReadOnlyList<uint> selected, IReadOnlyList<uint> queued) =>
+        ValidSelection(selected) && queued.Count == selected.Count && queued.Distinct().Count() == queued.Count &&
+        queued.All(selected.Contains);
     internal static string? PartyError(MahjongDuty duty, int members, bool alliance, bool leader) =>
         alliance ? "不能以团队报名麻将。" : duty.Friends
             ? members != 4 ? "亲友桌需要4人小队。" : !leader ? "亲友桌需要由小队队长报名。" : null
@@ -30,7 +42,7 @@ internal enum TableAutomationAction { None, Queue, Accept, StartPlay, LeaveCompl
 internal readonly record struct TableAutomationObservation(
     bool LoggedIn, bool TableVisible, bool InDuty, bool Busy, bool Playing,
     QueuePhase Queue, bool QueueMatches, bool PopMatches, bool AcceptAvailable,
-    uint DutyId = 766, bool CanLeave = false);
+    uint DutyId = 766, bool CanLeave = false, bool EngineReady = true);
 
 /// <summary>Pure, monotonic-time coordinator. Never retries an ambiguous native submission.</summary>
 internal sealed class TableAutomation
@@ -40,6 +52,7 @@ internal sealed class TableAutomation
     internal TableAutomationOptions Options { get; private set; } = new();
     internal int CompletedMatches { get; private set; }
     internal bool MatchCompleted { get; private set; }
+    internal uint? MatchedDutyId { get; private set; }
     internal string Progress => Options.MatchLimit == 0 ? $"已完成 {CompletedMatches} 场 / 无限循环" :
         $"已完成 {CompletedMatches} / {Options.MatchLimit} 场";
     private double readySince = double.NaN, absentSince = double.NaN, submittedAt, acceptAt;
@@ -51,9 +64,10 @@ internal sealed class TableAutomation
     internal void Arm(TableAutomationOptions options, double now)
     {
         Options = options;
-        Armed = (options.AutoQueue || options.AutoStart) && MahjongDuties.Find(options.DutyId) is not null &&
+        Armed = (options.AutoQueue || options.AutoStart) && options.ValidSelection &&
             options.MatchLimit is >= 0 and <= 9999;
         CompletedMatches = 0;
+        MatchedDutyId = null;
         MatchCompleted = leaveSubmitted = false;
         readySince = absentSince = double.NaN;
         tableSeen = startHandled = submitted = queueSeen = accepted = false;
@@ -65,7 +79,7 @@ internal sealed class TableAutomation
     // a disappearing addon, a score estimate or a successful leave submission.
     internal bool ObserveMatchCompleted(uint dutyId, double now)
     {
-        if (!Armed || !tableSeen || MatchCompleted || dutyId != Options.DutyId) return false;
+        if (!Armed || !tableSeen || MatchCompleted || dutyId != MatchedDutyId) return false;
         MatchCompleted = true;
         CompletedMatches++;
         completedAt = now;
@@ -93,13 +107,19 @@ internal sealed class TableAutomation
     {
         if (!Armed) return TableAutomationAction.None;
         if (!o.LoggedIn) return Fail("已登出：自动排队和进桌开打已停止。");
+        if (!MatchCompleted && !o.EngineReady)
+        {
+            readySince = double.NaN;
+            Status = "模型准备中；等待就绪后再报名、确认入桌或开打。";
+            return TableAutomationAction.None;
+        }
         if (MatchCompleted && (o.TableVisible || o.InDuty || o.Busy || o.Queue == QueuePhase.InContent))
         {
             // Retain completion through loading/hidden UI; never start playing a completed table.
             if (leaveSubmitted && now - leaveAt > 30)
                 return Fail("整场已完成，但退桌30秒未生效；已停止循环，请手动退桌后重新启动。");
             if (Options.AutoQueue && !leaveSubmitted && !o.Busy && o.InDuty &&
-                o.DutyId == Options.DutyId && o.CanLeave && now - completedAt >= 8)
+                o.DutyId == MatchedDutyId && o.CanLeave && now - completedAt >= 8)
             {
                 leaveSubmitted = true;
                 leaveAt = now;
@@ -113,8 +133,9 @@ internal sealed class TableAutomation
         }
         if (o.TableVisible)
         {
-            if (o.DutyId != Options.DutyId)
+            if (!Options.ContainsDuty(o.DutyId) || MatchedDutyId is { } matched && matched != o.DutyId)
                 return Fail("当前牌桌不是所选桌型；自动功能已停止，请选择对应桌型后启动。");
+            MatchedDutyId = o.DutyId;
             tableSeen = true;
             submitted = queueSeen = accepted = false;
             absentSince = double.NaN;
@@ -147,12 +168,14 @@ internal sealed class TableAutomation
             if (!MatchCompleted)
                 return Fail("牌桌已退出，但未收到本场完成事件；不计入完成场数，循环已停止。请查看事件日志。");
             tableSeen = startHandled = false;
+            MatchedDutyId = null;
             MatchCompleted = leaveSubmitted = false;
             if (Options.MatchLimit > 0 && CompletedMatches >= Options.MatchLimit)
                 return Fail($"已完成设定的 {Options.MatchLimit} 场，自动排队与进桌开打已结束。");
             earliestQueue = now + 5;
         }
         if (!Options.AutoQueue) { Status = "等待进入下一张牌桌。"; return TableAutomationAction.None; }
+        if (!o.EngineReady) { Status = "模型准备中，等待就绪再报名下一场。"; return TableAutomationAction.None; }
         if (o.Queue != QueuePhase.None)
         {
             if (!submitted || !o.QueueMatches) return Fail("检测到非本功能发起的排队或桌型改变；自动排队已停止，不接管其他报名。");

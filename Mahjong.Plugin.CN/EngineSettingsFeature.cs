@@ -84,7 +84,8 @@ public sealed partial class Plugin
         selectedEngineDirectory = profile.Directory; MortalSelected = profile.IsMortal;
         selectedEngineName = profile.Name; SelectedEngineId = profile.Id;
         if (profile.IsMortal) mortalEngineDirectory = profile.Directory; else akochanEngineDirectory = profile.Directory;
-        // Selection stores preferences only; warmup belongs to explicit test play.
+        if (save && ExperimentalHandAiEnabled && TestAccessUnlocked) RequestSelectedMortalWarmup();
+        // Preparing a selected source does not create gameplay/task/input authority.
     }
 
     internal void SelectGlobalBackend(bool mortal)

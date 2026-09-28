@@ -39,7 +39,10 @@ internal static class DiagnosticPrivacy
                 writer.WriteStartArray(); foreach (var item in value.EnumerateArray()) Write(writer, item); writer.WriteEndArray(); break;
             case JsonValueKind.String:
                 string text = value.GetString()!;
-                writer.WriteStringValue(Credential.Replace(PersonalPath.Replace(text, "[local-path]"), "[redacted]")); break;
+                try { writer.WriteStringValue(Credential.Replace(PersonalPath.Replace(text, "[local-path]"), "[redacted]")); }
+                catch (RegexMatchTimeoutException)
+                { writer.WriteStringValue("[redacted: privacy processing time limit; original retained locally]"); }
+                break;
             default: value.WriteTo(writer); break;
         }
     }

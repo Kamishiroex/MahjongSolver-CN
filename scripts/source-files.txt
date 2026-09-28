@@ -188,6 +188,7 @@ Mahjong.Plugin.CN/Experimental/AkochanGlobalPolicy.cs
 Mahjong.Plugin.CN/Experimental/AkochanHandPolicy.cs
 Mahjong.Plugin.CN/Experimental/AkochanResponseWindow.cs
 Mahjong.Plugin.CN/Experimental/UpstreamRuntime.cs
+Mahjong.Plugin.CN/GuidanceFeature.cs
 Mahjong.Plugin.CN/HandAiFeature.cs
 Mahjong.Plugin.CN/HistoryFeature.cs
 Mahjong.Plugin.CN/JournalFeature.cs
@@ -212,8 +213,10 @@ Mahjong.Plugin.CN/MainWindow.Overview.cs
 Mahjong.Plugin.CN/MainWindow.Tasks.cs
 Mahjong.Plugin.CN/packages.lock.json
 Mahjong.Plugin.CN/Plugin.cs
+Mahjong.Plugin.CN/Presentation/DiscardHighlight.cs
 Mahjong.Plugin.CN/Presentation/DisplayCopy.cs
 Mahjong.Plugin.CN/Presentation/PluginUiSnapshot.cs
+Mahjong.Plugin.CN/Presentation/RunPresentation.cs
 Mahjong.Plugin.CN/PresentationFeature.cs
 Mahjong.Plugin.CN/PublicMonitorView.cs
 Mahjong.Plugin.CN/PublicRulesFeature.cs
@@ -489,6 +492,7 @@ tests/Mahjong.Plugin.CN.Gameplay.Tests/CnCallMenuResolverTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/CnExperimentalReadContractTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/CnPublicListClickTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/DiagnosticPrivacyTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/DiscardHighlightTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/DispatchProgressTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/EngineSelectionEntryTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/fixtures/current-facts-20260925.json
@@ -541,6 +545,7 @@ tests/Mahjong.Plugin.CN.Gameplay.Tests/RatingReaderTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RatingProfileAccessTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RatingRefreshTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RecoveryJournalTests.cs
+tests/Mahjong.Plugin.CN.Gameplay.Tests/RunPresentationTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RuntimeEventDifferTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RuntimeGateReasonTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/RuntimeIdentityTests.cs

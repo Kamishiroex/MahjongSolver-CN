@@ -13,6 +13,7 @@ public sealed class MortalGlobalEngine : IDisposable, IAsyncDisposable
     private Task? disposal;
     private string? hostDirectory;
     public int? ProcessId => host?.ProcessId;
+    public bool IsReady => host is { State: EngineProcessState.Running } && hostDirectory is not null;
     private static readonly string SessionScript = ReadSessionScript();
 
     private static string ReadSessionScript()

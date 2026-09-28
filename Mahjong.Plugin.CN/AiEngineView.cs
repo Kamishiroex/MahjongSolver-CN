@@ -23,7 +23,7 @@ internal static class AiEngineView
         ImGui.InputText("模型名称（可选）", ref plugin.EngineImportName, 80);
         if (ImGui.Button("导入测试版资源（不启用）")) {string path=plugin.EngineTransferPath;plugin.DispatchUi(()=>plugin.ImportEngine(path));}
         ImGui.EndDisabled();
-        ImGui.TextWrapped("兼容运行包只需导入一次，之后在此切换保存的资源。导入不改变有效求解来源；选择测试版并明确启动后才会预热和计算。支持当前凡夫/v5 协议；新架构需相应适配器。");
+        ImGui.TextWrapped("兼容运行包只需导入一次，之后可切换保存的资源。导入不改变求解来源；已选用测试版时，切换模型会提前后台预热。验证本身不预热，开始任务才计算牌局或操作游戏。支持当前凡夫/v5 协议；新架构需相应适配器。");
         if (plugin.MortalSelected) ImGui.TextWrapped("凡夫使用当前公开桌面，缺失历史不会补造；历史特征和国服东风赛制可能影响棋力。Q 值不是胜率。和牌使用当前菜单优先处理。");
         DrawGlobalInput(plugin);
         if (plugin.PublicMonitor.Current is { } snapshot)

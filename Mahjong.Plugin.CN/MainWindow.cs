@@ -50,7 +50,7 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
             if (ImGui.Button("导出停止日志")) plugin.DispatchUi(plugin.ExportGameLogs);
             ImGui.Separator();
         }
-        ImGui.TextWrapped("求解来源：" + plugin.DecisionSourceLabel);
+        ImGui.TextWrapped("求解来源：" + plugin.UiSnapshot.Engine);
         ImGui.TextUnformatted($"当前：{CurrentMode()}");
         if(!plugin.TestAccessUnlocked && plugin.QualifiedTaskContinues)
             ImGui.TextWrapped("测试资格已到期，本次任务继续有效；结束或重载后新任务需重新验证。");
@@ -62,15 +62,18 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.29f, 0.49f, 0.44f, 1));
         try
         {
-            if (ImGui.Button("手动提醒", modeSize)) plugin.DispatchUi(()=>plugin.ActivatePlay(false));
+            if (ImGui.Button("手动提醒", modeSize)) plugin.DispatchUi(plugin.StartHintsFromToolbar);
             if(plugin.TaskOperationsAvailable)
             { SameLineIfFits(modeWidth);if (ImGui.Button("自动打牌", modeSize)) plugin.DispatchUi(plugin.StartAutomaticFromToolbar); }
         }
         finally { ImGui.PopStyleColor(3); }
         ImGui.EndDisabled();
         SameLineIfFits(modeWidth);
-        if (ImGui.Button("暂停", modeSize)) plugin.PausePlay();
-        if (ImGui.IsItemHovered()) ImGui.SetTooltip("停止提醒、自动打牌和自动排队，继续只读记牌。/mjcn stop 停止全部读取。");
+        bool paused = plugin.TaskRun.Phase == Mahjong.Cn.Tasks.TaskRunPhase.Paused;
+        if (ImGui.Button(paused ? "继续###legacy-pause" : "暂停###legacy-pause", modeSize))
+        { if (paused) plugin.DispatchUi(plugin.ResumeTask); else plugin.PausePlay(); }
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("统一暂停或继续提示、打牌和排队；保留模型与本次任务。/mjcn stop 停止全部读取并释放模型。");
+        ImGui.TextWrapped(plugin.UiSnapshot.RunStatus.Title + "：" + plugin.UiSnapshot.RunStatus.Detail);
         if(plugin.GameOperationsAvailable)
         {
         bool keepBetweenHands = plugin.AutomationOptions.KeepAutomaticBetweenHands;
@@ -161,11 +164,31 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         string[] names = Automation.MahjongDuties.All.Select(d => d.Name).ToArray();
         ImGui.SetNextItemWidth(-1);
         if (ImGui.Combo("##排队桌型", ref selected, names, names.Length))
-            QueueAutomationOptions(options with { DutyId = Automation.MahjongDuties.All[selected].Id });
+        {
+            var next = options with { DutyId = Automation.MahjongDuties.All[selected].Id };
+            QueueAutomationOptions(next.ValidSelection ? next : next with { SecondaryDutyId = null });
+        }
+        options = plugin.AutomationOptions;
+        var alternatives = Automation.MahjongDuties.All.Where(d => d.Id != options.DutyId &&
+            d.Friends == Automation.MahjongDuties.Find(options.DutyId)?.Friends).ToArray();
+        bool dual = options.SecondaryDutyId.HasValue;
+        if (ImGui.Checkbox("同时排第二种桌型", ref dual))
+            QueueAutomationOptions(options with { SecondaryDutyId = dual ? alternatives[0].Id : null });
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("一次报名两种桌型，匹配到其中一种后进入；不是轮流报名。游戏仍检查解锁、段位和队伍条件。");
+        options = plugin.AutomationOptions;
+        if (options.SecondaryDutyId.HasValue)
+        {
+            int second = Array.FindIndex(alternatives, d => d.Id == options.SecondaryDutyId);
+            var secondNames = alternatives.Select(d => d.Name).ToArray();
+            ImGui.SetNextItemWidth(-1);
+            if (ImGui.Combo("##第二桌型", ref second, secondNames, secondNames.Length))
+                QueueAutomationOptions(options with { SecondaryDutyId = alternatives[second].Id });
+        }
         options = plugin.AutomationOptions;
         bool unlimited = options.MatchLimit == 0;
         if (ImGui.Checkbox("无限循环", ref unlimited))
             QueueAutomationOptions(options with { MatchLimit = unlimited ? 0 : 1 });
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("一场是完整东风战或半庄战。关闭无限循环后设置 1～9999 场；继续保留计数，结束后新建才从 0 开始。");
         options = plugin.AutomationOptions;
         if (options.MatchLimit > 0)
         {
@@ -175,25 +198,12 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
                 QueueAutomationOptions(options with { MatchLimit = Math.Clamp(limit, 1, 9999) });
         }
         ImGui.TextWrapped(plugin.TableAutomationProgress);
-        ImGui.TextWrapped("每场指完整东风战或半庄战，换局不计数。继续任务保留计数；明确结束后新建才从0开始。整场完成后按停止规则评估，再处理退桌与下一场。");
-        ImGui.TextWrapped("段位战需单人；亲友桌需4人且你是队长。只有勾选自动排队才会自动退桌，不会退出未完成对局。");
         ImGui.BeginDisabled(plugin.TableAutomationArmed || plugin.Identity.Error is not null ||
             !(plugin.AutomationOptions.AutoQueue || plugin.AutomationOptions.AutoStart));
         if (ImGui.Button(plugin.TableAutomationArmed ? "自动功能已启动" : "预检并开始连续任务")) plugin.DispatchUi(plugin.ArmTableAutomation);
         ImGui.EndDisabled();
-        if (ImGui.Button("停止排队 / 进桌开打")) plugin.StopTableAutomation();
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("段位战需单人；亲友桌需 4 人且你是队长。模型就绪后才报名。\n启用自动排队才会在整场完成后退桌，未完成对局不会退出。\n修改桌型或规则会暂停；配置不同需结束旧任务后新建。已提交的报名请在游戏内取消。");
         ImGui.TextWrapped(plugin.TableAutomationStatus);
-        ImGui.Separator();
-        ImGui.TextUnformatted("当前打牌状态：" + CurrentMode());
-        if (plugin.PlayRuntime?.Mode is PlayMode.Automatic or PlayMode.Manual)
-        {
-            if (plugin.ExperimentalHandAiEnabled) ImGui.TextWrapped("当前求解来源：测试版。技术状态见设置 → 测试版。");
-            if (plugin.PlayRuntime.AutoPlay is { } auto)
-                ImGui.TextWrapped("最近操作：" + Presentation.DisplayCopy.Summary(auto.LastActionDescription == "(none)" ? "等待可执行动作" : auto.LastActionDescription));
-            ImGui.TextWrapped("自动已开启时会等待稳定牌面、计算和行动机会，无需重复点击自动打牌。");
-        }
-        ImGui.TextWrapped("勾选后点击启动。修改设置、切换来源、重载或暂停后需重新启动。已提交的报名请在游戏任务搜索器取消。");
-        ImGui.TextWrapped("自动开打使用当前决策来源；停止排队也暂停本次任务的新自动操作，不会强退当前牌桌。");
     }
 
     private static void SameLineIfFits(float width)
@@ -243,7 +253,6 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         ImGui.TextWrapped(plugin.RecoveryStatus);
         if (ImGui.Button("重新读取日志并核对桌面")) plugin.DispatchUi(plugin.StartLogRecovery);
         ImGui.SameLine();
-        if (ImGui.Button("停止全部读取与操作")) plugin.Stop("用户停止全部读取、提醒、操作与记录。");
         if (plugin.LastStopPath is { } stoppedPath && ImGui.Button("复制最近停止记录路径"))
             ImGui.SetClipboardText(stoppedPath);
         ImGui.TextWrapped("日志保留可见事件和错误；恢复时核对当前桌面，无法补回的历史会标明缺口。");
@@ -336,8 +345,6 @@ internal sealed partial class MainWindow(Plugin plugin) : Window(Brand.MainWindo
         ImGui.Separator();
         ImGui.TextUnformatted($"游戏：{plugin.Identity.GameVersion}   Dalamud：{plugin.Identity.DalamudVersion} / API {plugin.Identity.Api}");
         ImGui.TextWrapped(plugin.Status);
-        if (ImGui.Button("立即停止（/mjcn stop）", new Vector2(-1, 36)))
-            plugin.Stop("用户停止：建议、操作和采集均已停止。");
         ImGui.BeginDisabled(plugin.Capturing);
         bool lowerHand = plugin.CaptureLowerHand;
         if (ImGui.Checkbox("采集并核对本家下方牌面", ref lowerHand))

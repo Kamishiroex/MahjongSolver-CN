@@ -57,6 +57,7 @@ public sealed class InputDispatcher
         InvalidSlot,
         HookFailed,         // FireCallback returned false (wrong state / invalid args)
         OperationBlocked,
+        AvailableWinBlocked,
     }
 
     private bool OperationAllowed => canOperate?.Invoke() ?? true;
@@ -65,6 +66,7 @@ public sealed class InputDispatcher
     {
         DispatchResult.Submitted => "已发送，等待界面变化（尚未确认执行）",
         DispatchResult.OperationBlocked => "运行条件已关闭，后续输入已取消",
+        DispatchResult.AvailableWinBlocked => "当前菜单提供和牌，已阻止弃牌、鸣牌或放弃；需要重新读取和牌窗口",
         DispatchResult.HookFailed => "接口拒绝或返回 false，不能确认游戏已接受",
         _ => $"未发送：{result}",
     };
@@ -79,6 +81,15 @@ public sealed class InputDispatcher
     /// findings so the next stall is unambiguous in the corpus.
     /// </summary>
     public string LastDiscardPath { get; private set; } = "(none)";
+
+#if MAHJONG_CN
+    internal unsafe bool TryGetAvailableWin(out ActionKind kind)
+    {
+        kind = default;
+        return addon.TryGet(out var unit, out _) &&
+            Mahjong.Plugin.CN.Automation.CnCallMenuResolver.TryGetAvailableWin(unit, out kind);
+    }
+#endif
 
     /// <summary>Only normalized known button labels; no raw strings or native addresses.</summary>
     public sealed record CallDispatchObservation(int StateCode, int Option,
@@ -146,6 +157,13 @@ public sealed class InputDispatcher
             return DispatchResult.AddonNotVisible;
         }
 
+#if MAHJONG_CN
+        if (Mahjong.Plugin.CN.Automation.CnCallMenuResolver.TryGetAvailableWin(unit, out _))
+        {
+            LastDiscardPath = "available-win-guard";
+            return DispatchResult.AvailableWinBlocked;
+        }
+#endif
         int stateCode = ReadStateCode(unit);
         int handCount = ReadCurrentHandCount(unit);
 
@@ -304,6 +322,8 @@ public sealed class InputDispatcher
         stateCode = ReadStateCode(unit);
 
 #if MAHJONG_CN
+        if (Mahjong.Plugin.CN.Automation.CnCallMenuResolver.TryGetAvailableWin(unit, out var offeredWin) && intent != offeredWin)
+            return Finish(DispatchResult.AvailableWinBlocked, "available-win-guard");
         // CN mixed prompts put Ron before Chi/Pon. The upstream fixed action order
         // sent Ron to Chi on the captured 2026-09-25 menu. Re-read the active labels
         // immediately before input; a missing/disabled/ambiguous target must not fall

@@ -4,6 +4,51 @@ namespace Mahjong.Plugin.CN.Gameplay.Tests;
 
 public sealed class TableAutomationTests
 {
+    [Theory][InlineData(766u)][InlineData(643u)]
+    public void Either_selected_duty_can_complete_but_only_the_actual_match_can_exit(uint matched)
+    {
+        var c = new TableAutomation();
+        c.Arm(new(true, true, 766, MatchLimit: 2, SecondaryDutyId: 643), 0);
+        Assert.Equal(TableAutomationAction.Queue, c.Tick(3, Idle));
+        Assert.Equal(TableAutomationAction.Accept, c.Tick(4, Idle with
+        { Queue = QueuePhase.Ready, QueueMatches = true, PopMatches = true, AcceptAvailable = true }));
+        var table = Idle with { TableVisible = true, InDuty = true, DutyId = matched, CanLeave = true };
+        c.Tick(5, table);
+        Assert.Equal(TableAutomationAction.StartPlay, c.Tick(7, table));
+        Assert.Equal(matched, c.MatchedDutyId);
+        uint other = matched == 766 ? 643u : 766u;
+        Assert.False(c.ObserveMatchCompleted(other, 8));
+        Assert.True(c.ObserveMatchCompleted(matched, 8));
+        Assert.False(c.ObserveMatchCompleted(matched, 9));
+        Assert.Equal(TableAutomationAction.None, c.Tick(17, table with { DutyId = other }));
+        Assert.Equal(TableAutomationAction.LeaveCompletedMatch, c.Tick(18, table));
+        c.Tick(20, Idle); c.Tick(26, Idle);
+        Assert.Null(c.MatchedDutyId);
+        Assert.Equal(TableAutomationAction.Queue, c.Tick(31, Idle));
+        Assert.Equal(new uint[] { 766, 643 }, c.Options.SelectedDuties);
+        Assert.Equal(1, c.CompletedMatches);
+    }
+
+    [Theory][InlineData(766u)][InlineData(999u)][InlineData(768u)]
+    public void Duplicate_unknown_or_incompatible_party_selections_cannot_arm(uint second)
+    {
+        var c = new TableAutomation(); c.Arm(new(true, true, 766, SecondaryDutyId: second), 0);
+        Assert.False(c.Armed); Assert.Equal(TableAutomationAction.None, c.Tick(10, Idle));
+    }
+
+    [Fact]
+    public void Dual_queue_requires_exact_owned_set_and_rejects_changed_table()
+    {
+        uint[] chosen = [766, 643];
+        Assert.True(MahjongDuties.QueueMatches(chosen, [643, 766]));
+        foreach (uint[] other in new uint[][] { [766], [766, 766], [766, 767], [766, 643, 767], [] })
+            Assert.False(MahjongDuties.QueueMatches(chosen, other));
+        var c = new TableAutomation(); c.Arm(new(true, true, 766, SecondaryDutyId: 643), 0);
+        c.Tick(1, Idle with { TableVisible = true, DutyId = 643 });
+        Assert.Equal(TableAutomationAction.None, c.Tick(4, Idle with { TableVisible = true, DutyId = 766 }));
+        Assert.False(c.Armed);
+    }
+
     [Fact]
     public void Resume_as_automatic_keeps_completed_matches_queue_ownership_and_limit()
     {

@@ -104,6 +104,33 @@ unsafe class Program
         if (!plugin.GameOperationsAvailable || plugin.ExperimentalHandAiEnabled || plugin.PlayRuntime is not null ||
             plugin.GameOperationsAuthorized || plugin.TableAutomationArmed || plugin.RatingRefreshBusy)
             throw new InvalidOperationException("Qualification rendering started a task/backend or hid availability");
+        // Explicitly synthetic states: UI coverage only, no task authority or model execution.
+        Set(plugin,"experimentalHandAiEnabled",1);
+        Property(plugin,"AutomationOptions",new Mahjong.Plugin.CN.Automation.TableAutomationOptions(SecondaryDutyId:643));
+        foreach(float scale in new[]{1f,1.5f,2f})
+        foreach(var state in new[]{"preparing","recovery","paused","dual-queue"})
+        {
+            var status=state switch
+            {
+                "preparing"=>new RunPresentation("正在准备模型","后台校验与首次推理中；等待就绪后再报名。"),
+                "recovery"=>new RunPresentation("正在恢复","重新核对同一牌桌。暂停可取消恢复。"),
+                "paused"=>new RunPresentation("已暂停","提醒、出牌与排队均已暂停；模型留在后台，进度保留。"),
+                _=>new RunPresentation("尚未开始","合成双桌型设置；没有实际报名。"),
+            };
+            Set(plugin,"uiSnapshot",PluginUiSnapshot.Empty with {Engine="凡夫 Mortal V4（测试版）",RunStatus=status});
+            int width=(int)(620*scale),height=(int)(760*scale);io.DisplaySize=new(width,height);io.FontGlobalScale=scale;
+            Set(window,"compact",false);Set(window,"page",state=="dual-queue"?1:0);
+            for(int frame=0;frame<3;frame++)
+            {
+                ImGui.NewFrame();window.PreDraw();ImGui.SetNextWindowPos(Vector2.Zero);ImGui.SetNextWindowSize(new(width,height));
+                ImGui.Begin("SYNTHETIC STATUS - NOT LIVE GAME",ImGuiWindowFlags.NoMove|ImGuiWindowFlags.NoResize);
+                window.Draw();ImGui.End();window.PostDraw();ImGui.Render();
+            }
+            Raster.Save(ImGui.GetDrawData(),pixels,tw,th,width,height,Path.Combine(output,$"status-{state}-{scale*100:0}.png"));
+        }
+        Set(plugin,"uiSnapshot",PluginUiSnapshot.Empty);
+        Set(plugin,"experimentalHandAiEnabled",0);
+        Property(plugin,"AutomationOptions",new Mahjong.Plugin.CN.Automation.TableAutomationOptions());
         Set(window,"compact",false);Set(window,"page",0);io.FontGlobalScale=1;io.DisplaySize=new(980,680);
         var appearance=(GlassTheme.Appearance)typeof(GlassTheme).GetField("options",BindingFlags.Static|BindingFlags.NonPublic)!.GetValue(null)!;
         var measurements=new List<object>();

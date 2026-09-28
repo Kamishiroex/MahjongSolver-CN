@@ -2,7 +2,7 @@
 
 本版增加整场循环：[设置、计数依据和实测步骤](CORE-VALIDATION.md)。勾选“无限循环”，或取消勾选后输入1～9999场。每次点击启动从0计数；在桌内启动时计入当前这一场。旧设置没有场数时按无限循环读取，但不自动启动。
 
-输入 `/mjcn queue`，或点击主界面的“自动排队设置 / 进桌开打”，打开独立“自动排队”页。勾选“进桌后自动开启自动打牌”和/或“自动排队并确认进入”，在同页选择桌型，再点击“启动自动功能”。默认东风战一般桌，共八种模式。进桌开打沿用顶部所选的上游牌效或全局 AI，已有手动提醒不会被覆盖。此页的停止按钮只停止后续排队和进桌开打；顶部“暂停全部自动功能”也停止当前自动打牌。
+当前界面在“任务”页配置自动排队与进桌开打，可选择一种或同时报名两种同类桌型（段位桌不能与亲友桌混合）。使用顶部所选求解来源；匹配到哪一种就按实际桌型读取规则。资格有效并点击“预检并开始连续任务”后才运行。暂停和继续统一在顶部；结束或全停放在“更多”。选用 Mortal 时等准备完成后再报名、确认或开打。新双报名的状态机和参数校验有离线回归，仍待国服实机核对。
 
 设置保存到插件配置目录的 `table-automation.json`，但重载或重新登录后不自行排队，需要再次点击启动。暂停、停止、读取/操作错误、切换决策来源会撤销自动启动权限。游戏已经接受的报名不会因停止插件而被取消，需要在任务搜索器取消；停止之后插件不再自动确认进入。
 
@@ -24,9 +24,9 @@
 | 半庄战4人亲友桌（带食断） | 645 | 61003 |
 | 半庄战4人亲友桌（不带食断） | 650 | 61004 |
 
-排队调用固定版本 `ContentsFinder.QueueInfo.QueueDuties(&conditionId, 1)`；结构体依据为对应提交的 `FFXIV/Client/Game/UI/ContentsFinder.cs`、`Client/UI/AddonContentsFinderConfirm.cs`、`Component/GUI/AtkEvent.cs`。只调用公开框架包装，不增加私有签名，不写内存偏移。参数使用 ContentFinderCondition ID；可交叉核对[原作者的 QueueDuties 调用](https://github.com/Jaksuhn/ffxiv-bundleoftweaks/blob/4e216987ad1f817a5ec43a2961147580bc71fd63/ffxiv_bundledtweaks/Tweaks/AutoQueue.cs#L21)，本项目未复制其实现。
+排队调用固定版本 `ContentsFinder.QueueInfo.QueueDuties(ids, count)`，count 为 1 或 2；结构体依据为对应提交的 `FFXIV/Client/Game/UI/ContentsFinder.cs`、`Client/UI/AddonContentsFinderConfirm.cs`、`Component/GUI/AtkEvent.cs`。只调用公开框架包装，不增加私有签名，不写内存偏移。参数使用 ContentFinderCondition ID；可交叉核对[原作者的 QueueDuties 调用](https://github.com/Jaksuhn/ffxiv-bundleoftweaks/blob/4e216987ad1f817a5ec43a2961147580bc71fd63/ffxiv_bundledtweaks/Tweaks/AutoQueue.cs#L21)，本项目未复制其实现。
 
-匹配弹窗是 `ContentsFinderConfirm`，进入按钮为固定结构体的 `CommenceButton`。仅当本功能提交的队列和 PoppedQueueEntry 都等于所选桌型时，寻找该按钮实际注册的唯一 ButtonClick 事件，使用其原始 Param 和 Listener，不猜测回调数字。按钮禁用、事件冲突、循环链、其他弹窗均不点击。资源 `ui/uld/contentsfinderconfirm.uld` SHA256：`E04679EE2A0829C80491DA648EEAA27442014D991DE84490EF5524AE01A6B4BE`，来自本机版本资源，启用排队前核对。
+匹配弹窗是 `ContentsFinderConfirm`，进入按钮为固定结构体的 `CommenceButton`。仅当队列完整集合与本功能提交的所选桌型一致，且 PoppedQueueEntry 是其中一项时，寻找该按钮实际注册的唯一 ButtonClick 事件，使用其原始 Param 和 Listener，不猜测回调数字。按钮禁用、事件冲突、循环链、其他弹窗均不点击。资源 `ui/uld/contentsfinderconfirm.uld` SHA256：`E04679EE2A0829C80491DA648EEAA27442014D991DE84490EF5524AE01A6B4BE`，来自本机版本资源，启用排队前核对。
 
 ## 验收
 

@@ -12,6 +12,63 @@ namespace Mahjong.Plugin.CN.Gameplay.Tests;
 
 public sealed unsafe class CnCallMenuResolverTests
 {
+    [Theory][InlineData("Ron,Chi,Pass", ActionKind.Ron)][InlineData("Tsumo,Pass", ActionKind.Tsumo)]
+    public void Real_autoplay_choice_bypasses_unavailable_solver_and_records_execution_protection(string menu, ActionKind expected)
+    {
+        using var f = new Fixture(menu.Split(','));
+        var runtime = (Mahjong.Plugin.Dalamud.Plugin)System.Runtime.CompilerServices.RuntimeHelpers.GetUninitializedObject(typeof(Mahjong.Plugin.Dalamud.Plugin));
+        var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+        typeof(Mahjong.Plugin.Dalamud.Plugin).GetField("dispatcher", flags)!.SetValue(runtime, f.Dispatcher(() => true));
+        // No policy installed: accidentally invoking a pending/failed model throws.
+        string? recordedKind = null; JsonElement recorded = default;
+        runtime.ReviewRecorded += (kind, data) => { recordedKind = kind; recorded = JsonSerializer.SerializeToElement(data); };
+        var loop = (AutoPlayLoop)System.Runtime.CompilerServices.RuntimeHelpers.GetUninitializedObject(typeof(AutoPlayLoop));
+        typeof(AutoPlayLoop).GetField("plugin", flags)!.SetValue(loop, runtime);
+        var snapshot = Mahjong.Core.StateSnapshot.Empty with { Legal = new(Mahjong.Core.ActionFlags.Discard, [], [], [], []) };
+        object[] args = [snapshot];
+        var choice = (ActionChoice)typeof(AutoPlayLoop).GetMethod("ChooseCurrentAction", flags)!.Invoke(loop, args)!;
+        Assert.Equal(expected, choice.Kind);
+        Assert.Equal("review_decision", recordedKind);
+        Assert.Equal("game-visible-win-guard", recorded.GetProperty("Backend").GetString());
+        Assert.False(recorded.GetProperty("SolverCalled").GetBoolean());
+        Assert.False(recorded.GetProperty("ActionConfirmed").GetBoolean());
+        var revised = (Mahjong.Core.StateSnapshot)args[0];
+        Assert.True(revised.Legal.Can(expected == ActionKind.Ron ? Mahjong.Core.ActionFlags.Ron : Mahjong.Core.ActionFlags.Tsumo));
+        Assert.Equal(Mahjong.Core.ActionFlags.Discard, snapshot.Legal.Flags); // Original observation is unchanged.
+    }
+
+    [Theory]
+    [InlineData("Ron,Chi,Pass", ActionKind.Chi)]
+    [InlineData("Ron,Pon,Kan,Pass", ActionKind.Pon)]
+    [InlineData("Ron,Pon,Kan,Pass", ActionKind.MinKan)]
+    [InlineData("Ron,Pass", ActionKind.Pass)]
+    [InlineData("Tsumo,Riichi,Pass", ActionKind.Riichi)]
+    [InlineData("Tsumo,Kan,Pass", ActionKind.AnKan)]
+    public void Live_win_blocks_every_competing_input_without_native_submission(string menu, ActionKind competing)
+    {
+        using var f = new Fixture(menu.Split(','));
+        f.PrepareNativeRecorder(); clickCount = 0;
+        var d = f.Dispatcher(() => true);
+        Assert.True(d.TryGetAvailableWin(out var win));
+        Assert.Equal(InputDispatcher.DispatchResult.AvailableWinBlocked, d.DispatchCallOption(0, competing));
+        Assert.Equal(InputDispatcher.DispatchResult.AvailableWinBlocked, d.DispatchCallOption(0));
+        Assert.Equal(InputDispatcher.DispatchResult.AvailableWinBlocked, d.DispatchDiscard(0));
+        Assert.Equal(0, clickCount);
+        Assert.Equal(InputDispatcher.DispatchResult.Submitted, d.DispatchCallOption(7, win));
+        Assert.Equal(1, clickCount);
+    }
+
+    [Theory][InlineData("disabled")][InlineData("hidden")][InlineData("update")][InlineData("absent")][InlineData("both")]
+    public void Win_priority_requires_current_unambiguous_enabled_menu(string reason)
+    {
+        using var f = new Fixture(reason == "absent" ? ["Pon", "Pass"] :
+            reason == "both" ? ["Ron", "Tsumo", "Pass"] : ["Ron", "Pass"]);
+        if (reason == "disabled") f.List->ItemRendererList[0].IsDisabled = true;
+        if (reason == "hidden") f.Unit->IsVisible = false;
+        if (reason == "update") f.List->IsUpdatePending = true;
+        Assert.False(f.Dispatcher(() => true).TryGetAvailableWin(out _));
+    }
+
     [ThreadStatic] private static int clickCount;
     [ThreadStatic] private static int clickedIndex;
     [ThreadStatic] private static int clickedParam;

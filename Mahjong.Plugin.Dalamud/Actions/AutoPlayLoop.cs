@@ -307,7 +307,8 @@ public sealed class AutoPlayLoop : IDisposable
     private void EmitDecisionFinding(string source, StateSnapshot snap, ActionChoice choice)
     {
 #if MAHJONG_CN
-        reviewDecision=plugin.ReviewDecisionId(snap);
+        if (!choice.Reasoning.StartsWith("AVAILABLE_WIN_GUARD:", StringComparison.Ordinal))
+            reviewDecision=plugin.ReviewDecisionId(snap);
 #endif
         plugin.FindingsLog?.Record("decision", new Dictionary<string, object?>
         {
@@ -1010,7 +1011,7 @@ public sealed class AutoPlayLoop : IDisposable
                 return;
             }
 
-            var choice = plugin.Policy.Choose(snap);
+            var choice = ChooseCurrentAction(ref snap);
             if (DeferPendingPolicyChoice(choice, DateTime.UtcNow)) return;
             log.Info(
                 $"[AutoPlayLoop] discard body: schedState={context.State} curState={currentState} " +
@@ -1043,7 +1044,7 @@ public sealed class AutoPlayLoop : IDisposable
                 StopForError($"AUTO_SNAPSHOT_UNAVAILABLE: call, state={currentState}");
                 return;
             }
-            var choice = plugin.Policy.Choose(snap);
+            var choice = ChooseCurrentAction(ref snap);
             if (DeferPendingPolicyChoice(choice, DateTime.UtcNow)) return;
             log.Info(
                 $"[AutoPlayLoop] call body: schedState={context.State} curState={currentState} " +
@@ -1064,6 +1065,14 @@ public sealed class AutoPlayLoop : IDisposable
         ScheduleAction("riichi-tsumogiri", context, RiichiTsumogiriDelayMs, () =>
         {
             var snap = plugin.AddonReader.TryBuildSnapshot();
+#if MAHJONG_CN
+            if (snap is not null && TryChooseVisibleWin(ref snap, out var win))
+            {
+                EmitDecisionFinding("riichi-win-guard", snap, win);
+                DispatchCallChoice(snap, win);
+                return;
+            }
+#endif
             if (!fsm.NeedsRiichiDiscard) return;
             if (snap is not null && !fsm.ShouldScheduleRiichiDiscard(snap.Legal.Flags, snap.Hand.Count)) return;
             if (snap is null || snap.Hand.Count < 14)
@@ -1106,7 +1115,8 @@ public sealed class AutoPlayLoop : IDisposable
     {
         if (DeferPendingPolicyChoice(choice, DateTime.UtcNow)) return;
 
-        if (IsGlobalAiChoice(choice) && choice.Kind is ActionKind.Tsumo or ActionKind.Ron or ActionKind.ShouMinKan or ActionKind.MinKan or ActionKind.Kyushukyuhai)
+        if (choice.Kind is ActionKind.Tsumo or ActionKind.Ron ||
+            IsGlobalAiChoice(choice) && choice.Kind is ActionKind.ShouMinKan or ActionKind.MinKan or ActionKind.Kyushukyuhai)
         {
             DispatchCallChoice(snap, choice);
             return;
@@ -1138,6 +1148,38 @@ public sealed class AutoPlayLoop : IDisposable
 
         DispatchDiscardOrRiichi(snap, choice);
     }
+
+    private ActionChoice ChooseCurrentAction(ref StateSnapshot snap)
+    {
+#if MAHJONG_CN
+        if (TryChooseVisibleWin(ref snap, out var win)) return win;
+#endif
+        return plugin.Policy.Choose(snap);
+    }
+
+#if MAHJONG_CN
+    private bool TryChooseVisibleWin(ref StateSnapshot snap, out ActionChoice choice)
+    {
+        choice = null!;
+        if (!plugin.Dispatcher.TryGetAvailableWin(out var offered)) return false;
+        // Execution protection, explicitly attributed rather than reported as a model decision.
+        // Revalidated again by DispatchCallOption before any native input.
+        var originalFlags = snap.Legal.Flags;
+        string inputHash = Mahjong.Plugin.CN.Journaling.DecisionReviewPolicy.InputHash(snap);
+        var flag = offered == ActionKind.Ron ? ActionFlags.Ron : ActionFlags.Tsumo;
+        snap = snap with { Legal = snap.Legal with { Flags = snap.Legal.Flags | flag } };
+        choice = new(offered, Reasoning: "AVAILABLE_WIN_GUARD: 当前游戏菜单提供和牌，执行层优先和牌；未调用求解器。");
+        reviewDecision = Guid.NewGuid();
+        plugin.RecordReview("review_decision", new
+        {
+            DecisionId = reviewDecision, Backend = "game-visible-win-guard", InputSha256 = inputHash,
+            Choice = choice, BackendOverride = "AVAILABLE_WIN_GUARD: 当前可用和牌优先，求解器未调用",
+            CandidateSource = "visible-enabled-game-menu", SolverCalled = false,
+            OriginalSnapshotFlags = (int)originalFlags, VisibleWin = offered.ToString(), ActionConfirmed = false,
+        });
+        return true;
+    }
+#endif
 
     /// <summary>
     /// An asynchronous policy's pending result is not a request to press Pass. No input was

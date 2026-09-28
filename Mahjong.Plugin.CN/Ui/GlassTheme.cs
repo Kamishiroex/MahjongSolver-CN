@@ -61,6 +61,7 @@ internal static class GlassTheme
     }
 
     internal static bool ModernLayout => options.ModernLayout;
+    internal static bool HighlightDiscard => options.HighlightDiscard;
     internal static Vector4 Accent => options.Enabled ? Accents[options.Accent] : new(0.43f, 0.80f, 0.70f, 1f);
     internal static readonly Vector4 Warning = new(1f, 0.43f, 0.36f, 1f);
     internal static float Scale => Math.Clamp(ImGuiHelpers.GlobalScale, 0.5f, 4f);
@@ -145,6 +146,9 @@ internal static class GlassTheme
         { options.ModernLayout = modern; Save(); }
         ImGui.TextWrapped("取消勾选可切回经典标签页；切换外观不会启动、停止或恢复打牌。");
         bool enabled = options.Enabled;
+        bool highlight = options.HighlightDiscard;
+        if (ImGui.Checkbox("游戏手牌显示建议高亮", ref highlight)) { options.HighlightDiscard = highlight; Save(); }
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("只标记当前稳定、合法的弃牌建议；不代替玩家操作。暂停、动画或建议失效时隐藏。");
         if (ImGui.Checkbox("启用玻璃质感主题", ref enabled))
         { options.Enabled = enabled; Save(); }
         ImGui.BeginDisabled(!options.Enabled);
@@ -209,6 +213,7 @@ internal static class GlassTheme
         public int SchemaVersion { get; set; } = 1;
         public bool Enabled { get; set; } = true;
         public bool ModernLayout { get; set; } = true;
+        public bool HighlightDiscard { get; set; } = true;
         public float Opacity { get; set; } = 0.70f;
         public float Radius { get; set; } = 12f;
         public int Accent { get; set; }

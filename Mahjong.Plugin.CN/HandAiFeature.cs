@@ -4,6 +4,43 @@ public sealed partial class Plugin
 {
     private Mahjong.Cn.Engines.MortalEngineSession? mortalSession;
     internal string? MortalWarmupStatus => MortalSelected ? mortalSession?.Status : null;
+    private bool backgroundWarmupRequested;
+    internal bool MortalPreparing => ExperimentalHandAiEnabled && MortalSelected && mortalSession is { Preparation.IsCompleted: false };
+    internal bool MortalPrepared => mortalSession?.IsReady == true;
+    internal string? EnginePreparationSummary => !ExperimentalHandAiEnabled || !MortalSelected ? null : mortalSession switch
+    {
+        null => "模型尚未准备；选择测试来源或开始任务后会提前加载。",
+        { Preparation.IsFaulted: true } or { Preparation.IsCanceled: true } => "模型准备失败，请检查测试版技术详情；重新开始可重试。",
+        { IsReady: true } ready => $"模型已就绪 · 加载与预热 {ready.WarmupMilliseconds / 1000:F1} 秒 · 暂停与换局保持常驻",
+        { Preparation.IsCompletedSuccessfully: true } => "模型进程已退出；继续或重新开始时会重新准备。",
+        _ => "模型准备中 · 正在校验、加载和首次推理；自动报名与入桌确认等待就绪。",
+    };
+
+    private void RequestSelectedMortalWarmup() => backgroundWarmupRequested = true;
+
+    private void UpdateSelectedMortalWarmup()
+    {
+        if (!backgroundWarmupRequested || EngineMaintenanceBusy) return;
+        backgroundWarmupRequested = false;
+        if (disposed || !ExperimentalHandAiEnabled || !MortalSelected || !BetaRuntimeAccessValid || !SelectedEngineInstalled) return;
+        PrepareSelectedMortal();
+    }
+
+    // The table coordinator cannot enqueue/accept/start a new game before preparation completes.
+    private bool AwaitSelectedMortalForTable()
+    {
+        if (!ExperimentalHandAiEnabled || !MortalSelected) return true;
+        if (mortalSession is null) { RequestSelectedMortalWarmup(); UpdateSelectedMortalWarmup(); }
+        if (MortalPrepared) return true;
+        if (mortalSession?.Preparation.IsCompleted == true && !tableAutomation.MatchCompleted)
+        {
+            PausePlay();
+            Status = EnginePreparationSummary!;
+            AlertUnexpectedStop(new(DateTimeOffset.UtcNow, Status, Mahjong.Plugin.Dalamud.PlayMode.Off,
+                null, null, null, null, null, null, null));
+        }
+        return false;
+    }
 
     private void PrepareSelectedMortal()
     {
@@ -15,7 +52,7 @@ public sealed partial class Plugin
         }
         string directory = DefaultGlobalEngineDirectory;
         if (mortalSession is { } current && current.Directory == directory &&
-            !current.Preparation.IsFaulted && !current.Preparation.IsCanceled) return;
+            (!current.Preparation.IsCompleted || current.IsReady)) return;
         mortalSession?.Dispose();
         mortalSession = new(directory);
     }
@@ -68,6 +105,9 @@ public sealed partial class Plugin
         if (solverPreference?.Error is { } error) { BetaAccessStatus = error; return; }
         if (solverPreference?.PreferBeta != true) return;
         Interlocked.Exchange(ref experimentalHandAiEnabled, 1);
+        // A previously selected source with a still-valid lease may prepare at login.
+        // Merely validating/renewing a lease never requests preparation or starts play.
+        if (TestAccessUnlocked) RequestSelectedMortalWarmup();
         BetaAccessStatus = TestAccessUnlocked ? "已沿用上次的测试版来源与模型；尚未启动。" :
             "上次选择的测试版需要重新验证，模型选择已保留；不会切换来源或开始打牌。";
     }
@@ -113,6 +153,7 @@ public sealed partial class Plugin
             if (ExperimentalHandAiEnabled == enabled)
             {
                 if (solverPreference?.Save(enabled) == false) BetaAccessStatus = solverPreference.Error!;
+                if (enabled) RequestSelectedMortalWarmup();
                 return;
             }
             Interlocked.Increment(ref betaGeneration);
@@ -127,9 +168,10 @@ public sealed partial class Plugin
             PlayRuntime?.PauseAutomation(reason);
             Interlocked.Exchange(ref experimentalHandAiEnabled, enabled ? 1 : 0);
             if (solverPreference?.Save(enabled) == false) BetaAccessStatus = solverPreference.Error!;
-            if (!enabled) { mortalSession?.Dispose(); mortalSession = null; }
+            if (!enabled) { backgroundWarmupRequested = false; mortalSession?.Dispose(); mortalSession = null; }
+            else RequestSelectedMortalWarmup();
             Volatile.Write(ref experimentalHandAiStatus, enabled
-                ? $"已选择 {GlobalBackendLabel}；选择手动或自动后，等待本次引擎结果。"
+                ? $"已选择 {GlobalBackendLabel}；将在后台提前预热，尚未开始打牌或排队。"
                 : "已选择上游牌效；本模式不调用 akochan。");
             RecordJournalEvent("decision_source_selected", new
             {

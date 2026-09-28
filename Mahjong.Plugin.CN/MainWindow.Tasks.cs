@@ -15,13 +15,7 @@ internal sealed partial class MainWindow
     private void DrawTaskRunControls()
     {
         ImGui.TextWrapped(plugin.TaskSummary);
-        ImGui.TextWrapped(Presentation.DisplayCopy.Summary(plugin.Status));
-        ImGui.BeginDisabled(plugin.TaskRun.Phase!=TaskRunPhase.Paused);
-        if(ImGui.Button("预检并继续同一任务")) plugin.DispatchUi(plugin.ResumeTask);
-        ImGui.EndDisabled();
-        SameLineIfFits(140*GlassTheme.Scale);
-        if(ImGui.Button("结束本次任务")) plugin.EndTask();
-        ImGui.TextWrapped("继续保留场数、时长与原规则，并明确采用当前求解来源；修改桌型需结束后新建。暂停不强退，关闭窗口不暂停。");
+        if (ImGui.IsItemHovered()) ImGui.SetTooltip("暂停 / 继续在顶部；结束任务在“更多”。继续保留原场数与规则。");
     }
     private void DrawTaskRules()
     {
@@ -30,7 +24,7 @@ internal sealed partial class MainWindow
             bool keep=plugin.AutomationOptions.KeepAutomaticBetweenHands;
             if(ImGui.Checkbox("局间持续等待其他玩家确认",ref keep))QueueAutomationOptions(plugin.AutomationOptions with {KeepAutomaticBetweenHands=keep});
         }
-        ImGui.TextWrapped("标准任务只提示并跟踪目标；到达已支持的时长或截止目标后停止提示。修改规则会暂停任务，需主动继续或新建。");
+        ImGui.TextWrapped("以下为可选限制；不设置即可按桌型与场数运行。修改规则后会暂停，顶部继续保留原任务规则，新任务使用新规则。");
         if(!taskEditorLoaded)
         {
             var rules=plugin.TaskRules; taskEditorLoaded=true;

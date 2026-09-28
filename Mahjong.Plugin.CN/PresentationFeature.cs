@@ -43,14 +43,22 @@ public sealed partial class Plugin
         bool active = SelectedSourceAccessValid && (runtime?.Mode!=PlayMode.Automatic || GameOperationsAuthorized) && Identity.Error is null && PendingStopAlert is null &&
             runtime?.Mode is PlayMode.Manual or PlayMode.Automatic;
         var now = DateTimeOffset.UtcNow;
+        PublishDiscardHighlight(active, now);
         var hand = active && journalLower is { Stable: true } lower && now - journalLowerUtc < TimeSpan.FromSeconds(2)
             ? lower.Tiles : [];
         Volatile.Write(ref uiSnapshot, new(now, runtimeJournalSequence, runtime?.Mode ?? PlayMode.Off,
-            runtime?.IsObservingPaused == true, QuickRecoveryPending ? QuickRecoveryStatus : runtime?.Status ?? Status, DecisionSourceLabel,
+            runtime?.IsObservingPaused == true, QuickRecoveryPending ? QuickRecoveryStatus : runtime?.Status ?? Status,
+            ExperimentalHandAiEnabled ? GlobalBackendLabel + "（测试版）" : "标准求解器",
             TaskSummary, active ? runtime?.ActiveAggregator?.Latest : null,
             active && !hand.IsDefaultOrEmpty ? runtime?.ActiveAggregator?.LastChoice : null, hand, CurrentRating,
             active && CurrentJournalPublicSnapshot?.Observation is { } observation && now-observation.ObservedAtUtc<TimeSpan.FromSeconds(2)
                 ? CurrentJournalPublicSnapshot : null,
-            System.Collections.Immutable.ImmutableArray.CreateRange(recentUiEvents), RatingRefreshBusy, RatingRefreshStatus));
+            System.Collections.Immutable.ImmutableArray.CreateRange(recentUiEvents), RatingRefreshBusy, RatingRefreshStatus)
+        {
+            RunStatus = RunPresentation.Describe(taskRun.Phase, runtime?.Mode ?? PlayMode.Off,
+                runtime?.IsObservingPaused == true, MortalPreparing, QuickRecoveryPending, QuickRecoveryStatus,
+                PendingStopAlert?.Reason, runtime?.ActiveAggregator?.Latest?.AddonStateCode,
+                TableAutomationArmed, TableAutomationStatus, runtime?.Status ?? Status),
+        });
     }
 }

@@ -443,6 +443,8 @@ public sealed partial class Plugin : IDalamudPlugin
 
     private void StopCore(string reason)
     {
+        backgroundWarmupRequested = false;
+        mortalSession?.Dispose(); mortalSession = null;
         ratingReadingEnabled = false;
         CancelRatingRefresh();
         if (CurrentRating is { } rating) CurrentRating = rating with
@@ -487,6 +489,7 @@ public sealed partial class Plugin : IDalamudPlugin
         if (disposed) return;
         EnforceBetaAccess();
         PollEngineMaintenance();
+        UpdateSelectedMortalWarmup();
         UpdateCommunity();
         UpdateRatingCore();
         UpdateTaskCore();
@@ -849,7 +852,7 @@ public sealed partial class Plugin : IDalamudPlugin
         });
     }
 
-    private void Draw() => windows.Draw();
+    private void Draw() { DrawDiscardHighlight(); windows.Draw(); }
     private void Open() => window.IsOpen = true;
 
     public void Dispose() { lock (gate) DisposeCore(); }
