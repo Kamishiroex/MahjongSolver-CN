@@ -4,7 +4,7 @@
 
 默认采用上游求解器。**标准模式不执行游戏操作，仅提供提示。** 完整保留主题、提示任务、目标提醒、评分展示、本地记录、设置、诊断与恢复核对，无需测试验证。测试资格有效时，实验求解器和全部游戏操作功能直接可用，无需逐项启用或重复授权；点击开始才运行。不保证获胜或上分。
 
-当前开发版本 **5.2.1**（程序集版本 `5.2.1.0`），目标为 Windows、游戏 `2026.09.15.0000.0000`、国服 Dalamud `15.0.3.5 / API 15` 和 .NET 10。固定来源见源码仓库内 `docs/cn/VERSION-EVIDENCE.md`；其他版本未经验证，不关闭框架检查来强行加载。5.2.1 尚未发布，订阅仍指向下述已发布版本。
+当前插件版本 **5.2.1**（程序集版本 `5.2.1.0`），目标为 Windows、游戏 `2026.09.15.0000.0000`、国服 Dalamud `15.0.3.5 / API 15` 和 .NET 10。固定来源见源码仓库内 `docs/cn/VERSION-EVIDENCE.md`；其他版本未经验证，不关闭框架检查来强行加载。
 
 ## 安装与更新
 
@@ -14,7 +14,7 @@
 https://raw.githubusercontent.com/Kamishiroex/MahjongSolver-CN/repo/repo.json
 ```
 
-刷新插件安装器，搜索“MahjongSolver”并安装。订阅使用固定的 `repo` 分支，独立于开发分支名称；当前指向已发布的 4.1.4 候选包。安装包、对应源码和校验文件也可从[发布页](https://github.com/Kamishiroex/MahjongSolver-CN/releases/tag/v4.1.4)获取。
+刷新插件安装器，搜索“MahjongSolver”并安装。订阅使用固定的 `repo` 分支，独立于开发分支名称；当前指向已发布的 5.2.1 包。安装包、对应源码和校验文件也可从[发布页](https://github.com/Kamishiroex/MahjongSolver-CN/releases/tag/v5.2.1)获取。
 
 升级保留内部标识、配置与个人资源，无需卸载清空配置。开发包与已发布附件请核对 `build-manifest.json` 中的版本和源码提交；对应源码以同次构建的 source ZIP 为准。
 

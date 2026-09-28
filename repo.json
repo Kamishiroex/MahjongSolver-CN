@@ -4,7 +4,7 @@
         "Name":  "MahjongSolver · 多玛方城战求解器（国服优化版）",
         "InternalName":  "Mahjong.Plugin.CN",
         "RepoUrl":  "https://github.com/Kamishiroex/MahjongSolver-CN",
-        "AssemblyVersion":  "4.1.4.0",
+        "AssemblyVersion":  "5.2.1.0",
         "DalamudApiLevel":  15,
         "ApplicableVersion":  "2026.09.15.0000.0000",
         "MinimumDalamudVersion":  "15.0.3.5",
@@ -20,10 +20,10 @@
         "LoadSync":  false,
         "CanUnloadAsync":  false,
         "IsTestingExclusive":  false,
-        "DownloadLinkInstall":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
-        "DownloadLinkUpdate":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
-        "DownloadLinkTesting":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v4.1.4/Mahjong.Plugin.CN-4.1.4.zip",
+        "DownloadLinkInstall":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v5.2.1/Mahjong.Plugin.CN-5.2.1.zip",
+        "DownloadLinkUpdate":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v5.2.1/Mahjong.Plugin.CN-5.2.1.zip",
+        "DownloadLinkTesting":  "https://github.com/Kamishiroex/MahjongSolver-CN/releases/download/v5.2.1/Mahjong.Plugin.CN-5.2.1.zip",
         "AcceptsFeedback":  false,
-        "LastUpdate":  1790512255
+        "LastUpdate":  1790595928
     }
 ]
