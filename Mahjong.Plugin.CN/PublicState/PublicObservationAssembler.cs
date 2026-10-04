@@ -53,11 +53,13 @@ internal static class PublicObservationAssembler
         return new(identity.GameVersion, LowerHandProfile.EmjUldSha256, profile);
     }
 
-    // This managed projection also replays historical public DTOs. The September 18
-    // pair remains valid evidence for the same client/ULD; never rewrite its provenance.
-    // Live native reads still require RuntimeIdentity.Validate's current pair and Error=null.
+    // Historical public DTOs keep their original identity. Live compatible patches
+    // carry the metadata contract proof from RuntimeIdentity.Read, never a rewritten commit.
     private static bool HasAuditedPublicLayout(RuntimeIdentity identity) =>
+        identity.CompatibilityProfile == FrameworkCompatibility.Profile ||
         (identity.DalamudCommit == RuntimeIdentity.TargetDalamud && identity.ClientStructsVersion == RuntimeIdentity.TargetStructs) ||
+        (identity.DalamudCommit == "a198a02bdce1f3213cad618850ab1b2736307588" &&
+         identity.ClientStructsVersion == "1.0.0+243dc41e4d71f350cd80aa5eba8c75517f3d5154") ||
         (identity.DalamudCommit == "cac6159a2c76e62a4e1f7bc347454c205808bb04" &&
          identity.ClientStructsVersion == "1.0.0+f824354f4a6a2b1cd16cc8fcb670c7a66bf64880");
 

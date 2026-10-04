@@ -253,7 +253,7 @@ public sealed class PublicObservationAssemblerTests
         Assert.False(PublicObservationAssembler.Assemble(Base(), probe, context with { ClientVersion = "different" }).WallRemaining.HasValue);
     }
 
-    private static RuntimeIdentity Identity() => new(RuntimeIdentity.TargetGame, 15, "15.0.3.5", RuntimeIdentity.TargetDalamud,
+    private static RuntimeIdentity Identity() => new(RuntimeIdentity.TargetGame, 15, RuntimeIdentity.MinimumDalamud, RuntimeIdentity.TargetDalamud,
         RuntimeIdentity.TargetStructs, "ChineseSimplified", "10.0", null);
     private static RoundTitleResourceCandidate RoundTitleImage() =>
         new("Emj/19", "ROUND_TITLE_RESOURCE_CANDIDATE", 0, 1, 0, 0, 0, 640, 80, 0, 1, 121452, 0x14A042F1);

@@ -1,4 +1,4 @@
-MahjongSolver 5.2.1 - CN adaptation of FFXIV-AutoMahjongSolver
+MahjongSolver 5.2.1.1 - CN adaptation of FFXIV-AutoMahjongSolver
 Upstream author: XeldarAlz
 Upstream: https://github.com/XeldarAlz/FFXIV-AutoMahjongSolver
 Upstream commit: 21ae5ca9aa1fa3785baa540245b51efa346f9d37
@@ -13,7 +13,7 @@ Chinese manual/automatic play, local journal/recovery, guarded action dispatch,
 queue automation, AI adapters/import/selection, Mortal prewarming, regression
 tests and reproducible build scripts. Compilation is not live acceptance.
 
-Corresponding source: Mahjong.Plugin.CN-5.2.1-source.zip (see SHA256SUMS).
+Corresponding source: Mahjong.Plugin.CN-5.2.1.1-source.zip (see SHA256SUMS).
 source-file-manifest.json identifies its commit and per-file hashes.
 The archive includes build scripts, locks, required resources, engine patch
 sources, licenses, compatibility evidence and regression tests.

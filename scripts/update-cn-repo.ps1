@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)] [ValidatePattern('^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$')] [string] $Repository,
-    [string] $Tag = 'v5.2.1',
+    [string] $Tag = 'v5.2.1.1',
     [string] $ArtifactDirectory = ''
 )
 

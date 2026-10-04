@@ -14,7 +14,7 @@ public sealed class PublicRoundEventTrackerTests
     private static readonly ConditionalWeakTable<PublicRoundEventTracker, Cursor> Cursors = new();
     private static readonly Guid Session = Guid.Parse("22222222-2222-2222-2222-222222222222");
     private static readonly PublicObservationContext Context = PublicObservationAssembler.CreateAuditedContext(
-        new(RuntimeIdentity.TargetGame, 15, "15.0.3.5", RuntimeIdentity.TargetDalamud,
+        new(RuntimeIdentity.TargetGame, 15, RuntimeIdentity.MinimumDalamud, RuntimeIdentity.TargetDalamud,
             RuntimeIdentity.TargetStructs, "ChineseSimplified", "10.0.0", null), LowerHandProfile.EmjUldSha256)!;
 
     private static JsonDocument Fixture()

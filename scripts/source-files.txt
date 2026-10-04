@@ -728,3 +728,6 @@ tests/Mahjong.Plugin.CN.Gameplay.Tests/ResultPersistenceTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/TransientRecoveryTests.cs
 tests/Mahjong.Plugin.CN.Gameplay.Tests/fixtures/result-final-tsumo-20260927.json
 tools/Mahjong.Cn.JournalReplay/CorpusFixtures.cs
+Mahjong.Plugin.CN/FrameworkCompatibility.cs
+Mahjong.Plugin.CN/framework-contract.json
+tests/Mahjong.Plugin.CN.Gameplay.Tests/FrameworkCompatibilityTests.cs

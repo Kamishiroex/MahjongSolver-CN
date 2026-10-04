@@ -4,7 +4,7 @@
 
 默认采用上游求解器。**标准模式不执行游戏操作，仅提供提示。** 完整保留主题、提示任务、目标提醒、评分展示、本地记录、设置、诊断与恢复核对，无需测试验证。测试资格有效时，实验求解器和全部游戏操作功能直接可用，无需逐项启用或重复授权；点击开始才运行。不保证获胜或上分。
 
-当前插件版本 **5.2.1**（程序集版本 `5.2.1.0`），目标为 Windows、游戏 `2026.09.15.0000.0000`、国服 Dalamud `15.0.3.5 / API 15` 和 .NET 10。固定来源见源码仓库内 `docs/cn/VERSION-EVIDENCE.md`；其他版本未经验证，不关闭框架检查来强行加载。
+当前源码版本 **5.2.1.1**，目标为 Windows、游戏 `2026.09.15.0000.0000`、国服 Dalamud `15.0.3.6 / API 15` 和 .NET 10。构建固定到已核对的依赖；后续同 API 的框架更新，只要接口与原生结构兼容就可继续使用，不因提交号变化要求重新发包。游戏版本、API、相关布局或调用签名不兼容时停止并提示。依据见 [版本与兼容性说明](docs/cn/VERSION-EVIDENCE.md)。
 
 ## 安装与更新
 
@@ -66,7 +66,7 @@ https://raw.githubusercontent.com/Kamishiroex/MahjongSolver-CN/repo/repo.json
 正式打包要求干净的本地提交与审核后的 `scripts/source-files.txt`。新增必需文件时先审核、更新清单并提交；任意未跟踪文件不会自动收入源码包。
 
 ```powershell
-./scripts/build-cn.ps1 -PythonPath python -DalamudLibPath "$env:APPDATA\XIVLauncherCN\addon\Hooks\26-09-25-01"
+./scripts/build-cn.ps1 -PythonPath python -DalamudLibPath "$env:APPDATA\XIVLauncherCN\addon\Hooks\26-10-03-01"
 ```
 
 可选 `-AkochanDirectory <本地合法引擎目录>` 运行实际原生 AI 回归，`-JournalReplayFile <本地公开事件记录.jsonl>` 验证日志重放。不提供会明确标记未执行。脚本不发布或上传数据。引擎构建见源码内 `docs/cn/AKOCHAN-LICENSE-BUILD.md`，凡夫工具见 `tools/MortalBridge`。

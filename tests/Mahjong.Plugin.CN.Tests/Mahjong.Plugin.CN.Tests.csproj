@@ -6,7 +6,7 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-09-25-01</DalamudLibPath>
+    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-10-03-01</DalamudLibPath>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
@@ -47,6 +47,6 @@
     <None Include="..\..\docs\cn\evidence\public-call-transitions-20260924.json" Link="Fixtures\public-call-transitions-20260924.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Target Name="CheckPinnedStructs" BeforeTargets="ResolveReferences">
-    <Error Condition="!Exists('$(DalamudLibPath)\FFXIVClientStructs.dll')" Text="需要本机固定版本26-09-25-01的ClientStructs，或显式指定DalamudLibPath。" />
+    <Error Condition="!Exists('$(DalamudLibPath)\FFXIVClientStructs.dll')" Text="需要本机固定版本26-10-03-01的ClientStructs，或显式指定DalamudLibPath。" />
   </Target>
 </Project>

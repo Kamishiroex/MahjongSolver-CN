@@ -4,12 +4,12 @@
     <PlatformTarget>x64</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>$(DefineConstants);MAHJONG_CN</DefineConstants>
-    <Version>5.2.1</Version>
+    <Version>5.2.1.1</Version>
     <AssemblyName>Mahjong.Plugin.CN</AssemblyName>
     <RootNamespace>Mahjong.Plugin.CN</RootNamespace>
     <Description>标准模式不执行游戏操作，仅提供提示。</Description>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-09-25-01</DalamudLibPath>
+    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-10-03-01</DalamudLibPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dalamud;Dalamud.Common;Dalamud.Bindings.ImGui;FFXIVClientStructs;InteropGenerator.Runtime;Lumina;Lumina.Excel;Newtonsoft.Json;ImGuiScene;HexaGen.Runtime">
@@ -20,6 +20,7 @@
     <ProjectReference Include="..\Mahjong.Plugin.Game\Mahjong.Plugin.Game.csproj" />
     <InternalsVisibleTo Include="Mahjong.Plugin.CN.Gameplay.Tests" />
     <None Update="Mahjong.Plugin.CN.json" CopyToOutputDirectory="PreserveNewest" />
+    <EmbeddedResource Include="framework-contract.json" />
   </ItemGroup>
   <ItemGroup>
     <!-- Reuse upstream gameplay modules, not its plugin entry, telemetry or raw dump services. -->
@@ -34,6 +35,6 @@
     <Content Include="..\data\layouts\*.json" Link="layouts\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Target Name="CheckDalamud" BeforeTargets="ResolveReferences">
-    <Error Condition="!Exists('$(DalamudLibPath)\Dalamud.dll')" Text="未找到固定版本国服 Dalamud 库。请运行 scripts/build-cn.ps1 -DalamudLibPath &lt;26-09-25-01目录&gt;。" />
+    <Error Condition="!Exists('$(DalamudLibPath)\Dalamud.dll')" Text="未找到固定版本国服 Dalamud 库。请运行 scripts/build-cn.ps1 -DalamudLibPath &lt;26-10-03-01目录&gt;。" />
   </Target>
 </Project>

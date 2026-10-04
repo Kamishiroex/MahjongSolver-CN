@@ -12,7 +12,7 @@ public sealed unsafe class VisibleUiReaderTests
     public void Struct_identity_matches_the_audited_CN_binary()
     {
         string? actual = typeof(AtkUnitBase).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
-        Assert.Equal("1.0.0+243dc41e4d71f350cd80aa5eba8c75517f3d5154", actual);
+        Assert.Equal("1.0.0+af18b1116ddd23d1eddfc345f8eef6974d8f84d3", actual);
         Assert.Equal(0x238, sizeof(AtkUnitBase));
         Assert.Equal(0xC0, sizeof(AtkResNode));
     }

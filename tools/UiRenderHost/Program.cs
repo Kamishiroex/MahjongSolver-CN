@@ -18,6 +18,13 @@ unsafe class Program
     static void Property(object obj,string name,object? value)=>Set(obj,"<"+name+">k__BackingField",value);
     static void Main(string[] args)
     {
+        if (args is ["--framework-contract", var contractPath])
+        {
+            File.WriteAllText(contractPath, System.Text.Json.JsonSerializer.Serialize(
+                FrameworkCompatibility.CaptureRequired(typeof(Plugin).Assembly),
+                new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+            return;
+        }
         string output=Path.GetFullPath(args.Length>0?args[0]:"artifacts/ui-host");Directory.CreateDirectory(output);
         NativeLibrary.SetDllImportResolver(typeof(ImGui).Assembly,(name,_,_)=>NativeLibrary.Load(Path.Combine(AppContext.BaseDirectory,name.EndsWith(".dll")?name:name+".dll")));
         var context=ImGui.CreateContext();var io=ImGui.GetIO();io.IniFilename=(byte*)0;

@@ -4,7 +4,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
     <!-- Isolated test host uses the existing test-only internals grant. Never load into Dalamud. -->
     <AssemblyName>Mahjong.Plugin.CN.Gameplay.Tests</AssemblyName>
-    <DalamudLibPath Condition="'$(DalamudLibPath)'==''">$(APPDATA)/XIVLauncherCN/addon/Hooks/26-09-25-01</DalamudLibPath>
+    <DalamudLibPath Condition="'$(DalamudLibPath)'==''">$(APPDATA)/XIVLauncherCN/addon/Hooks/26-10-03-01</DalamudLibPath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../Mahjong.Plugin.CN/Mahjong.Plugin.CN.csproj" />

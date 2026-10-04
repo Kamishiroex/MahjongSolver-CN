@@ -7,7 +7,7 @@
     <IsTestProject>true</IsTestProject>
     <AssemblyName>Mahjong.Plugin.CN.Gameplay.Tests</AssemblyName>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-09-25-01</DalamudLibPath>
+    <DalamudLibPath Condition="'$(DalamudLibPath)' == ''">$(APPDATA)\XIVLauncherCN\addon\Hooks\26-10-03-01</DalamudLibPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\fixtures\cn\result-transition-20260925.json" Link="Fixtures\result-transition-20260925.json" CopyToOutputDirectory="PreserveNewest" />
@@ -38,7 +38,7 @@
     <None Include="..\..\docs\cn\evidence\river-prefix-example-20260924.json" Link="Fixtures\river-prefix-example-20260924.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Target Name="CheckPinnedRuntime" BeforeTargets="ResolveReferences">
-    <Error Condition="!Exists('$(DalamudLibPath)\Dalamud.dll')" Text="Requires fixed CN Dalamud API 15 libraries from 26-09-25-01, or an explicit DalamudLibPath." />
+    <Error Condition="!Exists('$(DalamudLibPath)\Dalamud.dll')" Text="Requires fixed CN Dalamud API 15 libraries from 26-10-03-01, or an explicit DalamudLibPath." />
   </Target>
   <ItemGroup>
     <None Update="fixtures\result-final-tsumo-20260927.json" CopyToOutputDirectory="PreserveNewest" />

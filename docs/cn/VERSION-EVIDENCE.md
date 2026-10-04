@@ -1,6 +1,29 @@
 # 本机国服版本与结构依据
 
-当前依赖身份以 [local-version-evidence.json](local-version-evidence.json) 为准：国服 Dalamud 15.0.3.5 / API 15，提交 `a198a02bdce1f3213cad618850ab1b2736307588`，ClientStructs `243dc41e4d71f350cd80aa5eba8c75517f3d5154`，游戏 `2026.09.15.0000.0000`，.NET 10。构建核验对应库；下文为早期同客户端资源与 ABI 的历史依据，不能把旧框架身份当作当前加载许可。
+当前构建依赖身份以 [local-version-evidence.json](local-version-evidence.json) 为准：国服 Dalamud **15.0.3.6 / API 15**，提交 `fbef681c15fd7c57a850b32b4020fcf5474374c7`，ClientStructs `af18b1116ddd23d1eddfc345f8eef6974d8f84d3`，游戏 `2026.09.15.0000.0000`，.NET 10，SDK 10.0.100。
+
+## 5.2.1.1 框架更新与后续兼容
+
+2026-10-04 核对本机 `26-10-03-01` 的 DLL 元数据、SHA-256、运行时配置及对应源码：[Dalamud 固定提交](https://github.com/ottercorp/Dalamud/commit/fbef681c15fd7c57a850b32b4020fcf5474374c7)、[ClientStructs 固定提交](https://github.com/ottercorp/FFXIVClientStructs/commit/af18b1116ddd23d1eddfc345f8eef6974d8f84d3)。Dalamud 的子模块提交与安装的 ClientStructs 一致，游戏版本未变，API 和 .NET 要求未变。
+
+相对上一构建 `a198a02b / 243dc41e4`，5.2.1 DLL 直接引用的 55 个 ClientStructs 类型大小及既有字段偏移/类型未变，152 个引用成员的签名、常量及互操作属性未变。`AgentGoldSaucer` 新增不使用的陆行鸟字段；`AtkUnitBase.GetScaledWidth/Height` 仅参数改名；`GSInfoEmj`、报名、匹配确认、麻将节点和事件结构未发生对应源码变更。因此沿用原读牌/操作参数和评分 profile，不把这次静态比对当作新框架上的完整实机验证。
+
+运行时不再要求框架/ClientStructs 的提交号与构建完全相等。仍要求固定游戏构建、简体中文、API 15、.NET 10，且 Dalamud 不低于 15.0.3.6、来源身份可读。随后用内嵌的 [framework-contract.json](../../Mahjong.Plugin.CN/framework-contract.json) 核对实际加载的类型、使用中的成员和互操作属性；原生结构包括字段偏移、大小、顺序布局、枚举、内嵌值类型和虚表。接口新增方法或显式布局中兼容的新字段不会单独触发停用；既有契约改变则显示具体 `VERSION_CONTRACT` 错误，保留停止保护。
+
+契约通过 CLR 元数据检查，按插件生命周期缓存，不调用游戏函数、不读取玩家数据、不联网，也不在用户机器上自动重建基准。历史日志保持原始来源身份；只对当前已通过契约的加载环境应用原公开布局，客户端 ULD 校验仍保留。兼容性检查不能证明未来框架的所有内部行为正确，也不能让未知游戏补丁自动兼容。
+
+维护时先核对对应源码，再通过以下命令导出候选契约到忽略目录，审查差异后才替换正式 JSON；禁止为了让失败消失而盲目重新生成。回归会检查当前编译引用是否全部被正式契约覆盖。
+
+```powershell
+dotnet build tools/UiRenderHost/UiRenderHost.csproj -c Release
+dotnet tools/UiRenderHost/bin/Release/net10.0-windows/Mahjong.Plugin.CN.Gameplay.Tests.dll --framework-contract .work/framework-contract-candidate.json
+```
+
+`--framework-contract` 仅导出元数据，不运行界面或连接游戏。正式构建仍严格校验本节固定库的哈希，并从对应源码包重新构建比较 DLL；运行时允许兼容更新并不放宽发布可复现要求。
+
+## 历史版本依据
+
+下文是早期同客户端资源与 ABI 的历史依据，不代表当前宿主版本或新的实机验收结论。
 
 采集日期：2026-09-23。这里记录的是本机实际安装文件和对应固定提交；不是对所有国服启动器版本的兼容承诺，也不是国服牌局读取通过的证明。
 

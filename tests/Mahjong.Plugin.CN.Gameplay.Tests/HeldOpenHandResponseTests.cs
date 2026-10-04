@@ -43,7 +43,7 @@ public sealed class HeldOpenHandResponseTests
                 ? t with { RiverPosition = f.RiverPosition } : t).ToImmutableArray() },
         };
         var context = PublicObservationAssembler.CreateAuditedContext(new(RuntimeIdentity.TargetGame, 15,
-            "15.0.3.5", RuntimeIdentity.TargetDalamud, RuntimeIdentity.TargetStructs, "ChineseSimplified", "test", null),
+            RuntimeIdentity.MinimumDalamud, RuntimeIdentity.TargetDalamud, RuntimeIdentity.TargetStructs, "ChineseSimplified", "test", null),
             LowerHandProfile.EmjUldSha256)!;
         var monitor = new PublicMonitorSession(); monitor.Start(context);
         var projector = new AkochanGlobalObservationProjector();

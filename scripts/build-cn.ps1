@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string] $DalamudLibPath = (Join-Path $env:APPDATA 'XIVLauncherCN\addon\Hooks\26-09-25-01'),
+    [string] $DalamudLibPath = (Join-Path $env:APPDATA 'XIVLauncherCN\addon\Hooks\26-10-03-01'),
     [string] $DotnetPath = '',
     [string] $PythonPath = 'python',
     [string] $AkochanDirectory = '',
@@ -15,8 +15,8 @@ $repoRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $artifactsDir = Join-Path $repoRoot 'artifacts'
 $sdkVersion = '10.0.100'
 $pluginName = 'Mahjong.Plugin.CN'
-$pluginVersion = '5.2.1'
-$assemblyVersion = '5.2.1.0'
+$pluginVersion = '5.2.1.1'
+$assemblyVersion = '5.2.1.1'
 $utf8 = New-Object Text.UTF8Encoding($false)
 . (Join-Path $PSScriptRoot 'source-package.ps1')
 $originalDirectory = Get-Location

@@ -1,27 +1,27 @@
 {
-  "collectedOn": "2026-09-25",
+  "collectedOn": "2026-10-04",
   "source": "Local version files and read-only PE metadata; no game execution",
   "gameVersion": "2026.09.15.0000.0000",
-  "selectedHooksDirectory": "%APPDATA%/XIVLauncherCN/addon/Hooks/26-09-25-01",
+  "selectedHooksDirectory": "%APPDATA%/XIVLauncherCN/addon/Hooks/26-10-03-01",
   "dalamud": {
-    "assemblyVersion": "15.0.3.5",
+    "assemblyVersion": "15.0.3.6",
     "apiLevel": 15,
-    "informationalVersion": "15.0.3.5+a198a02bdce1f3213cad618850ab1b2736307588",
-    "scmVersion": "26-09-25-01",
-    "gitHash": "a198a02bdce1f3213cad618850ab1b2736307588",
-    "gitHashClientStructs": "243dc41e4",
+    "informationalVersion": "15.0.3.6+fbef681c15fd7c57a850b32b4020fcf5474374c7",
+    "scmVersion": "26-10-03-01",
+    "gitHash": "fbef681c15fd7c57a850b32b4020fcf5474374c7",
+    "gitHashClientStructs": "af18b1116",
     "repositoryUrlMetadata": "https://github.com/Dalamud-DailyRoutines/Dalamud",
     "sourceLookupRepository": "https://github.com/ottercorp/Dalamud",
-    "sha256": "DBDAE52C6A2313E440491287FBD5A6219BC72317F928B566BD65F7FB152F33FE"
+    "sha256": "F09DDB673891328147A9E6F73AC7524CFBA2115404C295FE9BEFBF5394982BA7"
   },
   "clientStructs": {
-    "informationalVersion": "1.0.0+243dc41e4d71f350cd80aa5eba8c75517f3d5154",
-    "fileVersion": "7.56.2.9310",
-    "gitHash": "243dc41e4d71f350cd80aa5eba8c75517f3d5154",
+    "informationalVersion": "1.0.0+af18b1116ddd23d1eddfc345f8eef6974d8f84d3",
+    "fileVersion": "7.56.2.9418",
+    "gitHash": "af18b1116ddd23d1eddfc345f8eef6974d8f84d3",
     "gitSubmoduleRepository": "https://github.com/Dalamud-DailyRoutines/FFXIVClientStructs.git",
     "sourceLookupRepository": "https://github.com/ottercorp/FFXIVClientStructs",
     "idaDataVersion": "2026.09.15.0000.0000",
-    "sha256": "D397764C6DD787C865E7422EA12C0C4DFF1AD5B5117F4047F6E033ECE5E84E77"
+    "sha256": "48E8EA973577EF7BCDA34D89AF7A3E7068C87CA2C9F33110BC7B5F2B5B151A18"
   },
   "runtime": {
     "tfm": "net10.0",
