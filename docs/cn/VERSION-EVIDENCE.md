@@ -1,8 +1,21 @@
 # 本机国服版本与结构依据
 
-当前构建依赖身份以 [local-version-evidence.json](local-version-evidence.json) 为准：国服 Dalamud **15.0.3.6 / API 15**，提交 `fbef681c15fd7c57a850b32b4020fcf5474374c7`，ClientStructs `af18b1116ddd23d1eddfc345f8eef6974d8f84d3`，游戏 `2026.09.15.0000.0000`，.NET 10，SDK 10.0.100。
+当前构建依赖身份以 [local-version-evidence.json](local-version-evidence.json) 为准：国服 Dalamud **15.0.3.8 / API 15**，提交 `628098b6ffd8b95005ace93bc69c2a1a738cfaf5`，ClientStructs `692462a3011777817f52f5978d6f839567146e8d`，游戏 `2026.10.06.0000.0000`，.NET 10，SDK 10.0.100。
 
-## 5.2.1.1 框架更新与后续兼容
+## 5.2.1.2 客户端更新与过严检查修正
+
+2026-10-20 实际核对本机 `26-10-18-01` 安装库元数据、哈希、运行时配置及 [Dalamud 固定提交](https://github.com/ottercorp/Dalamud/commit/628098b6ffd8b95005ace93bc69c2a1a738cfaf5) / [ClientStructs 固定提交](https://github.com/ottercorp/FFXIVClientStructs/commit/692462a3011777817f52f5978d6f839567146e8d)。`ida/data.yml` 与本机游戏构建号一致。5.2.1.1 清单的旧 `ApplicableVersion` 会触发新框架的游戏版本前置拒绝；本版清单改为当前已核对客户端，保留其余加载检查。
+
+用旧包内的契约检查新库，381 个类型中只有 `AtkComponentListItemRenderer` 的私有占位字段 `Unk1A5/Unk1A6` 不再存在。对应源码证明它们整合进同一偏移范围的标志位字段，结构大小、插件使用的公开字段及调用签名保持一致。新契约不依赖未引用的显式布局私有占位名称；公开字段的偏移/类型、结构大小、虚表及调用签名仍检查，顺序布局仍检查全部字段顺序（含私有字段）。回归覆盖私有占位更名不误拒绝、实际字段移动与顺序布局变化仍受保护。
+
+本机静态 SqPack 比对：`emj.uld` 184676 字节，SHA-256 仍为 `DA6B6A98B5E1ECDD01EF7A37F3851A0BC90A8935F163CA6B0EEDCF2DA23F2E5F`；牌壳哈希亦不变；原目录内 16 个局数标题、6 个结算图像、222 个牌面资源全部哈希一致，无缺失。评分、报名和基础 Atk 结构在相应源码比较中未改变。沿用已核对映射，不新增猜测的偏移或回调。
+
+明确支持本次客户端与历史 `2026.09.15` DTO 的公共状态、局数标题和事件跟踪，保留记录原始版本，不把历史来源改写成新客户端。运行时最低框架为 15.0.3.8，API/.NET 和资源检查继续保留，未知游戏补丁仍停止。新框架实机加载和麻将行为需另行验收；上述静态检查和旧牌局回归不能证明新客户端整局正确。
+
+
+## 5.2.1.1 框架更新与后续兼容（历史）
+
+下列为该版记录；当前最低框架与客户端范围以上节及 JSON 为准。
 
 2026-10-04 核对本机 `26-10-03-01` 的 DLL 元数据、SHA-256、运行时配置及对应源码：[Dalamud 固定提交](https://github.com/ottercorp/Dalamud/commit/fbef681c15fd7c57a850b32b4020fcf5474374c7)、[ClientStructs 固定提交](https://github.com/ottercorp/FFXIVClientStructs/commit/af18b1116ddd23d1eddfc345f8eef6974d8f84d3)。Dalamud 的子模块提交与安装的 ClientStructs 一致，游戏版本未变，API 和 .NET 要求未变。
 

@@ -9,7 +9,7 @@ internal static class PublicCurrentFacts
 {
     internal const string Evidence = "docs/cn/PUBLIC-INPUT-GAPS-20260925.md";
     internal static bool Audited(PublicObservationContext? context) =>
-        context?.ClientVersion == RuntimeIdentity.TargetGame && context.UldSha256 == LowerHandProfile.EmjUldSha256 &&
+        context is not null && RuntimeIdentity.IsAuditedGame(context.ClientVersion) && context.UldSha256 == LowerHandProfile.EmjUldSha256 &&
         context.Profile?.ClientVersion == context.ClientVersion && context.Profile.UldSha256 == context.UldSha256;
 
     internal static PublicSnapshot Apply(PublicSnapshot snapshot, AddonProbe addon, PublicObservationContext? context)

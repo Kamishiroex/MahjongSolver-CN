@@ -11,7 +11,7 @@ namespace Mahjong.Plugin.CN;
 /// <summary>Metadata-only compatibility contract. Never invokes native methods or reads game memory.</summary>
 internal static class FrameworkCompatibility
 {
-    internal const string Profile = "cn-20260915-api15-v1";
+    internal const string Profile = "cn-20261006-api15-v2";
     private const string Resource = "Mahjong.Plugin.CN.framework-contract.json";
     private static readonly HashSet<string> Assemblies = new(StringComparer.Ordinal)
     {
@@ -96,7 +96,7 @@ internal static class FrameworkCompatibility
             types[t] = Describe(t, includeAllMembers: false).ToHashSet(StringComparer.Ordinal);
             // By-value nested layouts and enum values affect offsets and meaning too.
             if (NativeLayout(t) && t.IsValueType)
-                foreach (var f in t.GetFields(Declared).Where(f => !f.IsStatic))
+                foreach (var f in LayoutFields(t))
                 {
                     if (f.FieldType.IsValueType) AddType(f.FieldType);
                     if (f.FieldType.IsPointer && f.FieldType.GetElementType()!.Name.EndsWith("VirtualTable", StringComparison.Ordinal))
@@ -135,16 +135,7 @@ internal static class FrameworkCompatibility
         bool native = NativeLayout(type);
         if (native && type.IsValueType && !type.IsEnum)
         {
-            var layout = type.StructLayoutAttribute!;
-            lines.Add($"layout:{layout.Value}:{layout.Size}:{layout.Pack}");
-            if (layout.Value == LayoutKind.Sequential)
-                lines.Add("sequential-fields:" + string.Join(",", type.GetFields(Declared).Where(f => !f.IsStatic)
-                    .OrderBy(f => f.MetadataToken).Select(f => f.Name)));
-            foreach (var field in type.GetFields(Declared).Where(f => !f.IsStatic))
-                foreach (var line in DescribeMember(field)) lines.Add(line);
-            foreach (var attribute in type.GetCustomAttributesData().Where(a =>
-                         a.AttributeType.FullName == "System.Runtime.CompilerServices.InlineArrayAttribute"))
-                lines.Add("inline-array:" + string.Join(";", attribute.ConstructorArguments.Select(Argument)));
+            foreach (var line in DescribeLayout(type)) lines.Add(line);
         }
         if (type.IsEnum)
         {
@@ -179,6 +170,28 @@ internal static class FrameworkCompatibility
         : a.Value is Type t ? Name(t) : Convert.ToString(a.Value, CultureInfo.InvariantCulture) ?? "null";
 
     private static bool NativeLayout(Type type) => type.Assembly.GetName().Name is "FFXIVClientStructs" or "Dalamud.Bindings.ImGui";
+
+    private static IEnumerable<FieldInfo> LayoutFields(Type type) => type.GetFields(Declared).Where(f =>
+        !f.IsStatic && (type.IsLayoutSequential || f.IsPublic));
+
+    internal static IReadOnlyCollection<string> DescribeLayout(Type type)
+    {
+        var layout = type.StructLayoutAttribute!;
+        var lines = new HashSet<string>(StringComparer.Ordinal) { $"layout:{layout.Value}:{layout.Size}:{layout.Pack}" };
+        // Private aliases in an explicit layout are not an ABI dependency. Their names
+        // may change without moving any bytes (e.g. Unk1A5 -> a mapped flag bitfield).
+        // Sequential layouts still require every field because private fields affect
+        // following offsets. Directly referenced members are also captured separately.
+        var fields = LayoutFields(type).ToArray();
+        if (layout.Value == LayoutKind.Sequential)
+            lines.Add("sequential-fields:" + string.Join(",", fields.OrderBy(f => f.MetadataToken).Select(f => f.Name)));
+        foreach (var field in fields)
+            foreach (var line in DescribeMember(field)) lines.Add(line);
+        foreach (var attribute in type.GetCustomAttributesData().Where(a =>
+                     a.AttributeType.FullName == "System.Runtime.CompilerServices.InlineArrayAttribute"))
+            lines.Add("inline-array:" + string.Join(";", attribute.ConstructorArguments.Select(Argument)));
+        return lines;
+    }
 
     private static string Name(Type? type)
     {

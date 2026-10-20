@@ -155,6 +155,6 @@ internal sealed class PublicRiverEventTracker
             .ThenBy(x => x.SlotPath, StringComparer.Ordinal).ToImmutableArray(), events,
             issues.Select(x => new PublicRiverHistoryIssue(x.Key, x.Value)).ToImmutableArray());
     private static bool ValidContext(PublicObservationContext? c) => c is { Profile: { } p } &&
-        c.ClientVersion == RuntimeIdentity.TargetGame && p.ClientVersion == RuntimeIdentity.TargetGame &&
+        RuntimeIdentity.IsAuditedGame(c.ClientVersion) && p.ClientVersion == c.ClientVersion &&
         c.UldSha256 == LowerHandProfile.EmjUldSha256 && p.UldSha256 == c.UldSha256;
 }

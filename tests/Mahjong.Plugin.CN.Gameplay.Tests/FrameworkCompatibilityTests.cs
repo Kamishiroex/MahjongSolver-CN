@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Mahjong.Plugin.CN.Gameplay.Tests;
 
 public sealed class FrameworkCompatibilityTests
@@ -42,4 +44,56 @@ public sealed class FrameworkCompatibilityTests
 
     private static FrameworkCompatibility.Contract Contract(string required) =>
         new(1, FrameworkCompatibility.Profile, [new("synthetic", "Fixture", [required])]);
+
+    [Fact]
+    public void Explicit_private_placeholder_rename_does_not_change_required_ABI()
+    {
+        var before = FrameworkCompatibility.DescribeLayout(typeof(ExplicitBefore));
+        var after = FrameworkCompatibility.DescribeLayout(typeof(ExplicitAfter));
+        Assert.Contains("field:Used:System.Int32:False:0", before);
+        Assert.DoesNotContain(before, line => line.Contains("PrivatePlaceholder", StringComparison.Ordinal));
+        Assert.True(before.ToHashSet(StringComparer.Ordinal).SetEquals(after));
+        Assert.False(before.ToHashSet(StringComparer.Ordinal).SetEquals(FrameworkCompatibility.DescribeLayout(typeof(ExplicitMoved))));
+    }
+
+    [Fact]
+    public void Sequential_private_field_order_is_still_a_layout_dependency()
+    {
+        var layout = FrameworkCompatibility.DescribeLayout(typeof(SequentialLayout));
+        Assert.Contains("sequential-fields:PrivatePadding,Used", layout);
+        Assert.Contains(layout, line => line.StartsWith("field:PrivatePadding:", StringComparison.Ordinal));
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 8)]
+    private struct ExplicitBefore
+    {
+        [FieldOffset(0)] public int Used;
+        [FieldOffset(4)] private int PrivatePlaceholder;
+        public ExplicitBefore() { Used = PrivatePlaceholder = 0; }
+        public int ReadPadding() => PrivatePlaceholder;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 8)]
+    private struct ExplicitAfter
+    {
+        [FieldOffset(0)] public int Used;
+        [FieldOffset(4)] private int RenamedFlagStorage;
+        public ExplicitAfter() { Used = RenamedFlagStorage = 0; }
+        public int ReadPadding() => RenamedFlagStorage;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 8)]
+    private struct ExplicitMoved
+    {
+        [FieldOffset(4)] public int Used;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct SequentialLayout
+    {
+        private int PrivatePadding;
+        public int Used;
+        public SequentialLayout() { Used = PrivatePadding = 0; }
+        public int ReadPadding() => PrivatePadding;
+    }
 }

@@ -24,8 +24,11 @@ public sealed class RoundTitleCatalogTests
     [InlineData(121458u, 0x818EC86Fu, 1, 4, "南四局")]
     public void Local_visually_reviewed_texture_pairs_match_exact_round(uint icon, uint hash, int wind, int hand, string label)
     {
-        Assert.True(RoundTitleCatalog.TryDecode(RoundTitleCatalog.GameVersion, Sample() with { IconId = icon, TexturePathHash = hash }, out var value));
-        Assert.Equal(wind, value.RoundWind); Assert.Equal(hand, value.HandNumber); Assert.Equal(label, value.Label);
+        foreach (string version in new[] { RoundTitleCatalog.GameVersion, RoundTitleCatalog.CurrentGameVersion })
+        {
+            Assert.True(RoundTitleCatalog.TryDecode(version, Sample() with { IconId = icon, TexturePathHash = hash }, out var value));
+            Assert.Equal(wind, value.RoundWind); Assert.Equal(hand, value.HandNumber); Assert.Equal(label, value.Label);
+        }
     }
 
     [Theory]

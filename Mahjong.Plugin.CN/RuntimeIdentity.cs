@@ -4,17 +4,19 @@ using Dalamud.Game;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
+using Mahjong.Plugin.CN.Diagnostics;
 
 namespace Mahjong.Plugin.CN;
 
 internal sealed record RuntimeIdentity(string GameVersion, int Api, string DalamudVersion,
     string DalamudCommit, string ClientStructsVersion, string Language, string Runtime, string? Error)
 {
-    internal const string TargetGame = "2026.09.15.0000.0000";
+    internal const string TargetGame = RoundTitleCatalog.CurrentGameVersion;
+    internal const string PreviousGame = RoundTitleCatalog.GameVersion;
     // Reproducible build baseline, not a runtime commit allowlist.
-    internal const string TargetDalamud = "fbef681c15fd7c57a850b32b4020fcf5474374c7";
-    internal const string TargetStructs = "1.0.0+af18b1116ddd23d1eddfc345f8eef6974d8f84d3";
-    internal const string MinimumDalamud = "15.0.3.6";
+    internal const string TargetDalamud = "628098b6ffd8b95005ace93bc69c2a1a738cfaf5";
+    internal const string TargetStructs = "1.0.0+692462a3011777817f52f5978d6f839567146e8d";
+    internal const string MinimumDalamud = "15.0.3.8";
     internal const string Upstream = "21ae5ca9aa1fa3785baa540245b51efa346f9d37";
     public string? CompatibilityProfile { get; init; }
 
@@ -41,7 +43,7 @@ internal sealed record RuntimeIdentity(string GameVersion, int Api, string Dalam
 
     internal static string? Validate(string game, int api, string? dalamud, string structs, ClientLanguage language,
         string dalamudVersion, string? contractError, int runtimeMajor = 10) =>
-        game != TargetGame ? $"VERSION_GAME：需要 {TargetGame}，实际 {game}。"
+        !IsAuditedGame(game) ? $"VERSION_GAME：当前适配 {TargetGame}，实际 {game}。"
             : api != 15 ? $"VERSION_API：需要 API 15，实际 {api}。"
             : runtimeMajor != 10 ? $"VERSION_RUNTIME：需要 .NET 10，实际主版本 {runtimeMajor}。"
             : !Version.TryParse(dalamudVersion, out var parsed) || parsed.Major != api || parsed < Version.Parse(MinimumDalamud)
@@ -52,4 +54,5 @@ internal sealed record RuntimeIdentity(string GameVersion, int Api, string Dalam
             : contractError;
 
     private static bool IsCommit(string? value) => value is { Length: 40 } && value.All(Uri.IsHexDigit);
+    internal static bool IsAuditedGame(string? value) => RoundTitleCatalog.IsSupportedGame(value);
 }

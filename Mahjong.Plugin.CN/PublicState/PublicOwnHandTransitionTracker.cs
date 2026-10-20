@@ -114,7 +114,7 @@ internal sealed class PublicOwnHandTransitionTracker
     internal void Clear()
     { lastSequence = -1; lastUtc = default; ResetInventory(); }
     private static bool ValidContext(PublicObservationContext? c) => c is { Profile: { } p } &&
-        c.ClientVersion == RuntimeIdentity.TargetGame && p.ClientVersion == RuntimeIdentity.TargetGame &&
+        RuntimeIdentity.IsAuditedGame(c.ClientVersion) && p.ClientVersion == c.ClientVersion &&
         string.Equals(c.UldSha256, LowerHandProfile.EmjUldSha256, StringComparison.OrdinalIgnoreCase) &&
         string.Equals(p.UldSha256, LowerHandProfile.EmjUldSha256, StringComparison.OrdinalIgnoreCase);
     private static bool KnownShape(PublicMeldGroup g) => g.ShapeCode switch

@@ -13,7 +13,7 @@ internal static class PublicDiscardSemantics
     internal static Field<bool> Tsumogiri(PublicTileVisualMark? mark, PublicObservationContext? context,
         ObservationReference observation)
     {
-        if (context?.ClientVersion != RuntimeIdentity.TargetGame || context.UldSha256 != LowerHandProfile.EmjUldSha256 ||
+        if (context is null || !RuntimeIdentity.IsAuditedGame(context.ClientVersion) || context.UldSha256 != LowerHandProfile.EmjUldSha256 ||
             context.Profile?.ClientVersion != context.ClientVersion || context.Profile.UldSha256 != context.UldSha256)
             return Field<bool>.Unknown("摸切颜色语义不适用于当前版本或未经核对的 ULD。");
         if (mark?.ResponseHighlight == true)

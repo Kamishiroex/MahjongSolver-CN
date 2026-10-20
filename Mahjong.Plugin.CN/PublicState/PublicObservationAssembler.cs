@@ -25,7 +25,7 @@ internal static class PublicObservationAssembler
     internal static PublicObservationContext? CreateAuditedContext(RuntimeIdentity identity, string? uldSha256)
     {
         ArgumentNullException.ThrowIfNull(identity);
-        if (identity.Error is not null || identity.GameVersion != RuntimeIdentity.TargetGame || identity.Api != 15 ||
+        if (identity.Error is not null || !RuntimeIdentity.IsAuditedGame(identity.GameVersion) || identity.Api != 15 ||
             !HasAuditedPublicLayout(identity) ||
             identity.Language != "ChineseSimplified" ||
             !string.Equals(uldSha256, LowerHandProfile.EmjUldSha256, StringComparison.OrdinalIgnoreCase)) return null;
@@ -45,7 +45,7 @@ internal static class PublicObservationAssembler
             foreach (int leaf in new[] { 2, 3 })
                 mappings.Add(new($"Emj/{panels[i]}/{(i == 0 ? 12 : 13)}/{leaf}", $"Players.{directions[i]}.Score", panelEvidence));
         }
-        var profile = new PublicObservationProfile(RuntimeIdentity.TargetGame, LowerHandProfile.EmjUldSha256, mappings.ToImmutable())
+        var profile = new PublicObservationProfile(identity.GameVersion, LowerHandProfile.EmjUldSha256, mappings.ToImmutable())
         {
             DecimalCounterPairs = [new("Emj/105/2/2", "Emj/105/3/2", "WallRemaining", evidence)],
             RelativePlayerIdentityEvidence = evidence + "; fixed lower/right/upper/left relative identity; requires all four current winds and cyclic consistency",
@@ -58,6 +58,8 @@ internal static class PublicObservationAssembler
     private static bool HasAuditedPublicLayout(RuntimeIdentity identity) =>
         identity.CompatibilityProfile == FrameworkCompatibility.Profile ||
         (identity.DalamudCommit == RuntimeIdentity.TargetDalamud && identity.ClientStructsVersion == RuntimeIdentity.TargetStructs) ||
+        (identity.DalamudCommit == "fbef681c15fd7c57a850b32b4020fcf5474374c7" &&
+         identity.ClientStructsVersion == "1.0.0+af18b1116ddd23d1eddfc345f8eef6974d8f84d3") ||
         (identity.DalamudCommit == "a198a02bdce1f3213cad618850ab1b2736307588" &&
          identity.ClientStructsVersion == "1.0.0+243dc41e4d71f350cd80aa5eba8c75517f3d5154") ||
         (identity.DalamudCommit == "cac6159a2c76e62a4e1f7bc347454c205808bb04" &&
@@ -310,7 +312,7 @@ internal static class PublicObservationAssembler
     private static PublicSnapshot RoundTitle(PublicSnapshot source, RoundTitleResourceCandidate? candidate,
         PublicObservationContext? context, ObservationReference boundary)
     {
-        if (candidate is null || context?.ClientVersion != RoundTitleCatalog.GameVersion ||
+        if (candidate is null || context is null || !RoundTitleCatalog.IsSupportedGame(context.ClientVersion) ||
             !string.Equals(context.UldSha256, LowerHandProfile.EmjUldSha256, StringComparison.OrdinalIgnoreCase) ||
             !RoundTitleCatalog.TryDecode(context.ClientVersion, candidate, out var meaning)) return source;
         var reference = boundary with { Source = "VisibleUiReader/RoundTitleCatalog:Emj/19",

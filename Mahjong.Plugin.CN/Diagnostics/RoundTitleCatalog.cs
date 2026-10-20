@@ -6,6 +6,7 @@ internal sealed record RoundTitleMeaning(int RoundWind, int HandNumber, string L
 internal static class RoundTitleCatalog
 {
     internal const string GameVersion = "2026.09.15.0000.0000";
+    internal const string CurrentGameVersion = "2026.10.06.0000.0000";
     internal const string Evidence = "cn-emj-round-title-icons-20260924";
     private sealed record Entry(uint Icon, uint NormalHash, uint HighResolutionHash, int Wind, int Hand, string Label);
     // Explicit lookup, never icon arithmetic. 121459 onwards contain table names and
@@ -25,7 +26,7 @@ internal static class RoundTitleCatalog
     internal static bool TryDecode(string gameVersion, RoundTitleResourceCandidate candidate, out RoundTitleMeaning meaning)
     {
         meaning = null!;
-        if (gameVersion != GameVersion || candidate.Path != "Emj/19" || candidate.Code != "ROUND_TITLE_RESOURCE_CANDIDATE" ||
+        if (!IsSupportedGame(gameVersion) || candidate.Path != "Emj/19" || candidate.Code != "ROUND_TITLE_RESOURCE_CANDIDATE" ||
             candidate.PartsListId != 0 || candidate.PartCount != 1 || candidate.SelectedPart != 0 ||
             candidate.U != 0 || candidate.V != 0 || candidate.Width != 640 || candidate.Height != 80 ||
             candidate.AssetId != 0 || candidate.TextureType != 1 || candidate.IconId is not { } icon ||
@@ -35,4 +36,7 @@ internal static class RoundTitleCatalog
         meaning = new(entry.Wind, entry.Hand, entry.Label, Evidence);
         return true;
     }
+
+    // Both fixed clients' ULD and all 16 title texture hashes were compared locally.
+    internal static bool IsSupportedGame(string? version) => version is GameVersion or CurrentGameVersion;
 }

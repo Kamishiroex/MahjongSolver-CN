@@ -1,6 +1,6 @@
 {
   "Schema": 1,
-  "Profile": "cn-20260915-api15-v1",
+  "Profile": "cn-20261006-api15-v2",
   "Types": [
     {
       "Assembly": "Dalamud",
@@ -1346,7 +1346,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.ContentsReplayManager",
       "Required": [
-        "attribute:field:_chapters:FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601\u003CFFXIVClientStructs.FFXIV.Client.Game.ContentsReplayManager\u002BFFXIVREPLAYChapter\u003E:False:180:FixedSizeArrayAttribute:False;False;0:",
         "field:CharacterRecordingName:FFXIVClientStructs.FFXIV.Client.System.String.Utf8String:False:1120",
         "field:ContentTitle:FFXIVClientStructs.FFXIV.Client.System.String.Utf8String:False:952",
         "field:FateId:System.UInt16:False:1452",
@@ -1360,21 +1359,8 @@
         "field:PositionMs:System.Single:False:1828",
         "field:ReplayTitle:FFXIVClientStructs.FFXIV.Client.System.String.Utf8String:False:1224",
         "field:Status:FFXIVClientStructs.FFXIV.Client.Game.ContentsReplayStatus:False:1858",
-        "field:Unk530:FFXIVClientStructs.FFXIV.Client.System.String.Utf8String:False:1328",
         "field:ZoneInitPacket:FFXIVClientStructs.FFXIV.Client.Game.Network.ZoneInitPacket:False:1488",
-        "field:_chapters:FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601\u003CFFXIVClientStructs.FFXIV.Client.Game.ContentsReplayManager\u002BFFXIVREPLAYChapter\u003E:False:180",
         "layout:Explicit:1864:0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.FFXIV.Client.Game.ContentsReplayManager\u002BFFXIVREPLAYChapter",
-      "Required": [
-        "field:Offset:System.UInt32:False:4",
-        "field:PositionMs:System.UInt32:False:8",
-        "field:Type:FFXIVClientStructs.FFXIV.Client.Game.FFXIVREPLAYChapterType:False:0",
-        "layout:Explicit:12:0",
         "type:struct:System.ValueType"
       ]
     },
@@ -1382,9 +1368,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.ContentsReplayManager\u002BFFXIVREPLAYHeader",
       "Required": [
-        "attribute:field:_bNpcNames:FFXIVClientStructs.Interop.Generated.FixedSizeArray7\u00601\u003CSystem.UInt16\u003E:False:78:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_jobIds:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.Byte\u003E:False:56:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_magic:FFXIVClientStructs.Interop.Generated.FixedSizeArray12\u00601\u003CSystem.Byte\u003E:False:0:FixedSizeArrayAttribute:True;False;0:",
         "field:ContentFinderConditionId:System.UInt16:False:32",
         "field:DisplayedMs:System.UInt32:False:28",
         "field:Flags:System.Byte:False:40",
@@ -1396,9 +1379,6 @@
         "field:Timestamp:System.UInt32:False:20",
         "field:TotalMs:System.UInt32:False:24",
         "field:Version:System.UInt16:False:12",
-        "field:_bNpcNames:FFXIVClientStructs.Interop.Generated.FixedSizeArray7\u00601\u003CSystem.UInt16\u003E:False:78",
-        "field:_jobIds:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.Byte\u003E:False:56",
-        "field:_magic:FFXIVClientStructs.Interop.Generated.FixedSizeArray12\u00601\u003CSystem.Byte\u003E:False:0",
         "layout:Explicit:104:0",
         "type:struct:System.ValueType"
       ]
@@ -1531,7 +1511,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Event.Director",
       "Required": [
-        "attribute:field:_unionData:FFXIVClientStructs.Interop.Generated.FixedSizeArray12\u00601\u003CSystem.Byte\u003E:False:746:FixedSizeArrayAttribute:False;False;0:",
         "field:ContentFlags:System.Byte:False:740",
         "field:ContentId:System.UInt32:False:736",
         "field:CustomDefineSheet:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheet*:False:192",
@@ -1566,9 +1545,7 @@
         "field:SceneGameObject:FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject*:False:128",
         "field:Sequence:System.Byte:False:744",
         "field:Title:FFXIVClientStructs.FFXIV.Client.System.String.Utf8String:False:760",
-        "field:Unk2E9:System.Byte:False:745",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Client.Game.Event.Director\u002BDirectorVirtualTable*:False:0",
-        "field:_unionData:FFXIVClientStructs.Interop.Generated.FixedSizeArray12\u00601\u003CSystem.Byte\u003E:False:746",
         "layout:Explicit:1120:0",
         "type:struct:System.ValueType"
       ]
@@ -1656,7 +1633,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Event.EventFramework",
       "Required": [
-        "attribute:field:_festivals:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CFFXIVClientStructs.FFXIV.Client.Game.GameMain\u002BFestival\u003E:False:18282:FixedSizeArrayAttribute:False;False;0:",
         "attribute:method:CanLeaveCurrentContent\u00600:True:System.Boolean():MemberFunctionAttribute:48 83 EC 28 48 8B 05 ?? ?? ?? ?? 48 85 C0 74 2C:",
         "attribute:method:LeaveCurrentContent\u00600:True:System.Void(System.Boolean):MemberFunctionAttribute:E8 ?? ?? ?? ?? 48 8B 43 ?? 41 B2:",
         "field:DailyQuests:FFXIVClientStructs.FFXIV.Client.Game.Event.DailyQuestMap:False:17880",
@@ -1678,7 +1654,6 @@
         "field:SceneData:FFXIVClientStructs.FFXIV.Client.Game.Event.SceneData:False:16424",
         "field:SceneFlags:System.UInt16:False:16416",
         "field:SceneGameObjectId:FFXIVClientStructs.FFXIV.Client.Game.Object.GameObjectId:False:16400",
-        "field:_festivals:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CFFXIVClientStructs.FFXIV.Client.Game.GameMain\u002BFestival\u003E:False:18282",
         "layout:Explicit:18432:0",
         "method:CanLeaveCurrentContent\u00600:True:System.Boolean()",
         "method:LeaveCurrentContent\u00600:True:System.Void(System.Boolean)",
@@ -1730,11 +1705,8 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Event.EventFramework\u002BQueuedFormatStringCallback",
       "Required": [
-        "attribute:field:Flags:System.Byte:False:160:BitFieldAttribute\u00601:IsCallbackCalled;0;1:",
-        "attribute:field:Flags:System.Byte:False:160:BitFieldAttribute\u00601:IsComplete;1;1:",
         "field:Callback:FFXIVClientStructs.FFXIV.Client.Game.Event.FormatStringCallbackInterface*:False:144",
         "field:CallbackParam:System.UInt64:False:152",
-        "field:Flags:System.Byte:False:160",
         "field:Parameters:FFXIVClientStructs.STD.StdDeque\u00601\u003CFFXIVClientStructs.FFXIV.Component.Text.TextParameter\u003E:False:104",
         "field:String:FFXIVClientStructs.FFXIV.Client.System.String.Utf8String:False:0",
         "layout:Explicit:168:0",
@@ -1762,19 +1734,12 @@
         "field:EventParam:System.UInt32:False:104",
         "field:EventSceneModule:FFXIVClientStructs.FFXIV.Client.Game.Event.EventSceneModule*:False:24",
         "field:EventType:FFXIVClientStructs.FFXIV.Client.Game.Event.EventType:False:100",
-        "field:EventUnk20:System.Byte:False:108",
         "field:IconId:System.UInt32:False:92",
         "field:Info:FFXIVClientStructs.FFXIV.Client.Game.Event.EventHandlerInfo:False:32",
         "field:LuaStatus:FFXIVClientStructs.FFXIV.Common.Lua.LuaStatus:False:148",
         "field:Scene:System.Int16:False:120",
         "field:SceneFlags:FFXIVClientStructs.FFXIV.Client.Game.Event.SceneFlag:False:136",
         "field:SceneGameObject:FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject*:False:128",
-        "field:UnkExcelSheet1:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheet*:False:160",
-        "field:UnkExcelSheet2:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheet*:False:176",
-        "field:UnkExcelSheet4:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheet*:False:352",
-        "field:UnkExcelSheetWaiter1:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheetWaiter*:False:152",
-        "field:UnkExcelSheetWaiter2:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheetWaiter*:False:168",
-        "field:UnkExcelSheetWaiter4:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheetWaiter*:False:344",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Client.Game.Event.EventHandler\u002BEventHandlerVirtualTable*:False:0",
         "layout:Explicit:440:0",
         "type:struct:System.ValueType"
@@ -1950,13 +1915,8 @@
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Event.EventIdleCamController",
       "Required": [
         "field:CurrentTargetObjectId:FFXIVClientStructs.FFXIV.Client.Game.Object.GameObjectId:False:8",
-        "field:EmoteCountdown:System.Single:False:40",
-        "field:EmoteId:System.UInt16:False:36",
         "field:Flags:FFXIVClientStructs.FFXIV.Client.Game.Event.EventIdleCamController\u002BIdleCamFlag:False:52",
         "field:LockedTargetObjectId:FFXIVClientStructs.FFXIV.Client.Game.Object.GameObjectId:False:16",
-        "field:ObjectIndex:System.Int32:False:0",
-        "field:Unk18:FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject*:False:24",
-        "field:Unk20:System.Byte:False:32",
         "layout:Explicit:56:0",
         "type:struct:System.ValueType"
       ]
@@ -2096,8 +2056,6 @@
         "field:Flags:System.Byte:False:44",
         "field:ObjectId:FFXIVClientStructs.FFXIV.Client.Game.Object.GameObjectId:False:16",
         "field:OccupiedConditionId:System.Int32:False:36",
-        "field:Unk20:System.Byte:False:32",
-        "field:Unk28:System.Byte:False:40",
         "layout:Explicit:48:0",
         "type:struct:System.ValueType"
       ]
@@ -2342,10 +2300,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Event.QuestEventHandler",
       "Required": [
-        "attribute:field:_customTodoValues:FFXIVClientStructs.Interop.Generated.FixedSizeArray7\u00601\u003CSystem.UInt16\u003E:False:1458:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_instanceContents:FFXIVClientStructs.Interop.Generated.FixedSizeArray3\u00601\u003CSystem.UInt32\u003E:False:1128:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_previousQuests:FFXIVClientStructs.Interop.Generated.FixedSizeArray3\u00601\u003CSystem.UInt16\u003E:False:1058:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_questLocks:FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601\u003CSystem.UInt16\u003E:False:1066:FixedSizeArrayAttribute:False;False;0:",
         "field:BeastReputationValue:System.UInt16:False:1154",
         "field:BeastTribeId:System.Byte:False:1152",
         "field:BeastTribeRank:System.Byte:False:1153",
@@ -2398,10 +2352,6 @@
         "field:TargetEnd:System.UInt32:False:1164",
         "field:Title:FFXIVClientStructs.FFXIV.Client.System.String.Utf8String:False:744",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Client.Game.Event.QuestEventHandler\u002BQuestEventHandlerVirtualTable*:False:0",
-        "field:_customTodoValues:FFXIVClientStructs.Interop.Generated.FixedSizeArray7\u00601\u003CSystem.UInt16\u003E:False:1458",
-        "field:_instanceContents:FFXIVClientStructs.Interop.Generated.FixedSizeArray3\u00601\u003CSystem.UInt32\u003E:False:1128",
-        "field:_previousQuests:FFXIVClientStructs.Interop.Generated.FixedSizeArray3\u00601\u003CSystem.UInt16\u003E:False:1058",
-        "field:_questLocks:FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601\u003CSystem.UInt16\u003E:False:1066",
         "layout:Explicit:1480:0",
         "type:struct:System.ValueType"
       ]
@@ -2450,7 +2400,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Event.RacingChocoboNameResolver",
       "Required": [
-        "attribute:field:_fullName:FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601\u003CSystem.Byte\u003E:False:94:FixedSizeArrayAttribute:True;False;0:",
         "field:Callback:fnptr::System.Void(System.Void*,System.Void*):False:160",
         "field:CallbackArg:System.Void*:False:176",
         "field:CallbackThisArg:System.Void*:False:168",
@@ -2463,12 +2412,10 @@
         "field:Rows:FFXIVClientStructs.FFXIV.Component.Excel.ExcelRow**:False:40",
         "field:Sheet:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheet*:False:72",
         "field:SheetIndex:System.Int64:False:24",
-        "field:Unk30:System.IntPtr:False:48",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Client.Game.Event.RacingChocoboNameResolver\u002BRacingChocoboNameResolverVirtualTable*:False:0",
         "field:WaiterCallback:System.Void*:False:64",
         "field:WaiterCallbackCalled:System.Boolean:False:80",
         "field:WaiterCallbackThisArg:FFXIVClientStructs.FFXIV.Client.Game.Event.RacingChocoboNameResolver*:False:56",
-        "field:_fullName:FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601\u003CSystem.Byte\u003E:False:94",
         "layout:Explicit:184:0",
         "type:struct:System.ValueType"
       ]
@@ -2486,9 +2433,7 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Event.SceneData",
       "Required": [
-        "attribute:field:_values:FFXIVClientStructs.Interop.Generated.FixedSizeArray255\u00601\u003CSystem.Int32\u003E:False:0:FixedSizeArrayAttribute:False;False;0:",
         "field:Count:System.Byte:False:1020",
-        "field:_values:FFXIVClientStructs.Interop.Generated.FixedSizeArray255\u00601\u003CSystem.Int32\u003E:False:0",
         "layout:Explicit:1024:0",
         "type:struct:System.ValueType"
       ]
@@ -2590,23 +2535,8 @@
     },
     {
       "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.FFXIV.Client.Game.FFXIVREPLAYChapterType",
-      "Required": [
-        "constant:ContentStart:5",
-        "constant:Countdown:1",
-        "constant:EventCutscene:4",
-        "constant:None:0",
-        "constant:StartRestart:2",
-        "enum:System.Byte",
-        "type:enum:System.Enum"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.GameMain",
       "Required": [
-        "attribute:field:_activeFestivals:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CFFXIVClientStructs.FFXIV.Client.Game.GameMain\u002BFestival\u003E:False:0:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_queuedFestivals:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CFFXIVClientStructs.FFXIV.Client.Game.GameMain\u002BFestival\u003E:False:128:FixedSizeArrayAttribute:False;False;0:",
         "attribute:method:Instance\u00600:True:FFXIVClientStructs.FFXIV.Client.Game.GameMain*():StaticAddressAttribute:48 8D 0D ?? ?? ?? ?? 0F 28 F2 48 89 44 24 ??;3;False:",
         "field:ConnectedToZone:System.Boolean:False:16638",
         "field:ContentsReplayManager:FFXIVClientStructs.FFXIV.Client.Game.ContentsReplayManager:False:2976",
@@ -2634,20 +2564,8 @@
         "field:TransitionTerritoryFilterKey:System.UInt32:False:16668",
         "field:TransitionTerritoryTypeId:System.UInt32:False:16664",
         "field:ZoneSharedGroupManager:FFXIVClientStructs.FFXIV.Client.Game.ZoneSharedGroupManager:False:608",
-        "field:_activeFestivals:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CFFXIVClientStructs.FFXIV.Client.Game.GameMain\u002BFestival\u003E:False:0",
-        "field:_queuedFestivals:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CFFXIVClientStructs.FFXIV.Client.Game.GameMain\u002BFestival\u003E:False:128",
         "layout:Explicit:16752:0",
         "method:Instance\u00600:True:FFXIVClientStructs.FFXIV.Client.Game.GameMain*()",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.FFXIV.Client.Game.GameMain\u002BFestival",
-      "Required": [
-        "field:Id:System.UInt16:False:0",
-        "field:Phase:System.UInt16:False:2",
-        "layout:Explicit:4:0",
         "type:struct:System.ValueType"
       ]
     },
@@ -2683,12 +2601,7 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Gauge.AstrologianGauge",
       "Required": [
-        "attribute:field:CardsBacking:System.UInt16:False:8:BitFieldAttribute\u00601:Card1;0;4:",
-        "attribute:field:CardsBacking:System.UInt16:False:8:BitFieldAttribute\u00601:Card2;4;4:",
-        "attribute:field:CardsBacking:System.UInt16:False:8:BitFieldAttribute\u00601:Card3;8;4:",
-        "attribute:field:CardsBacking:System.UInt16:False:8:BitFieldAttribute\u00601:CurrentArcana;12;4:",
         "field:Cards:System.Int16:False:8",
-        "field:CardsBacking:System.UInt16:False:8",
         "field:CurrentDraw:FFXIVClientStructs.FFXIV.Client.Game.Gauge.AstrologianDraw:False:10",
         "field:JobGauge:FFXIVClientStructs.FFXIV.Client.Game.Gauge.JobGauge:False:0",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Client.Game.Gauge.AstrologianGauge\u002BAstrologianGaugeVirtualTable*:False:0",
@@ -2792,10 +2705,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Gauge.BlackMageGauge",
       "Required": [
-        "attribute:field:BitFieldD:System.Byte:False:13:BitFieldAttribute\u00601:AstralSoulStacks;2;3:",
-        "attribute:field:BitFieldD:System.Byte:False:13:BitFieldAttribute\u00601:EnochianActive;0;1:",
-        "attribute:field:BitFieldD:System.Byte:False:13:BitFieldAttribute\u00601:ParadoxActive;1;1:",
-        "field:BitFieldD:System.Byte:False:13",
         "field:ElementStance:System.SByte:False:10",
         "field:EnochianFlags:FFXIVClientStructs.FFXIV.Client.Game.Gauge.EnochianFlags:False:13",
         "field:EnochianTimer:System.Int16:False:8",
@@ -2847,13 +2756,11 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Gauge.DancerGauge",
       "Required": [
-        "attribute:field:_danceSteps:FFXIVClientStructs.Interop.Generated.FixedSizeArray4\u00601\u003CSystem.Byte\u003E:False:10:FixedSizeArrayAttribute:False;False;0:",
         "field:Esprit:System.Byte:False:9",
         "field:Feathers:System.Byte:False:8",
         "field:JobGauge:FFXIVClientStructs.FFXIV.Client.Game.Gauge.JobGauge:False:0",
         "field:StepIndex:System.Byte:False:14",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Client.Game.Gauge.DancerGauge\u002BDancerGaugeVirtualTable*:False:0",
-        "field:_danceSteps:FFXIVClientStructs.Interop.Generated.FixedSizeArray4\u00601\u003CSystem.Byte\u003E:False:10",
         "layout:Explicit:16:0",
         "type:struct:System.ValueType"
       ]
@@ -3270,12 +3177,9 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Gauge.SummonerGauge",
       "Required": [
-        "attribute:field:BitFieldE:System.Byte:False:14:BitFieldAttribute\u00601:AttunementCount;2;6:",
-        "attribute:field:BitFieldE:System.Byte:False:14:BitFieldAttribute\u00601:AttunementType;0;2:",
         "field:AetherFlags:FFXIVClientStructs.FFXIV.Client.Game.Gauge.AetherFlags:False:15",
         "field:Attunement:System.Byte:False:14",
         "field:AttunementTimer:System.UInt16:False:10",
-        "field:BitFieldE:System.Byte:False:14",
         "field:JobGauge:FFXIVClientStructs.FFXIV.Client.Game.Gauge.JobGauge:False:0",
         "field:ReturnSummon:System.Byte:False:12",
         "field:ReturnSummonGlam:System.Byte:False:13",
@@ -3418,12 +3322,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Network.ZoneInitPacket",
       "Required": [
-        "attribute:field:_contentRouletteRoleBonuses:FFXIVClientStructs.Interop.Generated.FixedSizeArray11\u00601\u003CSystem.Byte\u003E:False:116:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_gameFestivalIds:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt16\u003E:False:38:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_gameFestivalPhases:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt16\u003E:False:54:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_penaltyTimestamps:FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601\u003CSystem.Int32\u003E:False:128:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_uiFestivalIds:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt16\u003E:False:70:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_uiFestivalPhases:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt16\u003E:False:86:FixedSizeArrayAttribute:False;False;0:",
         "field:ContentFinderConditionId:System.UInt16:False:6",
         "field:Flags:FFXIVClientStructs.FFXIV.Client.Game.Network.ZoneInitFlags:False:18",
         "field:Instance:System.UInt16:False:4",
@@ -3436,14 +3334,7 @@
         "field:ServerId:System.UInt16:False:0",
         "field:TerritoryTypeId:System.UInt16:False:2",
         "field:TransitionTerritoryFilterKey:System.UInt32:False:8",
-        "field:UnkInputTimerFlags:System.Byte:False:21",
         "field:WeatherId:System.Byte:False:16",
-        "field:_contentRouletteRoleBonuses:FFXIVClientStructs.Interop.Generated.FixedSizeArray11\u00601\u003CSystem.Byte\u003E:False:116",
-        "field:_gameFestivalIds:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt16\u003E:False:38",
-        "field:_gameFestivalPhases:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt16\u003E:False:54",
-        "field:_penaltyTimestamps:FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601\u003CSystem.Int32\u003E:False:128",
-        "field:_uiFestivalIds:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt16\u003E:False:70",
-        "field:_uiFestivalPhases:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt16\u003E:False:86",
         "layout:Explicit:136:0",
         "type:struct:System.ValueType"
       ]
@@ -3469,7 +3360,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject",
       "Required": [
-        "attribute:field:_name:FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601\u003CSystem.Byte\u003E:False:48:FixedSizeArrayAttribute:True;False;0:",
         "field:BaseId:System.UInt32:False:132",
         "field:BattleNpcSubKind:FFXIVClientStructs.FFXIV.Client.Game.Object.BattleNpcSubKind:False:145",
         "field:CameraOffset:FFXIVClientStructs.FFXIV.Common.Math.Vector3:False:304",
@@ -3514,7 +3404,6 @@
         "field:Visibility:System.Byte:False:151",
         "field:YalmDistanceFromPlayerX:System.Byte:False:148",
         "field:YalmDistanceFromPlayerZ:System.Byte:False:150",
-        "field:_name:FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601\u003CSystem.Byte\u003E:False:48",
         "layout:Explicit:416:0",
         "type:struct:System.ValueType"
       ]
@@ -3712,7 +3601,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.UI.ContentsFinderQueueInfo",
       "Required": [
-        "attribute:field:_queuedEntries:FFXIVClientStructs.Interop.Generated.FixedSizeArray5\u00601\u003CFFXIVClientStructs.FFXIV.Client.UI.Agent.ContentsId\u003E:False:0:FixedSizeArrayAttribute:False;False;0:",
         "attribute:method:QueueDuties\u00600:False:System.Void(System.UInt32*,System.Int32,System.Byte):MemberFunctionAttribute:E8 ?? ?? ?? ?? B0 ?? 45 88 A7 ?? ?? ?? ?? E9 ?? ?? ?? ?? 45 0F B6 87:",
         "field:ClampedPositionInQueue:System.SByte:False:91",
         "field:EnteredQueueTimestamp:System.Int32:False:64",
@@ -3733,7 +3621,6 @@
         "field:QueueState:FFXIVClientStructs.FFXIV.Client.Enums.ContentsFinderQueueState:False:85",
         "field:QueuedClassJobId:System.UInt32:False:40",
         "field:QueuedContentRouletteId:System.Byte:False:90",
-        "field:_queuedEntries:FFXIVClientStructs.Interop.Generated.FixedSizeArray5\u00601\u003CFFXIVClientStructs.FFXIV.Client.UI.Agent.ContentsId\u003E:False:0",
         "layout:Explicit:144:0",
         "method:QueueDuties\u00600:False:System.Void(System.UInt32*,System.Int32,System.Byte)",
         "method:get_QueuedEntries\u00600:False:System.Span\u00601\u003CFFXIVClientStructs.FFXIV.Client.UI.Agent.ContentsId\u003E()",
@@ -3744,12 +3631,10 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.Game.UI.InstanceContent",
       "Required": [
-        "attribute:field:_spectatorIds:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt32\u003E:False:56:FixedSizeArrayAttribute:False;False;0:",
         "attribute:method:GetPenaltyRemainingInMinutes\u00600:False:System.UInt32(System.Byte):MemberFunctionAttribute:E8 ?? ?? ?? ?? 8B 0E 3B C8:",
         "attribute:method:Instance\u00600:True:FFXIVClientStructs.FFXIV.Client.Game.UI.InstanceContent*():StaticAddressAttribute:48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 84 C0 0F 94 C3;3;False:",
         "field:IsLimitedTimeBonusActive:System.Boolean:False:112",
         "field:RankedCrystallineConflictHostingDataCenterId:System.Byte:False:108",
-        "field:_spectatorIds:FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601\u003CSystem.UInt32\u003E:False:56",
         "layout:Explicit:120:0",
         "method:GetPenaltyRemainingInMinutes\u00600:False:System.UInt32(System.Byte)",
         "method:Instance\u00600:True:FFXIVClientStructs.FFXIV.Client.Game.UI.InstanceContent*()",
@@ -3889,7 +3774,6 @@
       "Required": [
         "field:Category:FFXIVClientStructs.FFXIV.Client.System.Resource.Handle.ResourceHandleType\u002BHandleCategory:False:0",
         "field:Expansion:System.Byte:False:3",
-        "field:Unknown0A:System.Byte:False:2",
         "field:Value:System.UInt32:False:0",
         "layout:Explicit:4:0",
         "type:struct:System.ValueType"
@@ -3942,14 +3826,12 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.System.String.Utf8String",
       "Required": [
-        "attribute:field:_inlineBuffer:FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601\u003CSystem.Byte\u003E:False:34:FixedSizeArrayAttribute:False;False;0:",
         "field:BufSize:System.Int64:False:8",
         "field:BufUsed:System.Int64:False:16",
         "field:IsEmpty:System.Boolean:False:32",
         "field:IsUsingInlineBuffer:System.Boolean:False:33",
         "field:StringLength:System.Int64:False:24",
         "field:StringPtr:InteropGenerator.Runtime.CStringPointer:False:0",
-        "field:_inlineBuffer:FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601\u003CSystem.Byte\u003E:False:34",
         "layout:Explicit:104:0",
         "type:struct:System.ValueType"
       ]
@@ -4963,14 +4845,12 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentModule",
       "Required": [
-        "attribute:field:_agents:FFXIVClientStructs.Interop.Generated.FixedSizeArray509\u00601\u003CFFXIVClientStructs.Interop.Pointer\u00601\u003CFFXIVClientStructs.FFXIV.Client.UI.Agent.AgentInterface\u003E\u003E:False:32:FixedSizeArrayAttribute:False;False;0:",
         "attribute:method:GetAgentByInternalId\u00600:False:FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentInterface*(FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentId):MemberFunctionAttribute:E8 ?? ?? ?? ?? 83 7B 48 00:",
         "field:AgentHelpers:FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentHelpers:False:4104",
         "field:FrameCounter:System.UInt32:False:20",
         "field:FrameDelta:System.Single:False:24",
         "field:Initialized:System.Byte:False:16",
         "field:UIModule:FFXIVClientStructs.FFXIV.Client.UI.UIModule*:False:8",
-        "field:_agents:FFXIVClientStructs.Interop.Generated.FixedSizeArray509\u00601\u003CFFXIVClientStructs.Interop.Pointer\u00601\u003CFFXIVClientStructs.FFXIV.Client.UI.Agent.AgentInterface\u003E\u003E:False:32",
         "layout:Explicit:4120:0",
         "method:GetAgentByInternalId\u00600:False:FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentInterface*(FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentId)",
         "method:Instance\u00600:True:FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentModule*()",
@@ -5017,7 +4897,6 @@
         "field:RowDescriptors:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheetWaiter\u002BDescriptorRowWrapperEntry*:False:32",
         "field:Rows:FFXIVClientStructs.FFXIV.Component.Excel.ExcelRow**:False:40",
         "field:SheetIndex:System.Int64:False:24",
-        "field:UnkC:System.UInt32:False:12",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheetWaiter\u002BExcelSheetWaiterVirtualTable*:False:0",
         "layout:Explicit:48:0",
         "type:struct:System.ValueType"
@@ -5095,12 +4974,10 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Common.Math.Matrix2x2",
       "Required": [
-        "attribute:field:_matrix:FFXIVClientStructs.Interop.Generated.FixedSizeArray4\u00601\u003CSystem.Single\u003E:False:0:FixedSizeArrayAttribute:False;False;0:",
         "field:M11:System.Single:False:0",
         "field:M12:System.Single:False:4",
         "field:M21:System.Single:False:8",
         "field:M22:System.Single:False:12",
-        "field:_matrix:FFXIVClientStructs.Interop.Generated.FixedSizeArray4\u00601\u003CSystem.Single\u003E:False:0",
         "layout:Explicit:16:0",
         "type:struct:System.ValueType"
       ]
@@ -5120,7 +4997,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Common.Spinlock",
       "Required": [
-        "field:_sentinel:System.UInt32:False:0",
         "layout:Explicit:4:0",
         "type:struct:System.ValueType"
       ]
@@ -5257,7 +5133,6 @@
         "field:HoveredItemIndex2:System.Int32:False:344",
         "field:HoveredItemIndex3:System.Int32:False:352",
         "field:HoveredItemIndex:System.Int32:False:316",
-        "field:IsAutoResizeHeightEnabled:System.Boolean:False:410",
         "field:IsCursorNavigationCrossList:System.Boolean:False:424",
         "field:IsDroppingDisabled:System.Boolean:False:406",
         "field:IsInputMenuOptionEnabled:System.Boolean:False:417",
@@ -5293,31 +5168,6 @@
         "field:SoundEffectId:System.Int32:False:176",
         "field:TopFadeComponent:FFXIVClientStructs.FFXIV.Component.GUI.AtkComponentBase*:False:224",
         "field:UldManager:FFXIVClientStructs.FFXIV.Component.GUI.AtkUldManager:False:8",
-        "field:Unk140ItemIndex:System.Int32:False:320",
-        "field:Unk144ItemIndex:System.Int32:False:324",
-        "field:Unk15C:System.Int32:False:348",
-        "field:Unk17A:System.Int16:False:378",
-        "field:Unk17C:System.Int16:False:380",
-        "field:Unk17E:System.Int16:False:382",
-        "field:Unk180:System.Int16:False:384",
-        "field:Unk18E:System.Byte:False:398",
-        "field:Unk190InputId:System.Byte:False:400",
-        "field:Unk192:System.Byte:False:402",
-        "field:Unk198:System.Byte:False:408",
-        "field:Unk199:System.Boolean:False:409",
-        "field:Unk19D:System.Boolean:False:413",
-        "field:Unk19F:System.Boolean:False:415",
-        "field:Unk1A2:System.Boolean:False:418",
-        "field:Unk1A3:System.Boolean:False:419",
-        "field:Unk1A4:System.Boolean:False:420",
-        "field:Unk1A5:System.Boolean:False:421",
-        "field:Unk1A6:System.Boolean:False:422",
-        "field:Unk1A7:System.Byte:False:423",
-        "field:Unk1A9:System.Boolean:False:425",
-        "field:Unk1AA:System.Boolean:False:426",
-        "field:Unk1AB:System.Boolean:False:427",
-        "field:Unk1AC:System.Boolean:False:428",
-        "field:Unk1AD:System.Byte:False:429",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Component.GUI.AtkComponentList\u002BAtkComponentListVirtualTable*:False:0",
         "field:VisibleRowCount:System.Int16:False:360",
         "field:Wrap:System.Byte:False:397",
@@ -5398,6 +5248,8 @@
         "field:Bottom:System.Int16:False:198",
         "field:ButtonBGNode:FFXIVClientStructs.FFXIV.Component.GUI.AtkResNode*:False:208",
         "field:ButtonTextNode:FFXIVClientStructs.FFXIV.Component.GUI.AtkTextNode*:False:200",
+        "field:CollisionNodeList:FFXIVClientStructs.FFXIV.Component.GUI.AtkResNode**:False:344",
+        "field:CollisionNodeListCount:System.UInt16:False:404",
         "field:ComponentFlags:System.UInt32:False:152",
         "field:ComponentNode:FFXIVClientStructs.FFXIV.Component.GUI.AtkComponentNode*:False:248",
         "field:CursorNavigationInfo:FFXIVClientStructs.FFXIV.Component.GUI.AtkCursorNavigationInfo:False:180",
@@ -5410,11 +5262,17 @@
         "field:DragDropType:FFXIVClientStructs.FFXIV.Component.GUI.DragDropType:False:276",
         "field:DragStartX:System.Int16:False:272",
         "field:DragStartY:System.Int16:False:274",
+        "field:EventNode:FFXIVClientStructs.FFXIV.Component.GUI.AtkResNode*:False:336",
         "field:Flags:System.UInt32:False:232",
         "field:FlyBackData:FFXIVClientStructs.FFXIV.Component.GUI.AtkDragDropInterface\u002BFlyBackAnimationData*:False:264",
         "field:IsActive:System.Boolean:False:282",
         "field:Left:System.Int16:False:192",
         "field:ListItemIndex:System.Int32:False:388",
+        "field:OriginalButtonTextHeight:System.UInt16:False:400",
+        "field:OriginalHeight:System.UInt16:False:398",
+        "field:OriginalWidth:System.UInt16:False:396",
+        "field:OriginalX:System.Int16:False:392",
+        "field:OriginalY:System.Int16:False:394",
         "field:OwnerNode:FFXIVClientStructs.FFXIV.Component.GUI.AtkComponentNode*:False:168",
         "field:Populator:FFXIVClientStructs.FFXIV.Component.GUI.AtkComponentListItemPopulator:False:296",
         "field:Right:System.Int16:False:196",
@@ -5425,10 +5283,6 @@
         "field:SoundEffectId:System.Int32:False:176",
         "field:Top:System.Int16:False:194",
         "field:UldManager:FFXIVClientStructs.FFXIV.Component.GUI.AtkUldManager:False:8",
-        "field:Unk1A0DragDropOwnerNodeScreenX:System.Int16:False:416",
-        "field:Unk1A2DragDropOwnerNodeScreenY:System.Int16:False:418",
-        "field:Unk1A5:System.Byte:False:421",
-        "field:Unk1A6:System.UInt16:False:422",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Component.GUI.AtkComponentListItemRenderer\u002BAtkComponentListItemRendererVirtualTable*:False:0",
         "layout:Explicit:424:0",
         "method:get_IsEnabled\u00600:False:System.Boolean()",
@@ -5747,10 +5601,6 @@
         "field:DragDropInterface:FFXIVClientStructs.FFXIV.Component.GUI.AtkDragDropInterface*:False:0",
         "field:MouseButtonId:System.Byte:False:16",
         "field:MouseModifier:FFXIVClientStructs.FFXIV.Component.GUI.ModifierFlag:False:17",
-        "field:Unk12:System.Int32:False:18",
-        "field:Unk16:System.Int16:False:22",
-        "field:Unk18:System.IntPtr:False:24",
-        "field:Unk20:System.IntPtr:False:32",
         "layout:Explicit:40:0",
         "type:struct:System.ValueType"
       ]
@@ -5787,7 +5637,6 @@
         "field:MouseButtonId:System.Byte:False:24",
         "field:MouseModifier:FFXIVClientStructs.FFXIV.Component.GUI.ModifierFlag:False:25",
         "field:SelectedIndex:System.Int32:False:16",
-        "field:UnkListField15C:System.Int16:False:20",
         "layout:Explicit:40:0",
         "type:struct:System.ValueType"
       ]
@@ -5800,10 +5649,6 @@
         "field:Modifier:FFXIVClientStructs.FFXIV.Component.GUI.ModifierFlag:False:7",
         "field:PosX:System.Int16:False:0",
         "field:PosY:System.Int16:False:2",
-        "field:Unk0E:System.Int16:False:14",
-        "field:Unk10:System.Int16:False:16",
-        "field:Unk8:System.Int32:False:8",
-        "field:UnkC:System.Int16:False:12",
         "field:WheelDirection:System.Int16:False:4",
         "layout:Explicit:40:0",
         "type:struct:System.ValueType"
@@ -5867,7 +5712,6 @@
         "field:EventType:FFXIVClientStructs.FFXIV.Component.GUI.AtkEventType:False:0",
         "field:ReturnFlags:System.Byte:False:1",
         "field:StateFlags:FFXIVClientStructs.FFXIV.Component.GUI.AtkEventStateFlags:False:2",
-        "field:UnkFlags3:System.Byte:False:3",
         "layout:Explicit:4:0",
         "type:struct:System.ValueType"
       ]
@@ -6125,7 +5969,6 @@
         "field:Timeline:FFXIVClientStructs.FFXIV.Component.GUI.AtkTimeline*:False:16",
         "field:Transform:FFXIVClientStructs.FFXIV.Common.Math.Matrix2x2:False:96",
         "field:Type:FFXIVClientStructs.FFXIV.Component.GUI.NodeType:False:64",
-        "field:UnkByte_1:System.Byte:False:159",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Component.GUI.AtkResNode\u002BAtkResNodeVirtualTable*:False:0",
         "field:Width:System.UInt16:False:160",
         "field:X:System.Single:False:68",
@@ -6255,7 +6098,6 @@
       "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Component.GUI.AtkTexture",
       "Required": [
-        "field:CachedIsTextureReady:System.Boolean:False:17",
         "field:Crest:System.Void*:False:8",
         "field:KernelTexture:FFXIVClientStructs.FFXIV.Client.Graphics.Kernel.Texture*:False:8",
         "field:Resource:FFXIVClientStructs.FFXIV.Component.GUI.AtkTextureResource*:False:8",
@@ -6455,13 +6297,8 @@
         "attribute:field:Flags1C8:System.UInt32:False:456:BitFieldAttribute\u00601:EnableFilter;2;1:",
         "attribute:field:Flags1C8:System.UInt32:False:456:BitFieldAttribute\u00601:IgnoreUIDisplayMode;4;1:",
         "attribute:field:Flags1C8:System.UInt32:False:456:BitFieldAttribute\u00601:IsScalingWithGlobalUIScale;21;1:",
-        "attribute:field:_additionalFocusableNodes:FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601\u003CFFXIVClientStructs.Interop.Pointer\u00601\u003CFFXIVClientStructs.FFXIV.Component.GUI.AtkResNode\u003E\u003E:False:264:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_additionalMoveableNodes:FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601\u003CFFXIVClientStructs.Interop.Pointer\u00601\u003CFFXIVClientStructs.FFXIV.Component.GUI.AtkResNode\u003E\u003E:False:224:FixedSizeArrayAttribute:False;False;0:",
-        "attribute:field:_name:FFXIVClientStructs.Interop.Generated.FixedSizeArray32\u00601\u003CSystem.Byte\u003E:False:8:FixedSizeArrayAttribute:True;False;0:",
-        "attribute:field:_operationGuides:FFXIVClientStructs.Interop.Generated.FixedSizeArray5\u00601\u003CFFXIVClientStructs.FFXIV.Component.GUI.OperationGuide\u003E:False:508:FixedSizeArrayAttribute:False;False;0:",
         "attribute:method:FireCallback\u00600:False:System.Boolean(System.UInt32,FFXIVClientStructs.FFXIV.Component.GUI.AtkValue*,System.Boolean):MemberFunctionAttribute:E8 ?? ?? ?? ?? 0F B6 E8 8B 44 24 20:",
         "attribute:method:GetNodeById\u00600:False:FFXIVClientStructs.FFXIV.Component.GUI.AtkResNode*(System.UInt32):MemberFunctionAttribute:E8 ?? ?? ?? ?? 44 84 B7:",
-        "field:AddonParamUnknown1:System.Byte:False:440",
         "field:Alpha:System.Byte:False:493",
         "field:AtkEventListener:FFXIVClientStructs.FFXIV.Component.GUI.AtkEventListener:False:0",
         "field:AtkValues:FFXIVClientStructs.FFXIV.Component.GUI.AtkValue*:False:376",
@@ -6508,8 +6345,6 @@
         "field:ShowTransitionScale:System.Single:False:444",
         "field:UiFlagsHideCount:System.Byte:False:442",
         "field:UldManager:FFXIVClientStructs.FFXIV.Component.GUI.AtkUldManager:False:40",
-        "field:Unk1BB:System.Byte:False:443",
-        "field:Unk1EF:System.Boolean:False:495",
         "field:VirtualTable:FFXIVClientStructs.FFXIV.Component.GUI.AtkUnitBase\u002BAtkUnitBaseVirtualTable*:False:0",
         "field:VisibilityFlags:System.UInt16:False:462",
         "field:WidgetAlignment:FFXIVClientStructs.FFXIV.Component.GUI.AtkWidgetAlignment:False:184",
@@ -6518,10 +6353,6 @@
         "field:WindowNode:FFXIVClientStructs.FFXIV.Component.GUI.AtkComponentNode*:False:288",
         "field:X:System.Int16:False:468",
         "field:Y:System.Int16:False:470",
-        "field:_additionalFocusableNodes:FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601\u003CFFXIVClientStructs.Interop.Pointer\u00601\u003CFFXIVClientStructs.FFXIV.Component.GUI.AtkResNode\u003E\u003E:False:264",
-        "field:_additionalMoveableNodes:FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601\u003CFFXIVClientStructs.Interop.Pointer\u00601\u003CFFXIVClientStructs.FFXIV.Component.GUI.AtkResNode\u003E\u003E:False:224",
-        "field:_name:FFXIVClientStructs.Interop.Generated.FixedSizeArray32\u00601\u003CSystem.Byte\u003E:False:8",
-        "field:_operationGuides:FFXIVClientStructs.Interop.Generated.FixedSizeArray5\u00601\u003CFFXIVClientStructs.FFXIV.Component.GUI.OperationGuide\u003E:False:508",
         "layout:Explicit:568:0",
         "method:FireCallback\u00600:False:System.Boolean(System.UInt32,FFXIVClientStructs.FFXIV.Component.GUI.AtkValue*,System.Boolean)",
         "method:GetNodeById\u00600:False:FFXIVClientStructs.FFXIV.Component.GUI.AtkResNode*(System.UInt32)",
@@ -6862,21 +6693,6 @@
     },
     {
       "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.FFXIV.Component.GUI.OperationGuide",
-      "Required": [
-        "attribute:field:PositionFlags:System.Byte:False:1:BitFieldAttribute\u00601:Point;4;4:",
-        "attribute:field:PositionFlags:System.Byte:False:1:BitFieldAttribute\u00601:RelativePoint;0;4:",
-        "field:AddonTransientId:System.UInt32:False:8",
-        "field:Index:System.Byte:False:0",
-        "field:OffsetX:System.Int16:False:2",
-        "field:OffsetY:System.Int16:False:4",
-        "field:PositionFlags:System.Byte:False:1",
-        "layout:Explicit:12:0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
       "Name": "FFXIVClientStructs.FFXIV.Component.GUI.SimpleTweenAnimation",
       "Required": [
         "field:Delta:System.Single:False:24",
@@ -6972,138 +6788,6 @@
         "constant:Uninitialized:-1",
         "enum:System.SByte",
         "type:enum:System.Enum"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray11\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:11",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray12\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:12",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray255\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:255",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray2\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:2",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray32\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:32",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray3\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:3",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray4\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:4",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray509\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:509",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray5\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:5",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray64\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:64",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray7\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:7",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
-      ]
-    },
-    {
-      "Assembly": "FFXIVClientStructs",
-      "Name": "FFXIVClientStructs.Interop.Generated.FixedSizeArray8\u00601",
-      "Required": [
-        "field:_element0:!0:False:sequential",
-        "inline-array:8",
-        "layout:Sequential:0:1",
-        "sequential-fields:_element0",
-        "type:struct:System.ValueType"
       ]
     },
     {

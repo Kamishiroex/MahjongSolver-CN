@@ -10,6 +10,7 @@ public sealed class RuntimeIdentityTests
     [
         ("cac6159a2c76e62a4e1f7bc347454c205808bb04", "1.0.0+f824354f4a6a2b1cd16cc8fcb670c7a66bf64880"),
         ("a198a02bdce1f3213cad618850ab1b2736307588", "1.0.0+243dc41e4d71f350cd80aa5eba8c75517f3d5154"),
+        ("fbef681c15fd7c57a850b32b4020fcf5474374c7", "1.0.0+af18b1116ddd23d1eddfc345f8eef6974d8f84d3"),
         (RuntimeIdentity.TargetDalamud, RuntimeIdentity.TargetStructs),
     ];
 
@@ -27,13 +28,27 @@ public sealed class RuntimeIdentityTests
     }
 
     [Theory]
-    [InlineData("15.0.3.6")]
-    [InlineData("15.0.3.7")]
+    [InlineData("15.0.3.8")]
+    [InlineData("15.0.3.9")]
     [InlineData("15.1.0.0")]
     public void Same_API_patch_with_matching_contract_does_not_require_a_commit_allowlist(string version)
     {
         Assert.Null(RuntimeIdentity.Validate(RuntimeIdentity.TargetGame, 15, new string('a', 40),
             "1.0.0+" + new string('b', 40), ClientLanguage.ChineseSimplified, version, null));
+    }
+
+    [Theory]
+    [InlineData(RuntimeIdentity.PreviousGame)]
+    [InlineData(RuntimeIdentity.TargetGame)]
+    public void Audited_client_versions_keep_their_original_public_mapping_identity(string game)
+    {
+        var identity = Identity(RuntimeIdentity.TargetDalamud, RuntimeIdentity.TargetStructs) with { GameVersion = game };
+        Assert.Null(RuntimeIdentity.Validate(game, 15, identity.DalamudCommit, identity.ClientStructsVersion,
+            ClientLanguage.ChineseSimplified, RuntimeIdentity.MinimumDalamud, null));
+        var context = PublicObservationAssembler.CreateAuditedContext(identity, LowerHandProfile.EmjUldSha256);
+        Assert.NotNull(context);
+        Assert.Equal(game, context.ClientVersion);
+        Assert.Equal(game, context.Profile!.ClientVersion);
     }
 
     [Fact]

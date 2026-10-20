@@ -1,27 +1,27 @@
 {
-  "collectedOn": "2026-10-04",
+  "collectedOn": "2026-10-20",
   "source": "Local version files and read-only PE metadata; no game execution",
-  "gameVersion": "2026.09.15.0000.0000",
-  "selectedHooksDirectory": "%APPDATA%/XIVLauncherCN/addon/Hooks/26-10-03-01",
+  "gameVersion": "2026.10.06.0000.0000",
+  "selectedHooksDirectory": "%APPDATA%/XIVLauncherCN/addon/Hooks/26-10-18-01",
   "dalamud": {
-    "assemblyVersion": "15.0.3.6",
+    "assemblyVersion": "15.0.3.8",
     "apiLevel": 15,
-    "informationalVersion": "15.0.3.6+fbef681c15fd7c57a850b32b4020fcf5474374c7",
-    "scmVersion": "26-10-03-01",
-    "gitHash": "fbef681c15fd7c57a850b32b4020fcf5474374c7",
-    "gitHashClientStructs": "af18b1116",
+    "informationalVersion": "15.0.3.8+628098b6ffd8b95005ace93bc69c2a1a738cfaf5",
+    "scmVersion": "26-10-18-01",
+    "gitHash": "628098b6ffd8b95005ace93bc69c2a1a738cfaf5",
+    "gitHashClientStructs": "692462a30",
     "repositoryUrlMetadata": "https://github.com/Dalamud-DailyRoutines/Dalamud",
     "sourceLookupRepository": "https://github.com/ottercorp/Dalamud",
-    "sha256": "F09DDB673891328147A9E6F73AC7524CFBA2115404C295FE9BEFBF5394982BA7"
+    "sha256": "CE0C3C8004CAC1E9AA96D0DC749463F5F1A32E9B49988419BF320545BF942C6A"
   },
   "clientStructs": {
-    "informationalVersion": "1.0.0+af18b1116ddd23d1eddfc345f8eef6974d8f84d3",
-    "fileVersion": "7.56.2.9418",
-    "gitHash": "af18b1116ddd23d1eddfc345f8eef6974d8f84d3",
+    "informationalVersion": "1.0.0+692462a3011777817f52f5978d6f839567146e8d",
+    "fileVersion": "7.57.0.9571",
+    "gitHash": "692462a3011777817f52f5978d6f839567146e8d",
     "gitSubmoduleRepository": "https://github.com/Dalamud-DailyRoutines/FFXIVClientStructs.git",
     "sourceLookupRepository": "https://github.com/ottercorp/FFXIVClientStructs",
-    "idaDataVersion": "2026.09.15.0000.0000",
-    "sha256": "48E8EA973577EF7BCDA34D89AF7A3E7068C87CA2C9F33110BC7B5F2B5B151A18"
+    "idaDataVersion": "2026.10.06.0000.0000",
+    "sha256": "5A7A8EA71E84D7410DBAD8A5391D4759C2A38B1A55F4F3BB745B22B556A6F778"
   },
   "runtime": {
     "tfm": "net10.0",

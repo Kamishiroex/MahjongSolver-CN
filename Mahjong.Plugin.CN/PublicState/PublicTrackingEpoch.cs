@@ -92,6 +92,6 @@ internal sealed class PublicTrackingEpoch
         field.Observation!.Sequence == observation.Sequence && field.Observation.ObservedAtUtc == observation.ObservedAtUtc;
 
     private static bool ValidContext(PublicObservationContext? context) => context is { Profile: { } profile } &&
-        context.ClientVersion == RuntimeIdentity.TargetGame && profile.ClientVersion == context.ClientVersion &&
+        RuntimeIdentity.IsAuditedGame(context.ClientVersion) && profile.ClientVersion == context.ClientVersion &&
         context.UldSha256 == LowerHandProfile.EmjUldSha256 && profile.UldSha256 == context.UldSha256;
 }
