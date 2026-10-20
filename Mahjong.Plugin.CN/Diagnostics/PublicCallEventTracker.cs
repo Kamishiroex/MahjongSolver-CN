@@ -53,7 +53,7 @@ internal sealed class PublicCallEventTracker
             ResetCurrent(); lastSequence = sequence; lastUtc = utc;
             issues.Add(new(code, sequence)); return new(events.ToImmutable(), issues.ToImmutable());
         }
-        if (clientVersion != RoundTitleCatalog.GameVersion ||
+        if (!RoundTitleCatalog.IsSupportedGame(clientVersion) ||
             !string.Equals(uldSha256, LowerHandProfile.EmjUldSha256, StringComparison.OrdinalIgnoreCase))
             return Rebaseline("CALL_PROFILE_UNVERIFIED");
         if (string.IsNullOrWhiteSpace(roundToken) || roundToken.Length > 128) return Rebaseline("CALL_ROUND_UNKNOWN");

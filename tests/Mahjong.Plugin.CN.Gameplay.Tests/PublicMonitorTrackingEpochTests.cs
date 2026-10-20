@@ -32,7 +32,9 @@ public sealed class PublicMonitorTrackingEpochTests
     {
         internal PublicMonitorSession Monitor { get; } = new();
         private readonly LowerHandTracker lower = new();
-        internal Capture() => Monitor.Start(Context);
+        internal Capture(string? gameVersion = null) => Monitor.Start(gameVersion is null ? Context :
+            PublicObservationAssembler.CreateAuditedContext(new(gameVersion, 15, "fixture", RuntimeIdentity.TargetDalamud,
+                RuntimeIdentity.TargetStructs, "ChineseSimplified", "fixture", null), LowerHandProfile.EmjUldSha256)!);
         internal void Observe(int sample, PublicTableFaceCandidate[] faces, int handCount = 13, string? error = null, int honba = 0,
             int? timeMilliseconds = null, bool? ownRiichi = null, PublicActionMenuCandidate? menu = null)
         {
@@ -271,10 +273,12 @@ public sealed class PublicMonitorTrackingEpochTests
         Assert.False(draw.HistoryComplete); Assert.False(capture.Monitor.Current!.RoundId.IsConfirmed);
     }
 
-    [Fact]
-    public void Partial_epoch_enables_independently_confirmed_public_pon_without_inventing_opening()
+    [Theory]
+    [InlineData(RuntimeIdentity.PreviousGame)]
+    [InlineData(RuntimeIdentity.TargetGame)]
+    public void Partial_epoch_enables_independently_confirmed_public_pon_without_inventing_opening(string gameVersion)
     {
-        var capture = new Capture(); var source = Face("Emj/118/4", 0);
+        var capture = new Capture(gameVersion); var source = Face("Emj/118/4", 0);
         capture.Observe(1, [source]); capture.Observe(2, [source]);
         var changed = new[] { Face("Emj/118/4", 0, called: true), Face("Emj/113/2/4", 0),
             Face("Emj/113/3/4", 0), Face("Emj/113/4/4", 0) };
